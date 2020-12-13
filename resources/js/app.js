@@ -20,6 +20,14 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('nav-bar', require('./components/NavBar.vue').default);
+Vue.component('homepage-component-section-1', require('./components/HomepageComponentSection1.vue').default);
+Vue.component('homepage-component-section-2', require('./components/HomepageComponentSection2.vue').default);
+Vue.component('footer-component', require('./components/FooterComponent.vue').default);
+Vue.component('educator-profile-page', require('./components/EducatorProfilePage.vue').default);
+
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -19,9 +19,13 @@
 <body>
 <div id="app">
 
+    <nav-bar></nav-bar>
+
     <main>
         @yield('content')
     </main>
+
+    <footer-component/>
 
 
 </div>
