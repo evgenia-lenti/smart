@@ -21,17 +21,17 @@
                 </div>
             </div>
             <div class="hidden md:flex md:space-x-10">
-                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Αρχική</a>
+                <a href="/" class="font-medium text-gray-500 hover:text-gray-900">Αρχική</a>
 
-                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Smart</a>
+                <a href="about-smart" class="font-medium text-gray-500 hover:text-gray-900">About Smart</a>
 
-                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Επικοινωνία</a>
+                <a href="contact" class="font-medium text-gray-500 hover:text-gray-900">Επικοινωνία</a>
             </div>
             <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
             <span class="inline-flex rounded-md">
-            <a href="#" class="inline-flex items-center px-4 py-2 mr-1.5 border border-gray-200 text-base font-medium rounded-md text-yellow-400 bg-white shadow hover:text-gray-800">
-                Σύνδεση
-            </a>
+                <a href="login" class="inline-flex items-center px-4 py-2 mr-1.5 border border-gray-200 text-base font-medium rounded-md text-yellow-400 bg-white shadow hover:text-gray-800">
+                    Σύνδεση
+                </a>
                 <a href="#" class="inline-flex items-center px-4 py-2 border border-gray-200 text-base font-medium rounded-md text-yellow-400 bg-white shadow hover:text-gray-800">
                 Εγγραφή
                 </a>

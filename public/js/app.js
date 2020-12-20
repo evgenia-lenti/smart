@@ -39170,7 +39170,7 @@ var staticRenderFns = [
         "a",
         {
           staticClass: "font-medium text-gray-500 hover:text-gray-900",
-          attrs: { href: "#" }
+          attrs: { href: "/" }
         },
         [_vm._v("Αρχική")]
       ),
@@ -39179,16 +39179,16 @@ var staticRenderFns = [
         "a",
         {
           staticClass: "font-medium text-gray-500 hover:text-gray-900",
-          attrs: { href: "#" }
+          attrs: { href: "about-smart" }
         },
-        [_vm._v("Smart")]
+        [_vm._v("About Smart")]
       ),
       _vm._v(" "),
       _c(
         "a",
         {
           staticClass: "font-medium text-gray-500 hover:text-gray-900",
-          attrs: { href: "#" }
+          attrs: { href: "contact" }
         },
         [_vm._v("Επικοινωνία")]
       )
@@ -39211,9 +39211,9 @@ var staticRenderFns = [
             {
               staticClass:
                 "inline-flex items-center px-4 py-2 mr-1.5 border border-gray-200 text-base font-medium rounded-md text-yellow-400 bg-white shadow hover:text-gray-800",
-              attrs: { href: "#" }
+              attrs: { href: "login" }
             },
-            [_vm._v("\n                Σύνδεση\n            ")]
+            [_vm._v("\n                    Σύνδεση\n                ")]
           ),
           _vm._v(" "),
           _c(

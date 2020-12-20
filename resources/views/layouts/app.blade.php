@@ -15,6 +15,8 @@
     <script>window.appUrl = '{{ config("app.url") }}';</script>
 
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
+
+    @routes
 </head>
 <body>
 <div id="app">
