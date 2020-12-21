@@ -14,8 +14,8 @@ class CreateClassUserTable extends Migration
     public function up()
     {
         Schema::create('class_user', function (Blueprint $table) {
-            $table->foreignId('classroom_id')->constrained() ->onUpdate('cascade')->onDelete('cascade');;
-            $table->foreignId('user_id')->constrained() ->onUpdate('cascade')->onDelete('cascade');;
+            $table->foreignId('classroom_id')->constrained() ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained() ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
