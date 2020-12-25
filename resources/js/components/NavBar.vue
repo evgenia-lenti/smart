@@ -32,7 +32,7 @@
                 <a href="login" class="inline-flex items-center px-4 py-2 mr-1.5 border border-gray-200 text-base font-medium rounded-md text-yellow-400 bg-white shadow hover:text-gray-800">
                     Σύνδεση
                 </a>
-                <a href="#" class="inline-flex items-center px-4 py-2 border border-gray-200 text-base font-medium rounded-md text-yellow-400 bg-white shadow hover:text-gray-800">
+                <a href="register" class="inline-flex items-center px-4 py-2 border border-gray-200 text-base font-medium rounded-md text-yellow-400 bg-white shadow hover:text-gray-800">
                 Εγγραφή
                 </a>
             </span>

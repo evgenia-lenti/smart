@@ -24,10 +24,12 @@ Route::get('login', [App\Http\Controllers\ContactController::class, 'index'])->n
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-    //Route::get('subscribe', 'SubscriptionController@showSubscriptionForm')->name('subscription.show');
-    //Route::post('subscribe', 'SubscriptionController@subscribe')->name('subscription.create');
+    Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
+});
 
 Auth::routes();
 
