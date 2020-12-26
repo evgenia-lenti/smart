@@ -10,13 +10,20 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    @routes
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script>window.appUrl = '{{ config("app.url") }}';</script>
 
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
-    @routes
+    <script>
+        window.smart = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+            'user' => (Auth::user()) ? Auth::user() : '',
+            'appURL' => config('app.url'),
+        ]); ?>
+    </script>
 </head>
 <body>
 <div id="app">

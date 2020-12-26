@@ -19,7 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a79a2abc-c78a-475f-bf1d-14ed0e08cfe8" name="Default Changelist" comment="" />
+    <list default="true" id="a79a2abc-c78a-475f-bf1d-14ed0e08cfe8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/images/avatar.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/NavBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/NavBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -198,7 +208,7 @@
       <workItem from="1607886818779" duration="4834000" />
       <workItem from="1607968810566" duration="44000" />
       <workItem from="1608477329555" duration="20676000" />
-      <workItem from="1608925679021" duration="10048000" />
+      <workItem from="1608925679021" duration="19968000" />
     </task>
     <servers />
   </component>

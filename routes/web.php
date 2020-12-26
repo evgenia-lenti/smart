@@ -15,20 +15,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome.index');
-
 Route::get('about-smart', [App\Http\Controllers\AboutController::class, 'index'])->name('about-smart.index');
-
 Route::get('contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
-
 Route::get('login', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
+
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
     Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register');
 });
 
+
 Route::middleware('auth')->group(function () {
     Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
+
+    //Route::get('settings/profile', 'ProfileController@edit')->name('profile.edit');
+    //Route::patch('settings/profile/update', 'ProfileController@update');
+    //Route::get('payments', 'PaymentController@index')->name('payments.index');
+    //Route::get('subscription/cancel/confirm', 'SubscriptionController@cancel')->name('subscription.cancel');
+    //Route::get('subscription/reactivate/confirm', 'SubscriptionController@reactivate')->name('subscription.reactivate');
+    //Route::get('subscription/courses/add', 'SubscriptionController@showAddCoursesForm');
+    //Route::post('subscription/courses/add', 'SubscriptionController@addCourses');
+
+
+    /*Route::get('resubscribe', 'SubscriptionController@showResubscriptionForm');
+    Route::post('resubscribe', 'SubscriptionController@resubscribe')->name('subscription.resubscribe');*/
+
 });
 
 Auth::routes();
