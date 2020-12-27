@@ -20,13 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a79a2abc-c78a-475f-bf1d-14ed0e08cfe8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/components/HomepageComponentSection3.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/homePagePartials/section1.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/homePagePartials/section2.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/homePagePartials/section3.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_183326_create_contacts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_183326_create_contacts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/EducatorProfilePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/UserProfilePage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/FooterComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/FooterComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/HomepageComponentSection1.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/HomepageComponentSection1.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/HomepageComponentSection2.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/HomepageComponentSection2.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/NavBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/NavBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/about.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/about.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/contact.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +183,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../kavanektar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../uctm" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -209,7 +219,7 @@
       <workItem from="1608477329555" duration="20676000" />
       <workItem from="1608925679021" duration="25891000" />
       <workItem from="1609009674895" duration="24515000" />
-      <workItem from="1609068603557" duration="4650000" />
+      <workItem from="1609068603557" duration="13636000" />
     </task>
     <servers />
   </component>

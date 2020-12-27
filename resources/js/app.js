@@ -24,8 +24,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('nav-bar', require('./components/NavBar.vue').default);
 Vue.component('homepage-component-section-1', require('./components/HomepageComponentSection1.vue').default);
 Vue.component('homepage-component-section-2', require('./components/HomepageComponentSection2.vue').default);
+Vue.component('homepage-component-section-3', require('./components/HomepageComponentSection3.vue').default);
 Vue.component('footer-component', require('./components/FooterComponent.vue').default);
-Vue.component('educator-profile-page', require('./components/EducatorProfilePage.vue').default);
+Vue.component('educator-profile-page', require('./components/UserProfilePage.vue').default);
 
 
 

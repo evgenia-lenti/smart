@@ -6,9 +6,6 @@
 
     <homepage-component-section-2></homepage-component-section-2>
 
-
-    {{-- <educator-profile-page></educator-profile-page> --}}
-
+    <homepage-component-section-3></homepage-component-section-3>
 
 @endsection
-

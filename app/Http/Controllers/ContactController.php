@@ -70,7 +70,7 @@ class ContactController extends Controller
 
         Contact::create($request->all());
 
-        return redirect()->route('welcome.index')
+        return redirect()->back()
             ->with('success', 'Το μήνυμα εστάλη με επιτυχία!');
     }
 

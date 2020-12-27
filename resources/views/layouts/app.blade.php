@@ -13,7 +13,7 @@
     @routes
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script>window.appUrl = '{{ config("app.url") }}';</script>
+    <script>window.appUrl = '{{ config("app.url") }}'</script>
 
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
@@ -25,18 +25,18 @@
         ]); ?>
     </script>
 </head>
-<body>
-<div id="app">
+    <body>
+        <div id="app">
 
-    <nav-bar></nav-bar>
+            <nav-bar></nav-bar>
 
-    <main>
-        @yield('content')
-    </main>
+            <main>
+                @yield('content')
+            </main>
 
-    <footer-component></footer-component>
+            <footer-component></footer-component>
 
 
-</div>
-</body>
+        </div>
+    </body>
 </html>
