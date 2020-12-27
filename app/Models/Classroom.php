@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Classroom extends Model
 {
     use HasFactory;
+    public $fillable = ['id','name', 'description', 'slug', 'user_id', 'visible', 'active'];
 
     public function users()
     {
@@ -18,6 +19,7 @@ class Classroom extends Model
 
     public function courses()
     {
-        return $this->belongsTo(Course::class);
+        return $this->belongsToMany(Course::class,'class_course');
     }
+
 }
