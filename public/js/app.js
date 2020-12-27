@@ -2071,28 +2071,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "FooterComponent"
 });
@@ -2108,21 +2086,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2221,6 +2184,67 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomepageComponentSection2"
 });
@@ -2236,6 +2260,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -38457,7 +38482,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "footer",
+    "div",
     { staticClass: "bg-gray-50 border-t border-gray-200 shadow-sm" },
     [
       _c(
@@ -38473,7 +38498,7 @@ var render = function() {
             _c(
               "a",
               {
-                staticClass: "text-gray-400 hover:text-gray-500",
+                staticClass: "text-primary-500 hover:text-gray-500",
                 attrs: { href: "#" }
               },
               [
@@ -38506,7 +38531,7 @@ var render = function() {
             _c(
               "a",
               {
-                staticClass: "text-gray-400 hover:text-gray-500",
+                staticClass: "text-primary-500 hover:text-gray-500",
                 attrs: { href: "#" }
               },
               [
@@ -38539,7 +38564,7 @@ var render = function() {
             _c(
               "a",
               {
-                staticClass: "text-gray-400 hover:text-gray-500",
+                staticClass: "text-primary-500 hover:text-gray-500",
                 attrs: { href: "#" }
               },
               [
@@ -38565,80 +38590,18 @@ var render = function() {
                   ]
                 )
               ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "text-gray-400 hover:text-gray-500",
-                attrs: { href: "#" }
-              },
-              [
-                _c("span", { staticClass: "sr-only" }, [_vm._v("GitHub")]),
-                _vm._v(" "),
-                _c(
-                  "svg",
-                  {
-                    staticClass: "h-6 w-6",
-                    attrs: {
-                      fill: "currentColor",
-                      viewBox: "0 0 24 24",
-                      "aria-hidden": "true"
-                    }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        "fill-rule": "evenodd",
-                        d:
-                          "M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z",
-                        "clip-rule": "evenodd"
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "text-gray-400 hover:text-gray-500",
-                attrs: { href: "#" }
-              },
-              [
-                _c("span", { staticClass: "sr-only" }, [_vm._v("Dribbble")]),
-                _vm._v(" "),
-                _c(
-                  "svg",
-                  {
-                    staticClass: "h-6 w-6",
-                    attrs: {
-                      fill: "currentColor",
-                      viewBox: "0 0 24 24",
-                      "aria-hidden": "true"
-                    }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        "fill-rule": "evenodd",
-                        d:
-                          "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z",
-                        "clip-rule": "evenodd"
-                      }
-                    })
-                  ]
-                )
-              ]
             )
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "mt-8 text-center text-base text-gray-400" }, [
-            _vm._v(
-              "\n        © 2020 Workflow, Inc. All rights reserved.\n        "
-            )
-          ])
+          _c(
+            "p",
+            { staticClass: "mt-8 text-center text-base text-primary-500" },
+            [
+              _vm._v(
+                "\n        © 2020-2021 Smart. All rights reserved.\n        "
+              )
+            ]
+          )
         ]
       )
     ]
@@ -38660,10 +38623,10 @@ var staticRenderFns = [
           _c(
             "a",
             {
-              staticClass: "text-base text-gray-500 hover:text-gray-900",
-              attrs: { href: "#" }
+              staticClass: "text-base text-primary-500 hover:text-gray-900",
+              attrs: { href: "/about-smart" }
             },
-            [_vm._v("\n            About\n            ")]
+            [_vm._v("\n                Σχετικά με τη Smart\n                ")]
           )
         ]),
         _vm._v(" "),
@@ -38671,10 +38634,10 @@ var staticRenderFns = [
           _c(
             "a",
             {
-              staticClass: "text-base text-gray-500 hover:text-gray-900",
-              attrs: { href: "#" }
+              staticClass: "text-base text-primary-500 hover:text-gray-900",
+              attrs: { href: "/" }
             },
-            [_vm._v("\n            Blog\n            ")]
+            [_vm._v("\n                    Τάξεις\n                ")]
           )
         ]),
         _vm._v(" "),
@@ -38682,10 +38645,10 @@ var staticRenderFns = [
           _c(
             "a",
             {
-              staticClass: "text-base text-gray-500 hover:text-gray-900",
-              attrs: { href: "#" }
+              staticClass: "text-base text-primary-500 hover:text-gray-900",
+              attrs: { href: "/" }
             },
-            [_vm._v("\n            Jobs\n            ")]
+            [_vm._v("\n                    Μαθήματα\n                ")]
           )
         ]),
         _vm._v(" "),
@@ -38693,32 +38656,10 @@ var staticRenderFns = [
           _c(
             "a",
             {
-              staticClass: "text-base text-gray-500 hover:text-gray-900",
-              attrs: { href: "#" }
+              staticClass: "text-base text-primary-500 hover:text-gray-900",
+              attrs: { href: "/contact/create" }
             },
-            [_vm._v("\n            Press\n            ")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "px-5 py-2" }, [
-          _c(
-            "a",
-            {
-              staticClass: "text-base text-gray-500 hover:text-gray-900",
-              attrs: { href: "#" }
-            },
-            [_vm._v("\n            Accessibility\n            ")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "px-5 py-2" }, [
-          _c(
-            "a",
-            {
-              staticClass: "text-base text-gray-500 hover:text-gray-900",
-              attrs: { href: "#" }
-            },
-            [_vm._v("\n            Partners\n            ")]
+            [_vm._v("\n                    Επικοινωνία\n                ")]
           )
         ])
       ]
@@ -38785,11 +38726,11 @@ var staticRenderFns = [
                   },
                   [
                     _c("span", { staticClass: "block" }, [
-                      _vm._v("Data to enrich your")
+                      _vm._v("Intelligent Learning")
                     ]),
                     _vm._v(" "),
                     _c("span", { staticClass: "block text-yellow-400" }, [
-                      _vm._v("online business")
+                      _vm._v("online μάθηση με Τεχνητή Νοημοσύνη")
                     ])
                   ]
                 ),
@@ -38802,7 +38743,7 @@ var staticRenderFns = [
                   },
                   [
                     _vm._v(
-                      "\n                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.\n                    "
+                      "\n                            Το Smart είναι ένα online φροντιστήριο μέσης εκπαίδευσης το οποίο χρησιμοποιεί τεχνητή νοημοσύνη η οποία\n                            εξατομικεύει το μάθημα στις ανάγκες του εκπαιδευόμενου.\n                        "
                     )
                   ]
                 )
@@ -38848,109 +38789,16 @@ var staticRenderFns = [
               "h2",
               {
                 staticClass:
-                  "text-center text-gray-400 text-sm font-semibold uppercase tracking-wide"
-              },
-              [_vm._v("Trusted by over 26,000 forward-thinking companies")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "mt-8 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5"
+                  "text-center text-gray-400 text-2xl font-semibold uppercase tracking-wide"
               },
               [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "col-span-1 flex justify-center md:col-span-2 lg:col-span-1"
-                  },
-                  [
-                    _c("img", {
-                      staticClass: "h-12",
-                      attrs: {
-                        src:
-                          "https://tailwindui.com/img/logos/tuple-logo-gray-400.svg",
-                        alt: "Tuple"
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "col-span-1 flex justify-center md:col-span-2 lg:col-span-1"
-                  },
-                  [
-                    _c("img", {
-                      staticClass: "h-12",
-                      attrs: {
-                        src:
-                          "https://tailwindui.com/img/logos/mirage-logo-gray-400.svg",
-                        alt: "Mirage"
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "col-span-1 flex justify-center md:col-span-2 lg:col-span-1"
-                  },
-                  [
-                    _c("img", {
-                      staticClass: "h-12",
-                      attrs: {
-                        src:
-                          "https://tailwindui.com/img/logos/statickit-logo-gray-400.svg",
-                        alt: "StaticKit"
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "col-span-1 flex justify-center md:col-span-3 lg:col-span-1"
-                  },
-                  [
-                    _c("img", {
-                      staticClass: "h-12",
-                      attrs: {
-                        src:
-                          "https://tailwindui.com/img/logos/transistor-logo-gray-400.svg",
-                        alt: "Transistor"
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "col-span-2 flex justify-center md:col-span-3 lg:col-span-1"
-                  },
-                  [
-                    _c("img", {
-                      staticClass: "h-12",
-                      attrs: {
-                        src:
-                          "https://tailwindui.com/img/logos/workcation-logo-gray-400.svg",
-                        alt: "Workcation"
-                      }
-                    })
-                  ]
+                _vm._v(
+                  "ΤΟ ΜΑΘΗΜΑ ΔΕΝ ΗΤΑΝ ΠΟΤΕ ΠΡΙΝ ΤΟΣΟ ΕΞΥΠΝΟ ΚΑΙ ΑΠΟΤΕΛΕΣΜΑΤΙΚΟ"
                 )
               ]
-            )
+            ),
+            _vm._v(" "),
+            _c("p")
           ]
         )
       ])
@@ -38978,46 +38826,233 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "bg-gray-200 h-96 mb-20" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "py-12 bg-white mb-24" }, [
+      _c(
+        "div",
+        { staticClass: "max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8" },
+        [
+          _c("h2", { staticClass: "sr-only" }, [
+            _vm._v("A better way to send money.")
+          ]),
+          _vm._v(" "),
+          _c(
+            "dl",
+            {
+              staticClass:
+                "space-y-10 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8"
+            },
+            [
+              _c("div", [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white"
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass:
+                          "flex-shrink-0 h-6 w-6 text-white bg-primary-500",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          stroke: "currentColor",
+                          "aria-hidden": "true"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            "stroke-width": "2",
+                            d: "M5 13l4 4L19 7"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white"
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass:
+                          "flex-shrink-0 h-6 w-6 text-white bg-primary-500",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          stroke: "currentColor",
+                          "aria-hidden": "true"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            "stroke-width": "2",
+                            d: "M5 13l4 4L19 7"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(2)
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white"
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass:
+                          "flex-shrink-0 h-6 w-6 text-white bg-primary-500",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          stroke: "currentColor",
+                          "aria-hidden": "true"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round",
+                            "stroke-width": "2",
+                            d: "M5 13l4 4L19 7"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(3)
+              ])
+            ]
+          )
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "bg-gray-200 h-96 mb-20" }, [
-      _c("div", {}, [
-        _c(
-          "div",
-          {
-            staticClass: "mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24"
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8"
-              },
-              [
-                _c("div", { staticClass: "space-y-5 sm:space-y-4" }, [
-                  _c(
-                    "h2",
-                    {
-                      staticClass:
-                        "text-3xl font-extrabold tracking-tight sm:text-4xl"
-                    },
-                    [_vm._v("Meet our leadership")]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-xl text-gray-500" }, [
-                    _vm._v(
-                      "Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae elementum enim vitae ullamcorper suspendisse. Vivamus fringilla."
-                    )
-                  ])
-                ])
-              ]
-            )
-          ]
+    return _c("div", {}, [
+      _c(
+        "div",
+        {
+          staticClass: "mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24"
+        },
+        [
+          _c("div", {}, [
+            _c("div", { staticClass: "space-y-5 sm:space-y-4" }, [
+              _c(
+                "h2",
+                {
+                  staticClass:
+                    "text-3xl font-extrabold tracking-tight sm:text-4xl"
+                },
+                [
+                  _vm._v(
+                    "Εξατομίκευση μαθήματος με\n                        Τεχνητή Νοημοσύνη"
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-xl text-primary-700" }, [
+                _vm._v(
+                  "Το Smart είναι το ηλεκτρονικό φροντιστήριο στο οποίο όλα τα μαθήματα διδάσκονται\n                            διαδικτυακά. Σύγχρονο, ευχάριστο και αποδοτικό, προσφέρει στους μαθητές όλα τα εκπαιδευτικά εργαλεία που\n                            χρειάζονται, προκειμένου να χτίσουν γερές βάσεις και να ανταπεξέλθουν με επιτυχία στις απαιτήσεις του σχολείου\n                            στο πεδίο των μαθηματικών. Και όλα αυτά, με τον πιο διασκεδαστικό και αποτελεσματικό τρόπο!"
+                )
+              ])
+            ])
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-5" }, [
+      _c("dt", { staticClass: "text-lg leading-6 font-medium text-gray-900" }, [
+        _vm._v(
+          "\n                                Μάθηση με αποτέλεσμα\n                            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("dd", { staticClass: "mt-2 text-base text-gray-500" }, [
+        _vm._v(
+          "\n                                Καινοτόμα εκπαιδευτικά εργαλεία που κάνουν κάθε μάθημα πιο εύκολο και αποτελεσματικό!\n                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-5" }, [
+      _c("dt", { staticClass: "text-lg leading-6 font-medium text-gray-900" }, [
+        _vm._v(
+          "\n                                Διδασκαλία ολόκληρης της ύλης\n                            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("dd", { staticClass: "mt-2 text-base text-gray-500" }, [
+        _vm._v(
+          "\n                                Όλα τα μαθήματα μαθηματικών του σχολείου σε ένα μέρος με τη βοήθεια της τεχνητής νοημοσύνης!\n                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-5" }, [
+      _c("dt", { staticClass: "text-lg leading-6 font-medium text-gray-900" }, [
+        _vm._v(
+          "\n                                Μάθηση από όλες τις συσκευές\n                            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("dd", { staticClass: "mt-2 text-base text-gray-500" }, [
+        _vm._v(
+          "\n                                Online παρουσίαση θεωρίας, ασκήσεις, για την ύλη της τάξης σου από οποιαδήποτε συσκευή!\n                            "
         )
       ])
     ])
@@ -39048,7 +39083,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "relative bg-gray-50 border-b border-gray-200 shadow-sm pt-6 pb-8 sm:pb-12"
+        "relative bg-gray-50 border-b border-gray-200 shadow-sm pt-6 pb-8"
     },
     [
       _c("div", { staticClass: "max-w-7xl mx-auto px-4 sm:px-6" }, [
@@ -39149,7 +39184,7 @@ var render = function() {
                         {
                           staticClass:
                             "inline-flex items-center px-4 py-2 mr-1.5 border border-gray-200 text-base font-medium rounded-md text-yellow-400 bg-white shadow hover:text-gray-800",
-                          attrs: { href: "login" }
+                          attrs: { href: "/login" }
                         },
                         [
                           _vm._v(
@@ -39163,7 +39198,7 @@ var render = function() {
                         {
                           staticClass:
                             "inline-flex items-center px-4 py-2 border border-gray-200 text-base font-medium rounded-md text-yellow-400 bg-white shadow hover:text-gray-800",
-                          attrs: { href: "register" }
+                          attrs: { href: "/register" }
                         },
                         [
                           _vm._v(
@@ -39174,45 +39209,51 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _c("div", { staticClass: "relative inline-block text-left" }, [
-                  _c("div", [
-                    _c(
-                      "button",
-                      {
-                        staticClass:
-                          "inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500",
-                        attrs: {
-                          type: "button",
-                          id: "options-menu",
-                          "aria-haspopup": "true",
-                          "aria-expanded": "true"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.isOpenProfile = !_vm.isOpenProfile
-                          }
-                        }
-                      },
+                _vm.user
+                  ? _c(
+                      "div",
+                      { staticClass: "relative inline-block text-left" },
                       [
-                        _c("img", {
-                          staticClass: "-mr-1 h-5 w-5",
-                          attrs: { src: "images/avatar.svg" }
-                        })
+                        _c("div", [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500",
+                              attrs: {
+                                type: "button",
+                                id: "options-menu",
+                                "aria-haspopup": "true",
+                                "aria-expanded": "true"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.isOpenProfile = !_vm.isOpenProfile
+                                }
+                              }
+                            },
+                            [
+                              _c("img", {
+                                staticClass: "-mr-1 h-8 w-8",
+                                attrs: { src: "/images/avatar.svg" }
+                              })
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _vm.isOpenProfile
+                          ? _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+                              },
+                              [_vm._m(2)]
+                            )
+                          : _vm._e()
                       ]
                     )
-                  ]),
-                  _vm._v(" "),
-                  _vm.isOpenProfile
-                    ? _c(
-                        "div",
-                        {
-                          staticClass:
-                            "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
-                        },
-                        [_vm._m(2)]
-                      )
-                    : _vm._e()
-                ])
+                  : _vm._e()
               ]
             )
           ]
@@ -39224,7 +39265,7 @@ var render = function() {
             "div",
             {
               staticClass:
-                "absolute top-0 z-10 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+                "absolute top-0 z-30 inset-x-0 p-2 transition transform origin-top-right md:hidden"
             },
             [
               _c(
@@ -39308,7 +39349,7 @@ var render = function() {
                               {
                                 staticClass:
                                   "block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700",
-                                attrs: { href: "login", role: "menuitem" }
+                                attrs: { href: "/login", role: "menuitem" }
                               },
                               [
                                 _vm._v(
@@ -39323,7 +39364,7 @@ var render = function() {
                         ? _c("div", { staticClass: "border border-top pt-5" }, [
                             _c("img", {
                               staticClass: "ml-5 h-5 w-5",
-                              attrs: { src: "images/avatar.svg" }
+                              attrs: { src: "/images/avatar.svg" }
                             }),
                             _vm._v(" "),
                             _vm._m(5)
@@ -39348,8 +39389,8 @@ var staticRenderFns = [
       _c("span", { staticClass: "sr-only" }, [_vm._v("Workflow")]),
       _vm._v(" "),
       _c("img", {
-        staticClass: "h-8 w-auto sm:h-10",
-        attrs: { src: "images/small-logo.png", alt: "smart logo image" }
+        staticClass: "h-14 w-auto sm:h-16",
+        attrs: { src: "/images/logo.png", alt: "smart logo image" }
       })
     ])
   },
@@ -39371,16 +39412,16 @@ var staticRenderFns = [
         "a",
         {
           staticClass: "font-medium text-gray-500 hover:text-gray-900",
-          attrs: { href: "about-smart" }
+          attrs: { href: "/about-smart" }
         },
-        [_vm._v("About Smart")]
+        [_vm._v("Σχετικά με τη Smart")]
       ),
       _vm._v(" "),
       _c(
         "a",
         {
           staticClass: "font-medium text-gray-500 hover:text-gray-900",
-          attrs: { href: "contact" }
+          attrs: { href: "/contact/create" }
         },
         [_vm._v("Επικοινωνία")]
       )
@@ -39405,8 +39446,8 @@ var staticRenderFns = [
           "a",
           {
             staticClass:
-              "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900",
-            attrs: { href: "#", role: "menuitem" }
+              "block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900",
+            attrs: { href: "/", role: "menuitem" }
           },
           [_vm._v("Προφίλ")]
         ),
@@ -39415,8 +39456,8 @@ var staticRenderFns = [
           "a",
           {
             staticClass:
-              "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900",
-            attrs: { href: "#", role: "menuitem" }
+              "block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900",
+            attrs: { href: "/", role: "menuitem" }
           },
           [_vm._v("Τάξεις")]
         ),
@@ -39425,25 +39466,27 @@ var staticRenderFns = [
           "a",
           {
             staticClass:
-              "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900",
-            attrs: { href: "#", role: "menuitem" }
+              "block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900",
+            attrs: { href: "/", role: "menuitem" }
           },
-          [_vm._v("License")]
+          [_vm._v("Μαθήματα")]
         ),
         _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass:
-              "block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
-            attrs: { href: "auth.logout" }
-          },
-          [
-            _vm._v(
-              "\n                                Log out\n                            "
-            )
-          ]
-        )
+        _c("a", { attrs: { href: "/logout" } }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700",
+              attrs: { type: "submit", role: "menuitem" }
+            },
+            [
+              _vm._v(
+                "\n                                    Log out\n                                "
+              )
+            ]
+          )
+        ])
       ]
     )
   },
@@ -39453,8 +39496,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", [
       _c("img", {
-        staticClass: "h-8 w-auto",
-        attrs: { src: "images/small-logo.png", alt: "" }
+        staticClass: "h-14 w-auto",
+        attrs: { src: "/images/logo.png", alt: "smart logo image" }
       })
     ])
   },
@@ -39481,9 +39524,9 @@ var staticRenderFns = [
           {
             staticClass:
               "block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
-            attrs: { href: "about-smart", role: "menuitem" }
+            attrs: { href: "/about-smart", role: "menuitem" }
           },
-          [_vm._v("About Smart")]
+          [_vm._v("Σχετικά με τη Smart")]
         ),
         _vm._v(" "),
         _c(
@@ -39491,9 +39534,9 @@ var staticRenderFns = [
           {
             staticClass:
               "block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
-            attrs: { href: "contact", role: "menuitem" }
+            attrs: { href: "/contact/create", role: "menuitem" }
           },
-          [_vm._v("Contact")]
+          [_vm._v("Επικοινωνία")]
         )
       ]
     )
@@ -39540,10 +39583,10 @@ var staticRenderFns = [
               "block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
             attrs: { href: "#", role: "menuitem" }
           },
-          [_vm._v("License")]
+          [_vm._v("Μαθήματα")]
         ),
         _vm._v(" "),
-        _c("form", { attrs: { method: "POST", action: "logout" } }, [
+        _c("a", { attrs: { href: "/logout" } }, [
           _c(
             "button",
             {

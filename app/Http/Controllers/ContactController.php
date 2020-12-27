@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class ContactController extends Controller
 {
@@ -14,7 +16,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('contact');
+
     }
 
     /**
@@ -24,7 +26,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('contact');
     }
 
     /**
@@ -35,7 +37,41 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*Validator::make($request->all(),
+            [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'telephone' => 'required',
+            'email' => 'required|email',
+            'message' => 'required',
+        ])->validate();
+
+        $first_name = $request->first_name;
+        $email = $request->email;
+        $message = $request->message;
+        $last_name = $request->last_name;
+        $telephone = $request->telephone;
+
+        return Contact::create([
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'telephone' => $telephone,
+            'email' => $email,
+            'message' => $message
+        ]);*/
+
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'telephone' => 'required',
+            'email' => 'required|email',
+            'message' => 'required',
+        ]);
+
+        Contact::create($request->all());
+
+        return redirect()->route('welcome.index')
+            ->with('success', 'Το μήνυμα εστάλη με επιτυχία!');
     }
 
     /**

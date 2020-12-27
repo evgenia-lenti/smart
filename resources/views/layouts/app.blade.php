@@ -34,7 +34,7 @@
         @yield('content')
     </main>
 
-    <footer-component/>
+    <footer-component></footer-component>
 
 
 </div>

@@ -7,7 +7,15 @@ module.exports = {
     ],
     darkMode: false, // or 'media' or 'class'
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                primary: {
+                    default: '',
+                    500: '#f6ad55',  //yellow
+                    700: '#374151', //gray text
+                },
+            },
+        },
     },
     variants: {
         extend: {},
