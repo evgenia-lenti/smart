@@ -44,11 +44,6 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
-<<<<<<< HEAD
-=======
-
-
->>>>>>> dev2
     //Route::get('settings/profile', 'ProfileController@edit')->name('profile.edit');
     //Route::get('settings/profile/courses', 'CourseUserController@index')->name('courses.select');
     //Route::patch('settings/profile/update', 'ProfileController@update');
