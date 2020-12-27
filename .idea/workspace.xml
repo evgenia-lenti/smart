@@ -22,9 +22,7 @@
     <list default="true" id="a79a2abc-c78a-475f-bf1d-14ed0e08cfe8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/homePagePartials/section1.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/homePagePartials/section2.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/homePagePartials/section3.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +205,7 @@
       <workItem from="1608477329555" duration="20676000" />
       <workItem from="1608925679021" duration="25891000" />
       <workItem from="1609009674895" duration="24515000" />
-      <workItem from="1609068603557" duration="16166000" />
+      <workItem from="1609068603557" duration="20953000" />
     </task>
     <servers />
   </component>
