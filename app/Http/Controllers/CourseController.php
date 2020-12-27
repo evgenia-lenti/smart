@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -14,7 +15,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::all();
+        return view('allcourses',['courses'=>$courses]);
     }
 
     /**
@@ -24,7 +26,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('addcourse');
     }
 
     /**
@@ -35,7 +37,19 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $course = new Course();
+
+        $course->name = request('name');
+        $course->description = request('description');
+        $course->slug = request('name');
+        $course->user_id = Auth::id();
+        $course->visible = request('visible')==1;
+        $course->active = request('active')==1;
+
+        $course->save();
+
+        return redirect('/')->with('message','Το Μάθημα καταχωρήθηκε!');
     }
 
     /**
@@ -44,9 +58,10 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show($id)
     {
-        //
+        $course = Course::findOrFail($id);
+        return view('courses.show',['course'=>$course]);
     }
 
     /**
@@ -55,9 +70,23 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit($id)
     {
-        //
+        $course = Course::findOrFail($id);
+
+        if($course->active) {
+            $active = "checked";
+        } else {
+            $active = "unchecked";
+        }
+
+        if($course->visible) {
+            $visible = "checked";
+        } else {
+            $visible = "unchecked";
+        }
+        return view('editcourse',['course'=>$course,'active'=>$active,'visible'=>$visible]);
+
     }
 
     /**
@@ -67,9 +96,20 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, $id)
     {
-        //
+        $course = Course::findOrFail($id);
+
+        $course->name = request('name');
+        $course->description = request('description');
+        $course->slug = request('name');
+        $course->user_id = Auth::id();
+        $course->visible = request('visible')==1;
+        $course->active = request('active')==1;
+
+        $course->update();
+
+        return redirect('/')->with('message','H τάξη καταχωρήθηκε!');
     }
 
     /**

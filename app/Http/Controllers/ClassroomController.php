@@ -3,10 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classroom;
+use App\Models\Course;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ClassroomController extends Controller
 {
+
+
+    /**
+     * Where to redirect users after registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = RouteServiceProvider::HOME;
+
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +27,20 @@ class ClassroomController extends Controller
      */
     public function index()
     {
-        //
+        $classrooms = Classroom::all();
+        return view('allclassrooms',['classrooms'=>$classrooms]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Create a new user instance after a valid registration.
      *
-     * @return \Illuminate\Http\Response
+     * @param  array  $data
+     * @return \App\Models\Classroom
      */
     public function create()
     {
-        //
+        $courses = Course::all();
+        return view('addclassroom',['courses'=>$courses]);
     }
 
     /**
@@ -35,7 +51,24 @@ class ClassroomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $classroom = new Classroom();
+
+        $classroom->name = request('name');
+        $classroom->description = request('description');
+        $classroom->slug = request('name');
+        $classroom->user_id = Auth::id();
+        $classroom->visible = request('visible')==1;
+        $classroom->active = request('active')==1;
+
+        $classroom->save();
+
+        for($i = 0;$i<sizeof(request('courses'));$i++){
+            $course = Course::find(request('courses')[$i]);
+            $course->classrooms()->attach($classroom->id);
+        }
+
+        return redirect('/')->with('message','H τάξη καταχωρήθηκε!');
     }
 
     /**
@@ -44,9 +77,10 @@ class ClassroomController extends Controller
      * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function show(Classroom $classroom)
+    public function show($id)
     {
-        //
+        $classroom = Classroom::findOrFail($id);
+        return view('classrooms.show',['classroom'=>$classroom]);
     }
 
     /**
@@ -55,9 +89,25 @@ class ClassroomController extends Controller
      * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function edit(Classroom $classroom)
+    public function edit($id)
     {
-        //
+        $classroom = Classroom::findOrFail($id);
+        $courses = Course::all();
+        $selectedCourses = $classroom->courses;
+
+        if($classroom->active) {
+            $active = "checked";
+        } else {
+            $active = "unchecked";
+        }
+
+        if($classroom->visible) {
+            $visible = "checked";
+        } else {
+            $visible = "unchecked";
+        }
+
+        return view('editclassroom',['classroom'=>$classroom,'courses'=>$courses,'selectedcourses'=>$selectedCourses,'active'=>$active,'visible'=>$visible]);
     }
 
     /**
@@ -67,9 +117,30 @@ class ClassroomController extends Controller
      * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Classroom $classroom)
+    public function update(Request $request, $id)
     {
-        //
+        $classroom = Classroom::findOrFail($id);
+
+        $classroom->name = request('name');
+        $classroom->description = request('description');
+        $classroom->slug = request('name');
+        $classroom->user_id = Auth::id();
+        $classroom->visible = request('visible')==1;
+        $classroom->active = request('active')==1;
+
+        $classroom->update();
+
+        $classroom->courses()->detach();
+
+        if($request->has('courses')) {
+            for($i = 0;$i<sizeof(request('courses'));$i++){
+                $course = Course::find(request('courses')[$i]);
+                $course->classrooms()->attach($classroom->id);
+            }
+        }
+
+
+        return redirect('/')->with('message','H τάξη καταχωρήθηκε!');
     }
 
     /**

@@ -10,6 +10,7 @@ use App\Models\User;
 class Course extends Model
 {
     use HasFactory;
+    public $fillable = ['name', 'description', 'slug', 'user_id', 'visible', 'active'];
 
     public function users()
     {
@@ -18,6 +19,7 @@ class Course extends Model
 
     public function classrooms()
     {
-        return $this->hasMany(Classroom::class);
+        return $this->belongsToMany(Classroom::class,'class_course');
     }
+
 }

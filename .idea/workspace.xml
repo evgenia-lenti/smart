@@ -22,8 +22,6 @@
     <list default="true" id="a79a2abc-c78a-475f-bf1d-14ed0e08cfe8" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/resources/views/auth/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +204,7 @@
       <workItem from="1608477329555" duration="20676000" />
       <workItem from="1608925679021" duration="25891000" />
       <workItem from="1609009674895" duration="24515000" />
-      <workItem from="1609068603557" duration="22841000" />
+      <workItem from="1609068603557" duration="23904000" />
     </task>
     <servers />
   </component>
