@@ -28,9 +28,11 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
-
     //Route::get('settings/profile', 'ProfileController@edit')->name('profile.edit');
+    //Route::get('settings/profile/courses', 'CourseUserController@index')->name('courses.select');
     //Route::patch('settings/profile/update', 'ProfileController@update');
+
+
     //Route::get('payments', 'PaymentController@index')->name('payments.index');
     //Route::get('subscription/cancel/confirm', 'SubscriptionController@cancel')->name('subscription.cancel');
     //Route::get('subscription/reactivate/confirm', 'SubscriptionController@reactivate')->name('subscription.reactivate');
