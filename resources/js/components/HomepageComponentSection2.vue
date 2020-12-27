@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <!-- This example requires Tailwind CSS v2.0+ -->
+
         <div class="py-12 bg-white mb-24">
             <div class="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                 <h2 class="sr-only">A better way to send money.</h2>

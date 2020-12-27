@@ -2068,9 +2068,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "FooterComponent"
 });
@@ -2260,6 +2257,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -39447,7 +39445,7 @@ var staticRenderFns = [
           {
             staticClass:
               "block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900",
-            attrs: { href: "/", role: "menuitem" }
+            attrs: { href: "/foo", role: "menuitem" }
           },
           [_vm._v("Προφίλ")]
         ),
@@ -39457,7 +39455,7 @@ var staticRenderFns = [
           {
             staticClass:
               "block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900",
-            attrs: { href: "/", role: "menuitem" }
+            attrs: { href: "/foo", role: "menuitem" }
           },
           [_vm._v("Τάξεις")]
         ),
@@ -39467,7 +39465,7 @@ var staticRenderFns = [
           {
             staticClass:
               "block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900",
-            attrs: { href: "/", role: "menuitem" }
+            attrs: { href: "/foo", role: "menuitem" }
           },
           [_vm._v("Μαθήματα")]
         ),

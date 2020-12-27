@@ -49,9 +49,8 @@
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-4">
-                                    <label for="body" class="block text-sm font-medium text-gray-700">Μήνυμα</label>
-                                    <textarea id="body" name="body" rows="6" class="mt-1 shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"></textarea>
-
+                                    <label for="message" class="block text-sm font-medium text-gray-700">Μήνυμα</label>
+                                    <textarea id="message" name="message" rows="6" class="mt-1 shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"></textarea>
                                 </div>
 
                             </div>
