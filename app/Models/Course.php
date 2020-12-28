@@ -10,7 +10,8 @@ use App\Models\User;
 class Course extends Model
 {
     use HasFactory;
-    public $fillable = ['name', 'description', 'slug', 'user_id', 'visible', 'active'];
+
+    protected $fillable = ['name', 'description', 'slug', 'user_id', 'visible', 'active'];
 
     public function users()
     {
@@ -22,4 +23,8 @@ class Course extends Model
         return $this->belongsToMany(Classroom::class,'class_course');
     }
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

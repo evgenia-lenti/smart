@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 class Classroom extends Model
 {
     use HasFactory;
-    public $fillable = ['id','name', 'description', 'slug', 'user_id', 'visible', 'active'];
+
+    protected $fillable = ['id','name', 'description', 'slug', 'user_id', 'visible', 'active'];
 
     public function users()
     {
@@ -20,6 +21,11 @@ class Classroom extends Model
     public function courses()
     {
         return $this->belongsToMany(Course::class,'class_course');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
 }

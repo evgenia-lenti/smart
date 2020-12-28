@@ -30,6 +30,8 @@
 
                     <a href="/about-smart" class="font-medium text-gray-500 hover:text-gray-900">Σχετικά με τη Smart</a>
 
+                    <a href="/classrooms" class="font-medium text-gray-500 hover:text-gray-900">Τάξεις</a>
+
                     <a href="/contact/create" class="font-medium text-gray-500 hover:text-gray-900">Επικοινωνία</a>
                 </div>
 
@@ -55,8 +57,8 @@
                         <div v-if="isOpenProfile" class="origin-top-right absolute z-30 right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                             <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                                 <a href="/foo" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Προφίλ</a>
-                                <a href="/foo" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Τάξεις</a>
-                                <a href="/foo" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Μαθήματα</a>
+                                <a href="/classrooms" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Τάξεις</a>
+                                <a href="/courses" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Μαθήματα</a>
                                 <a href="/logout">
                                     <button type="submit" class="block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-gray-700" role="menuitem">
                                         Log out

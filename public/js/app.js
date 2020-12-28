@@ -1899,6 +1899,437 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Classrooms/ClassroomComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Classrooms/ClassroomComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ClassroomComponentList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ClassroomComponentList */ "./resources/js/components/Classrooms/ClassroomComponentList.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ClassroomComponent",
+  components: {
+    ClassroomComponentList: _ClassroomComponentList__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      isOpen: false,
+      user: window.smart.user
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ClassroomComponentList"
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -2176,6 +2607,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -37977,6 +38410,1337 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Classrooms/ClassroomComponent.vue?vue&type=template&id=3356fb1e&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Classrooms/ClassroomComponent.vue?vue&type=template&id=3356fb1e&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "h-screen flex overflow-hidden bg-white" }, [
+    _c("div", { staticClass: "lg:hidden" }, [
+      _vm.isOpen
+        ? _c("div", { staticClass: "fixed inset-0 flex z-40" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "relative flex-1 flex flex-col max-w-xs w-full bg-white focus:outline-none",
+                attrs: { tabindex: "0" }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "absolute top-0 right-0 -mr-12 pt-2" },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.isOpen = false
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "sr-only" }, [
+                          _vm._v("Close sidebar")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "h-6 w-6 text-white",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              fill: "none",
+                              viewBox: "0 0 24 24",
+                              stroke: "currentColor",
+                              "aria-hidden": "true"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round",
+                                "stroke-width": "2",
+                                d: "M6 18L18 6M6 6l12 12"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "flex-1 h-0 pt-5 pb-4 overflow-y-auto" },
+                  [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c(
+                      "nav",
+                      {
+                        staticClass: "mt-5",
+                        attrs: { "aria-label": "Sidebar" }
+                      },
+                      [
+                        _c("div", { staticClass: "px-2 space-y-1" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
+                              attrs: { href: "/", role: "menuitem" }
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                  attrs: {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    fill: "none",
+                                    viewBox: "0 0 24 24",
+                                    stroke: "currentColor",
+                                    "aria-hidden": "true"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round",
+                                      "stroke-width": "2",
+                                      d:
+                                        "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(
+                                "\n                                    Αρχική"
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
+                              attrs: { href: "/about-smart", role: "menuitem" }
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                  attrs: {
+                                    "aria-hidden": "true",
+                                    "data-prefix": "far",
+                                    "data-icon": "building",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    viewBox: "0 0 448 512"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      fill: "currentColor",
+                                      d:
+                                        "M128 148v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12zm140 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm-128 96h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm128 0h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm-76 84v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm76 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm180 124v36H0v-36c0-6.6 5.4-12 12-12h19.5V24c0-13.3 10.7-24 24-24h337c13.3 0 24 10.7 24 24v440H436c6.6 0 12 5.4 12 12zM79.5 463H192v-67c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v67h112.5V49L80 48l-.5 415z"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(
+                                "\n                                    Σχετικά με τη Smart"
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
+                              attrs: {
+                                href: "/contact/create",
+                                role: "menuitem"
+                              }
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                  attrs: {
+                                    "aria-hidden": "true",
+                                    "data-prefix": "far",
+                                    "data-icon": "address-card",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    viewBox: "0 0 576 512"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      fill: "currentColor",
+                                      d:
+                                        "M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm0 400H48V80h480v352zM208 256c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm-89.6 128h179.2c12.4 0 22.4-8.6 22.4-19.2v-19.2c0-31.8-30.1-57.6-67.2-57.6-10.8 0-18.7 8-44.8 8-26.9 0-33.4-8-44.8-8-37.1 0-67.2 25.8-67.2 57.6v19.2c0 10.6 10 19.2 22.4 19.2zM360 320h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8z"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(
+                                "\n                                    Επικοινωνία"
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "bg-gray-100 text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                              attrs: { href: "/classrooms" }
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                  attrs: {
+                                    "aria-hidden": "true",
+                                    "data-prefix": "fas",
+                                    "data-icon": "school",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    viewBox: "0 0 640 512"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      fill: "currentColor",
+                                      d:
+                                        "M0 224v272c0 8.84 7.16 16 16 16h80V192H32c-17.67 0-32 14.33-32 32zm360-48h-24v-40c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v64c0 4.42 3.58 8 8 8h48c4.42 0 8-3.58 8-8v-16c0-4.42-3.58-8-8-8zm137.75-63.96l-160-106.67a32.02 32.02 0 00-35.5 0l-160 106.67A32.002 32.002 0 00128 138.66V512h128V368c0-8.84 7.16-16 16-16h96c8.84 0 16 7.16 16 16v144h128V138.67c0-10.7-5.35-20.7-14.25-26.63zM320 256c-44.18 0-80-35.82-80-80s35.82-80 80-80 80 35.82 80 80-35.82 80-80 80zm288-64h-64v320h80c8.84 0 16-7.16 16-16V224c0-17.67-14.33-32-32-32z"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(
+                                "\n                                    Τάξεις\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                              attrs: { href: "/courses" }
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                  attrs: {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    fill: "none",
+                                    viewBox: "0 0 24 24",
+                                    stroke: "currentColor",
+                                    "aria-hidden": "true"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round",
+                                      "stroke-width": "2",
+                                      d:
+                                        "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(
+                                "\n                                    Μαθήματα\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                              attrs: { href: "#" }
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                  attrs: {
+                                    "aria-hidden": "true",
+                                    "data-prefix": "fas",
+                                    "data-icon": "plus",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    viewBox: "0 0 448 512"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      fill: "currentColor",
+                                      d:
+                                        "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(
+                                "\n                                    Προσθήκη τάξης\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                              attrs: { href: "#" }
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                  attrs: {
+                                    "aria-hidden": "true",
+                                    "data-prefix": "far",
+                                    "data-icon": "edit",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    viewBox: "0 0 576 512"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      fill: "currentColor",
+                                      d:
+                                        "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(
+                                "\n                                    Επεξεργασία τάξης\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                              attrs: { href: "#" }
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                  attrs: {
+                                    "aria-hidden": "true",
+                                    "data-prefix": "fas",
+                                    "data-icon": "plus",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    viewBox: "0 0 448 512"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      fill: "currentColor",
+                                      d:
+                                        "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(
+                                "\n                                    Προσθήκη μαθήματος\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                              attrs: { href: "#" }
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                  attrs: {
+                                    "aria-hidden": "true",
+                                    "data-prefix": "far",
+                                    "data-icon": "edit",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    viewBox: "0 0 576 512"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      fill: "currentColor",
+                                      d:
+                                        "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(
+                                "\n                                    Επεξεργασία μαθήματος\n                                "
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { attrs: { role: "none" } }, [
+                          !_vm.user
+                            ? _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700",
+                                  attrs: { href: "/login", role: "menuitem" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    Log in\n                                "
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _vm.user
+                          ? _c(
+                              "div",
+                              { staticClass: "border border-top pt-5" },
+                              [
+                                _c("img", {
+                                  staticClass: "ml-5 h-5 w-5",
+                                  attrs: { src: "/images/avatar.svg" }
+                                }),
+                                _vm._v(" "),
+                                _vm._m(2)
+                              ]
+                            )
+                          : _vm._e()
+                      ]
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", {
+              staticClass: "flex-shrink-0 w-14",
+              attrs: { "aria-hidden": "true" }
+            })
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "hidden lg:flex lg:flex-shrink-0" }, [
+      _c("div", { staticClass: "flex flex-col w-64" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "flex flex-col h-0 flex-1 border-r border-gray-200 bg-gray-100"
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "flex-1 flex flex-col pt-5 pb-4 overflow-y-auto" },
+              [
+                _vm._m(3),
+                _vm._v(" "),
+                _c(
+                  "nav",
+                  {
+                    staticClass: "mt-5 flex-1",
+                    attrs: { "aria-label": "Sidebar" }
+                  },
+                  [
+                    _c("div", { staticClass: "px-2 space-y-1" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                          attrs: { href: "/", role: "menuitem" }
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                              attrs: {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                fill: "none",
+                                viewBox: "0 0 24 24",
+                                stroke: "currentColor",
+                                "aria-hidden": "true"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  "stroke-linecap": "round",
+                                  "stroke-linejoin": "round",
+                                  "stroke-width": "2",
+                                  d:
+                                    "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v("\n                                    Αρχική")
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                          attrs: { href: "/about-smart", role: "menuitem" }
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                              attrs: {
+                                "aria-hidden": "true",
+                                "data-prefix": "far",
+                                "data-icon": "building",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                viewBox: "0 0 448 512"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  fill: "currentColor",
+                                  d:
+                                    "M128 148v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12zm140 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm-128 96h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm128 0h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm-76 84v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm76 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm180 124v36H0v-36c0-6.6 5.4-12 12-12h19.5V24c0-13.3 10.7-24 24-24h337c13.3 0 24 10.7 24 24v440H436c6.6 0 12 5.4 12 12zM79.5 463H192v-67c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v67h112.5V49L80 48l-.5 415z"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(
+                            "\n                                    Σχετικά με τη Smart"
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                          attrs: { href: "/contact/create", role: "menuitem" }
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                              attrs: {
+                                "aria-hidden": "true",
+                                "data-prefix": "far",
+                                "data-icon": "address-card",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                viewBox: "0 0 576 512"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  fill: "currentColor",
+                                  d:
+                                    "M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm0 400H48V80h480v352zM208 256c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm-89.6 128h179.2c12.4 0 22.4-8.6 22.4-19.2v-19.2c0-31.8-30.1-57.6-67.2-57.6-10.8 0-18.7 8-44.8 8-26.9 0-33.4-8-44.8-8-37.1 0-67.2 25.8-67.2 57.6v19.2c0 10.6 10 19.2 22.4 19.2zM360 320h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8z"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(
+                            "\n                                    Επικοινωνία"
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                          attrs: { href: "/classrooms" }
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                              attrs: {
+                                "aria-hidden": "true",
+                                "data-prefix": "fas",
+                                "data-icon": "school",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                viewBox: "0 0 640 512"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  fill: "currentColor",
+                                  d:
+                                    "M0 224v272c0 8.84 7.16 16 16 16h80V192H32c-17.67 0-32 14.33-32 32zm360-48h-24v-40c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v64c0 4.42 3.58 8 8 8h48c4.42 0 8-3.58 8-8v-16c0-4.42-3.58-8-8-8zm137.75-63.96l-160-106.67a32.02 32.02 0 00-35.5 0l-160 106.67A32.002 32.002 0 00128 138.66V512h128V368c0-8.84 7.16-16 16-16h96c8.84 0 16 7.16 16 16v144h128V138.67c0-10.7-5.35-20.7-14.25-26.63zM320 256c-44.18 0-80-35.82-80-80s35.82-80 80-80 80 35.82 80 80-35.82 80-80 80zm288-64h-64v320h80c8.84 0 16-7.16 16-16V224c0-17.67-14.33-32-32-32z"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(
+                            "\n                                    Τάξεις\n                                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                          attrs: { href: "/courses" }
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                              attrs: {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                fill: "none",
+                                viewBox: "0 0 24 24",
+                                stroke: "currentColor",
+                                "aria-hidden": "true"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  "stroke-linecap": "round",
+                                  "stroke-linejoin": "round",
+                                  "stroke-width": "2",
+                                  d:
+                                    "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(
+                            "\n                                    Μαθήματα\n                                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                          attrs: { href: "#" }
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                              attrs: {
+                                "aria-hidden": "true",
+                                "data-prefix": "fas",
+                                "data-icon": "plus",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                viewBox: "0 0 448 512"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  fill: "currentColor",
+                                  d:
+                                    "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(
+                            "\n                                    Προσθήκη τάξης\n                                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                          attrs: { href: "#" }
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                              attrs: {
+                                "aria-hidden": "true",
+                                "data-prefix": "far",
+                                "data-icon": "edit",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                viewBox: "0 0 576 512"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  fill: "currentColor",
+                                  d:
+                                    "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(
+                            "\n                                    Επεξεργασία τάξης\n                                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                          attrs: { href: "#" }
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                              attrs: {
+                                "aria-hidden": "true",
+                                "data-prefix": "fas",
+                                "data-icon": "plus",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                viewBox: "0 0 448 512"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  fill: "currentColor",
+                                  d:
+                                    "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(
+                            "\n                                    Προσθήκη μαθήματος\n                                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                          attrs: { href: "#" }
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                              attrs: {
+                                "aria-hidden": "true",
+                                "data-prefix": "far",
+                                "data-icon": "edit",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                viewBox: "0 0 576 512"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  fill: "currentColor",
+                                  d:
+                                    "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(
+                            "\n                                    Επεξεργασία μαθήματος\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { attrs: { role: "none" } }, [
+                      !_vm.user
+                        ? _c(
+                            "a",
+                            {
+                              staticClass:
+                                "block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700",
+                              attrs: { href: "/login", role: "menuitem" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    Log in\n                                "
+                              )
+                            ]
+                          )
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _vm.user
+                      ? _c("div", { staticClass: "border border-top pt-5" }, [
+                          _c("img", {
+                            staticClass: "ml-5 h-5 w-5",
+                            attrs: { src: "/images/avatar.svg" }
+                          }),
+                          _vm._v(" "),
+                          _vm._m(4)
+                        ])
+                      : _vm._e()
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "flex flex-col min-w-0 flex-1 overflow-hidden" }, [
+      _c("div", { staticClass: "lg:hidden" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "flex items-center justify-between bg-gray-50 border-b border-gray-200 px-4 py-1.5"
+          },
+          [
+            _vm._m(5),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "-mr-3 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.isOpen = !_vm.isOpen
+                    }
+                  }
+                },
+                [
+                  _c("span", { staticClass: "sr-only" }, [
+                    _vm._v("Open sidebar")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "h-6 w-6",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        fill: "none",
+                        viewBox: "0 0 24 24",
+                        stroke: "currentColor",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round",
+                          "stroke-width": "2",
+                          d: "M4 6h16M4 12h16M4 18h16"
+                        }
+                      })
+                    ]
+                  )
+                ]
+              )
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex-1 relative z-0 flex overflow-hidden" }, [
+        _c(
+          "main",
+          {
+            staticClass:
+              "flex-1 relative z-0 overflow-y-auto focus:outline-none",
+            attrs: { tabindex: "0" }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "absolute inset-0 py-6 px-4 sm:px-6 lg:px-8" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "h-full border-4 border-gray-200 border-dashed rounded-lg"
+                  },
+                  [_c("ClassroomComponentList")],
+                  1
+                )
+              ]
+            )
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "fixed inset-0" }, [
+      _c("div", { staticClass: "absolute inset-0 bg-gray-600 opacity-75" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex-shrink-0 flex items-center px-4" }, [
+      _c("img", {
+        staticClass: "h-20 w-auto",
+        attrs: { src: "/images/logo.png", alt: "smart logo image" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "py-1",
+        attrs: {
+          role: "menu",
+          "aria-orientation": "vertical",
+          "aria-labelledby": "options-menu"
+        }
+      },
+      [
+        _c(
+          "a",
+          {
+            staticClass:
+              "block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
+            attrs: { href: "#", role: "menuitem" }
+          },
+          [_vm._v("Προφίλ")]
+        ),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "/logout" } }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-gray-700",
+              attrs: { type: "submit", role: "menuitem" }
+            },
+            [
+              _vm._v(
+                "\n                                            Log out\n                                        "
+              )
+            ]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex items-center flex-shrink-0 px-4" }, [
+      _c("img", {
+        staticClass: "h-20 w-auto",
+        attrs: { src: "/images/logo.png", alt: "smart logo image" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "py-1",
+        attrs: {
+          role: "menu",
+          "aria-orientation": "vertical",
+          "aria-labelledby": "options-menu"
+        }
+      },
+      [
+        _c(
+          "a",
+          {
+            staticClass:
+              "block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
+            attrs: { href: "#", role: "menuitem" }
+          },
+          [_vm._v("Προφίλ")]
+        ),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "/logout" } }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-gray-700",
+              attrs: { type: "submit", role: "menuitem" }
+            },
+            [
+              _vm._v(
+                "\n                                            Log out\n                                        "
+              )
+            ]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("img", {
+        staticClass: "h-8 w-auto",
+        attrs: { src: "/images/logo.png", alt: "smart logo image" }
+      })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "grid grid-cols-1 gap-4 sm:grid-cols-2 m-2" },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+          },
+          [
+            _c("div", { staticClass: "flex-shrink-0" }, [
+              _c("img", {
+                staticClass: "h-10 w-10 rounded-full",
+                attrs: {
+                  src:
+                    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+                  alt: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex-1 min-w-0" }, [
+              _c(
+                "a",
+                { staticClass: "focus:outline-none", attrs: { href: "#" } },
+                [
+                  _c("span", {
+                    staticClass: "absolute inset-0",
+                    attrs: { "aria-hidden": "true" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    { staticClass: "text-sm font-medium text-gray-900" },
+                    [
+                      _vm._v(
+                        "\n                    Leslie Alexander\n                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-sm text-gray-500 truncate" }, [
+                    _vm._v(
+                      "\n                    Co-Founder / CEO\n                "
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+          },
+          [
+            _c("div", { staticClass: "flex-shrink-0" }, [
+              _c("img", {
+                staticClass: "h-10 w-10 rounded-full",
+                attrs: {
+                  src:
+                    "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+                  alt: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex-1 min-w-0" }, [
+              _c(
+                "a",
+                { staticClass: "focus:outline-none", attrs: { href: "#" } },
+                [
+                  _c("span", {
+                    staticClass: "absolute inset-0",
+                    attrs: { "aria-hidden": "true" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    { staticClass: "text-sm font-medium text-gray-900" },
+                    [
+                      _vm._v(
+                        "\n                    Michael Foster\n                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-sm text-gray-500 truncate" }, [
+                    _vm._v(
+                      "\n                    Co-Founder / CTO\n                "
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+          },
+          [
+            _c("div", { staticClass: "flex-shrink-0" }, [
+              _c("img", {
+                staticClass: "h-10 w-10 rounded-full",
+                attrs: {
+                  src:
+                    "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+                  alt: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex-1 min-w-0" }, [
+              _c(
+                "a",
+                { staticClass: "focus:outline-none", attrs: { href: "#" } },
+                [
+                  _c("span", {
+                    staticClass: "absolute inset-0",
+                    attrs: { "aria-hidden": "true" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    { staticClass: "text-sm font-medium text-gray-900" },
+                    [
+                      _vm._v(
+                        "\n                    Dries Vincent\n                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-sm text-gray-500 truncate" }, [
+                    _vm._v(
+                      "\n                    Manager, Business Relations\n                "
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+          },
+          [
+            _c("div", { staticClass: "flex-shrink-0" }, [
+              _c("img", {
+                staticClass: "h-10 w-10 rounded-full",
+                attrs: {
+                  src:
+                    "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+                  alt: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex-1 min-w-0" }, [
+              _c(
+                "a",
+                { staticClass: "focus:outline-none", attrs: { href: "#" } },
+                [
+                  _c("span", {
+                    staticClass: "absolute inset-0",
+                    attrs: { "aria-hidden": "true" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    { staticClass: "text-sm font-medium text-gray-900" },
+                    [
+                      _vm._v(
+                        "\n                    Lindsay Walton\n                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-sm text-gray-500 truncate" }, [
+                    _vm._v(
+                      "\n                    Front-end Developer\n                "
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -38193,7 +39957,7 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "text-base text-primary-500 hover:text-gray-900",
-              attrs: { href: "/" }
+              attrs: { href: "/classrooms" }
             },
             [_vm._v("\n                    Τάξεις\n                ")]
           )
@@ -38204,7 +39968,7 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "text-base text-primary-500 hover:text-gray-900",
-              attrs: { href: "/" }
+              attrs: { href: "/courses" }
             },
             [_vm._v("\n                    Μαθήματα\n                ")]
           )
@@ -38978,6 +40742,15 @@ var staticRenderFns = [
         "a",
         {
           staticClass: "font-medium text-gray-500 hover:text-gray-900",
+          attrs: { href: "/classrooms" }
+        },
+        [_vm._v("Τάξεις")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "font-medium text-gray-500 hover:text-gray-900",
           attrs: { href: "/contact/create" }
         },
         [_vm._v("Επικοινωνία")]
@@ -39014,7 +40787,7 @@ var staticRenderFns = [
           {
             staticClass:
               "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900",
-            attrs: { href: "/foo", role: "menuitem" }
+            attrs: { href: "/classrooms", role: "menuitem" }
           },
           [_vm._v("Τάξεις")]
         ),
@@ -39024,7 +40797,7 @@ var staticRenderFns = [
           {
             staticClass:
               "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900",
-            attrs: { href: "/foo", role: "menuitem" }
+            attrs: { href: "/courses", role: "menuitem" }
           },
           [_vm._v("Μαθήματα")]
         ),
@@ -51800,6 +53573,7 @@ Vue.component('homepage-component-section-2', __webpack_require__(/*! ./componen
 Vue.component('homepage-component-section-3', __webpack_require__(/*! ./components/HomepageComponentSection3.vue */ "./resources/js/components/HomepageComponentSection3.vue")["default"]);
 Vue.component('footer-component', __webpack_require__(/*! ./components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue")["default"]);
 Vue.component('educator-profile-page', __webpack_require__(/*! ./components/UserProfilePage.vue */ "./resources/js/components/UserProfilePage.vue")["default"]);
+Vue.component('classroom-component', __webpack_require__(/*! ./components/Classrooms/ClassroomComponent.vue */ "./resources/js/components/Classrooms/ClassroomComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -51854,6 +53628,144 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/Classrooms/ClassroomComponent.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/Classrooms/ClassroomComponent.vue ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ClassroomComponent_vue_vue_type_template_id_3356fb1e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ClassroomComponent.vue?vue&type=template&id=3356fb1e&scoped=true& */ "./resources/js/components/Classrooms/ClassroomComponent.vue?vue&type=template&id=3356fb1e&scoped=true&");
+/* harmony import */ var _ClassroomComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ClassroomComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Classrooms/ClassroomComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ClassroomComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ClassroomComponent_vue_vue_type_template_id_3356fb1e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ClassroomComponent_vue_vue_type_template_id_3356fb1e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "3356fb1e",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Classrooms/ClassroomComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Classrooms/ClassroomComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/Classrooms/ClassroomComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ClassroomComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Classrooms/ClassroomComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Classrooms/ClassroomComponent.vue?vue&type=template&id=3356fb1e&scoped=true&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/Classrooms/ClassroomComponent.vue?vue&type=template&id=3356fb1e&scoped=true& ***!
+  \**************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponent_vue_vue_type_template_id_3356fb1e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ClassroomComponent.vue?vue&type=template&id=3356fb1e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Classrooms/ClassroomComponent.vue?vue&type=template&id=3356fb1e&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponent_vue_vue_type_template_id_3356fb1e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponent_vue_vue_type_template_id_3356fb1e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Classrooms/ClassroomComponentList.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/Classrooms/ClassroomComponentList.vue ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ClassroomComponentList_vue_vue_type_template_id_358a4448_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true& */ "./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true&");
+/* harmony import */ var _ClassroomComponentList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ClassroomComponentList.vue?vue&type=script&lang=js& */ "./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ClassroomComponentList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ClassroomComponentList_vue_vue_type_template_id_358a4448_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ClassroomComponentList_vue_vue_type_template_id_358a4448_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "358a4448",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Classrooms/ClassroomComponentList.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponentList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ClassroomComponentList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponentList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true& ***!
+  \******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponentList_vue_vue_type_template_id_358a4448_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponentList_vue_vue_type_template_id_358a4448_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponentList_vue_vue_type_template_id_358a4448_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -52347,8 +54259,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\cp_di\myWorkspaces\laravelWorkspace\smart\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\cp_di\myWorkspaces\laravelWorkspace\smart\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\Users\ducks\Desktop\code\smart\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\ducks\Desktop\code\smart\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

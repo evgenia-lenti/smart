@@ -1,22 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <!--
-  This example requires Tailwind CSS v2.0+
-
-  This example requires some changes to your config:
-
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ]
-  }
-  ```
--->
     <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1">
@@ -26,7 +10,7 @@
                 </p>
             </div>
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form class="space-y-6" action="/updateclassroom/{{$classroom->id}}"} method="POST">
+                <form class="space-y-6" action="/updateclassroom/{{$classroom->id}}" method="PUT">
                     @csrf
                     <div class="col-span-6 sm:col-span-3">
                         <label for="name" class="block text-sm font-medium text-gray-700">Όνομα Τάξης</label>

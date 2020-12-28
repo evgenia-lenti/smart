@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="container">
-        <hi>{{ $classroom->id }} - {{ $classroom->name }} - {{ $classroom->description }} - {{ $classroom->slug }} - {{ $classroom->visible }} - {{ $classroom->active }}</hi>
+        <h1>{{ $classroom->id }} - {{ $classroom->name }} - {{ $classroom->description }} - {{ $classroom->slug }}
+            - {{ $classroom->visible }} - {{ $classroom->active }}</h1>
         <br/>
         <a href="/editclassroom/{{ $classroom->id }}" type="button">Επεξεργασία Τάξης</a>
         <h2>Μαθήματα</h2>

@@ -121,7 +121,7 @@
     <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
             <div class="px-6 mt-5">
-                <h3 class="text-lg font-medium leading-6 text-gray-900">{{ __('Register') }}</h3>
+                <h3 class="text-lg font-medium leading-6 text-gray-900">Εγγραφή</h3>
 <!--                <p class="mt-1 text-sm text-gray-600">
                     Επικοινωνήστε μαζί μας συμπληρώνοντας τη φόρμα επικοινωνίας.
                 </p>-->
@@ -235,7 +235,7 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-4">
-                                <label for="password-confirm" class="block text-sm font-medium text-gray-700">{{ __('Confirm Password') }}</label>
+                                <label for="password-confirm" class="block text-sm font-medium text-gray-700">Επιβεβαίωση password</label>
                                 <input type="password" name="password_confirmation" id="password-confirm" required autocomplete="new-password" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full
                                     shadow-sm sm:text-sm border-gray-300 rounded-md @error('password-confirm') is-invalid @enderror">
                             </div>

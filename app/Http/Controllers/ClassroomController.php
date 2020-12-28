@@ -28,7 +28,8 @@ class ClassroomController extends Controller
     public function index()
     {
         $classrooms = Classroom::all();
-        return view('allclassrooms',['classrooms'=>$classrooms]);
+
+        return view('classrooms.index', ['classrooms' => $classrooms]);
     }
 
     /**
@@ -40,8 +41,10 @@ class ClassroomController extends Controller
     public function create()
     {
         $courses = Course::all();
-        return view('addclassroom',['courses'=>$courses]);
+
+        return view('classrooms.create', ['courses' => $courses]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -77,10 +80,11 @@ class ClassroomController extends Controller
      * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Classroom $classroom)
     {
-        $classroom = Classroom::findOrFail($id);
-        return view('classrooms.show',['classroom'=>$classroom]);
+        //$classroom = Classroom::findOrFail($classroom);
+
+        return view('classrooms.show', ['classroom'=>$classroom]);
     }
 
     /**
@@ -89,25 +93,33 @@ class ClassroomController extends Controller
      * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Classroom $classroom)
     {
-        $classroom = Classroom::findOrFail($id);
+        //$classroom = Classroom::findOrFail($classroom);
+
         $courses = Course::all();
+
         $selectedCourses = $classroom->courses;
 
-        if($classroom->active) {
+        if($classroom -> active) {
             $active = "checked";
         } else {
             $active = "unchecked";
         }
 
-        if($classroom->visible) {
+        if($classroom -> visible) {
             $visible = "checked";
         } else {
             $visible = "unchecked";
         }
 
-        return view('editclassroom',['classroom'=>$classroom,'courses'=>$courses,'selectedcourses'=>$selectedCourses,'active'=>$active,'visible'=>$visible]);
+        return view('classrooms.edit',[
+            'classroom'=> $classroom,
+            'courses' => $courses,
+            'selectedcourses' => $selectedCourses,
+            'active' => $active,
+            'visible' => $visible
+        ]);
     }
 
     /**
@@ -117,9 +129,9 @@ class ClassroomController extends Controller
      * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Classroom $classroom)
     {
-        $classroom = Classroom::findOrFail($id);
+        //$classroom = Classroom::findOrFail($id);
 
         $classroom->name = request('name');
         $classroom->description = request('description');

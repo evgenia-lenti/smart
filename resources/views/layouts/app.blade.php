@@ -28,13 +28,19 @@
     <body>
         <div id="app">
 
-            <nav-bar></nav-bar>
+            @if (!isset($navbar) || $navbar)
+                <nav-bar></nav-bar>
+            @endif
+
 
             <main>
                 @yield('content')
             </main>
 
-            <footer-component></footer-component>
+            @if (!isset($footer) || $footer)
+                    <footer-component></footer-component>
+            @endif
+
 
 
         </div>

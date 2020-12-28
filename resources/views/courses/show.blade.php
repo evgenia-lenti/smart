@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <hi>{{ $course->id }} - {{ $course->name }} - {{ $course->description }} - {{ $course->slug }} - {{ $course->visible }} - {{ $course->active }}</hi>
+        <h1>{{ $course->id }} - {{ $course->name }} - {{ $course->description }} - {{ $course->slug }} - {{ $course->visible }} - {{ $course->active }}</h1>
         <a href="/editcourse/{{ $course->id }}" type="button">Επεξεργασία Μαθήματος</a>
     </div>
 @endsection

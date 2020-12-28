@@ -27,6 +27,7 @@ Vue.component('homepage-component-section-2', require('./components/HomepageComp
 Vue.component('homepage-component-section-3', require('./components/HomepageComponentSection3.vue').default);
 Vue.component('footer-component', require('./components/FooterComponent.vue').default);
 Vue.component('educator-profile-page', require('./components/UserProfilePage.vue').default);
+Vue.component('classroom-component', require('./components/Classrooms/ClassroomComponent.vue').default);
 
 
 

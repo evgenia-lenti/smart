@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.app', ['navbar' => false], ['footer' => false])
 
 @section('content')
-    <div class="container">
+<!--    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h1>Όλες οι Τάξεις</h1>
@@ -13,5 +13,7 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </div>-->
+
+    <classroom-component></classroom-component>
 @endsection
