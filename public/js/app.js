@@ -2225,6 +2225,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ClassroomComponent",
@@ -2236,6 +2238,11 @@ __webpack_require__.r(__webpack_exports__);
       isOpen: false,
       user: window.smart.user
     };
+  },
+  props: {
+    classrooms: {
+      type: Array
+    }
   }
 });
 
@@ -2324,8 +2331,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ClassroomComponentList"
+  name: "ClassroomComponentList",
+  data: function data() {
+    return {};
+  },
+  props: {
+    classrooms: {
+      type: Array
+    }
+  }
 });
 
 /***/ }),
@@ -39364,7 +39383,11 @@ var render = function() {
                     staticClass:
                       "h-full border-4 border-gray-200 border-dashed rounded-lg"
                   },
-                  [_c("ClassroomComponentList")],
+                  [
+                    _c("ClassroomComponentList", {
+                      attrs: { classrooms: _vm.classrooms }
+                    })
+                  ],
                   1
                 )
               ]
@@ -39510,10 +39533,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true&":
-/*!************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true& ***!
-  \************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448& ***!
+  \************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -39525,17 +39548,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "grid grid-cols-1 gap-4 sm:grid-cols-2 m-2" },
-      [
+  return _c(
+    "div",
+    { staticClass: "grid grid-cols-1 gap-4 sm:grid-cols-2 m-2" },
+    _vm._l(_vm.classrooms, function(classroom, index) {
+      return _c("div", { key: index }, [
         _c(
           "div",
           {
@@ -39543,16 +39560,7 @@ var staticRenderFns = [
               "relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
           },
           [
-            _c("div", { staticClass: "flex-shrink-0" }, [
-              _c("img", {
-                staticClass: "h-10 w-10 rounded-full",
-                attrs: {
-                  src:
-                    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-                  alt: ""
-                }
-              })
-            ]),
+            _vm._m(0, true),
             _vm._v(" "),
             _c("div", { staticClass: "flex-1 min-w-0" }, [
               _c(
@@ -39569,161 +39577,18 @@ var staticRenderFns = [
                     { staticClass: "text-sm font-medium text-gray-900" },
                     [
                       _vm._v(
-                        "\n                    Leslie Alexander\n                "
+                        "\n                            " +
+                          _vm._s(classroom.name) +
+                          "\n                        "
                       )
                     ]
                   ),
                   _vm._v(" "),
                   _c("p", { staticClass: "text-sm text-gray-500 truncate" }, [
                     _vm._v(
-                      "\n                    Co-Founder / CEO\n                "
-                    )
-                  ])
-                ]
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
-          },
-          [
-            _c("div", { staticClass: "flex-shrink-0" }, [
-              _c("img", {
-                staticClass: "h-10 w-10 rounded-full",
-                attrs: {
-                  src:
-                    "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-                  alt: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex-1 min-w-0" }, [
-              _c(
-                "a",
-                { staticClass: "focus:outline-none", attrs: { href: "#" } },
-                [
-                  _c("span", {
-                    staticClass: "absolute inset-0",
-                    attrs: { "aria-hidden": "true" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    { staticClass: "text-sm font-medium text-gray-900" },
-                    [
-                      _vm._v(
-                        "\n                    Michael Foster\n                "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-sm text-gray-500 truncate" }, [
-                    _vm._v(
-                      "\n                    Co-Founder / CTO\n                "
-                    )
-                  ])
-                ]
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
-          },
-          [
-            _c("div", { staticClass: "flex-shrink-0" }, [
-              _c("img", {
-                staticClass: "h-10 w-10 rounded-full",
-                attrs: {
-                  src:
-                    "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-                  alt: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex-1 min-w-0" }, [
-              _c(
-                "a",
-                { staticClass: "focus:outline-none", attrs: { href: "#" } },
-                [
-                  _c("span", {
-                    staticClass: "absolute inset-0",
-                    attrs: { "aria-hidden": "true" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    { staticClass: "text-sm font-medium text-gray-900" },
-                    [
-                      _vm._v(
-                        "\n                    Dries Vincent\n                "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-sm text-gray-500 truncate" }, [
-                    _vm._v(
-                      "\n                    Manager, Business Relations\n                "
-                    )
-                  ])
-                ]
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
-          },
-          [
-            _c("div", { staticClass: "flex-shrink-0" }, [
-              _c("img", {
-                staticClass: "h-10 w-10 rounded-full",
-                attrs: {
-                  src:
-                    "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-                  alt: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex-1 min-w-0" }, [
-              _c(
-                "a",
-                { staticClass: "focus:outline-none", attrs: { href: "#" } },
-                [
-                  _c("span", {
-                    staticClass: "absolute inset-0",
-                    attrs: { "aria-hidden": "true" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    { staticClass: "text-sm font-medium text-gray-900" },
-                    [
-                      _vm._v(
-                        "\n                    Lindsay Walton\n                "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-sm text-gray-500 truncate" }, [
-                    _vm._v(
-                      "\n                    Front-end Developer\n                "
+                      "\n                            " +
+                        _vm._s(classroom.description) +
+                        "\n                        "
                     )
                   ])
                 ]
@@ -39731,8 +39596,19 @@ var staticRenderFns = [
             ])
           ]
         )
-      ]
-    )
+      ])
+    }),
+    0
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex-shrink-0" }, [
+      _c("div", { staticClass: "h-10 w-10 rounded-full bg-primary-500" })
+    ])
   }
 ]
 render._withStripped = true
@@ -53709,7 +53585,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ClassroomComponentList_vue_vue_type_template_id_358a4448_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true& */ "./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true&");
+/* harmony import */ var _ClassroomComponentList_vue_vue_type_template_id_358a4448___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ClassroomComponentList.vue?vue&type=template&id=358a4448& */ "./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&");
 /* harmony import */ var _ClassroomComponentList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ClassroomComponentList.vue?vue&type=script&lang=js& */ "./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
@@ -53721,11 +53597,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _ClassroomComponentList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ClassroomComponentList_vue_vue_type_template_id_358a4448_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ClassroomComponentList_vue_vue_type_template_id_358a4448_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _ClassroomComponentList_vue_vue_type_template_id_358a4448___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ClassroomComponentList_vue_vue_type_template_id_358a4448___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "358a4448",
+  null,
   null
   
 )
@@ -53751,19 +53627,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true&":
-/*!******************************************************************************************************************!*\
-  !*** ./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true& ***!
-  \******************************************************************************************************************/
+/***/ "./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448& ***!
+  \******************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponentList_vue_vue_type_template_id_358a4448_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponentList_vue_vue_type_template_id_358a4448_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponentList_vue_vue_type_template_id_358a4448___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ClassroomComponentList.vue?vue&type=template&id=358a4448& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Classrooms/ClassroomComponentList.vue?vue&type=template&id=358a4448&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponentList_vue_vue_type_template_id_358a4448___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponentList_vue_vue_type_template_id_358a4448_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClassroomComponentList_vue_vue_type_template_id_358a4448___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -295,12 +295,14 @@
                     <!-- Start main area-->
                     <div class="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
                         <div class="h-full border-4 border-gray-200 border-dashed rounded-lg">
-                            <ClassroomComponentList/>
+
+                            <ClassroomComponentList :classrooms="classrooms"/>
+
                         </div>
                     </div>
-                    <!-- End main area -->
                 </main>
-<!--                <aside class="hidden relative xl:flex xl:flex-col flex-shrink-0 w-96 border-l border-gray-200">
+<!--            second dashboard column
+                <aside class="hidden relative xl:flex xl:flex-col flex-shrink-0 w-96 border-l border-gray-200">
                     &lt;!&ndash; Start secondary column (hidden on smaller screens) &ndash;&gt;
                     <div class="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
                         <div class="h-full border-4 border-gray-200 border-dashed rounded-lg">
@@ -324,6 +326,12 @@ export default {
         return {
             isOpen: false,
             user: window.smart.user,
+        }
+    },
+
+    props: {
+        classrooms: {
+            type: Array
         }
     }
 }
