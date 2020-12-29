@@ -15,5 +15,5 @@
         </div>
     </div>-->
 
-    <classroom-component :classrooms="{{ $classrooms }}"></classroom-component>
+    <classrooms-page :classrooms="{{ $classrooms }}"></classrooms-page>
 @endsection

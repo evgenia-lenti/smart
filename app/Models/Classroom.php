@@ -11,6 +11,8 @@ class Classroom extends Model
 {
     use HasFactory;
 
+    protected $appends = ['path'];
+
     protected $fillable = ['id','name', 'description', 'slug', 'user_id', 'visible', 'active'];
 
     public function users()
@@ -26,6 +28,13 @@ class Classroom extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function getPathAttribute()
+    {
+        return route('classrooms.show', [
+            'classroom' => $this->slug
+        ]);
     }
 
 }

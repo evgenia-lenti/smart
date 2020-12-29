@@ -29,7 +29,7 @@ class ClassroomController extends Controller
     {
         $classrooms = Classroom::all();
 
-        return view('classrooms.index', ['classrooms' => $classrooms]);
+        return view('classrooms.index', compact('classrooms'));
     }
 
     /**
@@ -82,9 +82,9 @@ class ClassroomController extends Controller
      */
     public function show(Classroom $classroom)
     {
-        //$classroom = Classroom::findOrFail($classroom);
+        $classrooms = Classroom::all();
 
-        return view('classrooms.show', ['classroom'=>$classroom]);
+        return view('classrooms.show', compact('classroom', 'classrooms'));
     }
 
     /**

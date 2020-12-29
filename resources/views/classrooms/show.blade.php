@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+<!--    <div class="container">
         <h1>{{ $classroom->id }} - {{ $classroom->name }} - {{ $classroom->description }} - {{ $classroom->slug }}
             - {{ $classroom->visible }} - {{ $classroom->active }}</h1>
         <br/>
@@ -12,5 +12,8 @@
                 <li><a href="/course/{{ $course->id }}">{{ $course->name }}</a></li>
             @endforeach
         </ul>
-    </div>
+    </div>-->
+
+    <classrooms-page-list-item :classroom="{{$classroom}}" :classrooms="{{$classrooms}}"></classrooms-page-list-item>
+
 @endsection

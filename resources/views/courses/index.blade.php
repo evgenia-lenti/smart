@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+{{--    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h1>Όλα τα Μαθήματα</h1>
@@ -13,5 +13,8 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </div>--}}
+    Course index
+
+
 @endsection

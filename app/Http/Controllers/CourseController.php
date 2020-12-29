@@ -16,7 +16,8 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::all();
-        return view('allcourses',['courses'=>$courses]);
+
+        return view('courses.index',['courses'=>$courses]);
     }
 
     /**
@@ -58,9 +59,8 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Course $course)
     {
-        $course = Course::findOrFail($id);
         return view('courses.show',['course'=>$course]);
     }
 

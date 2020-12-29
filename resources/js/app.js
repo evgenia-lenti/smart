@@ -27,9 +27,27 @@ Vue.component('homepage-component-section-2', require('./components/HomepageComp
 Vue.component('homepage-component-section-3', require('./components/HomepageComponentSection3.vue').default);
 Vue.component('footer-component', require('./components/FooterComponent.vue').default);
 Vue.component('educator-profile-page', require('./components/UserProfilePage.vue').default);
-Vue.component('classroom-component', require('./components/Classrooms/ClassroomComponent.vue').default);
+Vue.component('classrooms-page', require('./components/Classrooms/ClassroomsPage.vue').default);
+Vue.component('course-component', require('./components/Courses/CourseComponent.vue').default);
+Vue.component('classrooms-page-list-item', require('./components/Classrooms/ClassroomsPageListItem.vue').default);
 
 
+
+Vue.mixin({
+    methods: {
+        /*__(key, replacements = []) {
+            return lang.get(key, replacements);
+        },*/
+
+        route,
+    },
+
+    /*computed: {
+        locale() {
+            return window.lang.locale
+        }
+    }*/
+})
 
 
 /**

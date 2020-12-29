@@ -4,25 +4,25 @@
         <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
             <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
                 <div class="px-5 py-2">
-                    <a href="/about-smart" class="text-base text-primary-500 hover:text-gray-900">
+                    <a :href="route('about.index')" class="text-base text-primary-500 hover:text-gray-900">
                     Σχετικά με τη Smart
                     </a>
                 </div>
 
                 <div class="px-5 py-2">
-                    <a href="/classrooms" class="text-base text-primary-500 hover:text-gray-900">
+                    <a :href="route('classrooms.index')" class="text-base text-primary-500 hover:text-gray-900">
                         Τάξεις
                     </a>
                 </div>
 
                 <div class="px-5 py-2">
-                    <a href="/courses" class="text-base text-primary-500 hover:text-gray-900">
+                    <a :href="route('courses.index')" class="text-base text-primary-500 hover:text-gray-900">
                         Μαθήματα
                     </a>
                 </div>
 
                 <div class="px-5 py-2">
-                    <a href="/contact/create" class="text-base text-primary-500 hover:text-gray-900">
+                    <a :href="route('contacts.create')" class="text-base text-primary-500 hover:text-gray-900">
                         Επικοινωνία
                     </a>
                 </div>
