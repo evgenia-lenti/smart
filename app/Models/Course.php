@@ -20,7 +20,7 @@ class Course extends Model
 
     public function classrooms()
     {
-        return $this->belongsToMany(Classroom::class,'class_course');
+        return $this->belongsTo(Classroom::class,'class_course');
     }
 
     public function getRouteKeyName()
