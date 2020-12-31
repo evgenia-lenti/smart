@@ -32,18 +32,11 @@ use Illuminate\Support\Facades\Route;
         Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
 
         //classrooms
-
         Route::get('/classrooms/create', [App\Http\Controllers\ClassroomController::class, 'create'])->name('classrooms.create');
         Route::get('classrooms/{classroom}', [App\Http\Controllers\ClassroomController::class, 'show'])->name('classrooms.show');
         Route::post('classrooms', [App\Http\Controllers\ClassroomController::class, 'store'])->name('classrooms.store');
         Route::put('classrooms/{classroom}', [App\Http\Controllers\ClassroomController::class, 'update'])->name('classroom.update');
         Route::get('classrooms/{classroom}/edit', [App\Http\Controllers\ClassroomController::class, 'edit'])->name('classrooms.edit');
-
-        /*Route::get('admin/media', 'MediaController@index');
-        Route::post('admin/media', 'MediaController@store');
-        Route::put('admin/media/{media}', 'MediaController@update');
-        Route::delete('admin/media/{media}', 'MediaController@destroy');
-        Route::get('media/create', 'MediaController@create');*/
 
 
         //courses

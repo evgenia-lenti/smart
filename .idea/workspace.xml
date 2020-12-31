@@ -20,20 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a79a2abc-c78a-475f-bf1d-14ed0e08cfe8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Classroom.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Classroom.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Course.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Course.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_23_185507_create_class_user_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_23_185507_create_classroom_user_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_24_212959_create_class_course_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_24_212959_create_classroom_course_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/ClassroomCourseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/ClassroomCourseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/ClassroomUserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/ClassroomUserSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/CourseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CourseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CourseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Classrooms/ClassroomsPageListItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Classrooms/ClassroomsPageListItem.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Courses/CourseComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Courses/CourseComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Courses/CoursesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Courses/CoursesList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/classrooms/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/classrooms/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/courses/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/courses/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Classrooms/ClassroomsPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Classrooms/ClassroomsPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/FooterComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/FooterComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/NavBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/NavBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/classrooms/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/classrooms/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/classrooms/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/classrooms/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

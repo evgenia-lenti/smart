@@ -15,11 +15,11 @@
                     </a>
                 </div>
 
-                <div class="px-5 py-2">
+<!--                <div class="px-5 py-2">
                     <a :href="route('courses.index')" class="text-base text-primary-500 hover:text-gray-900">
                         Μαθήματα
                     </a>
-                </div>
+                </div>-->
 
                 <div class="px-5 py-2">
                     <a :href="route('contacts.create')" class="text-base text-primary-500 hover:text-gray-900">

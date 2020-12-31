@@ -2234,6 +2234,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ClassroomsPage",
@@ -38798,7 +38803,7 @@ var render = function() {
                               staticClass:
                                 "block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
                               attrs: {
-                                href: _vm.route("about"),
+                                href: _vm.route("about.index"),
                                 role: "menuitem"
                               }
                             },
@@ -38909,214 +38914,185 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass:
-                                "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                              attrs: { href: _vm.route("courses.index") }
-                            },
-                            [
-                              _c(
-                                "svg",
-                                {
-                                  staticClass:
-                                    "text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
-                                  attrs: {
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    fill: "none",
-                                    viewBox: "0 0 24 24",
-                                    stroke: "currentColor",
-                                    "aria-hidden": "true"
-                                  }
-                                },
-                                [
-                                  _c("path", {
+                          _vm.user && _vm.user.role_id === 1
+                            ? _c("div", [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
                                     attrs: {
-                                      "stroke-linecap": "round",
-                                      "stroke-linejoin": "round",
-                                      "stroke-width": "2",
-                                      d:
-                                        "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                      href: _vm.route("classrooms.create")
                                     }
-                                  })
-                                ]
-                              ),
-                              _vm._v(
-                                "\n                                    Μαθήματα\n                                "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass:
-                                "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                              attrs: { href: _vm.route("classrooms.create") }
-                            },
-                            [
-                              _c(
-                                "svg",
-                                {
-                                  staticClass:
-                                    "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
-                                  attrs: {
-                                    "aria-hidden": "true",
-                                    "data-prefix": "fas",
-                                    "data-icon": "plus",
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    viewBox: "0 0 448 512"
-                                  }
-                                },
-                                [
-                                  _c("path", {
-                                    attrs: {
-                                      fill: "currentColor",
-                                      d:
-                                        "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                                    }
-                                  })
-                                ]
-                              ),
-                              _vm._v(
-                                "\n                                    Προσθήκη τάξης\n                                "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass:
-                                "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                              attrs: { href: _vm.route("classrooms.edit") }
-                            },
-                            [
-                              _c(
-                                "svg",
-                                {
-                                  staticClass:
-                                    "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
-                                  attrs: {
-                                    "aria-hidden": "true",
-                                    "data-prefix": "far",
-                                    "data-icon": "edit",
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    viewBox: "0 0 576 512"
-                                  }
-                                },
-                                [
-                                  _c("path", {
-                                    attrs: {
-                                      fill: "currentColor",
-                                      d:
-                                        "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
-                                    }
-                                  })
-                                ]
-                              ),
-                              _vm._v(
-                                "\n                                    Επεξεργασία τάξης\n                                "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass:
-                                "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                              attrs: { href: _vm.route("courses.create") }
-                            },
-                            [
-                              _c(
-                                "svg",
-                                {
-                                  staticClass:
-                                    "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
-                                  attrs: {
-                                    "aria-hidden": "true",
-                                    "data-prefix": "fas",
-                                    "data-icon": "plus",
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    viewBox: "0 0 448 512"
-                                  }
-                                },
-                                [
-                                  _c("path", {
-                                    attrs: {
-                                      fill: "currentColor",
-                                      d:
-                                        "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                                    }
-                                  })
-                                ]
-                              ),
-                              _vm._v(
-                                "\n                                    Προσθήκη μαθήματος\n                                "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass:
-                                "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                              attrs: { href: _vm.route("courses.edit") }
-                            },
-                            [
-                              _c(
-                                "svg",
-                                {
-                                  staticClass:
-                                    "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
-                                  attrs: {
-                                    "aria-hidden": "true",
-                                    "data-prefix": "far",
-                                    "data-icon": "edit",
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    viewBox: "0 0 576 512"
-                                  }
-                                },
-                                [
-                                  _c("path", {
-                                    attrs: {
-                                      fill: "currentColor",
-                                      d:
-                                        "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
-                                    }
-                                  })
-                                ]
-                              ),
-                              _vm._v(
-                                "\n                                    Επεξεργασία μαθήματος\n                                "
-                              )
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { attrs: { role: "none" } }, [
-                          !_vm.user
-                            ? _c(
-                                "a",
-                                {
-                                  staticClass:
-                                    "block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700",
-                                  attrs: {
-                                    href: _vm.route("login"),
-                                    role: "menuitem"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                                    Log in\n                                "
-                                  )
-                                ]
-                              )
+                                  },
+                                  [
+                                    _c(
+                                      "svg",
+                                      {
+                                        staticClass:
+                                          "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                        attrs: {
+                                          "aria-hidden": "true",
+                                          "data-prefix": "fas",
+                                          "data-icon": "plus",
+                                          xmlns: "http://www.w3.org/2000/svg",
+                                          viewBox: "0 0 448 512"
+                                        }
+                                      },
+                                      [
+                                        _c("path", {
+                                          attrs: {
+                                            fill: "currentColor",
+                                            d:
+                                              "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                                          }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(
+                                      "\n                                        Προσθήκη τάξης\n                                    "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                                    attrs: { href: "#" }
+                                  },
+                                  [
+                                    _c(
+                                      "svg",
+                                      {
+                                        staticClass:
+                                          "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                        attrs: {
+                                          "aria-hidden": "true",
+                                          "data-prefix": "far",
+                                          "data-icon": "edit",
+                                          xmlns: "http://www.w3.org/2000/svg",
+                                          viewBox: "0 0 576 512"
+                                        }
+                                      },
+                                      [
+                                        _c("path", {
+                                          attrs: {
+                                            fill: "currentColor",
+                                            d:
+                                              "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
+                                          }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(
+                                      "\n                                        Επεξεργασία τάξης\n                                    "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                                    attrs: { href: "#" }
+                                  },
+                                  [
+                                    _c(
+                                      "svg",
+                                      {
+                                        staticClass:
+                                          "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                        attrs: {
+                                          "aria-hidden": "true",
+                                          "data-prefix": "fas",
+                                          "data-icon": "plus",
+                                          xmlns: "http://www.w3.org/2000/svg",
+                                          viewBox: "0 0 448 512"
+                                        }
+                                      },
+                                      [
+                                        _c("path", {
+                                          attrs: {
+                                            fill: "currentColor",
+                                            d:
+                                              "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                                          }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(
+                                      "\n                                        Προσθήκη μαθήματος\n                                    "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                                    attrs: { href: "#" }
+                                  },
+                                  [
+                                    _c(
+                                      "svg",
+                                      {
+                                        staticClass:
+                                          "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                        attrs: {
+                                          "aria-hidden": "true",
+                                          "data-prefix": "far",
+                                          "data-icon": "edit",
+                                          xmlns: "http://www.w3.org/2000/svg",
+                                          viewBox: "0 0 576 512"
+                                        }
+                                      },
+                                      [
+                                        _c("path", {
+                                          attrs: {
+                                            fill: "currentColor",
+                                            d:
+                                              "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
+                                          }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(
+                                      "\n                                        Επεξεργασία μαθήματος\n                                    "
+                                    )
+                                  ]
+                                )
+                              ])
                             : _vm._e()
                         ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "mt-10", attrs: { role: "none" } },
+                          [
+                            !_vm.user
+                              ? _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-gray-700",
+                                    attrs: {
+                                      href: _vm.route("login"),
+                                      role: "menuitem"
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                    Log in\n                                "
+                                    )
+                                  ]
+                                )
+                              : _vm._e()
+                          ]
+                        ),
                         _vm._v(" "),
                         _vm.user
                           ? _c(
@@ -39219,7 +39195,10 @@ var render = function() {
                         {
                           staticClass:
                             "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                          attrs: { href: "/", role: "menuitem" }
+                          attrs: {
+                            href: _vm.route("welcome.index"),
+                            role: "menuitem"
+                          }
                         },
                         [
                           _c(
@@ -39256,7 +39235,10 @@ var render = function() {
                         {
                           staticClass:
                             "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                          attrs: { href: "/about", role: "menuitem" }
+                          attrs: {
+                            href: _vm.route("about.index"),
+                            role: "menuitem"
+                          }
                         },
                         [
                           _c(
@@ -39293,7 +39275,10 @@ var render = function() {
                         {
                           staticClass:
                             "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                          attrs: { href: "/contacts/create", role: "menuitem" }
+                          attrs: {
+                            href: _vm.route("contacts.create"),
+                            role: "menuitem"
+                          }
                         },
                         [
                           _c(
@@ -39330,7 +39315,7 @@ var render = function() {
                         {
                           staticClass:
                             "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                          attrs: { href: "/classrooms" }
+                          attrs: { href: _vm.route("classrooms.index") }
                         },
                         [
                           _c(
@@ -39362,211 +39347,180 @@ var render = function() {
                         ]
                       ),
                       _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass:
-                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                          attrs: { href: "/courses" }
-                        },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass:
-                                "text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
-                              attrs: {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                fill: "none",
-                                viewBox: "0 0 24 24",
-                                stroke: "currentColor",
-                                "aria-hidden": "true"
-                              }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  "stroke-linecap": "round",
-                                  "stroke-linejoin": "round",
-                                  "stroke-width": "2",
-                                  d:
-                                    "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(
-                            "\n                                    Μαθήματα\n                                "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass:
-                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                          attrs: { href: "#" }
-                        },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass:
-                                "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
-                              attrs: {
-                                "aria-hidden": "true",
-                                "data-prefix": "fas",
-                                "data-icon": "plus",
-                                xmlns: "http://www.w3.org/2000/svg",
-                                viewBox: "0 0 448 512"
-                              }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  fill: "currentColor",
-                                  d:
-                                    "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(
-                            "\n                                    Προσθήκη τάξης\n                                "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass:
-                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                          attrs: { href: "#" }
-                        },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass:
-                                "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
-                              attrs: {
-                                "aria-hidden": "true",
-                                "data-prefix": "far",
-                                "data-icon": "edit",
-                                xmlns: "http://www.w3.org/2000/svg",
-                                viewBox: "0 0 576 512"
-                              }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  fill: "currentColor",
-                                  d:
-                                    "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(
-                            "\n                                    Επεξεργασία τάξης\n                                "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass:
-                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                          attrs: { href: "#" }
-                        },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass:
-                                "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
-                              attrs: {
-                                "aria-hidden": "true",
-                                "data-prefix": "fas",
-                                "data-icon": "plus",
-                                xmlns: "http://www.w3.org/2000/svg",
-                                viewBox: "0 0 448 512"
-                              }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  fill: "currentColor",
-                                  d:
-                                    "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(
-                            "\n                                    Προσθήκη μαθήματος\n                                "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass:
-                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                          attrs: { href: "#" }
-                        },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass:
-                                "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
-                              attrs: {
-                                "aria-hidden": "true",
-                                "data-prefix": "far",
-                                "data-icon": "edit",
-                                xmlns: "http://www.w3.org/2000/svg",
-                                viewBox: "0 0 576 512"
-                              }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  fill: "currentColor",
-                                  d:
-                                    "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(
-                            "\n                                    Επεξεργασία μαθήματος\n                                "
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { attrs: { role: "none" } }, [
-                      !_vm.user
-                        ? _c(
-                            "a",
-                            {
-                              staticClass:
-                                "block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700",
-                              attrs: { href: "/login", role: "menuitem" }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                    Log in\n                                "
-                              )
-                            ]
-                          )
+                      _vm.user && _vm.user.role_id === 1
+                        ? _c("div", [
+                            _c(
+                              "a",
+                              {
+                                staticClass:
+                                  "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                                attrs: { href: _vm.route("classrooms.create") }
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass:
+                                      "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                    attrs: {
+                                      "aria-hidden": "true",
+                                      "data-prefix": "fas",
+                                      "data-icon": "plus",
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      viewBox: "0 0 448 512"
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        fill: "currentColor",
+                                        d:
+                                          "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(
+                                  "\n                                        Προσθήκη τάξης\n                                    "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass:
+                                  "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                                attrs: { href: "#" }
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass:
+                                      "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                    attrs: {
+                                      "aria-hidden": "true",
+                                      "data-prefix": "far",
+                                      "data-icon": "edit",
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      viewBox: "0 0 576 512"
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        fill: "currentColor",
+                                        d:
+                                          "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(
+                                  "\n                                        Επεξεργασία τάξης\n                                    "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass:
+                                  "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                                attrs: { href: "#" }
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass:
+                                      "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                    attrs: {
+                                      "aria-hidden": "true",
+                                      "data-prefix": "fas",
+                                      "data-icon": "plus",
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      viewBox: "0 0 448 512"
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        fill: "currentColor",
+                                        d:
+                                          "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(
+                                  "\n                                        Προσθήκη μαθήματος\n                                    "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass:
+                                  "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                                attrs: { href: "#" }
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass:
+                                      "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                    attrs: {
+                                      "aria-hidden": "true",
+                                      "data-prefix": "far",
+                                      "data-icon": "edit",
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      viewBox: "0 0 576 512"
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        fill: "currentColor",
+                                        d:
+                                          "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(
+                                  "\n                                        Επεξεργασία μαθήματος\n                                    "
+                                )
+                              ]
+                            )
+                          ])
                         : _vm._e()
                     ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-10", attrs: { role: "none" } },
+                      [
+                        !_vm.user
+                          ? _c(
+                              "a",
+                              {
+                                staticClass:
+                                  "block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700",
+                                attrs: { href: "/login", role: "menuitem" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                    Log in\n                                "
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ]
+                    ),
                     _vm._v(" "),
                     _vm.user
                       ? _c("div", { staticClass: "border border-top pt-5" }, [
@@ -39575,7 +39529,51 @@ var render = function() {
                             attrs: { src: "/images/avatar.svg" }
                           }),
                           _vm._v(" "),
-                          _vm._m(3)
+                          _c(
+                            "div",
+                            {
+                              staticClass: "py-1",
+                              attrs: {
+                                role: "menu",
+                                "aria-orientation": "vertical",
+                                "aria-labelledby": "options-menu"
+                              }
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
+                                  attrs: { href: "#", role: "menuitem" }
+                                },
+                                [_vm._v("Προφίλ")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                { attrs: { href: _vm.route("logout") } },
+                                [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-gray-700",
+                                      attrs: {
+                                        type: "submit",
+                                        role: "menuitem"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                            Log out\n                                        "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
                         ])
                       : _vm._e()
                   ]
@@ -39596,7 +39594,7 @@ var render = function() {
               "flex items-center justify-between bg-gray-50 border-b border-gray-200 px-4 py-1.5"
           },
           [
-            _vm._m(4),
+            _vm._m(3),
             _vm._v(" "),
             _c("div", [
               _c(
@@ -39714,49 +39712,6 @@ var staticRenderFns = [
         })
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "py-1",
-        attrs: {
-          role: "menu",
-          "aria-orientation": "vertical",
-          "aria-labelledby": "options-menu"
-        }
-      },
-      [
-        _c(
-          "a",
-          {
-            staticClass:
-              "block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
-            attrs: { href: "#", role: "menuitem" }
-          },
-          [_vm._v("Προφίλ")]
-        ),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "/logout" } }, [
-          _c(
-            "button",
-            {
-              staticClass:
-                "block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-gray-700",
-              attrs: { type: "submit", role: "menuitem" }
-            },
-            [
-              _vm._v(
-                "\n                                            Log out\n                                        "
-              )
-            ]
-          )
-        ])
-      ]
-    )
   },
   function() {
     var _vm = this
@@ -40219,7 +40174,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n                Σχετικά με τη Smart\n                "
+                      "\n                    Σχετικά με τη Smart\n                    "
                     )
                   ]
                 )
@@ -40233,19 +40188,11 @@ var render = function() {
                       "text-base text-primary-500 hover:text-gray-900",
                     attrs: { href: _vm.route("classrooms.index") }
                   },
-                  [_vm._v("\n                    Τάξεις\n                ")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "px-5 py-2" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass:
-                      "text-base text-primary-500 hover:text-gray-900",
-                    attrs: { href: _vm.route("courses.index") }
-                  },
-                  [_vm._v("\n                    Μαθήματα\n                ")]
+                  [
+                    _vm._v(
+                      "\n                        Τάξεις\n                    "
+                    )
+                  ]
                 )
               ]),
               _vm._v(" "),
@@ -40259,7 +40206,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n                    Επικοινωνία\n                "
+                      "\n                        Επικοινωνία\n                    "
                     )
                   ]
                 )
@@ -40371,7 +40318,7 @@ var render = function() {
             { staticClass: "mt-8 text-center text-base text-primary-500" },
             [
               _vm._v(
-                "\n            © 2020-2021 Smart. All rights reserved.\n        "
+                "\n                © 2020-2021 Smart. All rights reserved.\n            "
               )
             ]
           )
@@ -40948,7 +40895,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                        Σύνδεση\n                    "
+                            "\n                            Σύνδεση\n                        "
                           )
                         ]
                       ),
@@ -40962,7 +40909,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                        Εγγραφή\n                    "
+                            "\n                            Εγγραφή\n                        "
                           )
                         ]
                       )
@@ -41048,19 +40995,6 @@ var render = function() {
                                     _vm._v(" "),
                                     _c(
                                       "a",
-                                      {
-                                        staticClass:
-                                          "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900",
-                                        attrs: {
-                                          href: _vm.route("courses.index"),
-                                          role: "menuitem"
-                                        }
-                                      },
-                                      [_vm._v("Μαθήματα")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "a",
                                       { attrs: { href: _vm.route("logout") } },
                                       [
                                         _c(
@@ -41075,7 +41009,7 @@ var render = function() {
                                           },
                                           [
                                             _vm._v(
-                                              "\n                                    Log out\n                                "
+                                              "\n                                        Log out\n                                    "
                                             )
                                           ]
                                         )
@@ -41249,7 +41183,7 @@ var render = function() {
                                   role: "menuitem"
                                 }
                               },
-                              [_vm._v("Log in\n                    ")]
+                              [_vm._v("Log in\n                        ")]
                             )
                           : _vm._e()
                       ]),
@@ -41300,19 +41234,6 @@ var render = function() {
                                 _vm._v(" "),
                                 _c(
                                   "a",
-                                  {
-                                    staticClass:
-                                      "block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
-                                    attrs: {
-                                      href: _vm.route("courses.index"),
-                                      role: "menuitem"
-                                    }
-                                  },
-                                  [_vm._v("Μαθήματα")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "a",
                                   { attrs: { href: _vm.route("logout") } },
                                   [
                                     _c(
@@ -41327,7 +41248,7 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                Log out\n                            "
+                                          "\n                                    Log out\n                                "
                                         )
                                       ]
                                     )

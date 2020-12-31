@@ -17,7 +17,7 @@ class CourseController extends Controller
     {
         $courses = Course::all();
 
-        return view('courses.index',['courses'=>$courses]);
+        return view('courses.index', ['courses'=>$courses]);
     }
 
     /**

@@ -58,7 +58,7 @@
                             <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                                 <a :href="route('welcome.index')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Προφίλ</a>
                                 <a :href="route('classrooms.index')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Τάξεις</a>
-                                <a :href="route('courses.index')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Μαθήματα</a>
+<!--                                <a :href="route('courses.index')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Μαθήματα</a>-->
                                 <a :href="route('logout')">
                                     <button type="submit" class="block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-gray-700" role="menuitem">
                                         Log out
@@ -128,7 +128,7 @@
                         <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                             <a :href="route('welcome.index')" class="block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">Προφίλ</a>
                             <a :href="route('classrooms.index')" class="block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">Τάξεις</a>
-                            <a :href="route('courses.index')" class="block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">Μαθήματα</a>
+<!--                            <a :href="route('courses.index')" class="block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">Μαθήματα</a>-->
                             <a :href="route('logout')">
                                 <button type="submit" class="block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-gray-700" role="menuitem">
                                     Log out
