@@ -14,6 +14,6 @@
         </ul>
     </div>-->
 
-    <classrooms-page-list-item :classroom="{{$classroom}}" :classrooms="{{$classrooms}}"></classrooms-page-list-item>
+    <classrooms-page-list-item :classroom="{{$classroom}}"></classrooms-page-list-item>
 
 @endsection

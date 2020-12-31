@@ -2402,9 +2402,6 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     classroom: {
       type: Object
-    },
-    classrooms: {
-      type: Array
     }
   }
 });
@@ -2446,8 +2443,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "CourseComponent"
+  name: "CourseComponent",
+  data: function data() {
+    return {};
+  },
+  props: {
+    course: {
+      type: Object
+    }
+  }
 });
 
 /***/ }),
@@ -2542,7 +2567,11 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {};
   },
-  props: {}
+  props: {
+    classroom: {
+      type: Object
+    }
+  }
 });
 
 /***/ }),
@@ -39853,7 +39882,21 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "min-h-screen bg-gray-100" }, [
     _c("div", { staticClass: "py-10" }, [
-      _vm._m(0),
+      _c("header", [
+        _c("div", { staticClass: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, [
+          _c(
+            "h1",
+            { staticClass: "text-3xl font-bold leading-tight text-gray-900" },
+            [
+              _vm._v(
+                "\n                    Μαθήματα " +
+                  _vm._s(_vm.classroom.name) +
+                  "\n                "
+              )
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
       _c("main", [
         _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
@@ -39862,16 +39905,9 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "border-4 border-dashed border-gray-200 rounded-lg h-96"
+                  "border-4 border-dashed border-gray-200 rounded-lg "
               },
-              [
-                _c("CourseList", {
-                  attrs: {
-                    classroom: _vm.classroom,
-                    classrooms: _vm.classrooms
-                  }
-                })
-              ],
+              [_c("CourseList", { attrs: { classroom: _vm.classroom } })],
               1
             )
           ])
@@ -39880,22 +39916,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", [
-      _c("div", { staticClass: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, [
-        _c(
-          "h1",
-          { staticClass: "text-3xl font-bold leading-tight text-gray-900" },
-          [_vm._v("\n                    Classroom Show\n                ")]
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39924,38 +39945,95 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "min-h-screen bg-gray-100" }, [
-      _c("div", { staticClass: "py-10" }, [
-        _c("header", [
-          _c("div", { staticClass: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, [
+    return _c(
+      "div",
+      { staticClass: "h-screen grid md:flex overflow-hidden bg-white" },
+      [
+        _c(
+          "div",
+          { staticClass: "flex flex-col min-w-0 flex-1 overflow-hidden" },
+          [
             _c(
-              "h1",
-              { staticClass: "text-3xl font-bold leading-tight text-gray-900" },
-              [_vm._v("\n                    Course show\n                ")]
+              "div",
+              { staticClass: "flex-1 relative z-0 flex overflow-hidden" },
+              [
+                _c(
+                  "main",
+                  {
+                    staticClass:
+                      "flex-1 relative z-0 overflow-y-auto focus:outline-none",
+                    attrs: { tabindex: "0" }
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "absolute inset-0 pt-4 md:py-6 px-4" },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "h-full border-4 border-gray-200 border-dashed rounded-lg"
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Θεωρία\n                        "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]
             )
-          ])
-        ]),
+          ]
+        ),
         _vm._v(" "),
-        _c("main", [
-          _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
-            _c("div", { staticClass: "px-4 py-8 sm:px-0" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "border-4 border-dashed border-gray-200 rounded-lg h-96"
-                },
-                [
-                  _vm._v(
-                    "\n                        Course Show\n                    "
-                  )
-                ]
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
+        _c(
+          "div",
+          { staticClass: "flex flex-col min-w-0 flex-1 overflow-hidden" },
+          [
+            _c(
+              "div",
+              { staticClass: "flex-1 relative z-0 flex overflow-hidden" },
+              [
+                _c(
+                  "main",
+                  {
+                    staticClass:
+                      "flex-1 relative z-0 overflow-y-auto focus:outline-none",
+                    attrs: { tabindex: "0" }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "absolute inset-0 pb-4 md:py-6 p-4 md:pr-4"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "h-full border-4 border-gray-200 border-dashed rounded-lg"
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Ασκήσεις\n                        "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -39982,7 +40060,7 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "grid grid-cols-1 gap-4 sm:grid-cols-2 m-2" },
-    _vm._l(_vm.classrooms, function(classroom, index) {
+    _vm._l(_vm.classroom.courses, function(course, index) {
       return _c("div", { key: index }, [
         _c(
           "div",
@@ -39998,7 +40076,7 @@ var render = function() {
                 "a",
                 {
                   staticClass: "focus:outline-none",
-                  attrs: { href: classroom.path }
+                  attrs: { href: course.path }
                 },
                 [
                   _c("span", {
@@ -40012,7 +40090,7 @@ var render = function() {
                     [
                       _vm._v(
                         "\n                        " +
-                          _vm._s(classroom.name) +
+                          _vm._s(course.name) +
                           "\n                    "
                       )
                     ]
@@ -40021,7 +40099,7 @@ var render = function() {
                   _c("p", { staticClass: "text-sm text-gray-500 truncate" }, [
                     _vm._v(
                       "\n                        " +
-                        _vm._s(classroom.description) +
+                        _vm._s(course.description) +
                         "\n                    "
                     )
                   ])
