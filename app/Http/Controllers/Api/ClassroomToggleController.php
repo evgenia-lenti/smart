@@ -1,8 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Course;
+use App\Http\Controllers\Controller;
+use App\Models\Classroom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClassroomToggleController extends Controller
 {
@@ -21,20 +25,37 @@ class ClassroomToggleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    /*public function create()
     {
         //
-    }
+    }*/
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Classroom $classroom
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function create(Request $request, $path)
     {
-        //
+        try {
+
+            $classroom = Classroom::findOfFail($path);
+
+            if ($classroom->active == true) {
+                $classroom->active = 1;
+            }
+            else {
+                $classroom->active = 0;
+            }
+
+            $classroom->save();
+
+            return ['status' => true];
+
+        } catch(\Exception $e) {
+            return ['status' => false];
+        }
     }
 
     /**
@@ -79,6 +100,21 @@ class ClassroomToggleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $user = Auth::user();
+            $user->courses()->detach($course->id);
+
+            return [
+                'status' => true,
+                'message' => 'Έχεις διαγράψει την ενότητα ' . $course->title . ' με επιτυχία!'
+            ];
+
+        } catch (\Exception $e) {
+            return [
+                'status' => false,
+                'message' => 'Ούπς!! Προέκυψε κάποιο σφάλμα. Προσπάθησε αργότερα.'
+            ];
+        }
     }
+
 }

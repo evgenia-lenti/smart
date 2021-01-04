@@ -30,6 +30,8 @@ Vue.component('educator-profile-page', require('./components/UserProfilePage.vue
 Vue.component('classrooms-page', require('./components/Classrooms/ClassroomsPage.vue').default);
 Vue.component('course-component', require('./components/Courses/CourseComponent.vue').default);
 Vue.component('classrooms-page-list-item', require('./components/Classrooms/ClassroomsPageListItem.vue').default);
+Vue.component('active-visible-toggle', require('./components/Classrooms/ActiveVisibleToggle.vue').default);
+Vue.component('course-toggle', require('./components/Courses/CourseToggle.vue').default);
 
 
 

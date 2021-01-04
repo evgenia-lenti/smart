@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'id' => 2,
             'first_name' => 'Δημήτρης',
-            'last_name' => 'Σιοούλας',
+            'last_name' => 'Σιούλας',
             'email' => 'sioulasdimitris@gmail.com',
             'telephone' => 6945939802,
             'address' => 'Θεμιστοκλέους 7 Άγιος Παντελεήμωνας',

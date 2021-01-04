@@ -19,8 +19,8 @@ class CreateClassroomsTable extends Migration
             $table->string('description');
             $table->string('slug')->unique();
             $table->foreignId('user_id')->constrained();
-            $table->boolean('visible');
-            $table->boolean('active');
+            $table->boolean('visible')->default(0);
+            $table->boolean('active')->default(0);
             $table->timestamps();
         });
     }

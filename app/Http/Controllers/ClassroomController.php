@@ -42,7 +42,9 @@ class ClassroomController extends Controller
     {
         $courses = Course::all();
 
-        return view('classrooms.create', ['courses' => $courses]);
+        $classrooms = Classroom::all();
+
+        return view('classrooms.create', compact('courses', 'classrooms'));
     }
 
 
@@ -55,7 +57,7 @@ class ClassroomController extends Controller
     public function store(Request $request)
     {
 
-        $classroom = new Classroom();
+        /*$classroom = new Classroom();
 
         $classroom->name = request('name');
         $classroom->description = request('description');
@@ -71,7 +73,30 @@ class ClassroomController extends Controller
             $course->classrooms()->attach($classroom->id);
         }
 
-        return redirect('/')->with('message','H τάξη καταχωρήθηκε!');
+        return redirect('/')->with('message','H τάξη καταχωρήθηκε!');*/
+
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'slug' => 'required',
+            /*'visible' => 'required',
+            'active' => 'required',*/
+        ]);
+
+        $user = Auth::user();
+
+        $classroom = Classroom::create([
+            'user_id' => $user->id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'slug' => $request->slug,
+            /*'visible' => $request->visible,
+            'active' => $request->active,*/
+        ]);
+
+        //return back()->withInput();
+        //return redirect()->action([App\Http\Controllers\Api\ClassroomToggleController::class, 'store'], ['classroom' => $this]);
+        return redirect()->back()->with('success', 'Η τάξη καταχωρήθηκε με επιτυχία.')->withInput();
     }
 
     /**
