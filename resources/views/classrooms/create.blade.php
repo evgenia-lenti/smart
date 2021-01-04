@@ -77,6 +77,8 @@
                             @enderror
                     </div>
 
+                    <active-visible-toggle></active-visible-toggle>
+
                     <div class="flex justify-end pt-10">
                         <button type="button"
                                 class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -90,7 +92,7 @@
                 </form>
 
                 <div class="mt-5 md:col-span-2">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4 mt-16">Προσθήκη Μαθημάτων</h3>
+<!--                    <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4 mt-16">Προσθήκη Μαθημάτων</h3>-->
                 <!--                        <fieldset>
                         <div class="mt-4 space-y-4">
                             @foreach($courses as $course)
@@ -108,11 +110,11 @@
                     </div>
                 </fieldset>-->
 
-                    <div class="">
+<!--                    <div class="">
                         @foreach($courses as $course)
                             <course-toggle :course="{{$course}}"></course-toggle>
                         @endforeach
-                    </div>
+                    </div>-->
                 </div>
 
                 <div class="mt-5 md:mt-0 md:col-span-2">
@@ -157,7 +159,7 @@
                 </div>
             </div>
         </fieldset>-->
-                    <active-visible-toggle></active-visible-toggle>
+
 
                 </div>
 

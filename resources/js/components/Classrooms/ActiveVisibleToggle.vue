@@ -15,6 +15,7 @@
                       :class="[isOnActive ? 'translate-x-5' : 'translate-x-0']"
                       class="inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"></span>
             </button>
+            <input type="hidden" name="active" :value="isOnActive">
         </div>
 
         <div class="flex items-center justify-between">

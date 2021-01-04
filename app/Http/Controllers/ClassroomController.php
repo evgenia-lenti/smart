@@ -75,6 +75,7 @@ class ClassroomController extends Controller
 
         return redirect('/')->with('message','H τάξη καταχωρήθηκε!');*/
 
+
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -90,8 +91,8 @@ class ClassroomController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'slug' => $request->slug,
-            /*'visible' => $request->visible,
-            'active' => $request->active,*/
+            'visible' => $request->visible,
+            'active' => $request->active,
         ]);
 
         //return back()->withInput();

@@ -1945,6 +1945,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ActiveVisibleToggle",
   data: function data() {
@@ -38837,7 +38838,12 @@ var render = function() {
             attrs: { "aria-hidden": "true" }
           })
         ]
-      )
+      ),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: "active" },
+        domProps: { value: _vm.isOnActive }
+      })
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "flex items-center justify-between" }, [
