@@ -35,4 +35,9 @@ class Classroom extends Model
         ]);
     }
 
+    public function getEditPathAttribute() {
+
+        return "{$this->path}/edit";
+    }
+
 }

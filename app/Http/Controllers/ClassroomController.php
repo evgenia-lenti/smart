@@ -75,7 +75,6 @@ class ClassroomController extends Controller
 
         return redirect('/')->with('message','H τάξη καταχωρήθηκε!');*/
 
-
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -119,7 +118,7 @@ class ClassroomController extends Controller
      */
     public function edit(Classroom $classroom)
     {
-        //$classroom = Classroom::findOrFail($classroom);
+        /*$classroom = Classroom::findOrFail($classroom);
 
         $courses = Course::all();
 
@@ -143,6 +142,23 @@ class ClassroomController extends Controller
             'selectedcourses' => $selectedCourses,
             'active' => $active,
             'visible' => $visible
+        ]);*/
+        /*$user = Auth::user();
+
+        $classroom = Classroom::find($classroom);
+
+        $classroom->name = $classroom->name;
+        $user->id = $user->id;
+        $classroom->name = $classroom->name;
+        $classroom->description = $classroom->description;
+        $classroom->slug = $classroom->slug;
+        $classroom->visible = !! $classroom->visible;
+        $classroom->active = !! $classroom->active;
+
+        $classroom->save();*/
+
+        return view('classrooms.edit', [
+            'classroom' => $classroom
         ]);
     }
 
@@ -155,28 +171,35 @@ class ClassroomController extends Controller
      */
     public function update(Request $request, Classroom $classroom)
     {
-        //$classroom = Classroom::findOrFail($id);
 
-        $classroom->name = request('name');
-        $classroom->description = request('description');
-        $classroom->slug = request('name');
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'slug' => 'required',
+            /*'visible' => 'required',
+            'active' => 'required',*/
+        ]);
+
+        $classroom->name = $request->name;
+        $classroom->description = $request->description;
+        $classroom->slug = $request->slug;
         $classroom->user_id = Auth::id();
-        $classroom->visible = request('visible')==1;
-        $classroom->active = request('active')==1;
+        $classroom->visible = !! $request->visible;
+        $classroom->active = !! $request->active;
 
         $classroom->update();
 
-        $classroom->courses()->detach();
+        /*$classroom->courses()->detach();
 
         if($request->has('courses')) {
             for($i = 0;$i<sizeof(request('courses'));$i++){
                 $course = Course::find(request('courses')[$i]);
                 $course->classrooms()->attach($classroom->id);
             }
-        }
+        }*/
 
+        return redirect()->back()->with('success', 'Η τάξη ενημερώθηκε με επιτυχία.')->withInput();
 
-        return redirect('/')->with('message','H τάξη καταχωρήθηκε!');
     }
 
     /**
@@ -187,6 +210,8 @@ class ClassroomController extends Controller
      */
     public function destroy(Classroom $classroom)
     {
-        //
+        $classroom->delete();
+
+        return redirect(route('classrooms.index'));
     }
 }

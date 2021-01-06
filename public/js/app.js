@@ -2279,34 +2279,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ClassroomsPage",
@@ -2437,6 +2409,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Courses_CoursesList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Courses/CoursesList */ "./resources/js/components/Courses/CoursesList.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39233,43 +39218,6 @@ var render = function() {
                                           "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
                                         attrs: {
                                           "aria-hidden": "true",
-                                          "data-prefix": "far",
-                                          "data-icon": "edit",
-                                          xmlns: "http://www.w3.org/2000/svg",
-                                          viewBox: "0 0 576 512"
-                                        }
-                                      },
-                                      [
-                                        _c("path", {
-                                          attrs: {
-                                            fill: "currentColor",
-                                            d:
-                                              "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
-                                          }
-                                        })
-                                      ]
-                                    ),
-                                    _vm._v(
-                                      "\n                                        Επεξεργασία τάξης\n                                    "
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass:
-                                      "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                                    attrs: { href: "#" }
-                                  },
-                                  [
-                                    _c(
-                                      "svg",
-                                      {
-                                        staticClass:
-                                          "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
-                                        attrs: {
-                                          "aria-hidden": "true",
                                           "data-prefix": "fas",
                                           "data-icon": "plus",
                                           xmlns: "http://www.w3.org/2000/svg",
@@ -39288,43 +39236,6 @@ var render = function() {
                                     ),
                                     _vm._v(
                                       "\n                                        Προσθήκη μαθήματος\n                                    "
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass:
-                                      "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                                    attrs: { href: "#" }
-                                  },
-                                  [
-                                    _c(
-                                      "svg",
-                                      {
-                                        staticClass:
-                                          "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
-                                        attrs: {
-                                          "aria-hidden": "true",
-                                          "data-prefix": "far",
-                                          "data-icon": "edit",
-                                          xmlns: "http://www.w3.org/2000/svg",
-                                          viewBox: "0 0 576 512"
-                                        }
-                                      },
-                                      [
-                                        _c("path", {
-                                          attrs: {
-                                            fill: "currentColor",
-                                            d:
-                                              "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
-                                          }
-                                        })
-                                      ]
-                                    ),
-                                    _vm._v(
-                                      "\n                                        Επεξεργασία μαθήματος\n                                    "
                                     )
                                   ]
                                 )
@@ -39664,43 +39575,6 @@ var render = function() {
                                       "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
                                     attrs: {
                                       "aria-hidden": "true",
-                                      "data-prefix": "far",
-                                      "data-icon": "edit",
-                                      xmlns: "http://www.w3.org/2000/svg",
-                                      viewBox: "0 0 576 512"
-                                    }
-                                  },
-                                  [
-                                    _c("path", {
-                                      attrs: {
-                                        fill: "currentColor",
-                                        d:
-                                          "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
-                                      }
-                                    })
-                                  ]
-                                ),
-                                _vm._v(
-                                  "\n                                        Επεξεργασία τάξης\n                                    "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass:
-                                  "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                                attrs: { href: "#" }
-                              },
-                              [
-                                _c(
-                                  "svg",
-                                  {
-                                    staticClass:
-                                      "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
-                                    attrs: {
-                                      "aria-hidden": "true",
                                       "data-prefix": "fas",
                                       "data-icon": "plus",
                                       xmlns: "http://www.w3.org/2000/svg",
@@ -39719,43 +39593,6 @@ var render = function() {
                                 ),
                                 _vm._v(
                                   "\n                                        Προσθήκη μαθήματος\n                                    "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass:
-                                  "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                                attrs: { href: "#" }
-                              },
-                              [
-                                _c(
-                                  "svg",
-                                  {
-                                    staticClass:
-                                      "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
-                                    attrs: {
-                                      "aria-hidden": "true",
-                                      "data-prefix": "far",
-                                      "data-icon": "edit",
-                                      xmlns: "http://www.w3.org/2000/svg",
-                                      viewBox: "0 0 576 512"
-                                    }
-                                  },
-                                  [
-                                    _c("path", {
-                                      attrs: {
-                                        fill: "currentColor",
-                                        d:
-                                          "M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
-                                      }
-                                    })
-                                  ]
-                                ),
-                                _vm._v(
-                                  "\n                                        Επεξεργασία μαθήματος\n                                    "
                                 )
                               ]
                             )
@@ -40099,25 +39936,56 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "min-h-screen bg-gray-100" }, [
-    _c("div", { staticClass: "py-10" }, [
-      _c("header", [
-        _c("div", { staticClass: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, [
-          _c(
-            "h1",
-            { staticClass: "text-3xl font-bold leading-tight text-gray-900" },
-            [
-              _vm._v(
-                "\n                    Μαθήματα " +
-                  _vm._s(_vm.classroom.name) +
-                  "\n                "
+    _c("div", { staticClass: "py-10 max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
+      _c(
+        "div",
+        { staticClass: "flex flex-col lg:flex-row lg:justify-between" },
+        [
+          _c("div", [
+            _c("header", [
+              _c(
+                "div",
+                { staticClass: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" },
+                [
+                  _c(
+                    "h1",
+                    {
+                      staticClass:
+                        "text-3xl font-bold leading-tight text-gray-900"
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Μαθήματα " +
+                          _vm._s(_vm.classroom.name) +
+                          "\n                        "
+                      )
+                    ]
+                  )
+                ]
               )
-            ]
-          )
-        ])
-      ]),
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "w-40 mt-8 lg:mt-0 ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500",
+                attrs: {
+                  href: _vm.route("classrooms.edit", {
+                    classroom: _vm.classroom
+                  })
+                }
+              },
+              [_vm._v("\n                    Επεξεργασία\n                ")]
+            )
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c("main", [
-        _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
+        _c("div", {}, [
           _c("div", { staticClass: "px-4 py-8 sm:px-0" }, [
             _c(
               "div",
