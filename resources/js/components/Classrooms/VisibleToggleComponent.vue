@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between">
             <span class="flex-grow flex flex-col" id="toggle Label">
                 <span class="text-sm font-medium text-gray-900">Visible</span>
-                <span class="text-sm leading-normal text-gray-500">Επιλέξτε αν η τάξη θα είναι ορατή</span>
+<!--                <span class="text-sm leading-normal text-gray-500">Επιλέξτε αν η τάξη θα είναι ορατή</span>-->
             </span>
             <!-- On: "bg-indigo-600", Off: "bg-gray-200" -->
             <button @click="toggledVisible"

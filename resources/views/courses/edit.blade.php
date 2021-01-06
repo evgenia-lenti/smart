@@ -4,16 +4,16 @@
     <div class="bg-white mt-10 px-8 mb-20">
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1 mt-5">
-                <h3 class="text-lg font-medium leading-6 text-gray-900">Επεξεργασία Τάξης</h3>
+                <h3 class="text-lg font-medium leading-6 text-gray-900">Επεξεργασία Μαθήματος</h3>
                 <p class="mt-1 text-sm text-gray-500">
-                    Επεξεργαστείτε την τάξη
+                    Επεξεργαστείτε το μάθημα
                 </p>
             </div>
             <div class="mt-5 md:mt-0 md:col-span-2">
 
                 @if (session('error'))
                     <div class="text-red-700">
-                        <strong>Δυστυχώς προέκυψε ένα σφάλμα κατά την επεξεργασία της τάξης. Παρακαλώ δοκιμάστε αργότερα.</strong>
+                        <strong>Δυστυχώς προέκυψε ένα σφάλμα κατά την επεξεργασία του μαθήματος. Παρακαλώ δοκιμάστε αργότερα.</strong>
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li></li>
@@ -22,16 +22,16 @@
                     </div>
                 @elseif (session('success'))
                     <div class="text-green-700">
-                        <strong>Η τάξη ενημερώθηκε με επιτυχία!</strong>
+                        <strong>Το μάθημα ενημερώθηκε με επιτυχία!</strong>
                     </div>
                 @endif
 
-                <form class="space-y-6" action="{{ route('classrooms.update', ['classroom' => $classroom]) }}" method="POST">
+                <form class="space-y-6" action="{{ route('courses.update', ['course' => $course]) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="col-span-6 sm:col-span-3">
                         <label for="name" class="block text-sm font-medium text-gray-700">Όνομα</label>
-                        <input type="text" name="name" id="name" autocomplete="given-name" value="{{$classroom->name}}"
+                        <input type="text" name="name" id="name" autocomplete="given-name" value="{{$course->name}}"
                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md
                                         @error('name') is-invalid @enderror">
 
@@ -49,7 +49,7 @@
                             Περιγραφή
                         </label>
                         <div class="mt-1">
-                            <textarea id="description" name="description" rows="3" value="{{$classroom->description}}"
+                            <textarea id="description" name="description" rows="3" value="{{$course->description}}"
                                       class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md
                                             @error('description') is-invalid @enderror"></textarea>
 
@@ -65,7 +65,7 @@
 
                     <div class="col-span-6 sm:col-span-3">
                         <label for="slug" class="block text-sm font-medium text-gray-700">Slug</label>
-                        <input type="text" name="slug" id="slug" autocomplete="slug" value="{{$classroom->slug}}"
+                        <input type="text" name="slug" id="slug" autocomplete="slug" value="{{$course->slug}}"
                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md
                                         @error('slug') is-invalid @enderror">
 
@@ -84,7 +84,7 @@
 
 
                     <div class="flex justify-end pt-10">
-                        <a href="{{route('classrooms.index')}}"
+                        <a href="{{route('courses.index')}}"
                                 class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Ακύρωση
                         </a>
@@ -96,7 +96,7 @@
                 </form>
             </div>
         </div>
-        <form class="text-right mt-6 space-y-6" action="{{ route('classrooms.destroy', ['classroom' => $classroom]) }}" method="POST">
+        <form class="text-right mt-6 space-y-6" action="{{ route('courses.destroy', ['course' => $course]) }}" method="POST">
             @csrf
             @method('DELETE')
             <div class="">
@@ -109,4 +109,5 @@
     </div>
 
 @endsection
+
 

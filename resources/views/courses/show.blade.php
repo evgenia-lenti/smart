@@ -6,6 +6,6 @@
         <a href="/editcourse/{{ $course->id }}" type="button">Επεξεργασία Μαθήματος</a>
     </div>-->
 
-    <course-component :course="{{$course}}"></course-component>
+    <course-component :course="{{ $course }}" :user="{{ $user }}"></course-component>
 
 @endsection

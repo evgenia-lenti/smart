@@ -27,7 +27,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('addcourse');
+        return view('courses.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class CourseController extends Controller
     public function store(Request $request)
     {
 
-        $course = new Course();
+/*        $course = new Course();
 
         $course->name = request('name');
         $course->description = request('description');
@@ -50,7 +50,28 @@ class CourseController extends Controller
 
         $course->save();
 
-        return redirect('/')->with('message','Το Μάθημα καταχωρήθηκε!');
+        return redirect('/')->with('message','Το Μάθημα καταχωρήθηκε!');*/
+
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'slug' => 'required',
+            /*'visible' => 'required',
+            'active' => 'required',*/
+        ]);
+
+        $user = Auth::user();
+
+        $course = Course::create([
+            'user_id' => $user->id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'slug' => $request->slug,
+            'visible' => !! $request->visible,
+            'active' => !! $request->active,
+        ]);
+
+        return redirect()->back()->with('success', 'Το μάθημα καταχωρήθηκε με επιτυχία.')->withInput();
     }
 
     /**
@@ -61,7 +82,9 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        return view('courses.show',['course'=>$course]);
+        $user = Auth::user();
+
+        return view('courses.show', ['course' => $course, 'user' => $user]);
     }
 
     /**
@@ -70,22 +93,12 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Course $course)
     {
-        $course = Course::findOrFail($id);
 
-        if($course->active) {
-            $active = "checked";
-        } else {
-            $active = "unchecked";
-        }
-
-        if($course->visible) {
-            $visible = "checked";
-        } else {
-            $visible = "unchecked";
-        }
-        return view('editcourse',['course'=>$course,'active'=>$active,'visible'=>$visible]);
+        return view('courses.edit', [
+            'course' => $course
+        ]);
 
     }
 
@@ -96,20 +109,26 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Course $course)
     {
-        $course = Course::findOrFail($id);
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'slug' => 'required',
+            /*'visible' => 'required',
+            'active' => 'required',*/
+        ]);
 
-        $course->name = request('name');
-        $course->description = request('description');
-        $course->slug = request('name');
+        $course->name = $request->name;
+        $course->description = $request->description;
+        $course->slug = $request->slug;
         $course->user_id = Auth::id();
-        $course->visible = request('visible')==1;
-        $course->active = request('active')==1;
+        $course->visible = !! $request->visible;
+        $course->active = !! $request->active;
 
         $course->update();
 
-        return redirect('/')->with('message','H τάξη καταχωρήθηκε!');
+        return redirect()->back()->with('success', 'Το μάθημα ενημερώθηκε με επιτυχία.')->withInput();
     }
 
     /**
@@ -120,6 +139,8 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course->delete();
+
+        return redirect(route('courses.index'));
     }
 }

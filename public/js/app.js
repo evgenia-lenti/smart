@@ -2443,11 +2443,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ClassroomsPageListItem",
@@ -2460,6 +2455,10 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     classroom: {
       type: Object
+    },
+    user: {
+      type: Object,
+      required: true
     }
   }
 });
@@ -2587,6 +2586,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CourseComponent",
   data: function data() {
@@ -2595,6 +2628,10 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     course: {
       type: Object
+    },
+    user: {
+      type: Object,
+      required: true
     }
   }
 });
@@ -2744,8 +2781,8 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   props: {
-    classroom: {
-      type: Object
+    courses: {
+      type: Array
     }
   }
 });
@@ -38896,10 +38933,6 @@ var staticRenderFns = [
       [
         _c("span", { staticClass: "text-sm font-medium text-gray-900" }, [
           _vm._v("Active")
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "text-sm leading-normal text-gray-500" }, [
-          _vm._v("Επιλέξτε αν η τάξη θα είναι ενεργή")
         ])
       ]
     )
@@ -39162,6 +39195,45 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                              attrs: { href: _vm.route("courses.index") }
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                  attrs: {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    fill: "none",
+                                    viewBox: "0 0 24 24",
+                                    stroke: "currentColor",
+                                    "aria-hidden": "true"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round",
+                                      "stroke-width": "2",
+                                      d:
+                                        "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(
+                                "\n                                    Μαθήματα\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
                           _vm.user && _vm.user.role_id === 1
                             ? _c("div", [
                                 _c(
@@ -39208,7 +39280,7 @@ var render = function() {
                                   {
                                     staticClass:
                                       "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                                    attrs: { href: "#" }
+                                    attrs: { href: _vm.route("courses.create") }
                                   },
                                   [
                                     _c(
@@ -39521,6 +39593,45 @@ var render = function() {
                         ]
                       ),
                       _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                          attrs: { href: _vm.route("courses.index") }
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                              attrs: {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                fill: "none",
+                                viewBox: "0 0 24 24",
+                                stroke: "currentColor",
+                                "aria-hidden": "true"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  "stroke-linecap": "round",
+                                  "stroke-linejoin": "round",
+                                  "stroke-width": "2",
+                                  d:
+                                    "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(
+                            "\n                                    Μαθήματα\n                                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
                       _vm.user && _vm.user.role_id === 1
                         ? _c("div", [
                             _c(
@@ -39565,7 +39676,7 @@ var render = function() {
                               {
                                 staticClass:
                                   "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                                attrs: { href: "#" }
+                                attrs: { href: _vm.route("courses.create") }
                               },
                               [
                                 _c(
@@ -39936,57 +40047,52 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "min-h-screen bg-gray-100" }, [
-    _c("div", { staticClass: "py-10 max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
+    _c("div", { staticClass: "py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, [
       _c(
         "div",
         { staticClass: "flex flex-col lg:flex-row lg:justify-between" },
         [
-          _c("div", [
-            _c("header", [
-              _c(
-                "div",
-                { staticClass: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" },
-                [
-                  _c(
-                    "h1",
-                    {
-                      staticClass:
-                        "text-3xl font-bold leading-tight text-gray-900"
-                    },
-                    [
-                      _vm._v(
-                        "\n                            Μαθήματα " +
-                          _vm._s(_vm.classroom.name) +
-                          "\n                        "
-                      )
-                    ]
-                  )
-                ]
-              )
-            ])
+          _c("header", [
+            _c(
+              "h1",
+              { staticClass: "text-3xl font-bold leading-tight text-gray-900" },
+              [
+                _vm._v(
+                  "\n                    Μαθήματα " +
+                    _vm._s(_vm.classroom.name) +
+                    "\n                "
+                )
+              ]
+            )
           ]),
           _vm._v(" "),
-          _c("div", [
-            _c(
-              "a",
-              {
-                staticClass:
-                  "w-40 mt-8 lg:mt-0 ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500",
-                attrs: {
-                  href: _vm.route("classrooms.edit", {
-                    classroom: _vm.classroom
-                  })
-                }
-              },
-              [_vm._v("\n                    Επεξεργασία\n                ")]
-            )
-          ])
+          _vm.user && _vm.user.role_id === 1
+            ? _c("div", [
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "w-40 mt-8 lg:mt-0 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500",
+                    attrs: {
+                      href: _vm.route("classrooms.edit", {
+                        classroom: _vm.classroom
+                      })
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    Επεξεργασία Τάξης\n                "
+                    )
+                  ]
+                )
+              ])
+            : _vm._e()
         ]
       ),
       _vm._v(" "),
       _c("main", [
         _c("div", {}, [
-          _c("div", { staticClass: "px-4 py-8 sm:px-0" }, [
+          _c("div", { staticClass: "py-8 sm:px-0" }, [
             _c(
               "div",
               {
@@ -40071,10 +40177,6 @@ var staticRenderFns = [
       [
         _c("span", { staticClass: "text-sm font-medium text-gray-900" }, [
           _vm._v("Visible")
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "text-sm leading-normal text-gray-500" }, [
-          _vm._v("Επιλέξτε αν η τάξη θα είναι ορατή")
         ])
       ]
     )
@@ -40101,7 +40203,82 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm.user
+      ? _c("div", [
+          _c("div", { staticClass: "py-10 max-w-7xl mx-auto px-4" }, [
+            _c(
+              "div",
+              { staticClass: "flex flex-col lg:flex-row lg:justify-between" },
+              [
+                _c("header", { staticClass: "lg:self-center" }, [
+                  _c("div", {}, [
+                    _c(
+                      "h1",
+                      {
+                        staticClass:
+                          "text-3xl font-bold leading-tight text-gray-900"
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.course.name) +
+                            "\n                        "
+                        )
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm.user && _vm.user.role_id === 1
+                  ? _c("div", [
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "w-56 mt-8 lg:mt-0 text-center inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500",
+                          attrs: {
+                            href: _vm.route("courses.edit", {
+                              course: _vm.course
+                            })
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Επεξεργασία Μαθήματος\n                    "
+                          )
+                        ]
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ])
+      : _c("div", { staticClass: "h-screen mb-10 mt-32 px-8" }, [
+          _c(
+            "div",
+            { staticClass: "text-xl font-bold leading-tight text-gray-900" },
+            [
+              _vm._v(
+                "\n            Πρέπει να είσαι εγγεγραμμένος χρήστης για να δεις τα μαθήματα!\n        "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass:
+                "w-64 mt-8 lg:mt-0 text-center inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500",
+              attrs: { href: _vm.route("register") }
+            },
+            [_vm._v("\n            Εγγραφή\n        ")]
+          )
+        ])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -40140,7 +40317,7 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                            Θεωρία\n                        "
+                              "\n                                Θεωρία\n                            "
                             )
                           ]
                         )
@@ -40183,7 +40360,7 @@ var staticRenderFns = [
                           },
                           [
                             _vm._v(
-                              "\n                            Ασκήσεις\n                        "
+                              "\n                                Ασκήσεις\n                            "
                             )
                           ]
                         )
@@ -40296,8 +40473,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "grid grid-cols-1 gap-4 sm:grid-cols-2 m-2" },
-    _vm._l(_vm.classroom.courses, function(course, index) {
+    { staticClass: "grid grid-cols-1 gap-4 sm:grid-cols-2 px-8 mb-20" },
+    _vm._l(_vm.courses, function(course, index) {
       return _c("div", { key: index }, [
         _c(
           "div",
@@ -54195,6 +54372,7 @@ Vue.component('classrooms-page-list-item', __webpack_require__(/*! ./components/
 Vue.component('course-toggle', __webpack_require__(/*! ./components/Courses/CourseToggle.vue */ "./resources/js/components/Courses/CourseToggle.vue")["default"]);
 Vue.component('active-toggle-component', __webpack_require__(/*! ./components/Classrooms/ActiveToggleComponent.vue */ "./resources/js/components/Classrooms/ActiveToggleComponent.vue")["default"]);
 Vue.component('visible-toggle-component', __webpack_require__(/*! ./components/Classrooms/VisibleToggleComponent.vue */ "./resources/js/components/Classrooms/VisibleToggleComponent.vue")["default"]);
+Vue.component('course-list', __webpack_require__(/*! ./components/Courses/CoursesList.vue */ "./resources/js/components/Courses/CoursesList.vue")["default"]);
 Vue.mixin({
   methods: {
     /*__(key, replacements = []) {

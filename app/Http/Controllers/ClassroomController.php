@@ -40,11 +40,10 @@ class ClassroomController extends Controller
      */
     public function create()
     {
-        $courses = Course::all();
+        //$courses = Course::all();
+        //$classrooms = Classroom::all();
 
-        $classrooms = Classroom::all();
-
-        return view('classrooms.create', compact('courses', 'classrooms'));
+        return view('classrooms.create');
     }
 
 
@@ -105,9 +104,9 @@ class ClassroomController extends Controller
      */
     public function show(Classroom $classroom)
     {
-        $classrooms = Classroom::all();
+        $user = Auth::user();
 
-        return view('classrooms.show', compact('classroom', 'classrooms'));
+        return view('classrooms.show', compact('classroom', 'user'));
     }
 
     /**
