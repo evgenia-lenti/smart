@@ -48,7 +48,8 @@ use Illuminate\Support\Facades\Route;
         Route::get('courses/{course}/edit', [App\Http\Controllers\CourseController::class, 'edit'])->name('courses.edit');
         Route::delete('courses/{course}', [App\Http\Controllers\CourseController::class, 'destroy'])->name('courses.destroy');
 
-
+        Route::post('classroom/courses/{id}/create', [App\Http\Controllers\ClassroomCoursesController::class, 'create']);
+        Route::delete('classroom/courses/{id}', [App\Http\Controllers\ClassroomCoursesController::class, 'destroy']);
 
         //Route::get('settings/profile', 'ProfileController@edit')->name('profile.edit');
         //Route::get('settings/profile/courses', 'CourseUserController@index')->name('courses.select');

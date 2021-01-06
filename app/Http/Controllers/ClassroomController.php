@@ -156,8 +156,12 @@ class ClassroomController extends Controller
 
         $classroom->save();*/
 
+        $courses = Course::all();
+
         return view('classrooms.edit', [
-            'classroom' => $classroom
+            'classroom' => $classroom,
+            'courses' => $courses
+
         ]);
     }
 
@@ -213,4 +217,6 @@ class ClassroomController extends Controller
 
         return redirect(route('classrooms.index'));
     }
+
+
 }

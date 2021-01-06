@@ -34,6 +34,8 @@ Vue.component('course-toggle', require('./components/Courses/CourseToggle.vue').
 Vue.component('active-toggle-component', require('./components/Classrooms/ActiveToggleComponent.vue').default);
 Vue.component('visible-toggle-component', require('./components/Classrooms/VisibleToggleComponent.vue').default);
 Vue.component('course-list', require('./components/Courses/CoursesList.vue').default);
+Vue.component('courses-attach-component', require('./components/Classrooms/CoursesAttachComponent.vue').default);
+
 
 
 

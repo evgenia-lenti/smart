@@ -49,9 +49,9 @@
                             Περιγραφή
                         </label>
                         <div class="mt-1">
-                            <textarea id="description" name="description" rows="3" value="{{$course->description}}"
+                            <textarea id="description" name="description" rows="3"
                                       class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md
-                                            @error('description') is-invalid @enderror"></textarea>
+                                            @error('description') is-invalid @enderror">{{ old('description', $course->description) }}</textarea>
 
                             @error('description')
                             @if($errors->has('description'))
