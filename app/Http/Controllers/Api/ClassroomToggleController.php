@@ -36,11 +36,11 @@ class ClassroomToggleController extends Controller
      * @param Classroom $classroom
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, $path)
+    public function create(Request $request, Classroom $classroom)
     {
         try {
 
-            $classroom = Classroom::findOfFail($path);
+            //$classroom = Classroom::findOfFail($classroom);
 
             if ($classroom->active == true) {
                 $classroom->active = 1;

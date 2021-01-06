@@ -77,7 +77,10 @@
                             @enderror
                     </div>
 
-                    <active-visible-toggle></active-visible-toggle>
+                    <active-toggle-component></active-toggle-component>
+
+                    <visible-toggle-component></visible-toggle-component>
+
 
                     <div class="flex justify-end pt-10">
                         <button type="button"
@@ -169,3 +172,4 @@
     </div>
 
 @endsection
+

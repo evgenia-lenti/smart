@@ -91,12 +91,10 @@ class ClassroomController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'slug' => $request->slug,
-            'visible' => $request->visible,
-            'active' => $request->active,
+            'visible' => !! $request->visible,
+            'active' => !! $request->active,
         ]);
 
-        //return back()->withInput();
-        //return redirect()->action([App\Http\Controllers\Api\ClassroomToggleController::class, 'store'], ['classroom' => $this]);
         return redirect()->back()->with('success', 'Η τάξη καταχωρήθηκε με επιτυχία.')->withInput();
     }
 
