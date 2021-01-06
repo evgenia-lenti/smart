@@ -21,7 +21,10 @@ class DatabaseSeeder extends Seeder
             ClassroomSeeder::class,
             CourseSeeder::class,
             ClassroomUserSeeder::class,
-            ClassroomCourseSeeder::class
+            ClassroomCourseSeeder::class,
+            MaterialTypeSeeder::class,
+            TheorySeeder::class,
+            AssignmentSeeder::class
         ]);
     }
 }
