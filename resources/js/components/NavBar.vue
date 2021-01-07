@@ -54,7 +54,7 @@
                             </button>
                         </div>
 
-                        <div v-if="isOpenProfile" class="origin-top-right absolute z-30 right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                        <div v-if="isOpenProfile" v-on-clickaway="awayProfile" tabindex="-1" class="origin-top-right absolute z-30 right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                             <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                                 <a :href="route('welcome.index')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Προφίλ</a>
                                 <a :href="route('classrooms.index')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Τάξεις</a>
@@ -81,7 +81,7 @@
             From: "opacity-100 scale-100"
             To: "opacity-0 scale-95"
         -->
-        <div v-if="isOpen" class="absolute top-0 z-30 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+        <div v-if="isOpen" v-on-clickaway="awayOpen" tabindex="-1"  class="absolute top-0 z-30 inset-x-0 p-2 transition transform origin-top-right md:hidden">
             <div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div class="px-5 pt-4 flex items-center justify-between">
                     <div>
@@ -144,6 +144,8 @@
 </template>
 
 <script>
+import { directive as onClickaway } from 'vue-clickaway';
+
 export default {
     name: "NavBar",
 
@@ -153,6 +155,20 @@ export default {
             isOpen: false,
             isOpenProfile: false
         }
-    }
+    },
+
+    methods: {
+        awayOpen() {
+            this.isOpen = false;
+        },
+
+        awayProfile() {
+            this.isOpenProfile = false;
+        }
+    },
+
+    directives: {
+        onClickaway: onClickaway,
+    },
 }
 </script>
