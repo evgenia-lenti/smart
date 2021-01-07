@@ -48,23 +48,26 @@ use Illuminate\Support\Facades\Route;
         Route::get('courses/{course}/edit', [App\Http\Controllers\CourseController::class, 'edit'])->name('courses.edit');
         Route::delete('courses/{course}', [App\Http\Controllers\CourseController::class, 'destroy'])->name('courses.destroy');
 
+        //attach courses to classroom
         Route::post('classroom/courses/{id}/create', [App\Http\Controllers\ClassroomCoursesController::class, 'create']);
         Route::delete('classroom/courses/{id}', [App\Http\Controllers\ClassroomCoursesController::class, 'destroy']);
+
+        //user profile
+        Route::get('user/profile', [App\Http\Controllers\UserController::class, 'edit'])->name('profile.edit');
+        Route::patch('user/profile/update', [App\Http\Controllers\UserController::class, 'update'])->name('profile.update');
+        Route::delete('user/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy');
+
 
         //Route::get('settings/profile', 'ProfileController@edit')->name('profile.edit');
         //Route::get('settings/profile/courses', 'CourseUserController@index')->name('courses.select');
         //Route::patch('settings/profile/update', 'ProfileController@update');
-
-
         //Route::get('payments', 'PaymentController@index')->name('payments.index');
         //Route::get('subscription/cancel/confirm', 'SubscriptionController@cancel')->name('subscription.cancel');
         //Route::get('subscription/reactivate/confirm', 'SubscriptionController@reactivate')->name('subscription.reactivate');
         //Route::get('subscription/courses/add', 'SubscriptionController@showAddCoursesForm');
         //Route::post('subscription/courses/add', 'SubscriptionController@addCourses');
-
-
-        /*Route::get('resubscribe', 'SubscriptionController@showResubscriptionForm');
-        Route::post('resubscribe', 'SubscriptionController@resubscribe')->name('subscription.resubscribe');*/
+        //Route::get('resubscribe', 'SubscriptionController@showResubscriptionForm');
+        //Route::post('resubscribe', 'SubscriptionController@resubscribe')->name('subscription.resubscribe');
 
     });
 

@@ -2846,8 +2846,8 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   props: {
-    courses: {
-      type: Array
+    classroom: {
+      type: Object
     }
   }
 });
@@ -40269,8 +40269,7 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass:
-                  "border-4 border-dashed border-gray-200 rounded-lg "
+                staticClass: "border-4 border-dashed border-gray-200 rounded-lg"
               },
               [_c("CourseList", { attrs: { classroom: _vm.classroom } })],
               1
@@ -40725,8 +40724,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "grid grid-cols-1 gap-4 sm:grid-cols-2 px-8 mb-20" },
-    _vm._l(_vm.courses, function(course, index) {
+    { staticClass: "grid grid-cols-1 gap-4 sm:grid-cols-2 px-8 mb-20 mt-4" },
+    _vm._l(_vm.classroom.courses, function(course, index) {
       return _c("div", { key: index }, [
         _c(
           "div",
@@ -41693,7 +41692,7 @@ var render = function() {
                                         staticClass:
                                           "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900",
                                         attrs: {
-                                          href: _vm.route("welcome.index"),
+                                          href: _vm.route("profile.edit"),
                                           role: "menuitem"
                                         }
                                       },
@@ -41941,7 +41940,7 @@ var render = function() {
                                     staticClass:
                                       "block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
                                     attrs: {
-                                      href: _vm.route("welcome.index"),
+                                      href: _vm.route("profile.edit"),
                                       role: "menuitem"
                                     }
                                   },

@@ -20,7 +20,7 @@
                 <div class="">
                     <!-- Replace with your content -->
                     <div class="py-8 sm:px-0">
-                        <div class="border-4 border-dashed border-gray-200 rounded-lg ">
+                        <div class="border-4 border-dashed border-gray-200 rounded-lg">
                             <CourseList :classroom="classroom"></CourseList>
                         </div>
                     </div>
