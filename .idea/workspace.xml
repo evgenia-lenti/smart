@@ -20,14 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a79a2abc-c78a-475f-bf1d-14ed0e08cfe8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClassroomCoursesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClassroomCoursesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Classrooms/CoursesAttachComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Classrooms/CoursesAttachComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +218,7 @@
       <workItem from="1609973892647" duration="2431000" />
       <workItem from="1610010275625" duration="163000" />
       <workItem from="1610051046162" duration="5586000" />
-      <workItem from="1610120678876" duration="6666000" />
+      <workItem from="1610120678876" duration="7073000" />
     </task>
     <servers />
   </component>

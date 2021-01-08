@@ -36,8 +36,11 @@ class ClassroomCoursesController extends Controller
 
             $classroom->courses()->detach($course->id);
 
+            return ['status' => true, 'message' => 'Το μάθημα διαγράφτηκε.'];
+
         } catch (\Exception $e) {
 
+            return ['status' => false, 'message' => 'Κάτι πήγε στραβά.'];
         }
     }
 }

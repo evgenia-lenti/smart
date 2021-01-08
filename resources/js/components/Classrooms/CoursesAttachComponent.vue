@@ -37,19 +37,6 @@ export default {
                 .catch((error) => {
                 });
 
-            /*axios.post(`/api/user/courses/${this.course.id}/create`, {
-                course_id: this.course_id
-            })
-                .then((response) => {
-                    let data = response.data;
-
-                    this.$emit('messageReceived', {
-                        message: data.message,
-                        status: data.status
-                    });
-                })
-                .catch((error) => {
-                });*/
         }
     },
 
