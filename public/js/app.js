@@ -2499,7 +2499,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.courseSelected, this.classroom.id);
       axios.post("/classroom/courses/".concat(this.courseSelected, "/create"), {
         course_id: this.courseSelected,
-        classroom_id: this.classroom
+        classroom_id: this.classroom.id
       }).then(function (response) {
         var data = response.data;
         console.log(data);

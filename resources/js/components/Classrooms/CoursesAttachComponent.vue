@@ -28,7 +28,7 @@ export default {
 
             axios.post(`/classroom/courses/${this.courseSelected}/create`, {
                 course_id: this.courseSelected,
-                classroom_id: this.classroom
+                classroom_id: this.classroom.id
             })
                 .then((response) => {
                     let data = response.data;

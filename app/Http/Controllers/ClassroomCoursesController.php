@@ -9,19 +9,24 @@ use Illuminate\Support\Facades\Auth;
 
 class ClassroomCoursesController extends Controller
 {
-    public function create(Classroom $classroom, $id)
+    public function create(Request $request)
     {
-        //$classrooms = Classroom::all();
-        //$classroom = Classroom::findOrFail($classroom);
-        dd($classroom, $id);
         try {
 
-            if (!$classroom->courses->contains('id', $id)) {
-                $classroom->courses()->attach($id);
+            $classroom = Classroom::find($request->classroom_id);
+            $course = Course::find($request->course_id);
+
+            if ($classroom && $course) {
+                $classroom->courses()->attach($course->id);
+
+                return ['status' => true, 'message' => 'Το μάθημα προστέθηκε με επιτυχία.'];
             }
+
+            return ['status' => false, 'message' => 'Το μάθημα ή η τάξη δε βρέθηκε.'];
 
         } catch(\Exception $e) {
 
+            return ['status' => false, 'message' => 'Κάτι πήγε στραβά.'];
         }
     }
 

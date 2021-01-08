@@ -53,9 +53,9 @@ use Illuminate\Support\Facades\Route;
         Route::delete('classroom/courses/{id}', [App\Http\Controllers\ClassroomCoursesController::class, 'destroy']);
 
         //user profile
-        Route::get('user/profile', [App\Http\Controllers\UserController::class, 'edit'])->name('profile.edit');
-        Route::patch('user/profile/update', [App\Http\Controllers\UserController::class, 'update'])->name('profile.update');
-        Route::delete('user/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy');
+        Route::get('user/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('user/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('user/{user}', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('user.destroy');
 
 
         //Route::get('settings/profile', 'ProfileController@edit')->name('profile.edit');

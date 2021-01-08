@@ -104,7 +104,7 @@
 
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="password" class="block text-sm font-medium text-gray-700">{{ __('Password') }}</label>
-                                    <input type="password" name="password" id="password" required autocomplete="new-password" class="mt-1 focus:ring-indigo-500
+                                    <input type="password" name="password" id="password" autocomplete="new-password" class="mt-1 focus:ring-indigo-500
                                 focus:border-indigo-500 block w-full
                                     shadow-sm sm:text-sm border-gray-300 rounded-md @error('password') is-invalid @enderror">
 
@@ -119,7 +119,7 @@
 
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="password-confirm" class="block text-sm font-medium text-gray-700">Επιβεβαίωση password</label>
-                                    <input type="password" name="password_confirmation" id="password-confirm" required autocomplete="new-password" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full
+                                    <input type="password" name="password_confirmation" id="password-confirm" autocomplete="new-password" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full
                                     shadow-sm sm:text-sm border-gray-300 rounded-md @error('password-confirm') is-invalid @enderror">
                                 </div>
 
@@ -133,7 +133,7 @@
                     </div>
                 </form>
 
-                <form class="px-4 sm:px-6 mt-6 space-y-6" action="{{ route('user.destroy', ['user' => $user]) }}" method="POST">
+                <form class="px-4 sm:px-6 mt-6 space-y-6 inline text-right" action="{{ route('user.destroy', ['user' => $user]) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <div class="">

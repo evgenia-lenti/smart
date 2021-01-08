@@ -28,7 +28,8 @@ class UserController extends Controller
             'address' => ['string', 'max:255'],
             'telephone' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255' . Rule::unique('users')->ignore($user->id)],
-            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'password' => ['nullable', 'min:8', 'same:confirm_password'],
+            'confirm_password' => ['nullable|min:8|required_with:password|same:password']
         ]);
 
         $user->fill([
