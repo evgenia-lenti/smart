@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,7 @@ class UserSeeder extends Seeder
             'telephone' => 6980950121,
             'address' => 'Περιστέρας 1 πειραιάς',
             'password' => bcrypt('12345678'),
-            'role_id' => 1,
+            'role_id' => Role::ADMIN,
             'active' => true,
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString()
@@ -37,7 +38,7 @@ class UserSeeder extends Seeder
             'telephone' => 6945939802,
             'address' => 'Θεμιστοκλέους 7 Άγιος Παντελεήμωνας',
             'password' => bcrypt('12345678'),
-            'role_id' => 1,
+            'role_id' => Role::EDUCATOR,
             'active' => true,
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString()
@@ -51,7 +52,7 @@ class UserSeeder extends Seeder
             'telephone' => 6980950121,
             'address' => 'Αγίων Πάντων 36 Αθήνα',
             'password' => bcrypt('12345678'),
-            'role_id' => 2,
+            'role_id' => Role::STUDENT,
             'active' => true,
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString()

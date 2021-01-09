@@ -16,7 +16,6 @@ class CreateClassroomCourseTable extends Migration
         Schema::create('classroom_course', function (Blueprint $table) {
             $table->foreignId('classroom_id')->constrained() ->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('course_id')->constrained() ->onUpdate('cascade')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

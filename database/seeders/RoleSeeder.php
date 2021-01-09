@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -16,17 +17,18 @@ class RoleSeeder extends Seeder
     public function run()
     {
         DB::table('roles')->insert([
-            'id' => 1,
-            'name' => 'educator',
-            'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon::now()->toDateTimeString()
+            'id' => Role::ADMIN,
+            'name' => 'administrator'
         ]);
 
         DB::table('roles')->insert([
-            'id' => 2,
-            'name' => 'student',
-            'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon::now()->toDateTimeString()
+            'id' => Role::EDUCATOR,
+            'name' => 'educator'
+        ]);
+
+        DB::table('roles')->insert([
+            'id' => Role::STUDENT,
+            'name' => 'student'
         ]);
     }
 }
