@@ -17,16 +17,22 @@ class MaterialTypeSeeder extends Seeder
     {
         DB::table('material_types')->insert([
             'id' => 1,
-            'name' => 'pdf',
-            'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon::now()->toDateTimeString()
+            'name' => 'video'
         ]);
 
         DB::table('material_types')->insert([
             'id' => 2,
-            'name' => 'online',
-            'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon::now()->toDateTimeString()
+            'name' => 'pdf'
+        ]);
+
+        DB::table('material_types')->insert([
+            'id' => 3,
+            'name' => 'word'
+        ]);
+
+        DB::table('material_types')->insert([
+            'id' => 4,
+            'name' => 'powerpoint'
         ]);
     }
 }

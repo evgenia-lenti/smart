@@ -10,6 +10,6 @@
         </div>
     </header>
 
-    <course-list :courses="{{ $courses }}"></course-list>
+    <courses-list :courses="{{ $courses }}"></courses-list>
 
 @endsection

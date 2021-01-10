@@ -7,7 +7,7 @@
                         Μαθήματα {{ classroom.name}}
                     </h1>
                 </header>
-                <div v-if="user && user.role_id === 1">
+                <div v-if="user.role_id === 1 || user.role_id === 2">
                     <a :href="route('classrooms.edit', {classroom})"
                        class="w-40 mt-8 lg:mt-0 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                         Επεξεργασία Τάξης
@@ -21,7 +21,7 @@
                     <!-- Replace with your content -->
                     <div class="py-8 sm:px-0">
                         <div class="border-4 border-dashed border-gray-200 rounded-lg">
-                            <CourseList :classroom="classroom"></CourseList>
+                            <ClassroomCoursesList :classroom="classroom"></ClassroomCoursesList>
                         </div>
                     </div>
                     <!-- /End replace -->
@@ -33,19 +33,12 @@
 </template>
 
 <script>
-
-import CourseList from "../Courses/CoursesList";
+import ClassroomCoursesList from "../Courses/ClassroomCoursesList";
 
 export default {
     name: "ClassroomsPageListItem",
 
-    components: {CourseList},
-
-    data() {
-        return {
-
-        }
-    },
+    components: {ClassroomCoursesList},
 
     props: {
         classroom: {

@@ -16,11 +16,12 @@ class CreateAssignmentsTable extends Migration
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
-            $table->string('slug')->unique();
+            $table->string('description')->nullable();
+            $table->string('slug')->nullable()->unique();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('material_type_id')->constrained();
             $table->foreignId('course_id')->constrained();
+            $table->string('file_path')->nullable();
             $table->boolean('visible')->nullable();
             $table->boolean('active')->nullable();
             $table->timestamps();

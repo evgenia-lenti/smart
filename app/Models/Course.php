@@ -23,6 +23,11 @@ class Course extends Model
         return $this->belongsToMany(Classroom::class,'classroom_course');
     }
 
+    public function theory()
+    {
+        return $this->hasMany(Theory::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';

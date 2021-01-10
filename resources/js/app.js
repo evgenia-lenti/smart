@@ -33,12 +33,8 @@ Vue.component('classrooms-page-list-item', require('./components/Classrooms/Clas
 Vue.component('course-toggle', require('./components/Courses/CourseToggle.vue').default);
 Vue.component('active-toggle-component', require('./components/Classrooms/ActiveToggleComponent.vue').default);
 Vue.component('visible-toggle-component', require('./components/Classrooms/VisibleToggleComponent.vue').default);
-Vue.component('course-list', require('./components/Courses/CoursesList.vue').default);
+Vue.component('courses-list', require('./components/Courses/CoursesList.vue').default);
 Vue.component('courses-attach-component', require('./components/Classrooms/CoursesAttachComponent.vue').default);
-
-
-
-
 
 
 

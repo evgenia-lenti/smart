@@ -10,7 +10,7 @@
                             </h1>
                         </div>
                     </header>
-                    <div v-if="user && user.role_id === 1">
+                    <div v-if="user.role_id === 1 || user.role_id === 2">
                         <a :href="route('courses.edit', {course})"
                            class="w-56 mt-8 lg:mt-0 text-center inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                             Επεξεργασία Μαθήματος
@@ -27,6 +27,11 @@
                             <div class="absolute inset-0 pt-4 md:py-6 px-4">
                                 <div class="h-full border-4 border-gray-200 border-dashed rounded-lg">
                                     Θεωρία
+
+
+
+
+
                                 </div>
                             </div>
                         </main>

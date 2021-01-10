@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Theory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

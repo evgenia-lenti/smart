@@ -27,23 +27,6 @@ Route::middleware('guest')->group(function () {
 });
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
-
-    //classrooms
-    Route::get('classrooms/{classroom}', [App\Http\Controllers\ClassroomController::class, 'show'])->name('classrooms.show');
-
-    //courses
-    Route::get('courses', [App\Http\Controllers\CourseController::class, 'index'])->name('courses.index');
-    Route::get('courses/{course}', [App\Http\Controllers\CourseController::class, 'show'])->name('courses.show');
-
-    //user profile
-    Route::get('user/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('user/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('user/{user}', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('user.destroy');
-});
-
-
 Route::middleware('auth.role:administrator')->group(function () {
 
         //classrooms
@@ -64,11 +47,9 @@ Route::middleware('auth.role:administrator')->group(function () {
         Route::post('classroom/courses/{id}/create', [App\Http\Controllers\ClassroomCoursesController::class, 'create']);
         Route::delete('classroom/courses/{id}', [App\Http\Controllers\ClassroomCoursesController::class, 'destroy']);
 
-        //user profile
-        //Route::get('user/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
-        //Route::patch('user/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-        //Route::delete('user/{user}', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('user.destroy');
-    });
+        Route::get('upload-file/create', [App\Http\Controllers\TheoryController::class, 'createForm'])->name('create.pdf.form');
+        Route::post('upload-file', [App\Http\Controllers\TheoryController::class, 'fileUpload'])->name('upload.pdf');
+});
 
 
 Route::middleware('auth.role:educator')->group(function () {
@@ -93,6 +74,26 @@ Route::middleware('auth.role:educator')->group(function () {
     //attach courses to classroom
     Route::post('classroom/courses/{id}/create', [App\Http\Controllers\ClassroomCoursesController::class, 'create']);
     Route::delete('classroom/courses/{id}', [App\Http\Controllers\ClassroomCoursesController::class, 'destroy']);
+
+    Route::get('upload-file/create', [App\Http\Controllers\TheoryController::class, 'createForm'])->name('create.pdf.form');
+    Route::post('upload-file', [App\Http\Controllers\TheoryController::class, 'fileUpload'])->name('upload.pdf');
+    
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
+
+    //classrooms
+    Route::get('classrooms/{classroom}', [App\Http\Controllers\ClassroomController::class, 'show'])->name('classrooms.show');
+
+    //courses
+    Route::get('courses', [App\Http\Controllers\CourseController::class, 'index'])->name('courses.index');
+    Route::get('courses/{course}', [App\Http\Controllers\CourseController::class, 'show'])->name('courses.show');
+
+    //user profile
+    Route::get('user/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('user/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('user/{user}', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('user.destroy');
 });
 
 //all routes example. student currently logs in as auth

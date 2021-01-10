@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             ClassroomUserSeeder::class,
             ClassroomCourseSeeder::class,
             MaterialTypeSeeder::class,
-            TheorySeeder::class,
-            AssignmentSeeder::class
+            //TheorySeeder::class,
+            //AssignmentSeeder::class
         ]);
     }
 }
