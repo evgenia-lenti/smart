@@ -77,7 +77,7 @@ Route::middleware('auth.role:educator')->group(function () {
 
     Route::get('upload-file/create', [App\Http\Controllers\TheoryController::class, 'createForm'])->name('create.pdf.form');
     Route::post('upload-file', [App\Http\Controllers\TheoryController::class, 'fileUpload'])->name('upload.pdf');
-    
+
 });
 
 Route::middleware('auth')->group(function () {
