@@ -83,7 +83,7 @@
                                     Μαθήματα
                                 </a>
 
-                                <div v-if="user.role_id === 1|| user.role_id === 2">
+                                <div v-if="(user.role_id === 1 || user.role_id === 2)">
                                     <a :href="route('classrooms.create')" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
                                         <svg aria-hidden="true" data-prefix="fas" data-icon="plus" class="inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                             <path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
@@ -205,7 +205,7 @@
                                     Μαθήματα
                                 </a>
 
-                                <div v-if="user.role_id === 1|| user.role_id === 2">
+                                <div v-if="(user.role_id === 1 || user.role_id === 2)">
                                     <a :href="route('classrooms.create')" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
                                         <svg aria-hidden="true" data-prefix="fas" data-icon="plus" class="inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                             <path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
