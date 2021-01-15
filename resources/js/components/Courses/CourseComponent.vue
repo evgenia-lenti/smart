@@ -10,7 +10,7 @@
                             </h1>
                         </div>
                     </header>
-                    <div v-if="user.role_id === 1 || user.role_id === 2">
+                    <div v-if="(user.role_id === 1 || user.role_id === 2)">
                         <a :href="route('courses.edit', {course})"
                            class="w-56 mt-8 lg:mt-0 text-center inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                             Επεξεργασία Μαθήματος
