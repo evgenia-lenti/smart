@@ -56,6 +56,7 @@
 
                         <div v-if="isOpenProfile" v-on-clickaway="awayProfile" tabindex="-1" class="origin-top-right absolute z-30 right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                             <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                                <div class="block px-4 py-2 text-sm font-medium text-primary-500">{{ user.email }}</div>
                                 <a :href="route('profile.edit')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Προφίλ</a>
                                 <a :href="route('classrooms.index')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Τάξεις</a>
 <!--                                <a :href="route('courses.index')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Μαθήματα</a>-->

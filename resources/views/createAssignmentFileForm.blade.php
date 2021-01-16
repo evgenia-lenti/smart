@@ -4,16 +4,16 @@
     <div class="bg-white mt-10 px-8 mb-20">
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1 mt-5">
-                <h3 class="text-lg font-medium leading-6 text-gray-900">Δημιουργία θεωρίας</h3>
+                <h3 class="text-lg font-medium leading-6 text-gray-900">Δημιουργία εργασίας</h3>
                 <p class="mt-1 text-sm text-gray-500">
-                    Δημιουργήστε υλικό θεωρίας
+                    Δημιουργήστε υλικό εργασίας
                 </p>
             </div>
             <div class="mt-5 md:mt-0 md:col-span-2">
 
                 @if (session('error'))
                     <div class="text-red-700">
-                        <strong>Δυστυχώς προέκυψε ένα σφάλμα κατά τη δημιουργία της θεωρίας. Παρακαλώ δοκιμάστε αργότερα.</strong>
+                        <strong>Δυστυχώς προέκυψε ένα σφάλμα κατά τη δημιουργία της εργασίας. Παρακαλώ δοκιμάστε αργότερα.</strong>
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li></li>
@@ -22,11 +22,11 @@
                     </div>
                 @elseif (session('success'))
                     <div class="text-green-700">
-                        <strong>Η θεωρία δημιουργήθηκε με επιτυχία!</strong>
+                        <strong>Η εργασία δημιουργήθηκε με επιτυχία!</strong>
                     </div>
                 @endif
 
-                <form class="space-y-6" action="{{ route('upload.pdf') }}" method="POST" enctype="multipart/form-data">
+                <form class="space-y-6" action="{{ route('upload.assignment') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="col-span-6 sm:col-span-3">
                         <label for="name" class="block text-sm font-medium text-gray-700">Όνομα</label>
@@ -139,4 +139,5 @@
     </div>
 
 @endsection
+
 

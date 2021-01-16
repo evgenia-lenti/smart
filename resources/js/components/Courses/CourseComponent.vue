@@ -28,9 +28,9 @@
                                 <div class="h-full border-4 border-gray-200 border-dashed rounded-lg">
                                     Θεωρία
 
-
-
-
+                                    <div v-for="(theory, index) in course.theories" :key="index">
+                                        <div>{{ theory.name }}</div>
+                                    </div>
 
                                 </div>
                             </div>
@@ -52,6 +52,11 @@
                             <div class="absolute inset-0 pb-4 md:py-6 p-4 md:pr-4">
                                 <div class="h-full border-4 border-gray-200 border-dashed rounded-lg">
                                     Ασκήσεις
+
+                                    <div v-for="(assignment, index) in course.assignments" :key="index">
+                                        <div>{{ assignment.name }}</div>
+                                    </div>
+
                                 </div>
                             </div>
                         </main>

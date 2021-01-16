@@ -11,7 +11,7 @@ use Illuminate\Http\UploadedFile;
 class TheoryController extends Controller
 {
     public function createForm(){
-        return view('createFileForm');
+        return view('createTheoryFileForm');
     }
 
     public function fileUpload(Request $request){
@@ -36,7 +36,7 @@ class TheoryController extends Controller
         /* Store $fileName name in DATABASE from HERE */
         $user = Auth::user();
 
-        Theory::create([
+        $theory = Theory::create([
             'name' => $name,
             'user_id' => $user->id,
             'description' => $request->description,
@@ -54,11 +54,10 @@ class TheoryController extends Controller
 
     }
 
-    public function show(Theory $theory){
+    /*public function show(Theory $theory){
 
-        dd($theory);
         $path = Theory::find($theory->file_path);
 
         return view('courses.show', compact('path'));
-    }
+    }*/
 }

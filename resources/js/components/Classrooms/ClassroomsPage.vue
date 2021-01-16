@@ -98,11 +98,18 @@
                                         Προσθήκη μαθήματος
                                     </a>
 
-                                    <a :href="route('create.pdf.form')" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
+                                    <a :href="route('create.theory.form')" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
                                         <svg aria-hidden="true" data-prefix="fas" data-icon="plus" class="inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                             <path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
                                         </svg>
-                                        Προσθήκη θεωρίας
+                                        Προσθήκη Θεωρίας
+                                    </a>
+
+                                    <a :href="route('create.assignment.form')" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
+                                        <svg aria-hidden="true" data-prefix="fas" data-icon="plus" class="inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                                        </svg>
+                                        Προσθήκη Εργασίας
                                     </a>
                                 </div>
 
@@ -117,7 +124,11 @@
                             </div>
                             <div v-if="user" class="border border-top pt-5">
                                 <img src="/images/avatar.svg" class="ml-5 h-5 w-5">
+
+                                <div class="block px-5 py-2 rounded-md text-base font-medium text-primary-500">{{ user.email }}</div>
+
                                 <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+
                                     <a :href="route('profile.edit')" class="block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">Προφίλ</a>
 
                                     <a :href="route('logout')">
@@ -220,11 +231,18 @@
                                         Προσθήκη μαθήματος
                                     </a>
 
-                                    <a :href="route('create.pdf.form')" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
+                                    <a :href="route('create.theory.form')" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
                                         <svg aria-hidden="true" data-prefix="fas" data-icon="plus" class="inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                             <path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
                                         </svg>
-                                        Προσθήκη θεωρίας
+                                        Προσθήκη Θεωρίας
+                                    </a>
+
+                                    <a :href="route('create.assignment.form')" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
+                                        <svg aria-hidden="true" data-prefix="fas" data-icon="plus" class="inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                                        </svg>
+                                        Προσθήκη Εργασίας
                                     </a>
                                 </div>
                             </div>
@@ -238,6 +256,8 @@
                             <div v-if="user" class="border border-top pt-5">
                                 <img src="/images/avatar.svg" class="ml-5 h-5 w-5">
                                 <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                                    <div class="block px-5 py-2 rounded-md text-base font-medium text-primary-500">{{ user.email }}</div>
+
                                     <a :href="route('profile.edit')" class="block px-5 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">Προφίλ</a>
 
                                     <a :href="route('logout')">

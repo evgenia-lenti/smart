@@ -2293,6 +2293,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ClassroomsPage",
@@ -2485,6 +2505,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -2700,6 +2721,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3230,6 +3256,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_clickaway__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-clickaway */ "./node_modules/vue-clickaway/dist/vue-clickaway.common.js");
 /* harmony import */ var vue_clickaway__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_clickaway__WEBPACK_IMPORTED_MODULE_0__);
+//
 //
 //
 //
@@ -39588,7 +39615,7 @@ var render = function() {
                                     staticClass:
                                       "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
                                     attrs: {
-                                      href: _vm.route("create.pdf.form")
+                                      href: _vm.route("create.theory.form")
                                     }
                                   },
                                   [
@@ -39616,7 +39643,46 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(
-                                      "\n                                        Προσθήκη θεωρίας\n                                    "
+                                      "\n                                        Προσθήκη Θεωρίας\n                                    "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                                    attrs: {
+                                      href: _vm.route("create.assignment.form")
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "svg",
+                                      {
+                                        staticClass:
+                                          "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                        attrs: {
+                                          "aria-hidden": "true",
+                                          "data-prefix": "fas",
+                                          "data-icon": "plus",
+                                          xmlns: "http://www.w3.org/2000/svg",
+                                          viewBox: "0 0 448 512"
+                                        }
+                                      },
+                                      [
+                                        _c("path", {
+                                          attrs: {
+                                            fill: "currentColor",
+                                            d:
+                                              "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                                          }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(
+                                      "\n                                        Προσθήκη Εργασίας\n                                    "
                                     )
                                   ]
                                 )
@@ -39658,6 +39724,15 @@ var render = function() {
                                   staticClass: "ml-5 h-5 w-5",
                                   attrs: { src: "/images/avatar.svg" }
                                 }),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "block px-5 py-2 rounded-md text-base font-medium text-primary-500"
+                                  },
+                                  [_vm._v(_vm._s(_vm.user.email))]
+                                ),
                                 _vm._v(" "),
                                 _c(
                                   "div",
@@ -40025,7 +40100,7 @@ var render = function() {
                               {
                                 staticClass:
                                   "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
-                                attrs: { href: _vm.route("create.pdf.form") }
+                                attrs: { href: _vm.route("create.theory.form") }
                               },
                               [
                                 _c(
@@ -40052,7 +40127,46 @@ var render = function() {
                                   ]
                                 ),
                                 _vm._v(
-                                  "\n                                        Προσθήκη θεωρίας\n                                    "
+                                  "\n                                        Προσθήκη Θεωρίας\n                                    "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass:
+                                  "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                                attrs: {
+                                  href: _vm.route("create.assignment.form")
+                                }
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass:
+                                      "inline-flex text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                    attrs: {
+                                      "aria-hidden": "true",
+                                      "data-prefix": "fas",
+                                      "data-icon": "plus",
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      viewBox: "0 0 448 512"
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        fill: "currentColor",
+                                        d:
+                                          "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(
+                                  "\n                                        Προσθήκη Εργασίας\n                                    "
                                 )
                               ]
                             )
@@ -40100,6 +40214,15 @@ var render = function() {
                               }
                             },
                             [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "block px-5 py-2 rounded-md text-base font-medium text-primary-500"
+                                },
+                                [_vm._v(_vm._s(_vm.user.email))]
+                              ),
+                              _vm._v(" "),
                               _c(
                                 "a",
                                 {
@@ -40485,61 +40608,63 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "label",
-      {
-        staticClass: "block text-sm font-medium text-gray-700 my-4",
-        attrs: { for: "location" }
-      },
-      [_vm._v("Προσθήκη μαθημάτων στην τάξη")]
-    ),
-    _vm._v(" "),
-    _c(
-      "select",
-      {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.courseSelected,
-            expression: "courseSelected"
+  return _c("div", { staticClass: "flex justify-end" }, [
+    _c("div", {}, [
+      _c(
+        "label",
+        {
+          staticClass: "block text-sm font-medium text-gray-700 my-4",
+          attrs: { for: "location" }
+        },
+        [_vm._v("Προσθήκη μαθημάτων στην τάξη")]
+      ),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.courseSelected,
+              expression: "courseSelected"
+            }
+          ],
+          staticClass:
+            "mt-1 block w-72 pl-3 pr-10 py-2 text-base border-gray-300\n            focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm rounded-md",
+          attrs: { id: "location", name: "location" },
+          on: {
+            change: [
+              function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.courseSelected = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              },
+              _vm.courseSelectedAttach
+            ]
           }
-        ],
-        staticClass:
-          "mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm rounded-md",
-        attrs: { id: "location", name: "location" },
-        on: {
-          change: [
-            function($event) {
-              var $$selectedVal = Array.prototype.filter
-                .call($event.target.options, function(o) {
-                  return o.selected
-                })
-                .map(function(o) {
-                  var val = "_value" in o ? o._value : o.value
-                  return val
-                })
-              _vm.courseSelected = $event.target.multiple
-                ? $$selectedVal
-                : $$selectedVal[0]
-            },
-            _vm.courseSelectedAttach
-          ]
-        }
-      },
-      _vm._l(_vm.courses, function(course, index) {
-        return _c("option", { key: index, domProps: { value: course.id } }, [
-          _vm._v(_vm._s(course.name))
-        ])
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c("input", {
-      attrs: { type: "hidden", name: "selected" },
-      domProps: { value: _vm.courseSelected }
-    })
+        },
+        _vm._l(_vm.courses, function(course, index) {
+          return _c("option", { key: index, domProps: { value: course.id } }, [
+            _vm._v(_vm._s(course.name))
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: "selected" },
+        domProps: { value: _vm.courseSelected }
+      })
+    ])
   ])
 }
 var staticRenderFns = []
@@ -40776,7 +40901,118 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c(
+            "div",
+            { staticClass: "h-screen grid md:flex overflow-hidden bg-white" },
+            [
+              _c(
+                "div",
+                { staticClass: "flex flex-col min-w-0 flex-1 overflow-hidden" },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "flex-1 relative z-0 flex overflow-hidden" },
+                    [
+                      _c(
+                        "main",
+                        {
+                          staticClass:
+                            "flex-1 relative z-0 overflow-y-auto focus:outline-none",
+                          attrs: { tabindex: "0" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "absolute inset-0 pt-4 md:py-6 px-4"
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "h-full border-4 border-gray-200 border-dashed rounded-lg"
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                Θεωρία\n\n                                "
+                                  ),
+                                  _vm._l(_vm.course.theories, function(
+                                    theory,
+                                    index
+                                  ) {
+                                    return _c("div", { key: index }, [
+                                      _c("div", [_vm._v(_vm._s(theory.name))])
+                                    ])
+                                  })
+                                ],
+                                2
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex flex-col min-w-0 flex-1 overflow-hidden" },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "flex-1 relative z-0 flex overflow-hidden" },
+                    [
+                      _c(
+                        "main",
+                        {
+                          staticClass:
+                            "flex-1 relative z-0 overflow-y-auto focus:outline-none",
+                          attrs: { tabindex: "0" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "absolute inset-0 pb-4 md:py-6 p-4 md:pr-4"
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "h-full border-4 border-gray-200 border-dashed rounded-lg"
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                Ασκήσεις\n\n                                "
+                                  ),
+                                  _vm._l(_vm.course.assignments, function(
+                                    assignment,
+                                    index
+                                  ) {
+                                    return _c("div", { key: index }, [
+                                      _c("div", [
+                                        _vm._v(_vm._s(assignment.name))
+                                      ])
+                                    ])
+                                  })
+                                ],
+                                2
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]
+          )
         ])
       : _c("div", { staticClass: "h-screen mb-10 mt-32 px-8" }, [
           _c(
@@ -40801,102 +41037,7 @@ var render = function() {
         ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "h-screen grid md:flex overflow-hidden bg-white" },
-      [
-        _c(
-          "div",
-          { staticClass: "flex flex-col min-w-0 flex-1 overflow-hidden" },
-          [
-            _c(
-              "div",
-              { staticClass: "flex-1 relative z-0 flex overflow-hidden" },
-              [
-                _c(
-                  "main",
-                  {
-                    staticClass:
-                      "flex-1 relative z-0 overflow-y-auto focus:outline-none",
-                    attrs: { tabindex: "0" }
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "absolute inset-0 pt-4 md:py-6 px-4" },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "h-full border-4 border-gray-200 border-dashed rounded-lg"
-                          },
-                          [
-                            _vm._v(
-                              "\n                                Θεωρία\n\n\n\n\n\n                            "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "flex flex-col min-w-0 flex-1 overflow-hidden" },
-          [
-            _c(
-              "div",
-              { staticClass: "flex-1 relative z-0 flex overflow-hidden" },
-              [
-                _c(
-                  "main",
-                  {
-                    staticClass:
-                      "flex-1 relative z-0 overflow-y-auto focus:outline-none",
-                    attrs: { tabindex: "0" }
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "absolute inset-0 pb-4 md:py-6 p-4 md:pr-4"
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "h-full border-4 border-gray-200 border-dashed rounded-lg"
-                          },
-                          [
-                            _vm._v(
-                              "\n                                Ασκήσεις\n                            "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ]
-            )
-          ]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -41956,6 +42097,15 @@ var render = function() {
                                     }
                                   },
                                   [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "block px-4 py-2 text-sm font-medium text-primary-500"
+                                      },
+                                      [_vm._v(_vm._s(_vm.user.email))]
+                                    ),
+                                    _vm._v(" "),
                                     _c(
                                       "a",
                                       {

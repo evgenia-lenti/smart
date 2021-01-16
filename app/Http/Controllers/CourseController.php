@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Assignment;
 use App\Models\Course;
 use App\Models\Theory;
 use Illuminate\Http\Request;
@@ -84,6 +85,8 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         $user = Auth::user();
+        $theory = Theory::find($course->theories);
+        $assignment = Assignment::find($course->assignments);
 
         return view('courses.show', ['course' => $course, 'user' => $user]);
     }

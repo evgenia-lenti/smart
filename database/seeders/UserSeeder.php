@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
             'telephone' => 6980950121,
             'address' => 'Περιστέρας 1 πειραιάς',
             'password' => bcrypt('12345678'),
-            'role_id' => Role::ADMIN,
+            'role_id' => Role::ADMINISTRATOR,
             'active' => true,
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString()
