@@ -79,6 +79,10 @@ Route::middleware('auth.role:educator')->group(function () {
     Route::get('upload-file/assignment/create', [App\Http\Controllers\AssignmentController::class, 'createForm'])->name('create.assignment.form');
     Route::post('upload-file/assignment', [App\Http\Controllers\AssignmentController::class, 'fileUpload'])->name('upload.assignment');
 
+    //download theory, assignment material
+    Route::get('/file-download/theory/{theory}', [App\Http\Controllers\TheoryController::class, 'fileDownload'])->name('download.theory');
+
+
 });
 
 Route::middleware('auth')->group(function () {

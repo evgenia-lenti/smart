@@ -40942,7 +40942,17 @@ var render = function() {
                                     index
                                   ) {
                                     return _c("div", { key: index }, [
-                                      _c("div", [_vm._v(_vm._s(theory.name))])
+                                      _c(
+                                        "a",
+                                        {
+                                          attrs: {
+                                            href: _vm.route("download.theory", {
+                                              theory: theory
+                                            })
+                                          }
+                                        },
+                                        [_vm._v(_vm._s(theory.name))]
+                                      )
                                     ])
                                   })
                                 ],

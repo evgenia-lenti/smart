@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Theory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class TheoryController extends Controller
 {
@@ -50,7 +51,14 @@ class TheoryController extends Controller
 
         return back()
             ->with('success','You have successfully file uplaod.')
+            ->with($theory->file_path)
             ->with('file', $name);
+
+    }
+
+    public function fileDownload(Theory $theory)
+    {
+        return Storage::download($theory->file_path);
 
     }
 

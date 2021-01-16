@@ -26,4 +26,5 @@ class Theory extends Model
         return $this->belongsTo(MaterialType::class);
     }
 
+
 }
