@@ -20,4 +20,9 @@ class Assignment extends Model
     {
         return $this->belongsTo(Course::class);
     }
+
+    public function type()
+    {
+        return $this->belongsTo(MaterialType::class);
+    }
 }

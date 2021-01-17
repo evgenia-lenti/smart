@@ -51,7 +51,6 @@ class TheoryController extends Controller
 
         return back()
             ->with('success','You have successfully file uplaod.')
-            ->with($theory->file_path)
             ->with('file', $name);
 
     }
@@ -62,10 +61,4 @@ class TheoryController extends Controller
 
     }
 
-    /*public function show(Theory $theory){
-
-        $path = Theory::find($theory->file_path);
-
-        return view('courses.show', compact('path'));
-    }*/
 }

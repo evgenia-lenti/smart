@@ -29,7 +29,7 @@
                                     Θεωρία
 
                                     <div v-for="(theory, index) in course.theories" :key="index">
-                                        <a :href="route('download.theory', {theory})">{{ theory.name }}</a>
+                                        <a :href="route('download.theory', {theory})" class="underline text-blue-500">{{ theory.name }}</a>
                                     </div>
 
                                 </div>
@@ -54,7 +54,7 @@
                                     Ασκήσεις
 
                                     <div v-for="(assignment, index) in course.assignments" :key="index">
-                                        <div>{{ assignment.name }}</div>
+                                        <a :href="route('download.assignment', {assignment})" class="underline text-blue-500">{{ assignment.name }}</a>
                                     </div>
 
                                 </div>

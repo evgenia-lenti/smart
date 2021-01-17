@@ -81,6 +81,7 @@ Route::middleware('auth.role:educator')->group(function () {
 
     //download theory, assignment material
     Route::get('/file-download/theory/{theory}', [App\Http\Controllers\TheoryController::class, 'fileDownload'])->name('download.theory');
+    Route::get('/file-download/assignment/{assignment}', [App\Http\Controllers\AssignmentController::class, 'fileDownload'])->name('download.assignment');
 
 
 });

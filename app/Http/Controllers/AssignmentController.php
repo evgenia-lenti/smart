@@ -6,6 +6,7 @@ use App\Models\Assignment;
 use App\Models\Theory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AssignmentController extends Controller
 {
@@ -55,10 +56,9 @@ class AssignmentController extends Controller
 
     }
 
-/*    public function show(Assignment $assignment){
+    public function fileDownload(Assignment $assignment)
+    {
+        return Storage::download($assignment->file_path);
 
-        $path = Assignment::find($assignment->file_path);
-
-        return view('courses.show', compact('path'));
-    }*/
+    }
 }

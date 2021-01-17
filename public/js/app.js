@@ -40945,6 +40945,8 @@ var render = function() {
                                       _c(
                                         "a",
                                         {
+                                          staticClass:
+                                            "underline text-blue-500",
                                           attrs: {
                                             href: _vm.route("download.theory", {
                                               theory: theory
@@ -41005,9 +41007,20 @@ var render = function() {
                                     index
                                   ) {
                                     return _c("div", { key: index }, [
-                                      _c("div", [
-                                        _vm._v(_vm._s(assignment.name))
-                                      ])
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "underline text-blue-500",
+                                          attrs: {
+                                            href: _vm.route(
+                                              "download.assignment",
+                                              { assignment: assignment }
+                                            )
+                                          }
+                                        },
+                                        [_vm._v(_vm._s(assignment.name))]
+                                      )
                                     ])
                                   })
                                 ],
