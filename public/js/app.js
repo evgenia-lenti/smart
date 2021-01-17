@@ -2519,22 +2519,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CoursesAttachComponent",
   data: function data() {
     return {
-      courseSelected: ''
+      courseSelected: '',
+      data: ''
     };
   },
   methods: {
     courseSelectedAttach: function courseSelectedAttach() {
-      console.log(this.courseSelected, this.classroom.id);
+      var _this = this;
+
       axios.post("/classroom/courses/".concat(this.courseSelected, "/create"), {
         course_id: this.courseSelected,
         classroom_id: this.classroom.id
       }).then(function (response) {
         var data = response.data;
-        console.log(data);
+        _this.data = data; //console.log(data)
       })["catch"](function (error) {});
     }
   },
@@ -40608,8 +40612,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex justify-end" }, [
+  return _c("div", { staticClass: "flex flex-col text-right mt-8" }, [
     _c("div", {}, [
+      _vm.data.status === true
+        ? _c("div", { staticClass: "justify-end text-green-700" }, [
+            _vm._v(_vm._s(_vm.data.message))
+          ])
+        : _c("div", { staticClass: "justify-end text-red-700" }, [
+            _vm._v(_vm._s(_vm.data.message))
+          ]),
+      _vm._v(" "),
       _c(
         "label",
         {
@@ -40631,7 +40643,7 @@ var render = function() {
             }
           ],
           staticClass:
-            "mt-1 block w-72 pl-3 pr-10 py-2 text-base border-gray-300\n            focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm rounded-md",
+            "mt-1 w-72 pl-3 pr-10 py-2 text-base border-gray-300\n            focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm rounded-md",
           attrs: { id: "location", name: "location" },
           on: {
             change: [
