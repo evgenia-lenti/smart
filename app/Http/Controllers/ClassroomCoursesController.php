@@ -16,13 +16,14 @@ class ClassroomCoursesController extends Controller
             $classroom = Classroom::find($request->classroom_id);
             $course = Course::find($request->course_id);
 
-            if ($classroom && $course) {
+            if (($classroom && $course) && !($classroom->courses->contains($course->id))) {
+
                 $classroom->courses()->attach($course->id);
 
                 return ['status' => true, 'message' => 'Το μάθημα προστέθηκε με επιτυχία.'];
             }
 
-            return ['status' => false, 'message' => 'Το μάθημα ή η τάξη δε βρέθηκε.'];
+            return ['status' => false, 'message' => 'Το μάθημα ή η τάξη δε βρέθηκε ή το μάθημα υπάρχει ήδη στην τάξη.'];
 
         } catch(\Exception $e) {
 
