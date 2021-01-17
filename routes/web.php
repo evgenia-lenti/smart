@@ -27,32 +27,32 @@ Route::middleware('guest')->group(function () {
 });
 
 
-//Route::middleware('auth.role:administrator')->group(function () {
+/*Route::middleware('auth.role:administrator')->group(function () {
 
     //classrooms
-    Route::get('classrooms/create', [App\Http\Controllers\ClassroomController::class, 'create'])->name('classrooms.create')->middleware('auth.role:educator, administrator');
-    Route::post('classrooms', [App\Http\Controllers\ClassroomController::class, 'store'])->name('classrooms.store')->middleware('auth.role:educator, administrator');
-    Route::put('classrooms/{classroom}', [App\Http\Controllers\ClassroomController::class, 'update'])->name('classrooms.update')->middleware('auth.role:educator, administrator');
-    Route::get('classrooms/{classroom}/edit', [App\Http\Controllers\ClassroomController::class, 'edit'])->name('classrooms.edit')->middleware('auth.role:educator, administrator');
-    Route::delete('classrooms/{classroom}', [App\Http\Controllers\ClassroomController::class, 'destroy'])->name('classrooms.destroy')->middleware('auth.role:educator, administrator');
+    Route::get('classrooms/create', [App\Http\Controllers\ClassroomController::class, 'create'])->name('classrooms.create');
+    Route::post('classrooms', [App\Http\Controllers\ClassroomController::class, 'store'])->name('classrooms.store');
+    Route::put('classrooms/{classroom}', [App\Http\Controllers\ClassroomController::class, 'update'])->name('classrooms.update');
+    Route::get('classrooms/{classroom}/edit', [App\Http\Controllers\ClassroomController::class, 'edit'])->name('classrooms.edit');
+    Route::delete('classrooms/{classroom}', [App\Http\Controllers\ClassroomController::class, 'destroy'])->name('classrooms.destroy');
 
     //courses
-    Route::get('courses/create', [App\Http\Controllers\CourseController::class, 'create'])->name('courses.create')->middleware('auth.role:educator, administrator');
-    Route::post('courses', [App\Http\Controllers\CourseController::class, 'store'])->name('courses.store')->middleware('auth.role:educator, administrator');
-    Route::put('courses/{course}', [App\Http\Controllers\CourseController::class, 'update'])->name('courses.update')->middleware('auth.role:educator, administrator');
-    Route::get('courses/{course}/edit', [App\Http\Controllers\CourseController::class, 'edit'])->name('courses.edit')->middleware('auth.role:educator, administrator');
-    Route::delete('courses/{course}', [App\Http\Controllers\CourseController::class, 'destroy'])->name('courses.destroy')->middleware('auth.role:educator, administrator');
+    Route::get('courses/create', [App\Http\Controllers\CourseController::class, 'create'])->name('courses.create');
+    Route::post('courses', [App\Http\Controllers\CourseController::class, 'store'])->name('courses.store');
+    Route::put('courses/{course}', [App\Http\Controllers\CourseController::class, 'update'])->name('courses.update');
+    Route::get('courses/{course}/edit', [App\Http\Controllers\CourseController::class, 'edit'])->name('courses.edit');
+    Route::delete('courses/{course}', [App\Http\Controllers\CourseController::class, 'destroy'])->name('courses.destroy');
 
     //attach courses to classroom
-    Route::post('classroom/courses/{id}/create', [App\Http\Controllers\ClassroomCoursesController::class, 'create'])->middleware('auth.role:educator, administrator');
-    Route::delete('classroom/courses/{id}', [App\Http\Controllers\ClassroomCoursesController::class, 'destroy'])->middleware('auth.role:educator, administrator');
+    Route::post('classroom/courses/{id}/create', [App\Http\Controllers\ClassroomCoursesController::class, 'create']);
+    Route::delete('classroom/courses/{id}', [App\Http\Controllers\ClassroomCoursesController::class, 'destroy']);
 
-    Route::get('upload-file/create', [App\Http\Controllers\TheoryController::class, 'createForm'])->name('create.pdf.form')->middleware('auth.role:educator, administrator');
-    Route::post('upload-file', [App\Http\Controllers\TheoryController::class, 'fileUpload'])->name('upload.pdf')->middleware('auth.role:educator, administrator');
-//});
+    Route::get('upload-file/create', [App\Http\Controllers\TheoryController::class, 'createForm'])->name('create.pdf.form');
+    Route::post('upload-file', [App\Http\Controllers\TheoryController::class, 'fileUpload'])->name('upload.pdf');
+});*/
 
 
-/*Route::middleware('auth.role:educator')->group(function () {
+Route::middleware('auth.role:educator')->group(function () {
 
     //classrooms
     Route::get('classrooms/create', [App\Http\Controllers\ClassroomController::class, 'create'])->name('classrooms.create');
@@ -73,10 +73,18 @@ Route::middleware('guest')->group(function () {
     Route::post('classroom/courses/{id}/create', [App\Http\Controllers\ClassroomCoursesController::class, 'create']);
     Route::delete('classroom/courses/{id}', [App\Http\Controllers\ClassroomCoursesController::class, 'destroy']);
 
-    Route::get('upload-file/create', [App\Http\Controllers\TheoryController::class, 'createForm'])->name('create.pdf.form');
-    Route::post('upload-file', [App\Http\Controllers\TheoryController::class, 'fileUpload'])->name('upload.pdf');
+    //upload theory, assignment material
+    Route::get('upload-file/theory/create', [App\Http\Controllers\TheoryController::class, 'createForm'])->name('create.theory.form');
+    Route::post('upload-file/theory', [App\Http\Controllers\TheoryController::class, 'fileUpload'])->name('upload.theory');
+    Route::get('upload-file/assignment/create', [App\Http\Controllers\AssignmentController::class, 'createForm'])->name('create.assignment.form');
+    Route::post('upload-file/assignment', [App\Http\Controllers\AssignmentController::class, 'fileUpload'])->name('upload.assignment');
 
-});*/
+    //download theory, assignment material
+    Route::get('/file-download/theory/{theory}', [App\Http\Controllers\TheoryController::class, 'fileDownload'])->name('download.theory');
+    Route::get('/file-download/assignment/{assignment}', [App\Http\Controllers\AssignmentController::class, 'fileDownload'])->name('download.assignment');
+
+
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
