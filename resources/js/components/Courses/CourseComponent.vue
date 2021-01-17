@@ -10,7 +10,7 @@
                             </h1>
                         </div>
                     </header>
-                    <div v-if="user.role_id === 1 || user.role_id === 2">
+                    <div v-if="(user.role_id === 1 || user.role_id === 2)">
                         <a :href="route('courses.edit', {course})"
                            class="w-56 mt-8 lg:mt-0 text-center inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                             Επεξεργασία Μαθήματος
@@ -28,9 +28,9 @@
                                 <div class="h-full border-4 border-gray-200 border-dashed rounded-lg">
                                     Θεωρία
 
-
-
-
+                                    <div v-for="(theory, index) in course.theories" :key="index">
+                                        <a :href="route('download.theory', {theory})" class="underline text-blue-500">{{ theory.name }}</a>
+                                    </div>
 
                                 </div>
                             </div>
@@ -52,6 +52,11 @@
                             <div class="absolute inset-0 pb-4 md:py-6 p-4 md:pr-4">
                                 <div class="h-full border-4 border-gray-200 border-dashed rounded-lg">
                                     Ασκήσεις
+
+                                    <div v-for="(assignment, index) in course.assignments" :key="index">
+                                        <a :href="route('download.assignment', {assignment})" class="underline text-blue-500">{{ assignment.name }}</a>
+                                    </div>
+
                                 </div>
                             </div>
                         </main>

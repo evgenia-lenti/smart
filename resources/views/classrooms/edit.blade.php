@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white mt-10 px-8 mb-20">
+    <div class="bg-white mt-10 px-8 mb-20 flex flex-col">
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1 mt-5">
                 <h3 class="text-lg font-medium leading-6 text-gray-900">Επεξεργασία Τάξης</h3>
@@ -107,7 +107,8 @@
             </div>
         </form>
 
-        <courses-attach-component :classroom="{{ $classroom }}" :courses="{{ $courses }}"></courses-attach-component>
+        <courses-attach-component :classroom="{{ $classroom }}" :courses="{{ $courses }}"
+                                    class="justify-end"></courses-attach-component>
     </div>
 
 @endsection
