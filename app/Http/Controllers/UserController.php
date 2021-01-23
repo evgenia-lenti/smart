@@ -53,7 +53,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->fill([
-            'role_id' => 2
+            'role_id' => 3
         ])->save();
 
         return redirect(route('welcome.index'));
