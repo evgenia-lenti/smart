@@ -53,6 +53,7 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'address' => ['string', 'max:255'],
+            'avatar' => ['required', 'max:2048'],
             'telephone' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -67,14 +68,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $request = request();
+
+        dd($request->hasFile('avatar'));
+        //$name = $request->file('avatar')->getClientOriginalName();
+
+        $path = $request->file('avatar')->store('public/files');
+
+
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'role_id' => 3,
             'telephone' => $data['telephone'],
             'address' => $data['address'],
+            'avatar' => $path,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        /*return back()
+            ->with('success','You have successfully created your profile.')
+            ->with('file', $name);*/
+
     }
 }

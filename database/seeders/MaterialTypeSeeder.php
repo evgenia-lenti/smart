@@ -34,5 +34,10 @@ class MaterialTypeSeeder extends Seeder
             'id' => 4,
             'name' => 'powerpoint'
         ]);
+
+        DB::table('material_types')->insert([
+            'id' => 5,
+            'name' => 'online'
+        ]);
     }
 }

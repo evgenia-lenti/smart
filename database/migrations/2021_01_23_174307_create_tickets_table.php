@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMaterialTypesTable extends Migration
+class CreateTicketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateMaterialTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('material_types', function (Blueprint $table) {
+        Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +26,6 @@ class CreateMaterialTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('material_types');
+        Schema::dropIfExists('tickets');
     }
 }

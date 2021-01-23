@@ -20,14 +20,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a79a2abc-c78a-475f-bf1d-14ed0e08cfe8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Policies/AssignmentPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Policies/ClassroomPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Policies/CoursePolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Policies/TheoryPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/ClassroomType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Payment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Reservation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Ticket.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_21_162510_create_classroom_types_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_23_173555_create_reservations_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_23_174234_create_payments_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_23_174307_create_tickets_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/ClassroomTypeSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/ReservationSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/smart.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/smart.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Classroom.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Classroom.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/MaterialType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MaterialType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_19_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_19_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_21_172124_create_courses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_21_172124_create_courses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_22_172110_create_classrooms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_22_172110_create_classrooms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_06_231158_create_material_types_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_06_231158_create_material_types_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/ClassroomSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/ClassroomSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/MaterialTypeSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/MaterialTypeSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,6 +179,8 @@
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/tightenco/ziggy" />
+      <path value="$PROJECT_DIR$/vendor/league/oauth1-client" />
+      <path value="$PROJECT_DIR$/vendor/laravel/socialite" />
     </include_path>
   </component>
   <component name="ProjectId" id="1lZbCJmOF8JHiMEynoTRIYZSP4n" />
@@ -228,7 +250,7 @@
       <workItem from="1610554793807" duration="1167000" />
       <workItem from="1610737053566" duration="4430000" />
       <workItem from="1611164966918" duration="33000" />
-      <workItem from="1611394247141" duration="3861000" />
+      <workItem from="1611394247141" duration="18384000" />
     </task>
     <servers />
   </component>
