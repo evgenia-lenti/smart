@@ -11,7 +11,9 @@ class Course extends Model
 
     protected $appends = ['path'];
 
-    protected $fillable = ['name', 'description', 'slug', 'user_id', 'visible', 'active'];
+    protected $fillable = ['name', 'description', 'slug', 'user_id', 'spots', 'visible', 'active'];
+
+
 
     public function users()
     {

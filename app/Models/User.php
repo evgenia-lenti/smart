@@ -25,6 +25,7 @@ class User extends Authenticatable
         'address',
         'telephone',
         'email',
+        'avatar',
         'email_verified_at',
         'password',
         'remember_token',
@@ -67,6 +68,11 @@ class User extends Authenticatable
 
     public function hasRole($role_name)
     {
-        return $this->role->name == $role_name;
+        return $this->role->name === $role_name;
+    }
+
+    public function isAdministrator() {
+
+        return $this->role->name === 'administrator';
     }
 }

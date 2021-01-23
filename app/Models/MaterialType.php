@@ -9,8 +9,9 @@ class MaterialType extends Model
 {
     use HasFactory;
 
-    const VIDEO = 0;
-    const PDF = 1;
-    const WORD = 2;
-    const POWERPOINT = 3;
+    const VIDEO = 1;
+    const PDF = 2;
+    const WORD = 3;
+    const POWERPOINT = 4;
+    const ONLINE = 5;
 }

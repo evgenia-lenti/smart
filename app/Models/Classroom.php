@@ -11,7 +11,7 @@ class Classroom extends Model
 
     protected $appends = ['path'];
 
-    protected $fillable = ['id','name', 'description', 'slug', 'user_id', 'visible', 'active'];
+    protected $fillable = ['id','name', 'description', 'slug', 'user_id', 'classroom_type_id', 'visible', 'active'];
 
     public function users()
     {
@@ -38,6 +38,11 @@ class Classroom extends Model
     public function getEditPathAttribute() {
 
         return "{$this->path}/edit";
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(ClassroomType::class);
     }
 
 }
