@@ -67,6 +67,11 @@ class User extends Authenticatable
 
     public function hasRole($role_name)
     {
-        return $this->role->name == $role_name;
+        return $this->role->name === $role_name;
+    }
+
+    public function isAdministrator() {
+
+        return $this->role->name === 'administrator';
     }
 }
