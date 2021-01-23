@@ -26,7 +26,7 @@
                 </div>
             @endif--}}
 
-            <form action="{{ route('register') }}" method="POST">
+            <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="overflow-hidden sm:rounded-md">
                     <div class="px-4 py-5 bg-white sm:p-6">

@@ -26,7 +26,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('profile.update') }}" method="POST">
+                <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="overflow-hidden sm:rounded-md">
@@ -81,6 +81,20 @@
 
                                     @error('address')
                                     @if($errors->has('address'))
+                                        <small class="text-red-500 text-sm">
+                                            {{ $message }}
+                                        </small>
+                                    @endif
+                                    @enderror
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-4">
+                                    <label for="avatar" class="block text-sm font-medium text-gray-700">Φωτογραφία (avatar)</label>
+                                    <input type="file" name="avatar" id="avatar" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full
+                                    shadow-sm sm:text-sm border-gray-300 rounded-md @error('avatar') is-invalid @enderror">
+
+                                    @error('avatar')
+                                    @if($errors->has('avatar'))
                                         <small class="text-red-500 text-sm">
                                             {{ $message }}
                                         </small>

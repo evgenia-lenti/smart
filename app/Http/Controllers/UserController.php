@@ -46,6 +46,14 @@ class UserController extends Controller
             ])->save();
         }
 
+        $name = $request->file('avatar')->getClientOriginalName();
+
+        $path = $request->file('avatar')->store('public/files');
+
+        $user->fill([
+           'avatar' => $path
+        ])->save();
+
         return redirect()->back()->with('success', 'Το προφίλ ενημερώθηκε με επιτυχία.')->withInput();
 
     }
