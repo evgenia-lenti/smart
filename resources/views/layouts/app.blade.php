@@ -24,6 +24,7 @@
             'appURL' => config('app.url'),
         ]); ?>
     </script>
+
 </head>
     <body>
         <div id="app">
