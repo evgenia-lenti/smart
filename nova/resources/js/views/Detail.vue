@@ -197,6 +197,7 @@ export default {
     resourceId: function (newResourceId, oldResourceId) {
       if (newResourceId != oldResourceId) {
         this.initializeComponent()
+        this.fetchCards()
       }
     },
   },
@@ -363,15 +364,22 @@ export default {
         )
 
         if (response && response.data && response.data.redirect) {
-          this.$router.push({ path: response.data.redirect })
+          this.$router.push({ path: response.data.redirect }, () => {
+            window.scrollTo(0, 0)
+          })
           return
         }
 
         if (!this.resource.softDeletes) {
-          this.$router.push({
-            name: 'index',
-            params: { resourceName: this.resourceName },
-          })
+          this.$router.push(
+            {
+              name: 'index',
+              params: { resourceName: this.resourceName },
+            },
+            () => {
+              window.scrollTo(0, 0)
+            }
+          )
           return
         }
 

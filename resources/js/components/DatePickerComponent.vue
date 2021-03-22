@@ -1,5 +1,5 @@
 <template>
-    <div>
+<!--    <div>
         <div class="flex max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             <DraggableCal :days="365" :years="1" :accentColor="'#f6ad55'"
                           @dateSelected="openDay($event)">
@@ -10,7 +10,6 @@
              class="bg-primary-500 overflow-hidden shadow rounded-lg max-w-screen-sm m-auto mb-20">
             <div class="px-4 py-5 sm:px-6 text-white">
                 {{ selectedDate  }}
-                <!-- We use less vertical padding on card headers on desktop than on body sections -->
             </div>
             <div v-if="periods.length > 0" class="divide-y divide-white ">
                 <div v-for="(period, index) in periods" :key="index">
@@ -19,21 +18,31 @@
                     </div>
                     <div class="px-4 py-4 sm:px-6">
                         Content goes here
-                        <!-- We use less vertical padding on card footers at all sizes than on headers or body sections -->
+                        &lt;!&ndash; We use less vertical padding on card footers at all sizes than on headers or body sections &ndash;&gt;
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </div>-->
+    <VueCal :time-from="9 * 60"
+            :time-to="21 * 60"
+            locale="el"
+            :disable-views="['years', 'year']"
+            today-button
+            :events="events"
+            :on-event-click="openReservationModal">
+    </VueCal>
 </template>
 
 <script>
-import DraggableCal from 'vue-draggable-cal';
+/*import DraggableCal from 'vue-draggable-cal';*/
 import { directive as onClickaway } from 'vue-clickaway';
 import moment from 'moment'
 import 'moment/locale/el'
 moment.locale('el')
+import VueCal from 'vue-cal'
+import 'vue-cal/dist/vuecal.css'
+import 'vue-cal/dist/i18n/el.js'
 
 
 export default {
@@ -41,31 +50,54 @@ export default {
 
     data(){
         return {
-            openDayEvents: true,
+            /*openDayEvents: true,
             selectedDate: '',
-            periods: ''
+            periods: ''*/
+            events: []
         }
     },
 
-    methods: {
-        openDay(event) {
-            this.openDayEvents = !this.openDayEvents
-            this.selectedDate = moment(event).format("DD MMMM YYYY")
+    props: {
+      periods: Array
+    },
 
-            axios.post(`/periods/${this.selectedDate}`, {
-                starts_at: this.selectedDate,
-            })
+    methods: {
+        /*openDay(event) {
+
+            this.selectedDate = event
+
+            console.log(event)
+            axios.get(`/periods/${this.selectedDate}`)
                 .then((response) => {
 
+                    this.openDayEvents = !this.openDayEvents
                     console.log(response.data)
                 })
                 .catch((error) => {
                 });
+        }*/
+
+        openReservationModal(event, e) {
+            console.log(event)
         }
     },
 
+    mounted() {
+        /*this.selectedDate = moment(event).format("DD MMMM YYYY")*/
+
+        axios.get('api/periods')
+            .then(response => {
+                this.events = response
+                //this.products = response.data
+                //console.log(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    },
+
     components: {
-        DraggableCal
+        VueCal
     },
 
     directives: {

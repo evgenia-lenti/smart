@@ -4,6 +4,7 @@ namespace Laravel\Nova\Tests\Feature;
 
 use Brick\Money\Context\CustomContext;
 use Laravel\Nova\Fields\Currency;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Tests\IntegrationTest;
 
 class CurrencyTest extends IntegrationTest
@@ -28,6 +29,33 @@ class CurrencyTest extends IntegrationTest
         $this->assertEquals('$200.00', $field->value);
     }
 
+    public function test_the_field_is_displayed_with_symbol()
+    {
+        $field = Currency::make('Cost')->symbol('USD');
+
+        $field->resolveForDisplay((object) ['cost' => 200]);
+
+        $this->assertEquals('USD 200.00', $field->value);
+    }
+
+    public function test_the_field_with_large_value_is_displayed_with_currency_character_on()
+    {
+        $field = Currency::make('Cost');
+
+        $field->resolveForDisplay((object) ['cost' => 2000000]);
+
+        $this->assertEquals('$2,000,000.00', $field->value);
+    }
+
+    public function test_the_field_with_large_value_is_displayed_with_symbol()
+    {
+        $field = Currency::make('Cost')->symbol('USD');
+
+        $field->resolveForDisplay((object) ['cost' => 2000000]);
+
+        $this->assertEquals('USD 2,000,000.00', $field->value);
+    }
+
     public function test_the_field_can_set_currency()
     {
         $field = Currency::make('Cost')->currency('GBP');
@@ -37,6 +65,15 @@ class CurrencyTest extends IntegrationTest
         $this->assertEquals('£200.00', $field->value);
     }
 
+    public function test_the_field_can_set_currency_and_symbol()
+    {
+        $field = Currency::make('Cost')->currency('GBP')->symbol('$');
+
+        $field->resolveForDisplay((object) ['cost' => 200]);
+
+        $this->assertEquals('$200.00', $field->value);
+    }
+
     public function test_the_field_can_change_locale()
     {
         $field = Currency::make('Cost')->currency('EUR')->locale('nl_NL');
@@ -44,6 +81,33 @@ class CurrencyTest extends IntegrationTest
         $field->resolveForDisplay((object) ['cost' => 200]);
 
         $this->assertEquals('€ 200,00', $field->value);
+    }
+
+    public function test_the_field_can_change_locale_and_symbol()
+    {
+        $field = Currency::make('Cost')->currency('EUR')->locale('nl_NL')->symbol('EUR');
+
+        $field->resolveForDisplay((object) ['cost' => 200]);
+
+        $this->assertEquals('EUR 200,00', $field->value);
+    }
+
+    public function test_the_field_with_large_value_can_change_locale()
+    {
+        $field = Currency::make('Cost')->currency('EUR')->locale('nl_NL');
+
+        $field->resolveForDisplay((object) ['cost' => 2000000]);
+
+        $this->assertEquals('€ 2.000.000,00', $field->value);
+    }
+
+    public function test_the_field_with_large_value_can_change_locale_and_symbol()
+    {
+        $field = Currency::make('Cost')->currency('EUR')->locale('nl_NL')->symbol('EUR');
+
+        $field->resolveForDisplay((object) ['cost' => 2000000]);
+
+        $this->assertEquals('EUR 2.000.000,00', $field->value);
     }
 
     public function test_the_field_handles_null()
@@ -95,5 +159,35 @@ class CurrencyTest extends IntegrationTest
         $field->resolveForDisplay((object) ['cost' => 200.12345678]);
 
         $this->assertEquals('$200.12345678', $field->value);
+    }
+
+    public function test_the_field_is_filled_correctly_using_minor_units()
+    {
+        $request = NovaRequest::create('/nova-api/users', 'POST', [
+            'editing' => true,
+            'editMode' => 'create',
+            'cost' => '2500',
+        ]);
+
+        $model = new \stdClass();
+
+        $field = Currency::make('Cost')->asMinorUnits()->fill($request, $model);
+
+        $this->assertEquals(2500, $model->cost);
+    }
+
+    public function test_the_field_is_filled_correctly_with_null_when_using_minor_units()
+    {
+        $request = NovaRequest::create('/nova-api/users', 'POST', [
+            'editing' => true,
+            'editMode' => 'create',
+            'cost' => null,
+        ]);
+
+        $model = new \stdClass();
+
+        $field = Currency::make('Cost')->asMinorUnits()->fill($request, $model);
+
+        $this->assertNull($model->cost);
     }
 }

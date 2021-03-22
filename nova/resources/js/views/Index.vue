@@ -47,6 +47,7 @@
           v-model="search"
           @keydown.stop="performSearch"
           @search="performSearch"
+          spellcheck="false"
         />
       </div>
 
@@ -337,19 +338,17 @@
 import {
   Capitalize,
   Deletable,
-  Errors,
   Filterable,
   HasCards,
-  Inflector,
   InteractsWithQueryString,
   InteractsWithResourceInformation,
   Minimum,
   Paginatable,
   PerPageable,
-  SingularOrPlural,
   mapProps,
 } from 'laravel-nova'
 import HasActions from '@/mixins/HasActions'
+import { CancelToken, Cancel } from 'axios'
 
 export default {
   mixins: [
@@ -397,10 +396,16 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    initialPerPage: {
+      type: Number,
+      required: false,
+    },
   },
 
   data: () => ({
     debouncer: null,
+    canceller: null,
     pollingListener: null,
     initialLoading: true,
     loading: true,
@@ -477,6 +482,8 @@ export default {
         )
       },
       () => {
+        if (this.canceller !== null) this.canceller()
+
         this.getResources()
       }
     )
@@ -490,11 +497,6 @@ export default {
     }
   },
 
-  beforeRouteUpdate(to, from, next) {
-    next()
-    this.initializeState(false)
-  },
-
   /**
    * Unbind the keydown even listener when the component is destroyed
    */
@@ -504,6 +506,13 @@ export default {
     }
 
     document.removeEventListener('keydown', this.handleKeydown)
+  },
+
+  watch: {
+    $route(to, from) {
+      this.initializeSearchFromQueryString()
+      this.initializeState(false)
+    },
   },
 
   methods: {
@@ -581,22 +590,32 @@ export default {
         return Minimum(
           Nova.request().get('/nova-api/' + this.resourceName, {
             params: this.resourceRequestQueryString,
+            cancelToken: new CancelToken(canceller => {
+              this.canceller = canceller
+            }),
           }),
           300
-        ).then(({ data }) => {
-          this.resources = []
+        )
+          .then(({ data }) => {
+            this.resources = []
 
-          this.resourceResponse = data
-          this.resources = data.resources
-          this.softDeletes = data.softDeletes
-          this.perPage = data.per_page
+            this.resourceResponse = data
+            this.resources = data.resources
+            this.softDeletes = data.softDeletes
+            this.perPage = data.per_page
+            this.allMatchingResourceCount = data.total
 
-          this.loading = false
+            this.loading = false
 
-          this.getAllMatchingResourceCount()
+            Nova.$emit('resources-loaded')
+          })
+          .catch(e => {
+            if (e instanceof Cancel) {
+              return
+            }
 
-          Nova.$emit('resources-loaded')
-        })
+            throw e
+          })
       })
     },
 
@@ -796,7 +815,7 @@ export default {
         this.resourceResponse = data
         this.resources = [...this.resources, ...data.resources]
 
-        this.getAllMatchingResourceCount()
+        this.allMatchingResourceCount = data.total
 
         Nova.$emit('resources-loaded')
       })
@@ -815,6 +834,7 @@ export default {
     initializePerPageFromQueryString() {
       this.perPage =
         this.$route.query[this.perPageParameter] ||
+        this.initialPerPage ||
         this.resourceInformation.perPageOptions[0]
     },
 

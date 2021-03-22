@@ -15,14 +15,13 @@ class UpdateWithBelongsToTest extends DuskTestCase
      */
     public function resource_can_be_updated_to_new_parent()
     {
-        $this->setupLaravel();
-
         $user = User::find(1);
         $user->posts()->save($post = PostFactory::new()->make());
 
         $this->browse(function (Browser $browser) use ($post) {
             $browser->loginAs(User::find(1))
                     ->visit(new Update('posts', $post->id))
+                    ->waitForTextIn('h1', 'Update User Post: '.$post->id, 25)
                     ->select('@user', 2)
                     ->update()
                     ->waitForText('The user post was updated');
@@ -39,8 +38,6 @@ class UpdateWithBelongsToTest extends DuskTestCase
      */
     public function belongs_to_field_should_ignore_query_parameters_when_editing()
     {
-        $this->setupLaravel();
-
         $user = User::find(1);
         $user->posts()->save($post = PostFactory::new()->make());
 
@@ -51,6 +48,7 @@ class UpdateWithBelongsToTest extends DuskTestCase
                     'viaResourceId' => 2,
                     'viaRelationship' => 'posts',
                 ]))
+                ->waitForTextIn('h1', 'Update User Post: '.$post->id, 25)
                 ->assertValue('@user', 1); // not 2
 
             $browser->blank();

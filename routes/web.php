@@ -62,9 +62,7 @@ use Illuminate\Support\Facades\Route;
     Route::patch('user/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::delete('user/{user}', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('user.destroy');
 
-    //periods
-    Route::get('periods', [App\Http\Controllers\PeriodController::class, 'index'])->name('periods.index');
-    Route::post('periods/{period}', [App\Http\Controllers\PeriodController::class, 'show'])->name('periods.show');
+
 
 
 Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');

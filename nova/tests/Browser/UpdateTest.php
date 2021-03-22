@@ -16,8 +16,6 @@ class UpdateTest extends DuskTestCase
      */
     public function cant_view_update_page_if_not_authorized_to_update()
     {
-        $this->setupLaravel();
-
         $post = PostFactory::new()->create();
         $post2 = PostFactory::new()->create();
 
@@ -41,8 +39,6 @@ class UpdateTest extends DuskTestCase
      */
     public function resource_can_be_updated()
     {
-        $this->setupLaravel();
-
         $user = User::find(1);
         $user->name = 'Taylor';
         $user->save();
@@ -50,6 +46,8 @@ class UpdateTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($user) {
             $browser->loginAs($user)
                     ->visit(new Update('users', 1))
+                    ->waitForTextIn('h1', 'Update User: 1', 25)
+                    ->assertSee('E-mail address should be unique')
                     ->type('@name', 'Taylor Otwell upDATED')
                     ->type('@password', 'secret')
                     ->update();
@@ -68,13 +66,14 @@ class UpdateTest extends DuskTestCase
      */
     public function validation_errors_are_displayed()
     {
-        $this->setupLaravel();
-
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::find(1))
                     ->visit(new Update('users', 1))
+                    ->waitForTextIn('h1', 'Update User: 1', 25)
                     ->type('@name', ' ')
                     ->update()
+                    ->waitForText('There was a problem submitting the form.', 15)
+                    ->assertSee('E-mail address should be unique')
                     ->assertSee('The Name field is required.');
 
             $browser->blank();
@@ -86,13 +85,13 @@ class UpdateTest extends DuskTestCase
      */
     public function resource_can_be_updated_and_user_can_continue_editing()
     {
-        $this->setupLaravel();
-
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::find(1))
                     ->visit(new Update('users', 1))
+                    ->waitForTextIn('h1', 'Update User: 1', 25)
                     ->type('@name', 'Taylor Otwell Updated')
                     ->type('@password', 'secret')
+                    ->assertSee('E-mail address should be unique')
                     ->updateAndContinueEditing();
 
             $user = User::find(1);
