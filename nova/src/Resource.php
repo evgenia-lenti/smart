@@ -107,7 +107,16 @@ abstract class Resource implements ArrayAccess, JsonSerializable, UrlRoutable
     public static $globalSearchResults = 5;
 
     /**
+     * The number of results to display when searching relatable resource without Scout.
+     *
+     * @var int|null
+     */
+    public static $relatableSearchResults = null;
+
+    /**
      * The number of results to display when searching the resource using Scout.
+     *
+     * @var int
      */
     public static $scoutSearchResults = 200;
 
@@ -344,7 +353,7 @@ abstract class Resource implements ArrayAccess, JsonSerializable, UrlRoutable
      */
     public function title()
     {
-        return $this->{static::$title};
+        return (string) data_get($this, static::$title);
     }
 
     /**
@@ -538,7 +547,7 @@ abstract class Resource implements ArrayAccess, JsonSerializable, UrlRoutable
      */
     public function jsonSerialize()
     {
-        $this->serializeWithId($this->resolveFields(
+        return $this->serializeWithId($this->resolveFields(
             resolve(NovaRequest::class)
         ));
     }

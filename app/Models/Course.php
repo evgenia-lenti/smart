@@ -30,6 +30,11 @@ class Course extends Model
         return $this->hasMany(Theory::class);
     }
 
+    public function periods()
+    {
+        return $this->hasMany(Period::class);
+    }
+
     public function assignments()
     {
         return $this->hasMany(Assignment::class);

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             ClassroomUserSeeder::class,
             ClassroomCourseSeeder::class,
             MaterialTypeSeeder::class,
+            PeriodSeeder::class
             //TheorySeeder::class,
             //AssignmentSeeder::class
         ]);

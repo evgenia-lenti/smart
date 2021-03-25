@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\PeriodController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//periods
+Route::get('periods', [PeriodController::class, 'index'])->name('periods.index');
+Route::get('periods/{period}', [PeriodController::class, 'show'])->name('periods.show');
 

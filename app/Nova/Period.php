@@ -3,21 +3,20 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\Boolean;
 
-class Reservation extends Resource
+class Period extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Reservation::class;
+    public static $model = \App\Models\Period::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -32,7 +31,7 @@ class Reservation extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'User', 'Classroom', 'Course', 'Created At'
+        'id',
     ];
 
     /**
@@ -46,20 +45,13 @@ class Reservation extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
-            BelongsTo::make('User'),
+            Text::make('Name'),
 
-            BelongsTo::make('Classroom'),
+            HasMany::make('Courses'),
 
-            BelongsTo::make('Course'),
+            DateTime::make('Starts At'),
 
-            Number::make('Number Of Spots'),
-
-            Boolean::make('Paid'),
-
-            DateTime::make('Created At'),
-
-            DateTime::make('Updated At'),
-
+            DateTime::make('Ends At'),
         ];
     }
 
