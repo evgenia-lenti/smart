@@ -16,38 +16,38 @@ class PeriodSeeder extends Seeder
     public function run()
     {
         DB::table('periods')->insert([
-            'name' => 'day',
+            'name' => 'Ημερήσιο',
             'course_id' => 1,
-            'starts_at' => Carbon::tomorrow(),
-            'ends_at' => Carbon::tomorrow(),
+            'starts' => Carbon::createFromDate(2021, 03, 28),
+            'ends' => Carbon::createFromDate(2021, 03, 28),
         ]);
 
         DB::table('periods')->insert([
-            'name' => 'day',
+            'name' => 'Ημερήσιο',
             'course_id' => 3,
-            'starts_at' => Carbon::createFromDate(),
-            'ends_at' => Carbon::createFromDate(),
+            'starts' => Carbon::createFromDate(),
+            'ends' => Carbon::createFromDate(),
         ]);
 
         DB::table('periods')->insert([
-            'name' => 'week',
+            'name' => 'Εβδομαδιαίο',
             'course_id' => 2,
-            'starts_at' => Carbon::tomorrow(),
-            'ends_at' => Carbon::tomorrow(),
+            'starts' => Carbon::createFromDate(2021, 03, 22),
+            'ends' => Carbon::createFromDate(2021, 03, 26),
         ]);
 
         DB::table('periods')->insert([
-            'name' => 'semester',
+            'name' => 'Εξαμηνιαίο',
             'course_id' => 5,
-            'starts_at' => Carbon::createFromDate(2021, 10, 01),
-            'ends_at' => Carbon::createFromDate(2022, 02, 01),
+            'starts' => Carbon::createFromDate(2021, 01, 01),
+            'ends' => Carbon::createFromDate(2021, 06, 01),
         ]);
 
         DB::table('periods')->insert([
-            'name' => 'semester',
+            'name' => 'Εξαμηνιαίο',
             'course_id' => 4,
-            'starts_at' => Carbon::createFromDate(2021, 10, 01),
-            'ends_at' => Carbon::createFromDate(2022, 02, 01),
+            'starts' => Carbon::createFromDate(2021, 01, 16),
+            'ends' => Carbon::createFromDate(2021, 06, 15),
         ]);
     }
 }

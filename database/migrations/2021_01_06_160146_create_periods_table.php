@@ -17,8 +17,8 @@ class CreatePeriodsTable extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('course_id')->constrained();
-            $table->dateTime('starts_at');
-            $table->dateTime('ends_at');
+            $table->dateTime('starts');
+            $table->dateTime('ends');
             $table->timestamps();
         });
     }

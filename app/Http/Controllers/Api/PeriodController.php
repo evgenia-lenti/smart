@@ -10,28 +10,8 @@ class PeriodController extends Controller
 {
     public function index()
     {
-        $periods = [];
-        $periods = Period::all()->toArray();
+        $periods = Period::with('course')->get();
 
-        dd($periods);
-
-        /*foreach ($periods as $period)
-            return $periods->push($period);*/
-
+        return $periods;
     }
-
-    public function show($selectedDate)
-    {
-        dd($selectedDate);
-        /*$period = Period::where('starts_at', $selectedDate)->first();
-
-        dd($period);
-        $periods->load('courses');*/
-
-
-
-        return $period;
-    }
-
-
 }
