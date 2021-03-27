@@ -3,6 +3,7 @@
 namespace Laravel\Nova;
 
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Query\Builder;
 
 class GlobalSearch
 {
@@ -51,7 +52,7 @@ class GlobalSearch
     protected function getSearchResults()
     {
         foreach ($this->resources as $resourceClass) {
-            $query = $resourceClass::buildIndexQuery(
+            $query = (new Builder($resourceClass))->search(
                 $this->request, $resourceClass::newModel()->newQuery(),
                 $this->request->search
             );
@@ -79,8 +80,10 @@ class GlobalSearch
         return [
             'resourceName' => $resourceClass::uriKey(),
             'resourceTitle' => $resourceClass::label(),
-            'title' => $resource->title(),
-            'subTitle' => $resource->subtitle(),
+            'title' => (string) $resource->title(),
+            'subTitle' => transform($resource->subtitle(), function ($subtitle) {
+                return (string) $subtitle;
+            }),
             'resourceId' => $model->getKey(),
             'url' => url(Nova::path().'/resources/'.$resourceClass::uriKey().'/'.$model->getKey()),
             'avatar' => $resource->resolveAvatarUrl($this->request),

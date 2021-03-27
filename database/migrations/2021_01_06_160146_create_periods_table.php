@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTicketsTable extends Migration
+class CreatePeriodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateTicketsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tickets', function (Blueprint $table) {
+        Schema::create('periods', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('course_id')->constrained();
+            $table->dateTime('starts');
+            $table->dateTime('ends');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateTicketsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tickets');
+        Schema::dropIfExists('periods');
     }
 }

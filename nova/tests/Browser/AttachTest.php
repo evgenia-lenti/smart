@@ -17,19 +17,18 @@ class AttachTest extends DuskTestCase
      */
     public function resource_can_be_attached()
     {
-        $this->setupLaravel();
-
         $role = RoleFactory::new()->create();
 
         $this->browse(function (Browser $browser) use ($role) {
             $browser->loginAs(User::find(1))
                     ->visit(new Detail('users', 1))
-                    ->waitFor('@roles-index-component', 25)
                     ->within(new IndexComponent('roles'), function ($browser) {
                         $browser->click('@attach-button');
                     })
                     ->on(new Attach('users', 1, 'roles'))
                     ->waitFor('.content form', 25)
+                    ->assertSeeIn('@via-resource-field', 'User')
+                    ->assertSeeIn('@via-resource-field', '1')
                     ->selectAttachable($role->id)
                     ->clickAttach();
 
@@ -48,31 +47,32 @@ class AttachTest extends DuskTestCase
      */
     public function fields_on_intermediate_table_should_be_stored()
     {
-        $this->setupLaravel();
+        $this->whileSearchable(function () {
+            $role = RoleFactory::new()->create();
 
-        $role = RoleFactory::new()->create();
+            $this->browse(function (Browser $browser) use ($role) {
+                $browser->loginAs(User::find(1))
+                        ->visit(new Detail('users', 1))
+                        ->within(new IndexComponent('roles'), function ($browser) {
+                            $browser->click('@attach-button');
+                        })
+                        ->on(new Attach('users', 1, 'roles'))
+                        ->waitFor('.content form', 25)
+                        ->assertSeeIn('@via-resource-field', 'User')
+                        ->assertSeeIn('@via-resource-field', '1')
+                        ->selectAttachable($role->id)
+                        ->type('@notes', 'Test Notes')
+                        ->clickAttach()
+                        ->waitFor('[dusk="roles-index-component"] table', 60);
 
-        $this->browse(function (Browser $browser) use ($role) {
-            $browser->loginAs(User::find(1))
-                    ->visit(new Detail('users', 1))
-                    ->waitFor('@roles-index-component', 25)
-                    ->within(new IndexComponent('roles'), function ($browser) {
-                        $browser->click('@attach-button');
-                    })
-                    ->on(new Attach('users', 1, 'roles'))
-                    ->waitFor('.content form', 25)
-                    ->selectAttachable($role->id)
-                    ->type('@notes', 'Test Notes')
-                    ->clickAttach()
-                    ->waitFor('[dusk="roles-index-component"] table', 60);
+                $this->assertDatabaseHas('role_user', [
+                    'user_id' => '1',
+                    'role_id' => '1',
+                    'notes' => 'Test Notes',
+                ]);
 
-            $this->assertDatabaseHas('role_user', [
-                'user_id' => '1',
-                'role_id' => '1',
-                'notes' => 'Test Notes',
-            ]);
-
-            $browser->blank();
+                $browser->blank();
+            });
         });
     }
 
@@ -81,21 +81,21 @@ class AttachTest extends DuskTestCase
      */
     public function validation_errors_are_displayed()
     {
-        $this->setupLaravel();
-
         $role = RoleFactory::new()->create();
 
         $this->browse(function (Browser $browser) {
             $browser->loginAs(User::find(1))
                     ->visit(new Detail('users', 1))
-                    ->waitFor('@roles-index-component', 25)
                     ->within(new IndexComponent('roles'), function ($browser) {
                         $browser->click('@attach-button');
                     })
                     ->on(new Attach('users', 1, 'roles'))
                     ->waitFor('.content form', 25)
+                    ->assertSeeIn('@via-resource-field', 'User')
+                    ->assertSeeIn('@via-resource-field', '1')
                     ->clickAttach()
-                    ->waitForText('The role field is required.');
+                    ->waitForText('There was a problem submitting the form.', 15)
+                    ->assertSee('The role field is required.');
 
             $this->assertDatabaseMissing('role_user', [
                 'user_id' => '1',

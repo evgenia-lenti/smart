@@ -10,6 +10,7 @@ use Laravel\Nova\Contracts\RelatableField;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Http\Requests\ResourceIndexRequest;
 use Laravel\Nova\Nova;
+use Laravel\Nova\Query\Builder;
 use Laravel\Nova\Resource;
 use Laravel\Nova\Rules\Relatable;
 use Laravel\Nova\TrashedStatus;
@@ -181,10 +182,17 @@ class MorphTo extends Field implements RelatableField
         if ($value) {
             if (! is_string($this->resourceClass)) {
                 $this->morphToType = $value->getMorphClass();
-                $this->value = $value->getKey();
+                $this->value = (string) $value->getKey();
+
+                if ($this->value != $value->getKey()) {
+                    $this->morphToId = (string) $this->morphToId;
+                }
+
                 $this->viewable = false;
             } else {
                 $resource = new $this->resourceClass($value);
+
+                $this->morphToId = optional(ID::forResource($resource))->value ?? $this->morphToId;
 
                 $this->value = $this->formatDisplayValue(
                     $value, Nova::resourceForModel($value)
@@ -265,7 +273,7 @@ class MorphTo extends Field implements RelatableField
         if ($relatedResource = Nova::resourceForKey($request->{$this->attribute.'_type'})) {
             return new Relatable($request, $this->buildMorphableQuery(
                 $request, $relatedResource, $request->{$this->attribute.'_trashed'} === 'true'
-            ));
+            )->toBase());
         }
     }
 
@@ -319,15 +327,17 @@ class MorphTo extends Field implements RelatableField
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @param  string  $relatedResource
      * @param  bool  $withTrashed
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return \Laravel\Nova\Query\Builder
      */
     public function buildMorphableQuery(NovaRequest $request, $relatedResource, $withTrashed = false)
     {
         $model = $relatedResource::newModel();
 
-        $query = $request->first === 'true'
-                        ? $model->newQueryWithoutScopes()->whereKey($request->current)
-                        : $relatedResource::buildIndexQuery(
+        $query = new Builder($relatedResource);
+
+        $request->first === 'true'
+                        ? $query->whereKey($model->newQueryWithoutScopes(), $request->current)
+                        : $query->search(
                                 $request, $model->newQuery(), $request->search,
                                 [], [], TrashedStatus::fromBoolean($withTrashed)
                           );
@@ -404,7 +414,7 @@ class MorphTo extends Field implements RelatableField
             return call_user_func($display, $resource);
         }
 
-        return $resource->title();
+        return (string) $resource->title();
     }
 
     /**

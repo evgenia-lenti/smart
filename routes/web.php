@@ -26,7 +26,6 @@ use Illuminate\Support\Facades\Route;
         Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register');
     });
 
-
     //classrooms
     Route::get('classrooms/create', [App\Http\Controllers\ClassroomController::class, 'create'])->name('classrooms.create');
     Route::post('classrooms', [App\Http\Controllers\ClassroomController::class, 'store'])->name('classrooms.store');
@@ -63,17 +62,12 @@ use Illuminate\Support\Facades\Route;
     Route::patch('user/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::delete('user/{user}', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('user.destroy');
 
-    Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
+
+
+
+Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
 
 
 
     Auth::routes();
 
-
-//Route::get('payments', 'PaymentController@index')->name('payments.index');
-//Route::get('subscription/cancel/confirm', 'SubscriptionController@cancel')->name('subscription.cancel');
-//Route::get('subscription/reactivate/confirm', 'SubscriptionController@reactivate')->name('subscription.reactivate');
-//Route::get('subscription/courses/add', 'SubscriptionController@showAddCoursesForm');
-//Route::post('subscription/courses/add', 'SubscriptionController@addCourses');
-//Route::get('resubscribe', 'SubscriptionController@showResubscriptionForm');
-//Route::post('resubscribe', 'SubscriptionController@resubscribe')->name('subscription.resubscribe');

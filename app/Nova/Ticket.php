@@ -3,9 +3,12 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\Boolean;
 
 class Ticket extends Resource
 {
@@ -29,7 +32,7 @@ class Ticket extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'Created At'
+        'id', 'User', 'Classroom', 'Course', 'Created At'
     ];
 
     /**
@@ -43,9 +46,20 @@ class Ticket extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
+            BelongsTo::make('User'),
+
+            BelongsTo::make('Classroom'),
+
+            BelongsTo::make('Course'),
+
+            Number::make('Number Of Spots'),
+
+            Boolean::make('Paid'),
+
             DateTime::make('Created At'),
 
             DateTime::make('Updated At'),
+
         ];
     }
 
