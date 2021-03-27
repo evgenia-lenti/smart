@@ -1899,6 +1899,146 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BookingFormComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/BookingFormComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "BookingFormComponent",
+  data: function data() {
+    return {
+      successMessage: '',
+      selected: null,
+      spots: 0,
+      user: window.smart.user,
+      form: {
+        first_name: null,
+        last_name: null,
+        email: null,
+        telephone: null
+      }
+    };
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      //this.spots = 1
+      axios.post('/api/booking', {
+        form: this.form,
+        user: window.smart.user,
+        selected_course: this.selected
+      }).then(function (response) {
+        console.log(response);
+
+        if (response.data.status) {
+          //this.spots = 0
+          _this.successMessage = 'Η κράτησή σας πραγματοοιήθηκε με επιτυχία. Θέλετε να πραγματοποιήσετε και άλλη κράτηση;';
+        } else {}
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  created: function created() {
+    new URL(location.href).searchParams.get('selected');
+    var params = new URL(location.href).searchParams;
+    this.selected = params.get('selected');
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BookingModal.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/BookingModal.vue?vue&type=script&lang=js& ***!
@@ -1912,6 +2052,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var moment_locale_el__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment/locale/el */ "./node_modules/moment/locale/el.js");
 /* harmony import */ var moment_locale_el__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment_locale_el__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
+//
 //
 //
 //
@@ -1958,23 +2100,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale('el');
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "BookingModal",
-  data: function data() {
-    return {};
-  },
   props: {
-    selected: Object
+    selected: Object,
+    events: Array
   },
   computed: {
     startDate: function startDate() {
-      return this.selected.starts = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.selected.starts).format("d-MM-YYYY");
+      return this.selected.starts = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.selected.starts).format("DD-MM-YYYY");
     },
     endDate: function endDate() {
-      return this.selected.ends = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.selected.ends).format("d-MM-YYYY");
+      return this.selected.ends = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.selected.ends).format("DD-MM-YYYY");
     }
   },
-  methods: {//axios call to a booking controller
+  created: function created() {
+    /*console.log('i am booking modal')
+    bus.$emit('selected', {name:'foo'})*/
   }
 });
 
@@ -72136,6 +72279,290 @@ exports.mixin = mixin;
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BookingFormComponent.vue?vue&type=template&id=65b8c4aa&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/BookingFormComponent.vue?vue&type=template&id=65b8c4aa& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "px-4 pt-8 m-auto max-w-2xl" }, [
+      _c("div", [
+        _c(
+          "h3",
+          { staticClass: "text-lg leading-6 font-medium text-gray-900" },
+          [_vm._v("\n                    Στοιχεία κράτησης\n                ")]
+        ),
+        _vm._v(" "),
+        _c("p", { staticClass: "mt-1 text-sm text-gray-500" }, [
+          _vm._v(
+            "\n                    Παρακαλώ εισάγετε τα στοιχεία της κράτησης.\n                "
+          )
+        ]),
+        _vm._v(" "),
+        _vm.successMessage
+          ? _c("div", { staticClass: "text-green-700" }, [
+              _c("p", [_vm._v(_vm._s(_vm.successMessage))])
+            ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          ref: "form",
+          attrs: { method: "POST" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submit($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "mt-6 space-y-6" }, [
+            _c("div", {}, [
+              _c(
+                "label",
+                {
+                  staticClass: "block text-sm font-medium text-gray-700",
+                  attrs: { for: "first_name" }
+                },
+                [
+                  _vm._v(
+                    "\n                            Όνομα\n                        "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-1" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.first_name,
+                      expression: "form.first_name"
+                    }
+                  ],
+                  staticClass:
+                    "shadow-sm focus:ring-gray-700 focus:border-gray-700 block w-full sm:text-sm border-gray-300 rounded-md",
+                  attrs: {
+                    type: "text",
+                    name: "first_name",
+                    id: "first_name",
+                    autocomplete: "given-name"
+                  },
+                  domProps: { value: _vm.form.first_name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "first_name", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", {}, [
+              _c(
+                "label",
+                {
+                  staticClass: "block text-sm font-medium text-gray-700",
+                  attrs: { for: "last_name" }
+                },
+                [
+                  _vm._v(
+                    "\n                            Επώνυμο\n                        "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-1" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.last_name,
+                      expression: "form.last_name"
+                    }
+                  ],
+                  staticClass:
+                    "shadow-sm focus:ring-gray-700 focus:border-gray-700 block w-full sm:text-sm border-gray-300 rounded-md",
+                  attrs: {
+                    type: "text",
+                    name: "last_name",
+                    id: "last_name",
+                    autocomplete: "family-name"
+                  },
+                  domProps: { value: _vm.form.last_name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "last_name", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", {}, [
+              _c(
+                "label",
+                {
+                  staticClass: "block text-sm font-medium text-gray-700",
+                  attrs: { for: "email" }
+                },
+                [
+                  _vm._v(
+                    "\n                            Email\n                        "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-1" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.email,
+                      expression: "form.email"
+                    }
+                  ],
+                  staticClass:
+                    "shadow-sm focus:ring-gray-700 focus:border-gray-700 block w-full sm:text-sm border-gray-300 rounded-md",
+                  attrs: {
+                    id: "email",
+                    name: "email",
+                    type: "email",
+                    autocomplete: "email"
+                  },
+                  domProps: { value: _vm.form.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "email", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", {}, [
+              _c(
+                "label",
+                {
+                  staticClass: "block text-sm font-medium text-gray-700",
+                  attrs: { for: "telephone" }
+                },
+                [
+                  _vm._v(
+                    "\n                            Τηλέφωνο\n                        "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-1" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.telephone,
+                      expression: "form.telephone"
+                    }
+                  ],
+                  staticClass:
+                    "shadow-sm focus:ring-gray-700 focus:border-gray-700 block w-full sm:text-sm border-gray-300 rounded-md",
+                  attrs: {
+                    id: "telephone",
+                    name: "telephone",
+                    type: "tel",
+                    autocomplete: "tel"
+                  },
+                  domProps: { value: _vm.form.telephone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "telephone", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "my-10" }, [
+      _c("div", { staticClass: "my-4" }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "block w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium\n                                rounded-md text-white bg-gray-200\n                                hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:col-start-1 sm:text-sm",
+            attrs: { type: "submit" }
+          },
+          [
+            _vm._v(
+              "\n                            Ακύρωση\n                        "
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "my-4" }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "block w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium\n                                rounded-md text-white bg-primary-500\n                                hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:col-start-2 sm:text-sm",
+            attrs: { type: "submit" }
+          },
+          [
+            _vm._v(
+              "\n                            Κράτηση\n                        "
+            )
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BookingModal.vue?vue&type=template&id=81ae8882&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/BookingModal.vue?vue&type=template&id=81ae8882& ***!
@@ -72166,7 +72593,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+            "flex items-end justify-center min-h-screen pt-4 px-4 pb-48 sm:pb-20 text-center sm:block sm:p-0"
         },
         [
           _c("div", {
@@ -72259,11 +72686,16 @@ var render = function() {
                 },
                 [
                   _c(
-                    "button",
+                    "a",
                     {
                       staticClass:
                         "w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4\n                py-2 text-base font-medium text-white bg-primary-500\n                 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:col-start-2 sm:text-sm",
-                      attrs: { type: "button" }
+                      attrs: {
+                        href: _vm.route("booking.create", {
+                          selected: _vm.selected
+                        }),
+                        type: "button"
+                      }
                     },
                     [_vm._v("\n                    Κράτηση\n                ")]
                   ),
@@ -72272,7 +72704,7 @@ var render = function() {
                     "button",
                     {
                       staticClass:
-                        "mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm\n                        px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:col-start-1 sm:text-sm",
+                        "mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm\n                        px-4 py-2 bg-white text-base font-medium text-white bg-primary-500\n                 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:col-start-2 sm:text-sm sm:mt-0 sm:col-start-1 sm:text-sm",
                       attrs: { type: "button" },
                       on: {
                         click: function($event) {
@@ -74398,7 +74830,7 @@ var render = function() {
       _vm._v(" "),
       _vm.showBookingModal
         ? _c("BookingModal", {
-            attrs: { selected: _vm.selectedEvent },
+            attrs: { selected: _vm.selectedEvent, events: _vm.events },
             on: { closeModal: _vm.closeModal }
           })
         : _vm._e()
@@ -88200,13 +88632,17 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: bus */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bus", function() { return bus; });
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 window.moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+var bus = new Vue();
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -88231,6 +88667,7 @@ Vue.component('active-toggle-component', __webpack_require__(/*! ./components/Cl
 Vue.component('visible-toggle-component', __webpack_require__(/*! ./components/Classrooms/VisibleToggleComponent.vue */ "./resources/js/components/Classrooms/VisibleToggleComponent.vue")["default"]);
 Vue.component('courses-list', __webpack_require__(/*! ./components/Courses/CoursesList.vue */ "./resources/js/components/Courses/CoursesList.vue")["default"]);
 Vue.component('courses-attach-component', __webpack_require__(/*! ./components/Classrooms/CoursesAttachComponent.vue */ "./resources/js/components/Classrooms/CoursesAttachComponent.vue")["default"]);
+Vue.component('booking-form-component', __webpack_require__(/*! ./components/BookingFormComponent.vue */ "./resources/js/components/BookingFormComponent.vue")["default"]);
 Vue.mixin({
   methods: {
     /*__(key, replacements = []) {
@@ -88293,6 +88730,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/BookingFormComponent.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/BookingFormComponent.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _BookingFormComponent_vue_vue_type_template_id_65b8c4aa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookingFormComponent.vue?vue&type=template&id=65b8c4aa& */ "./resources/js/components/BookingFormComponent.vue?vue&type=template&id=65b8c4aa&");
+/* harmony import */ var _BookingFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookingFormComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/BookingFormComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _BookingFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _BookingFormComponent_vue_vue_type_template_id_65b8c4aa___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _BookingFormComponent_vue_vue_type_template_id_65b8c4aa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/BookingFormComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/BookingFormComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/BookingFormComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./BookingFormComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BookingFormComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/BookingFormComponent.vue?vue&type=template&id=65b8c4aa&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/BookingFormComponent.vue?vue&type=template&id=65b8c4aa& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingFormComponent_vue_vue_type_template_id_65b8c4aa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./BookingFormComponent.vue?vue&type=template&id=65b8c4aa& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BookingFormComponent.vue?vue&type=template&id=65b8c4aa&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingFormComponent_vue_vue_type_template_id_65b8c4aa___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingFormComponent_vue_vue_type_template_id_65b8c4aa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -62,10 +63,10 @@ use Illuminate\Support\Facades\Route;
     Route::patch('user/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::delete('user/{user}', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('user.destroy');
 
+    //booking form
+    Route::get('booking/create', [BookingController::class, 'create'])->name('booking.create')->middleware('auth');
 
-
-
-Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
+    Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
 
 
 
