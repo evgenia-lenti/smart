@@ -1992,12 +1992,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "BookingFormComponent",
   data: function data() {
     return {
       successMessage: '',
+      failureMessage: '',
       selected: null,
       spots: 0,
       user: window.smart.user,
@@ -2019,12 +2023,14 @@ __webpack_require__.r(__webpack_exports__);
         user: window.smart.user,
         selected_course: this.selected
       }).then(function (response) {
-        console.log(response);
-
         if (response.data.status) {
           //this.spots = 0
-          _this.successMessage = 'Η κράτησή σας πραγματοοιήθηκε με επιτυχία. Θέλετε να πραγματοποιήσετε και άλλη κράτηση;';
-        } else {}
+          _this.failureMessage = '';
+          _this.successMessage = 'Η κράτησή σας πραγματοποιήθηκε με επιτυχία.';
+        } else {
+          _this.successMessage = '';
+          _this.failureMessage = 'Δυστυχώς η κράτηση δεν πραγματοποιήθηκε. Παρακαλώ δοκιμάστε ξανά.';
+        }
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2114,10 +2120,6 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale('el');
     endDate: function endDate() {
       return this.selected.ends = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.selected.ends).format("DD-MM-YYYY");
     }
-  },
-  created: function created() {
-    /*console.log('i am booking modal')
-    bus.$emit('selected', {name:'foo'})*/
   }
 });
 
@@ -72310,9 +72312,25 @@ var render = function() {
         ]),
         _vm._v(" "),
         _vm.successMessage
-          ? _c("div", { staticClass: "text-green-700" }, [
-              _c("p", [_vm._v(_vm._s(_vm.successMessage))])
-            ])
+          ? _c(
+              "div",
+              {
+                staticClass:
+                  "mt-3 text-green-900 bg-green-100 rounded-lg p-2 border border-green-200"
+              },
+              [_c("p", [_vm._v(_vm._s(_vm.successMessage))])]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.failureMessage
+          ? _c(
+              "div",
+              {
+                staticClass:
+                  "mt-3 text-red-900 bg-red-100 rounded-lg p-2 border border-red-200"
+              },
+              [_c("p", [_vm._v(_vm._s(_vm.failureMessage))])]
+            )
           : _vm._e()
       ]),
       _vm._v(" "),
@@ -72678,44 +72696,37 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense"
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4\n                py-2 text-base font-medium text-white bg-primary-500\n                 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:col-start-2 sm:text-sm",
-                      attrs: {
-                        href: _vm.route("booking.create", {
-                          selected: _vm.selected
-                        }),
-                        type: "button"
+              _c("div", { staticClass: "mt-5 sm:mt-6 space-y-3" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4\n                py-2 text-base font-medium text-white bg-primary-500\n                 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:col-start-2 sm:text-sm",
+                    attrs: {
+                      href: _vm.route("booking.create", {
+                        selected: _vm.selected
+                      }),
+                      type: "button"
+                    }
+                  },
+                  [_vm._v("\n                    Κράτηση\n                ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm\n                        px-4 py-2 bg-white text-base font-medium text-white bg-gray-200\n                 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:col-start-2 sm:text-sm sm:mt-0 sm:col-start-1 sm:text-sm",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.$emit("closeModal")
                       }
-                    },
-                    [_vm._v("\n                    Κράτηση\n                ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm\n                        px-4 py-2 bg-white text-base font-medium text-white bg-primary-500\n                 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:col-start-2 sm:text-sm sm:mt-0 sm:col-start-1 sm:text-sm",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          return _vm.$emit("closeModal")
-                        }
-                      }
-                    },
-                    [_vm._v("\n                    Ακύρωση\n                ")]
-                  )
-                ]
-              )
+                    }
+                  },
+                  [_vm._v("\n                    Ακύρωση\n                ")]
+                )
+              ])
             ]
           )
         ]

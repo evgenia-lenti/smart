@@ -33,7 +33,7 @@ class BookingController extends Controller
 
         return [
             'ticket' => $ticket,
-            'status' => 'success'
+            'status' => true
         ];
     }
 

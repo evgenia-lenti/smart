@@ -25,14 +25,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
+                <div class="mt-5 sm:mt-6 space-y-3">
                     <a :href="route('booking.create', {selected})" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4
                     py-2 text-base font-medium text-white bg-primary-500
                      hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:col-start-2 sm:text-sm">
                         Κράτηση
                     </a>
                     <button @click="$emit('closeModal')" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm
-                            px-4 py-2 bg-white text-base font-medium text-white bg-primary-500
+                            px-4 py-2 bg-white text-base font-medium text-white bg-gray-200
                      hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 sm:col-start-2 sm:text-sm sm:mt-0 sm:col-start-1 sm:text-sm">
                         Ακύρωση
                     </button>
@@ -64,11 +64,6 @@ name: "BookingModal",
         endDate() {
             return this.selected.ends = moment(this.selected.ends).format("DD-MM-YYYY")
         }
-    },
-
-    created() {
-        /*console.log('i am booking modal')
-        bus.$emit('selected', {name:'foo'})*/
     }
 }
 </script>

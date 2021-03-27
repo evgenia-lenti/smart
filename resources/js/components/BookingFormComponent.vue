@@ -8,8 +8,11 @@
                 <p class="mt-1 text-sm text-gray-500">
                     Παρακαλώ εισάγετε τα στοιχεία της κράτησης.
                 </p>
-                <div v-if="successMessage" class="text-green-700">
+                <div v-if="successMessage" class="mt-3 text-green-900 bg-green-100 rounded-lg p-2 border border-green-200">
                     <p>{{ successMessage }}</p>
+                </div>
+                <div v-if="failureMessage" class="mt-3 text-red-900 bg-red-100 rounded-lg p-2 border border-red-200">
+                    <p>{{ failureMessage }}</p>
                 </div>
             </div>
 <!--            <div>
@@ -90,6 +93,7 @@ export default {
     data() {
         return {
             successMessage: '',
+            failureMessage: '',
             selected: null,
             spots: 0,
             user: window.smart.user,
@@ -112,13 +116,16 @@ export default {
                 selected_course: this.selected
             })
                 .then((response) => {
-                    console.log(response)
+
                     if (response.data.status) {
 
                         //this.spots = 0
-                        this.successMessage = 'Η κράτησή σας πραγματοοιήθηκε με επιτυχία. Θέλετε να πραγματοποιήσετε και άλλη κράτηση;'
+                        this.failureMessage = ''
+                        this.successMessage = 'Η κράτησή σας πραγματοποιήθηκε με επιτυχία.'
 
                     } else {
+                        this.successMessage = ''
+                        this.failureMessage = 'Δυστυχώς η κράτηση δεν πραγματοποιήθηκε. Παρακαλώ δοκιμάστε ξανά.'
 
                     }
                 })
