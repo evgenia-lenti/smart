@@ -49,9 +49,9 @@ class Period extends Resource
 
             HasMany::make('Courses'),
 
-            DateTime::make('Starts At'),
+            DateTime::make('Starts'),
 
-            DateTime::make('Ends At'),
+            DateTime::make('Ends'),
         ];
     }
 
