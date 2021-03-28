@@ -16,7 +16,6 @@
                             Επεξεργασία Μαθήματος
                         </a>
                     </div>
-
                 </div>
             </div>
 
@@ -111,6 +110,3 @@ name: "CourseComponent",
 }
 </script>
 
-<style scoped>
-
-</style>

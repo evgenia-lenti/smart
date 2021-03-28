@@ -17,8 +17,7 @@
             </div>
 
             <main>
-                <div class="">
-                    <!-- Replace with your content -->
+                <div>
                     <div class="py-8 sm:px-0">
                         <div class="border-4 border-dashed border-gray-200 rounded-lg">
                             <ClassroomCoursesList :classroom="classroom"></ClassroomCoursesList>

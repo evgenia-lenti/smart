@@ -48,11 +48,9 @@ class Ticket extends Resource
 
             BelongsTo::make('User'),
 
-            BelongsTo::make('Classroom'),
-
             BelongsTo::make('Course'),
 
-            Number::make('Number Of Spots'),
+            /*Number::make('Number Of Spots')->nullable(),*/
 
             Boolean::make('Paid'),
 

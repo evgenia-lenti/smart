@@ -69,6 +69,14 @@ use Illuminate\Support\Facades\Route;
     Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
 
 
+    //mail testing
+    Route::get('mail', function () {
+    $ticket = \App\Models\Ticket::all()->last();
+
+    return (new App\Mail\CourseBooking($ticket))
+        ->build();
+});
+
 
     Auth::routes();
 

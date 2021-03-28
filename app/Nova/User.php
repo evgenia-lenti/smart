@@ -68,6 +68,8 @@ class User extends Resource
 
             HasMany::make('Courses'),
 
+            HasMany::make('Tickets'),
+
             HasMany::make('Assignments'),
 
             BelongsToMany::make('Classrooms'),
