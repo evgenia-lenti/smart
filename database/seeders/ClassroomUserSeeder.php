@@ -50,11 +50,11 @@ class ClassroomUserSeeder extends Seeder
             'updated_at' => Carbon::now()->toDateTimeString()
         ]);
 
-        DB::table('classroom_user')->insert([
+        /*DB::table('classroom_user')->insert([
             'classroom_id' => 6,
             'user_id' => 2,
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString()
-        ]);
+        ]);*/
     }
 }

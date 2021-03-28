@@ -50,10 +50,10 @@ class ClassroomCourseSeeder extends Seeder
             'course_id' => 4,
         ]);
 
-        DB::table('classroom_course')->insert([
+        /*DB::table('classroom_course')->insert([
             'classroom_id' => 1,
             'course_id' => 7,
-        ]);
+        ]);*/
 
         DB::table('classroom_course')->insert([
             'classroom_id' => 2,
@@ -65,20 +65,20 @@ class ClassroomCourseSeeder extends Seeder
             'course_id' => 3,
         ]);
 
-        DB::table('classroom_course')->insert([
+        /*DB::table('classroom_course')->insert([
             'classroom_id' => 5,
             'course_id' => 8,
-        ]);
+        ]);*/
 
         DB::table('classroom_course')->insert([
             'classroom_id' => 4,
             'course_id' => 4,
         ]);
 
-        DB::table('classroom_course')->insert([
+        /*DB::table('classroom_course')->insert([
             'classroom_id' => 4,
             'course_id' => 6,
-        ]);
+        ]);*/
 
         DB::table('classroom_course')->insert([
             'classroom_id' => 5,
@@ -100,7 +100,7 @@ class ClassroomCourseSeeder extends Seeder
             'course_id' => 5,
         ]);
 
-        DB::table('classroom_course')->insert([
+        /*DB::table('classroom_course')->insert([
             'classroom_id' => 1,
             'course_id' => 6,
         ]);
@@ -108,6 +108,6 @@ class ClassroomCourseSeeder extends Seeder
         DB::table('classroom_course')->insert([
             'classroom_id' => 1,
             'course_id' => 8,
-        ]);
+        ]);*/
     }
 }

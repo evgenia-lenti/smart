@@ -1,9 +1,9 @@
-
-
 require('./bootstrap');
 
 window.Vue = require('vue');
 window.moment = require('moment');
+
+export const bus = new Vue();
 
 /**
  * The following block of code may be used to automatically register your
@@ -30,7 +30,7 @@ Vue.component('active-toggle-component', require('./components/Classrooms/Active
 Vue.component('visible-toggle-component', require('./components/Classrooms/VisibleToggleComponent.vue').default);
 Vue.component('courses-list', require('./components/Courses/CoursesList.vue').default);
 Vue.component('courses-attach-component', require('./components/Classrooms/CoursesAttachComponent.vue').default);
-
+Vue.component('booking-form-component', require('./components/BookingFormComponent.vue').default);
 
 
 Vue.mixin({

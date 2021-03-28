@@ -29,9 +29,9 @@ class Course extends Model
         return $this->hasMany(Theory::class);
     }
 
-    public function periods()
+    public function period()
     {
-        return $this->hasMany(Period::class);
+        return $this->belongsTo(Period::class);
     }
 
     public function assignments()

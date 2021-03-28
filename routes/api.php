@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\PeriodController;
+use App\Http\Controllers\Api\BookingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //periods
 Route::get('periods', [PeriodController::class, 'index'])->name('periods.index');
 Route::get('periods/{period}', [PeriodController::class, 'show'])->name('periods.show');
+
+//booking form
+Route::post('booking', [BookingController::class, 'store'])->name('booking.store');
+
+
 

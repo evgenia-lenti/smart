@@ -17,21 +17,21 @@ class CourseSeeder extends Seeder
     {
         DB::table('courses')->insert([
             'id' => 1,
-            'name' => 'Γεωμετρία',
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            'slug' => 'gewmetria',
+            'name' => 'Γεωμετρία Α Γυμνασίου',
+            'description' => 'Γεωμετρία για παιδιά α γυμνασίου',
+            'slug' => 'gewmetria-a-gymnasiou',
             'user_id' => 1,
             'visible' => true,
             'active' => true,
-            'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon::now()->toDateTimeString()
+            /*'created_at' => Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon::now()->toDateTimeString()*/
         ]);
 
-        DB::table('courses')->insert([
+        /*DB::table('courses')->insert([
             'id' => 2,
-            'name' => 'Άλγεβρα',
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            'slug' => 'algevra',
+            'name' => 'Άλγεβρα Α Γυμνασίου',
+            'description' => 'Άλγεβρα για παιδιά α γυμνασίου',
+            'slug' => 'algevra-a-gymnasiou',
             'user_id' => 1,
             'visible' => true,
             'active' => true,
@@ -41,9 +41,9 @@ class CourseSeeder extends Seeder
 
         DB::table('courses')->insert([
             'id' => 3,
-            'name' => 'Στατιστική',
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            'slug' => 'statistiki',
+            'name' => 'Αρχαία Β Γυμνασίου',
+            'description' => 'Αρχαία για παιδιά β γυμνασίου',
+            'slug' => 'arxaia-b-gymnasiou',
             'user_id' => 2,
             'visible' => true,
             'active' => true,
@@ -53,62 +53,62 @@ class CourseSeeder extends Seeder
 
         DB::table('courses')->insert([
             'id' => 4,
-            'name' => 'Ανάλυση',
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            'slug' => 'analysi',
+            'name' => 'Βιολογία Γ Λυκείου',
+            'description' => 'Βιολογία για παιδιά γ λυκείου',
+            'slug' => 'biologia-g-lykeiou',
             'user_id' => 2,
             'visible' => true,
             'active' => true,
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString()
+        ]);*/
+
+        DB::table('courses')->insert([
+            'id' => 2,
+            'name' => 'Αρχαία Πολυτονικό Σύστημα',
+            'description' => 'Webinar για το πολυτονικό σύστημα',
+            'slug' => 'arxaia-polytoniko-systhma',
+            'user_id' => 1,
+            'visible' => true,
+            'active' => true,
+            /*'created_at' => Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon::now()->toDateTimeString()*/
+        ]);
+
+        DB::table('courses')->insert([
+            'id' => 3,
+            'name' => 'Αλγόριθμοι',
+            'description' => 'Σεμινάριο αλγορίθμων αρχαρίων',
+            'slug' => 'algorithmoi',
+            'user_id' => 1,
+            'visible' => true,
+            'active' => true,
+            /*'created_at' => Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon::now()->toDateTimeString()*/
+        ]);
+
+        DB::table('courses')->insert([
+            'id' => 4,
+            'name' => 'Βάσεις Δεδομένων',
+            'description' => 'Βάσεις δεδομένων για αρχάριους',
+            'slug' => 'baseis-dedomenwn',
+            'user_id' => 2,
+            'visible' => true,
+            'active' => true,
+            /*'created_at' => Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon::now()->toDateTimeString()*/
         ]);
 
         DB::table('courses')->insert([
             'id' => 5,
-            'name' => 'Σχεδίαση',
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            'slug' => 'sxediasi',
+            'name' => 'Υπερθέρμανση του πλανήτη',
+            'description' => 'Σεμινάριο για την υπερθέρμανση του πλανήτη',
+            'slug' => 'yperthermansh-toy-planhth',
             'user_id' => 1,
             'visible' => true,
             'active' => true,
-            'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon::now()->toDateTimeString()
-        ]);
-
-        DB::table('courses')->insert([
-            'id' => 6,
-            'name' => 'Μαθηματική Λογική',
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            'slug' => 'mathimatiki-logiki',
-            'user_id' => 1,
-            'visible' => true,
-            'active' => true,
-            'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon::now()->toDateTimeString()
-        ]);
-
-        DB::table('courses')->insert([
-            'id' => 7,
-            'name' => 'Αλγοριθμικές Τεχνικές και Εφαρμογές',
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            'slug' => 'algorithmikes-texnikes-kai-efarmoges',
-            'user_id' => 2,
-            'visible' => true,
-            'active' => true,
-            'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon::now()->toDateTimeString()
-        ]);
-
-        DB::table('courses')->insert([
-            'id' => 8,
-            'name' => 'Τεχνητή Νοημοσύνη',
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            'slug' => 'texniti-noimosini',
-            'user_id' => 1,
-            'visible' => true,
-            'active' => true,
-            'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon::now()->toDateTimeString()
+            /*'created_at' => Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon::now()->toDateTimeString()*/
         ]);
     }
 }
