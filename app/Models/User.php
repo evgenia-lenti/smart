@@ -75,4 +75,9 @@ class User extends Authenticatable
 
         return $this->role->name === 'administrator';
     }
+
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class);
+    }
 }

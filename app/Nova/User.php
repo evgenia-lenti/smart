@@ -29,7 +29,7 @@ class User extends Resource
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'last name';
 
     /**
      * The columns that should be searched.
@@ -67,6 +67,8 @@ class User extends Resource
             BelongsTo::make('Role'),
 
             HasMany::make('Courses'),
+
+            HasMany::make('Assignments'),
 
             BelongsToMany::make('Classrooms'),
 
