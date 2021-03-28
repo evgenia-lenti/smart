@@ -9,7 +9,7 @@
                 :on-event-click="openBookingModal">
         </VueCal>
 
-        <BookingModal v-if="showBookingModal" :selected="selectedEvent" @closeModal="closeModal"></BookingModal>
+        <BookingModal v-if="showBookingModal" :selected="selectedEvent" :events="events" @closeModal="closeModal"></BookingModal>
     </div>
 
 </template>
