@@ -46,15 +46,11 @@ class Ticket extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
-            BelongsTo::make('User'),
-
             BelongsTo::make('Classroom'),
 
             BelongsTo::make('Course'),
 
             Number::make('Number Of Spots'),
-
-            Boolean::make('Paid'),
 
             DateTime::make('Created At'),
 

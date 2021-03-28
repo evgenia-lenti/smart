@@ -25,4 +25,9 @@ class Ticket extends Model
     {
         return $this->belongsTo(Course::class,'classroom_course');
     }
+
+    public function period()
+    {
+        return $this->belongsTo(Period::class);
+    }
 }

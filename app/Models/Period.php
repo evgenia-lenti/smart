@@ -21,4 +21,9 @@ class Period extends Model
         return $this->hasMany(Course::class);
     }
 
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
 }
