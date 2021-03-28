@@ -61,8 +61,8 @@ class User extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Title')
-                ->sortable()->nullable(),
+            /*Text::make('Title')
+                ->sortable()->nullable(),*/
 
             BelongsTo::make('Role'),
 
