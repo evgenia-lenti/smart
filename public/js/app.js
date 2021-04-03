@@ -76256,7 +76256,11 @@ var render = function() {
                           {
                             staticClass:
                               "text-gray-900 font-medium hover:text-gray-600",
-                            attrs: { href: "#" }
+                            attrs: {
+                              href: _vm.route("reservations.show", {
+                                course: prev.course.slug
+                              })
+                            }
                           },
                           [_vm._v(_vm._s(prev.course.name))]
                         ),

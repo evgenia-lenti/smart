@@ -24,7 +24,11 @@ use Illuminate\Support\Facades\Auth;
     Route::post('/contacts', [App\Http\Controllers\ContactController::class, 'store'])->name('contacts.store');
 
     Route::get('/reservations',[App\Http\Controllers\ReservationController::class,'index'])->name('reservations.index');
-    Route::get('/reservations/{reservation}',[App\Http\Controllers\ReservationController::class,'show'])->name('reservations.show');
+    Route::get('/reservations/{course}',[App\Http\Controllers\ReservationController::class,'show'])->name('reservations.show');
+//    Route::get('/reservations/{course}',[App\Http\Controllers\ReservationController::class,'show'])->name('reservations.show');
+//    Route::get('reservations/{course}',function(){
+ //      return 'hello';
+  //  })->name('reservations.show');
 
     //classrooms
     Route::get('classrooms/create', [App\Http\Controllers\ClassroomController::class, 'create'])->name('classrooms.create');

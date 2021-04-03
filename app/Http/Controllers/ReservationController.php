@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ticket;
+use App\Models\Course;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -20,8 +22,10 @@ class ReservationController extends Controller
 		]));
 	}
 
-	public function show($reservation)
-	{
-		dd($reservation);
+	public function show(Course $course){
+		$user=Auth::user();
+
+		return view('courses.show',compact(['course','user']));
 	}
+
 }
