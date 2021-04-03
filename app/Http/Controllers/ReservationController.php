@@ -7,8 +7,8 @@ use App\Models\Ticket;
 
 class ReservationController extends Controller
 {
-	public function index(){
-
+	public function index()
+	{
 		$previous_tickets=Ticket::getPrevTickets();
 		$current_tickets=Ticket::getCurrentTickets();
 		$next_tickets=Ticket::getNextTickets();
@@ -18,11 +18,10 @@ class ReservationController extends Controller
 			'current_tickets',
 			'next_tickets'
 		]));
-
 	}
 
-	public function show($reservation){
-
+	public function show($reservation)
+	{
 		dd($reservation);
 	}
 }

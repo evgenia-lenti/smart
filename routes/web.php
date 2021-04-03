@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+    Auth::routes();
 
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome.index');
     Route::get('about', [App\Http\Controllers\AboutController::class, 'index'])->name('about.index');
@@ -23,11 +25,6 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/reservations',[App\Http\Controllers\ReservationController::class,'index'])->name('reservations.index');
     Route::get('/reservations/{reservation}',[App\Http\Controllers\ReservationController::class,'show'])->name('reservations.show');
-
-    Route::middleware('guest')->group(function () {
-        Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-        Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register');
-    });
 
     //classrooms
     Route::get('classrooms/create', [App\Http\Controllers\ClassroomController::class, 'create'])->name('classrooms.create');
@@ -77,6 +74,6 @@ use Illuminate\Support\Facades\Route;
 
     return (new App\Mail\CourseBooking($ticket))
         ->build();
-});
+    });
 
 

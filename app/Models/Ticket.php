@@ -12,6 +12,7 @@ class Ticket extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $with=['course','period'];
 
     public function user()
     {
@@ -25,7 +26,7 @@ class Ticket extends Model
 
     public function course()
     {
-        return $this->belongsTo(Course::class,'classroom_course');
+        return $this->belongsTo(Course::class);
     }
 
     public function period()
@@ -39,7 +40,7 @@ class Ticket extends Model
         return self::where('user_id',Auth::user()->id)
                      ->leftJoin('periods','tickets.period_id','=','periods.id')
                      ->where('periods.ends','<',$now)
-                    ->get();
+                     ->get();
     }
 
     public static function getCurrentTickets(){
@@ -49,7 +50,7 @@ class Ticket extends Model
                      ->leftJoin('periods','tickets.period_id','=','periods.id')
                      ->where('periods.starts','<=',$now)
                      ->where('periods.ends','>=',$now)
-                    ->get();
+                     ->get();
     }
 
     public static function getNextTickets(){
@@ -57,7 +58,7 @@ class Ticket extends Model
 
         return self::where('user_id',Auth::user()->id)
                      ->leftJoin('periods','tickets.period_id','=','periods.id')
-                    ->where('periods.starts','>',$now)
-                    ->get();
+                     ->where('periods.starts','>',$now)
+                     ->get();
     }
 }
