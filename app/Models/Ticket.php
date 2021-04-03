@@ -34,17 +34,30 @@ class Ticket extends Model
     }
 
     public static function getPrevTickets(){
+        $now=Carbon::now();
+
         return self::where('user_id',Auth::user()->id)
+                     ->leftJoin('periods','tickets.period_id','=','periods.id')
+                     ->where('periods.ends','<',$now)
                     ->get();
     }
 
     public static function getCurrentTickets(){
+        $now=Carbon::now();
+
         return self::where('user_id',Auth::user()->id)
+                     ->leftJoin('periods','tickets.period_id','=','periods.id')
+                     ->where('periods.starts','<=',$now)
+                     ->where('periods.ends','>=',$now)
                     ->get();
     }
 
     public static function getNextTickets(){
+        $now=Carbon::now();
+
         return self::where('user_id',Auth::user()->id)
+                     ->leftJoin('periods','tickets.period_id','=','periods.id')
+                    ->where('periods.starts','>',$now)
                     ->get();
     }
 }
