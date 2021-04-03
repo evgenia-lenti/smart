@@ -52,7 +52,9 @@ export default {
 name: "ReservationsComponent",
 
     props: {
-        tickets: Array
+        previous: Array,
+        current: Array,
+        next: Array
     }
 }
 </script>
