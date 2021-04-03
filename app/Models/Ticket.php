@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class Ticket extends Model
 {
@@ -29,5 +31,20 @@ class Ticket extends Model
     public function period()
     {
         return $this->belongsTo(Period::class);
+    }
+
+    public static function getPrevTickets(){
+        return self::where('user_id',Auth::user()->id)
+                    ->get();
+    }
+
+    public static function getCurrentTickets(){
+        return self::where('user_id',Auth::user()->id)
+                    ->get();
+    }
+
+    public static function getNextTickets(){
+        return self::where('user_id',Auth::user()->id)
+                    ->get();
     }
 }
