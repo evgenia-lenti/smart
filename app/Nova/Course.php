@@ -55,9 +55,7 @@ class Course extends Resource
 
             Slug::make('Slug')->from('Name'),
 
-            BelongsToMany::make('Users'),
-
-            BelongsTo::make('Period'),
+            BelongsTo::make('User')->default($request->user()->getKey()),
 
             Number::make('spots')->nullable(),
 

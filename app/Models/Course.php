@@ -14,7 +14,7 @@ class Course extends Model
     protected $fillable = ['name', 'description', 'slug', 'user_id', 'spots', 'visible', 'active'];
 
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
@@ -29,9 +29,9 @@ class Course extends Model
         return $this->hasMany(Theory::class);
     }
 
-    public function period()
+    public function periods()
     {
-        return $this->belongsTo(Period::class);
+        return $this->hasMany(Period::class);
     }
 
     public function assignments()

@@ -54,7 +54,7 @@ class Classroom extends Resource
 
             Slug::make('Slug')->from('Name'),
 
-            BelongsToMany::make('Users'),
+            BelongsTo::make('User')->default($request->user()->getKey()),
 
             BelongsToMany::make('Courses'),
 
