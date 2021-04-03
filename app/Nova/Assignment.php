@@ -11,7 +11,6 @@ use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\DateTime;
 
 class Assignment extends Resource
 {
@@ -55,21 +54,15 @@ class Assignment extends Resource
 
             Slug::make('Slug')->from('Name'),
 
-            BelongsTo::make('Users'),
+            BelongsTo::make('Material Type'),
 
-            BelongsTo::make('MaterialType', 'type'),
-
-            BelongsTo::make('Courses'),
+            BelongsTo::make('Course'),
 
             File::make('File Path')->disk('public'),
 
             Boolean::make('Active'),
 
             Boolean::make('Visible'),
-
-            DateTime::make('Created At'),
-
-            DateTime::make('Updated At'),
 
         ];
     }

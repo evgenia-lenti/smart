@@ -9,19 +9,19 @@ class Assignment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'slug', 'user_id', 'material_type_id', 'course_id', 'file_path', 'visible', 'active'];
+    protected $guarded=[];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function courses()
+    public function course()
     {
         return $this->belongsTo(Course::class);
     }
 
-    public function type()
+    public function material_type()
     {
         return $this->belongsTo(MaterialType::class);
     }

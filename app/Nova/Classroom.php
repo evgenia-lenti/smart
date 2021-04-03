@@ -58,7 +58,7 @@ class Classroom extends Resource
 
             BelongsToMany::make('Courses'),
 
-            BelongsTo::make('ClassroomType', 'type'),
+            BelongsTo::make('Classroom Type'),
 
             Boolean::make('Active'),
 
