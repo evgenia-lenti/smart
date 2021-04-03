@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
     Route::post('/contacts', [App\Http\Controllers\ContactController::class, 'store'])->name('contacts.store');
 
     Route::get('/reservations',[App\Http\Controllers\ReservationController::class,'index'])->name('reservations.index');
-//    Route::get('/reservations/{reservation}',[App\Http\Controllers\ReservationController::class,'show'])->name('reservations.show');
+    Route::get('/reservations/{reservation}',[App\Http\Controllers\ReservationController::class,'show'])->name('reservations.show');
 
     Route::middleware('guest')->group(function () {
         Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
