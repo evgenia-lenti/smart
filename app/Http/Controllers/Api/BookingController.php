@@ -16,7 +16,7 @@ class BookingController extends Controller
 {
     public function store(BookingFormRequest $request)
     {
-        try {
+        /*try {
             DB::beginTransaction();
 
             $validated = $request->validated();
@@ -50,6 +50,41 @@ class BookingController extends Controller
                 'error' => $e->getMessage()
             ]);
         }
+
+        try {
+
+            Mail::to(request('form.email'))->send(new CourseBooking($ticket));
+
+        } catch (Exception $e) {
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Η κράτησή σου έχει καταχωρηθεί με επιτυχία, αλλά δεν καταφέραμε να σου στείλουμε το email με την
+                                επιβεβαίωσή της.',
+                'order' => $ticket,
+                'error' => $e->getMessage()
+            ]);
+
+        }*/
+
+        $validated = $request->validated();
+        $form = $validated['form'];
+        $user_id = $request->user['id'];
+        $period_id = $request->selected_course;
+
+        //$period = Period::where('course_id', $period_id)->first();
+        //$period_id = $period->id;
+
+        $ticket = Ticket::create([
+            'first_name' => $form['first_name'],
+            'last_name' => $form['last_name'],
+            'telephone' => $form['telephone'],
+            'email' => $form['email'],
+            'period_id' => $period_id,
+            'user_id' => $user_id,
+            'paid' => true,
+            //'period_id' => $period_id
+        ]);
 
         try {
 
