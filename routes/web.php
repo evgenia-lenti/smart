@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/contacts/create', [App\Http\Controllers\ContactController::class, 'create'])->name('contacts.create');
     Route::post('/contacts', [App\Http\Controllers\ContactController::class, 'store'])->name('contacts.store');
 
-    Route::get('/reservations',[App\Http\Controllers\ReservationController::class,'index'])->name('reservation.index');
+    Route::get('/reservations',[App\Http\Controllers\ReservationController::class,'index'])->name('reservations.index');
 
 
     Route::middleware('guest')->group(function () {
