@@ -3669,6 +3669,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NavBar",
@@ -3689,6 +3695,75 @@ __webpack_require__.r(__webpack_exports__);
   },
   directives: {
     onClickaway: vue_clickaway__WEBPACK_IMPORTED_MODULE_0__["directive"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservationsComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ReservationsComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ReservationsComponent",
+  props: {
+    previous: Array,
+    current: Array,
+    next: Array
   }
 });
 
@@ -75580,6 +75655,15 @@ var render = function() {
                 "a",
                 {
                   staticClass: "font-medium text-gray-500 hover:text-gray-900",
+                  attrs: { href: _vm.route("reservations.index") }
+                },
+                [_vm._v("Κρατήσεις")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "font-medium text-gray-500 hover:text-gray-900",
                   attrs: { href: _vm.route("contacts.create") }
                 },
                 [_vm._v("Επικοινωνία")]
@@ -75718,6 +75802,19 @@ var render = function() {
                                         }
                                       },
                                       [_vm._v("Τάξεις")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900",
+                                        attrs: {
+                                          href: _vm.route("reservations.index"),
+                                          role: "menuitem"
+                                        }
+                                      },
+                                      [_vm._v("Κρατήσεις")]
                                     ),
                                     _vm._v(" "),
                                     _c(
@@ -75898,6 +75995,19 @@ var render = function() {
                               staticClass:
                                 "block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
                               attrs: {
+                                href: _vm.route("reservations.index"),
+                                role: "menuitem"
+                              }
+                            },
+                            [_vm._v("Κρατήσεις")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
+                              attrs: {
                                 href: _vm.route("contacts.create"),
                                 role: "menuitem"
                               }
@@ -76005,6 +76115,221 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservationsComponent.vue?vue&type=template&id=3c5e863b&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ReservationsComponent.vue?vue&type=template&id=3c5e863b&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" },
+      [
+        _c("div", { staticClass: "mb-12" }, [
+          _c(
+            "h2",
+            {
+              staticClass:
+                "text-gray-500 text-xs font-medium uppercase tracking-wide"
+            },
+            [_vm._v("ΠΡΟΗΓΟΥΜΕΝΕΣ ΚΡΑΤΗΣΕΙΣ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "ul",
+            {
+              staticClass:
+                "mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4"
+            },
+            [
+              _c(
+                "li",
+                { staticClass: "col-span-1 flex shadow-sm rounded-md" },
+                [
+                  _c("div", {
+                    staticClass:
+                      "flex-shrink-0 flex items-center justify-center w-16 bg-pink-600 text-white text-sm font-medium rounded-l-md"
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate"
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "flex-1 px-4 py-2 text-sm truncate" },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "text-gray-900 font-medium hover:text-gray-600",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v("Graph API")]
+                          ),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "text-gray-500" }, [
+                            _vm._v("16 Members")
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mb-12" }, [
+          _c(
+            "h2",
+            {
+              staticClass:
+                "text-gray-500 text-xs font-medium uppercase tracking-wide"
+            },
+            [_vm._v("ΤΡΕΧΟΥΣΕΣ ΚΡΑΤΗΣΕΙΣ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "ul",
+            {
+              staticClass:
+                "mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4"
+            },
+            [
+              _c(
+                "li",
+                { staticClass: "col-span-1 flex shadow-sm rounded-md" },
+                [
+                  _c("div", {
+                    staticClass:
+                      "flex-shrink-0 flex items-center justify-center w-16 bg-purple-600 text-white text-sm font-medium rounded-l-md"
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate"
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "flex-1 px-4 py-2 text-sm truncate" },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "text-gray-900 font-medium hover:text-gray-600",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v("Graph API")]
+                          ),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "text-gray-500" }, [
+                            _vm._v("16 Members")
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mb-12" }, [
+          _c(
+            "h2",
+            {
+              staticClass:
+                "text-gray-500 text-xs font-medium uppercase tracking-wide"
+            },
+            [_vm._v("ΕΠΕΡΧΟΜΕΝΕΣ ΚΡΑΤΗΣΕΙΣ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "ul",
+            {
+              staticClass:
+                "mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4"
+            },
+            [
+              _c(
+                "li",
+                { staticClass: "col-span-1 flex shadow-sm rounded-md" },
+                [
+                  _c("div", {
+                    staticClass:
+                      "flex-shrink-0 flex items-center justify-center w-16 bg-yellow-500 text-white text-sm font-medium rounded-l-md"
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate"
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "flex-1 px-4 py-2 text-sm truncate" },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "text-gray-900 font-medium hover:text-gray-600",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v("Graph API")]
+                          ),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "text-gray-500" }, [
+                            _vm._v("16 Members")
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]
+          )
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -88651,6 +88976,7 @@ Vue.component('visible-toggle-component', __webpack_require__(/*! ./components/C
 Vue.component('courses-list', __webpack_require__(/*! ./components/Courses/CoursesList.vue */ "./resources/js/components/Courses/CoursesList.vue")["default"]);
 Vue.component('courses-attach-component', __webpack_require__(/*! ./components/Classrooms/CoursesAttachComponent.vue */ "./resources/js/components/Classrooms/CoursesAttachComponent.vue")["default"]);
 Vue.component('booking-form-component', __webpack_require__(/*! ./components/BookingFormComponent.vue */ "./resources/js/components/BookingFormComponent.vue")["default"]);
+Vue.component('reservations-component', __webpack_require__(/*! ./components/ReservationsComponent.vue */ "./resources/js/components/ReservationsComponent.vue")["default"]);
 Vue.mixin({
   methods: {
     /*__(key, replacements = []) {
@@ -89953,6 +90279,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavBar_vue_vue_type_template_id_5dd24bca___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavBar_vue_vue_type_template_id_5dd24bca___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ReservationsComponent.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/ReservationsComponent.vue ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReservationsComponent_vue_vue_type_template_id_3c5e863b_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReservationsComponent.vue?vue&type=template&id=3c5e863b&scoped=true& */ "./resources/js/components/ReservationsComponent.vue?vue&type=template&id=3c5e863b&scoped=true&");
+/* harmony import */ var _ReservationsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReservationsComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ReservationsComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReservationsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReservationsComponent_vue_vue_type_template_id_3c5e863b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReservationsComponent_vue_vue_type_template_id_3c5e863b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "3c5e863b",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ReservationsComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ReservationsComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/ReservationsComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ReservationsComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservationsComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ReservationsComponent.vue?vue&type=template&id=3c5e863b&scoped=true&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/ReservationsComponent.vue?vue&type=template&id=3c5e863b&scoped=true& ***!
+  \******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationsComponent_vue_vue_type_template_id_3c5e863b_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ReservationsComponent.vue?vue&type=template&id=3c5e863b&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservationsComponent.vue?vue&type=template&id=3c5e863b&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationsComponent_vue_vue_type_template_id_3c5e863b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationsComponent_vue_vue_type_template_id_3c5e863b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

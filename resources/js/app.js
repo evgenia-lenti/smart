@@ -31,6 +31,7 @@ Vue.component('visible-toggle-component', require('./components/Classrooms/Visib
 Vue.component('courses-list', require('./components/Courses/CoursesList.vue').default);
 Vue.component('courses-attach-component', require('./components/Classrooms/CoursesAttachComponent.vue').default);
 Vue.component('booking-form-component', require('./components/BookingFormComponent.vue').default);
+Vue.component('reservations-component', require('./components/ReservationsComponent.vue').default);
 
 
 Vue.mixin({
