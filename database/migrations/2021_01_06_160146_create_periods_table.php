@@ -17,6 +17,7 @@ class CreatePeriodsTable extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('course_id')->constrained();
+            $table->integer('spots')->nullable();
             $table->dateTime('starts');
             $table->dateTime('ends');
             $table->timestamps();
