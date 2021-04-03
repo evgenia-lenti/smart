@@ -15,7 +15,7 @@ class ReservationController extends Controller
 
 		return view('reservations',compact([
 			'prev_tickets',
-			'corrent_tickets',
+			'current_tickets',
 			'next_tickets'
 		]));
 
