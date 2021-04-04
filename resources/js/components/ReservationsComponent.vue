@@ -22,7 +22,7 @@
                     <div class="flex-shrink-0 flex items-center justify-center w-16 bg-purple-600 text-white text-sm font-medium rounded-l-md"></div>
                     <div class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
                         <div class="flex-1 px-4 py-2 text-sm truncate">
-                            <a href="#" class="text-gray-900 font-medium hover:text-gray-600">{{ curr.course.name }}</a>
+                            <a :href="route('reservations.show',{course:curr.course.slug})" class="text-gray-900 font-medium hover:text-gray-600">{{ curr.course.name }}</a>
                             <p class="text-gray-500">{{ curr.period.name }}</p>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                     <div class="flex-shrink-0 flex items-center justify-center w-16 bg-yellow-500 text-white text-sm font-medium rounded-l-md"></div>
                     <div class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
                         <div class="flex-1 px-4 py-2 text-sm truncate">
-                            <a href="#" class="text-gray-900 font-medium hover:text-gray-600">{{ nex.course.name }}</a>
+                            <a :href="route('reservations.show',{course:nex.course.slug})" class="text-gray-900 font-medium hover:text-gray-600">{{ nex.course.name }}</a>
                             <p class="text-gray-500">{{ nex.period.name }}</p>
                         </div>
                     </div>
@@ -59,6 +59,3 @@ name: "ReservationsComponent",
 }
 </script>
 
-<style scoped>
-
-</style>

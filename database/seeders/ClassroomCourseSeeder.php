@@ -100,14 +100,29 @@ class ClassroomCourseSeeder extends Seeder
             'course_id' => 5,
         ]);
 
-        /*DB::table('classroom_course')->insert([
-            'classroom_id' => 1,
-            'course_id' => 6,
+        DB::table('classroom_course')->insert([
+            'classroom_id' => 7,
+            'course_id' => 1,
         ]);
 
         DB::table('classroom_course')->insert([
-            'classroom_id' => 1,
-            'course_id' => 8,
-        ]);*/
+            'classroom_id' => 7,
+            'course_id' => 2,
+        ]);
+
+        DB::table('classroom_course')->insert([
+            'classroom_id' => 7,
+            'course_id' => 3,
+        ]);
+
+        DB::table('classroom_course')->insert([
+            'classroom_id' => 7,
+            'course_id' => 4,
+        ]);
+
+        DB::table('classroom_course')->insert([
+            'classroom_id' => 7,
+            'course_id' => 5,
+        ]);
     }
 }

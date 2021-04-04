@@ -20,6 +20,9 @@ class CourseSeeder extends Seeder
             'name' => 'Γεωμετρία Α Γυμνασίου',
             'description' => 'Γεωμετρία για παιδιά α γυμνασίου',
             'slug' => 'gewmetria-a-gymnasiou',
+            'path' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/CDl1D5cj4V0" title="YouTube video player"
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                        </iframe>',
             'user_id' => 1,
             'visible' => true,
             'active' => true,
@@ -68,6 +71,8 @@ class CourseSeeder extends Seeder
             'name' => 'Αρχαία Πολυτονικό Σύστημα',
             'description' => 'Webinar για το πολυτονικό σύστημα',
             'slug' => 'arxaia-polytoniko-systhma',
+            'path' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/MaN668Rtyqs" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
             'user_id' => 1,
             'visible' => true,
             'active' => true,
@@ -80,6 +85,8 @@ class CourseSeeder extends Seeder
             'name' => 'Αλγόριθμοι',
             'description' => 'Σεμινάριο αλγορίθμων αρχαρίων',
             'slug' => 'algorithmoi',
+            'path' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/uymnKkbUPLM" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
             'user_id' => 1,
             'visible' => true,
             'active' => true,
@@ -92,6 +99,8 @@ class CourseSeeder extends Seeder
             'name' => 'Βάσεις Δεδομένων',
             'description' => 'Βάσεις δεδομένων για αρχάριους',
             'slug' => 'baseis-dedomenwn',
+            'path' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/Rkc7EDkcIkc" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
             'user_id' => 2,
             'visible' => true,
             'active' => true,
@@ -104,6 +113,8 @@ class CourseSeeder extends Seeder
             'name' => 'Υπερθέρμανση του πλανήτη',
             'description' => 'Σεμινάριο για την υπερθέρμανση του πλανήτη',
             'slug' => 'yperthermansh-toy-planhth',
+            'path' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/PZgtOnuHJWE" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
             'user_id' => 1,
             'visible' => true,
             'active' => true,
