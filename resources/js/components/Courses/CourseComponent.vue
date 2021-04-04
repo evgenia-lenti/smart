@@ -32,7 +32,7 @@
                                     </div>
 
                                     <div class="w-auto mt-3">
-                                        <video-wrapper :player="'youtube'" :video="course.path"  width="340" height="160" />
+                                        <video-wrapper :player="'youtube'" :video="videoId"  width="340" height="160" />
 <!--                                        <iframe width="560" height="315" :src="course.path" title="YouTube video player" frameborder="0"
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                                         </iframe>-->
@@ -78,6 +78,12 @@ import VueVideoWrapper from 'vue-video-wrapper';
 
 export default {
 name: "CourseComponent",
+
+    data() {
+        return {
+            videoId: "#"
+        }
+    },
 
     props: {
         course: {

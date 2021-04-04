@@ -5511,6 +5511,11 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CourseComponent",
+  data: function data() {
+    return {
+      videoId: "#"
+    };
+  },
   props: {
     course: {
       type: Object
@@ -77616,7 +77621,7 @@ var render = function() {
                                       _c("video-wrapper", {
                                         attrs: {
                                           player: "youtube",
-                                          video: _vm.course.path,
+                                          video: _vm.videoId,
                                           width: "340",
                                           height: "160"
                                         }

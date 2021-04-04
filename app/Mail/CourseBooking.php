@@ -38,7 +38,7 @@ class CourseBooking extends Mailable
 
         //dd($users_course);
 
-        $url = '/classrooms/online';
+        $url = 'http://127.0.0.1:8000/reservations';
 
         return $this->markdown('emails.course.booking', [
         'url' => $url,

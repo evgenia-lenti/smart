@@ -72,7 +72,7 @@ Thanks,<br>
 @endcomponent
 
 @component('mail::button', ['url' => $url])
-Σύνδεση στο μάθημα
+Σύνδεση στις κρατήσεις
 @endcomponent
 
 Ευχαριστούμε,<br>
