@@ -23,7 +23,6 @@ class BookingFormRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
             'form.first_name' => 'required|string|max:40',
             'form.last_name' => 'required|string|max:40',

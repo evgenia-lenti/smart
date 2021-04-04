@@ -18,7 +18,6 @@ class CreateAssignmentsTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('slug')->nullable()->unique();
-            $table->foreignId('user_id')->constrained();
             $table->foreignId('material_type_id')->constrained();
             $table->foreignId('course_id')->constrained();
             $table->string('file_path')->nullable();

@@ -11,14 +11,19 @@ class Period extends Model
 
     protected $guarded = [];
 
-    /*protected $casts = [
-        'start' => 'datetime:Y-m-d',
-        'end' => 'datetime:Y-m-d',
-    ];*/
+    protected $casts = [
+        'starts' => 'datetime:Y-m-d',
+        'ends' => 'datetime:Y-m-d',
+    ];
 
     public function course()
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
     }
 
 }

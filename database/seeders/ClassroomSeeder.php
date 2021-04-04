@@ -92,5 +92,18 @@ class ClassroomSeeder extends Seeder
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString()
         ]);
+
+        DB::table('classrooms')->insert([
+            'id' => 7,
+            'name' => 'Online',
+            'description' => 'Online διάλεξη',
+            'slug' => 'online',
+            'user_id' => 2,
+            'classroom_type_id' => 2,
+            'visible' => true,
+            'active' => true,
+            'created_at' => Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon::now()->toDateTimeString()
+        ]);
     }
 }

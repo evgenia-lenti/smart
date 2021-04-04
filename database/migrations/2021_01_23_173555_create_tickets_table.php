@@ -14,22 +14,13 @@ class CreateTicketsTable extends Migration
     public function up()
     {
         Schema::create('tickets', function (Blueprint $table) {
-            /*$table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('course_id')->constrained();
-            $table->foreignId('period_id')->constrained();
-            $table->integer('number_of_spots');
-            $table->boolean('paid');
-            $table->timestamps();*/
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('telephone');
             $table->string('email');
-            $table->foreignId('course_id')->constrained();
             $table->foreignId('period_id')->nullable()->constrained();
-            //$table->integer('number_of_spots');
             $table->boolean('paid');
             $table->timestamps();
         });

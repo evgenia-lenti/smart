@@ -3,7 +3,7 @@
         <VueCal :time-from="9 * 60"
                 :time-to="18 * 60"
                 locale="el"
-                :disable-views="['years', 'year']"
+                :disable-views="['years', 'year', 'week']"
                 today-button
                 :events="events"
                 :on-event-click="openBookingModal">

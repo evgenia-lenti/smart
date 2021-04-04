@@ -1,20 +1,18 @@
 <template>
-
     <div class="relative bg-gray-50 border-b border-gray-200 shadow-sm pt-6 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <nav class="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
-                <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
-                    <div class="flex items-center justify-between w-full md:w-auto">
+            <nav class="relative flex items-center justify-between sm:h-10 lg:pl-32 xl:justify-center" aria-label="Global">
+                <div class="flex items-center flex-1 lg:absolute lg:inset-y-0 lg:left-0">
+                    <div class="flex items-center justify-between w-full lg:w-auto">
                         <a :href="route('welcome.index')">
                             <span class="sr-only">Smart</span>
                             <img class="h-14 w-auto sm:h-16" src="/images/logo.png" alt="smart logo image">
                         </a>
-                        <div class="-mr-2 flex items-center md:hidden">
+                        <div class="-mr-2 flex items-center lg:hidden">
                             <button @click="isOpen = !isOpen" type="button"
                                     class="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
                                     id="main-menu" aria-haspopup="true">
                                 <span class="sr-only">Open main menu</span>
-                                <!-- Heroicon name: menu -->
                                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                      stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -25,17 +23,19 @@
                     </div>
                 </div>
 
-                <div class="hidden md:flex md:space-x-10">
+                <div class="hidden lg:flex lg:space-x-10">
                     <a :href="route('welcome.index')" class="font-medium text-gray-500 hover:text-gray-900">Αρχική</a>
 
                     <a :href="route('about.index')" class="font-medium text-gray-500 hover:text-gray-900">Σχετικά με τη Smart</a>
 
                     <a :href="route('classrooms.index')" class="font-medium text-gray-500 hover:text-gray-900">Τάξεις</a>
 
+                    <a :href="route('reservations.index')" class="font-medium text-gray-500 hover:text-gray-900">Κρατήσεις</a>
+
                     <a :href="route('contacts.create')" class="font-medium text-gray-500 hover:text-gray-900">Επικοινωνία</a>
                 </div>
 
-                <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
+                <div class="hidden lg:absolute lg:flex lg:items-center lg:justify-end lg:inset-y-0 lg:right-0">
                     <div v-if="!user" class="inline-flex rounded-md">
                         <a :href="route('login')"
                            class="inline-flex items-center px-4 py-2 mr-1.5 border border-gray-200 text-base font-medium rounded-md text-yellow-400 bg-white shadow hover:text-gray-800">
@@ -60,6 +60,7 @@
                                 <a :href="route('profile.edit')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Προφίλ</a>
                                 <a :href="route('classrooms.index')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Τάξεις</a>
 <!--                                <a :href="route('courses.index')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Μαθήματα</a>-->
+                                <a :href="route('reservations.index')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Κρατήσεις</a>
                                 <a :href="route('logout')">
                                     <button type="submit" class="block w-full px-5 py-3 text-center font-medium text-yellow-400 bg-gray-50 hover:bg-gray-100 hover:text-gray-700" role="menuitem">
                                         Log out
@@ -82,7 +83,7 @@
             From: "opacity-100 scale-100"
             To: "opacity-0 scale-95"
         -->
-        <div v-if="isOpen" v-on-clickaway="awayOpen" tabindex="-1"  class="absolute top-0 z-30 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+        <div v-if="isOpen" v-on-clickaway="awayOpen" tabindex="-1"  class="absolute top-0 z-30 inset-x-0 p-2 transition transform origin-top-right lg:hidden">
             <div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div class="px-5 pt-4 flex items-center justify-between">
                     <div>
@@ -111,6 +112,10 @@
                         <a :href="route('about.index')"
                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                            role="menuitem">Σχετικά με τη Smart</a>
+
+                        <a :href="route('reservations.index')"
+                           class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                           role="menuitem">Κρατήσεις</a>
 
                         <a :href="route('contacts.create')"
                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"

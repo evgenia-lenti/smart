@@ -19,6 +19,7 @@ class CreateCoursesTable extends Migration
             $table->string('description');
             $table->string('slug')->unique();
             $table->foreignId('user_id')->constrained();
+            $table->string('path')->nullable();
             $table->integer('spots')->nullable();
             $table->boolean('visible')->default(0);
             $table->boolean('active')->default(0);

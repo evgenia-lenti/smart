@@ -29,7 +29,7 @@ class User extends Resource
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'last name';
 
     /**
      * The columns that should be searched.
@@ -61,12 +61,16 @@ class User extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Title')
-                ->sortable()->nullable(),
+            /*Text::make('Title')
+                ->sortable()->nullable(),*/
 
             BelongsTo::make('Role'),
 
             HasMany::make('Courses'),
+
+            HasMany::make('Tickets'),
+
+            HasMany::make('Assignments'),
 
             BelongsToMany::make('Classrooms'),
 

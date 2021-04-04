@@ -18,19 +18,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'role_id',
-        'address',
-        'telephone',
-        'email',
-        'avatar',
-        'email_verified_at',
-        'password',
-        'remember_token',
-        'active',
-    ];
+    protected $guarded=[];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -58,7 +46,7 @@ class User extends Authenticatable
 
     public function classrooms()
     {
-        return $this->belongsToMany(Classroom::class);
+        return $this->hasMany(Classroom::class);
     }
 
     public function role()
@@ -74,5 +62,15 @@ class User extends Authenticatable
     public function isAdministrator() {
 
         return $this->role->name === 'administrator';
+    }
+
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class);
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
     }
 }

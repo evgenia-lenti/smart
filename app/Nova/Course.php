@@ -27,7 +27,7 @@ class Course extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -55,9 +55,7 @@ class Course extends Resource
 
             Slug::make('Slug')->from('Name'),
 
-            BelongsToMany::make('Users'),
-
-            BelongsTo::make('Period'),
+            BelongsTo::make('User')->default($request->user()->getKey()),
 
             Number::make('spots')->nullable(),
 

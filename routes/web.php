@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+    Auth::routes();
 
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome.index');
     Route::get('about', [App\Http\Controllers\AboutController::class, 'index'])->name('about.index');
@@ -21,11 +23,12 @@ use Illuminate\Support\Facades\Route;
     Route::get('/contacts/create', [App\Http\Controllers\ContactController::class, 'create'])->name('contacts.create');
     Route::post('/contacts', [App\Http\Controllers\ContactController::class, 'store'])->name('contacts.store');
 
-
-    Route::middleware('guest')->group(function () {
-        Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-        Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register');
-    });
+    Route::get('/reservations',[App\Http\Controllers\ReservationController::class,'index'])->name('reservations.index');
+    Route::get('/reservations/{course}',[App\Http\Controllers\ReservationController::class,'show'])->name('reservations.show');
+//    Route::get('/reservations/{course}',[App\Http\Controllers\ReservationController::class,'show'])->name('reservations.show');
+//    Route::get('reservations/{course}',function(){
+ //      return 'hello';
+  //  })->name('reservations.show');
 
     //classrooms
     Route::get('classrooms/create', [App\Http\Controllers\ClassroomController::class, 'create'])->name('classrooms.create');
@@ -69,6 +72,12 @@ use Illuminate\Support\Facades\Route;
     Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('auth.logout');
 
 
+    //mail testing
+    Route::get('mail', function () {
+    $ticket = \App\Models\Ticket::all()->last();
 
-    Auth::routes();
+    return (new App\Mail\CourseBooking($ticket))
+        ->build();
+    });
+
 

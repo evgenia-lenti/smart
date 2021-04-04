@@ -4,8 +4,9 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -23,7 +24,7 @@ class Period extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -47,11 +48,13 @@ class Period extends Resource
 
             Text::make('Name'),
 
-            HasMany::make('Courses'),
+            BelongsTo::make('Course'),
 
-            DateTime::make('Starts At'),
+            DateTime::make('Starts'),
 
-            DateTime::make('Ends At'),
+            DateTime::make('Ends'),
+
+            Number::make('Spots'),
         ];
     }
 

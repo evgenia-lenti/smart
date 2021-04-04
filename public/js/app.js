@@ -86,6 +86,2512 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@vimeo/player/dist/player.es.js":
+/*!******************************************************!*\
+  !*** ./node_modules/@vimeo/player/dist/player.es.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*! @vimeo/player v2.15.0 | (c) 2021 Vimeo | MIT License | https://github.com/vimeo/player.js */
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+/**
+ * @module lib/functions
+ */
+
+/**
+ * Check to see this is a node environment.
+ * @type {Boolean}
+ */
+
+/* global global */
+var isNode = typeof global !== 'undefined' && {}.toString.call(global) === '[object global]';
+/**
+ * Get the name of the method for a given getter or setter.
+ *
+ * @param {string} prop The name of the property.
+ * @param {string} type Either “get” or “set”.
+ * @return {string}
+ */
+
+function getMethodName(prop, type) {
+  if (prop.indexOf(type.toLowerCase()) === 0) {
+    return prop;
+  }
+
+  return "".concat(type.toLowerCase()).concat(prop.substr(0, 1).toUpperCase()).concat(prop.substr(1));
+}
+/**
+ * Check to see if the object is a DOM Element.
+ *
+ * @param {*} element The object to check.
+ * @return {boolean}
+ */
+
+function isDomElement(element) {
+  return Boolean(element && element.nodeType === 1 && 'nodeName' in element && element.ownerDocument && element.ownerDocument.defaultView);
+}
+/**
+ * Check to see whether the value is a number.
+ *
+ * @see http://dl.dropboxusercontent.com/u/35146/js/tests/isNumber.html
+ * @param {*} value The value to check.
+ * @param {boolean} integer Check if the value is an integer.
+ * @return {boolean}
+ */
+
+function isInteger(value) {
+  // eslint-disable-next-line eqeqeq
+  return !isNaN(parseFloat(value)) && isFinite(value) && Math.floor(value) == value;
+}
+/**
+ * Check to see if the URL is a Vimeo url.
+ *
+ * @param {string} url The url string.
+ * @return {boolean}
+ */
+
+function isVimeoUrl(url) {
+  return /^(https?:)?\/\/((player|www)\.)?vimeo\.com(?=$|\/)/.test(url);
+}
+/**
+ * Get the Vimeo URL from an element.
+ * The element must have either a data-vimeo-id or data-vimeo-url attribute.
+ *
+ * @param {object} oEmbedParameters The oEmbed parameters.
+ * @return {string}
+ */
+
+function getVimeoUrl() {
+  var oEmbedParameters = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var id = oEmbedParameters.id;
+  var url = oEmbedParameters.url;
+  var idOrUrl = id || url;
+
+  if (!idOrUrl) {
+    throw new Error('An id or url must be passed, either in an options object or as a data-vimeo-id or data-vimeo-url attribute.');
+  }
+
+  if (isInteger(idOrUrl)) {
+    return "https://vimeo.com/".concat(idOrUrl);
+  }
+
+  if (isVimeoUrl(idOrUrl)) {
+    return idOrUrl.replace('http:', 'https:');
+  }
+
+  if (id) {
+    throw new TypeError("\u201C".concat(id, "\u201D is not a valid video id."));
+  }
+
+  throw new TypeError("\u201C".concat(idOrUrl, "\u201D is not a vimeo.com url."));
+}
+
+var arrayIndexOfSupport = typeof Array.prototype.indexOf !== 'undefined';
+var postMessageSupport = typeof window !== 'undefined' && typeof window.postMessage !== 'undefined';
+
+if (!isNode && (!arrayIndexOfSupport || !postMessageSupport)) {
+  throw new Error('Sorry, the Vimeo Player API is not available in this browser.');
+}
+
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+/*!
+ * weakmap-polyfill v2.0.1 - ECMAScript6 WeakMap polyfill
+ * https://github.com/polygonplanet/weakmap-polyfill
+ * Copyright (c) 2015-2020 Polygon Planet <polygon.planet.aqua@gmail.com>
+ * @license MIT
+ */
+(function (self) {
+
+  if (self.WeakMap) {
+    return;
+  }
+
+  var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+  var defineProperty = function (object, name, value) {
+    if (Object.defineProperty) {
+      Object.defineProperty(object, name, {
+        configurable: true,
+        writable: true,
+        value: value
+      });
+    } else {
+      object[name] = value;
+    }
+  };
+
+  self.WeakMap = function () {
+    // ECMA-262 23.3 WeakMap Objects
+    function WeakMap() {
+      if (this === void 0) {
+        throw new TypeError("Constructor WeakMap requires 'new'");
+      }
+
+      defineProperty(this, '_id', genId('_WeakMap')); // ECMA-262 23.3.1.1 WeakMap([iterable])
+
+      if (arguments.length > 0) {
+        // Currently, WeakMap `iterable` argument is not supported
+        throw new TypeError('WeakMap iterable is not supported');
+      }
+    } // ECMA-262 23.3.3.2 WeakMap.prototype.delete(key)
+
+
+    defineProperty(WeakMap.prototype, 'delete', function (key) {
+      checkInstance(this, 'delete');
+
+      if (!isObject(key)) {
+        return false;
+      }
+
+      var entry = key[this._id];
+
+      if (entry && entry[0] === key) {
+        delete key[this._id];
+        return true;
+      }
+
+      return false;
+    }); // ECMA-262 23.3.3.3 WeakMap.prototype.get(key)
+
+    defineProperty(WeakMap.prototype, 'get', function (key) {
+      checkInstance(this, 'get');
+
+      if (!isObject(key)) {
+        return void 0;
+      }
+
+      var entry = key[this._id];
+
+      if (entry && entry[0] === key) {
+        return entry[1];
+      }
+
+      return void 0;
+    }); // ECMA-262 23.3.3.4 WeakMap.prototype.has(key)
+
+    defineProperty(WeakMap.prototype, 'has', function (key) {
+      checkInstance(this, 'has');
+
+      if (!isObject(key)) {
+        return false;
+      }
+
+      var entry = key[this._id];
+
+      if (entry && entry[0] === key) {
+        return true;
+      }
+
+      return false;
+    }); // ECMA-262 23.3.3.5 WeakMap.prototype.set(key, value)
+
+    defineProperty(WeakMap.prototype, 'set', function (key, value) {
+      checkInstance(this, 'set');
+
+      if (!isObject(key)) {
+        throw new TypeError('Invalid value used as weak map key');
+      }
+
+      var entry = key[this._id];
+
+      if (entry && entry[0] === key) {
+        entry[1] = value;
+        return this;
+      }
+
+      defineProperty(key, this._id, [key, value]);
+      return this;
+    });
+
+    function checkInstance(x, methodName) {
+      if (!isObject(x) || !hasOwnProperty.call(x, '_id')) {
+        throw new TypeError(methodName + ' method called on incompatible receiver ' + typeof x);
+      }
+    }
+
+    function genId(prefix) {
+      return prefix + '_' + rand() + '.' + rand();
+    }
+
+    function rand() {
+      return Math.random().toString().substring(2);
+    }
+
+    defineProperty(WeakMap, '_polyfill', true);
+    return WeakMap;
+  }();
+
+  function isObject(x) {
+    return Object(x) === x;
+  }
+})(typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : typeof commonjsGlobal !== 'undefined' ? commonjsGlobal : commonjsGlobal);
+
+var npo_src = createCommonjsModule(function (module) {
+/*! Native Promise Only
+    v0.8.1 (c) Kyle Simpson
+    MIT License: http://getify.mit-license.org
+*/
+(function UMD(name, context, definition) {
+  // special form of UMD for polyfilling across evironments
+  context[name] = context[name] || definition();
+
+  if ( module.exports) {
+    module.exports = context[name];
+  }
+})("Promise", typeof commonjsGlobal != "undefined" ? commonjsGlobal : commonjsGlobal, function DEF() {
+
+  var builtInProp,
+      cycle,
+      scheduling_queue,
+      ToString = Object.prototype.toString,
+      timer = typeof setImmediate != "undefined" ? function timer(fn) {
+    return setImmediate(fn);
+  } : setTimeout; // dammit, IE8.
+
+  try {
+    Object.defineProperty({}, "x", {});
+
+    builtInProp = function builtInProp(obj, name, val, config) {
+      return Object.defineProperty(obj, name, {
+        value: val,
+        writable: true,
+        configurable: config !== false
+      });
+    };
+  } catch (err) {
+    builtInProp = function builtInProp(obj, name, val) {
+      obj[name] = val;
+      return obj;
+    };
+  } // Note: using a queue instead of array for efficiency
+
+
+  scheduling_queue = function Queue() {
+    var first, last, item;
+
+    function Item(fn, self) {
+      this.fn = fn;
+      this.self = self;
+      this.next = void 0;
+    }
+
+    return {
+      add: function add(fn, self) {
+        item = new Item(fn, self);
+
+        if (last) {
+          last.next = item;
+        } else {
+          first = item;
+        }
+
+        last = item;
+        item = void 0;
+      },
+      drain: function drain() {
+        var f = first;
+        first = last = cycle = void 0;
+
+        while (f) {
+          f.fn.call(f.self);
+          f = f.next;
+        }
+      }
+    };
+  }();
+
+  function schedule(fn, self) {
+    scheduling_queue.add(fn, self);
+
+    if (!cycle) {
+      cycle = timer(scheduling_queue.drain);
+    }
+  } // promise duck typing
+
+
+  function isThenable(o) {
+    var _then,
+        o_type = typeof o;
+
+    if (o != null && (o_type == "object" || o_type == "function")) {
+      _then = o.then;
+    }
+
+    return typeof _then == "function" ? _then : false;
+  }
+
+  function notify() {
+    for (var i = 0; i < this.chain.length; i++) {
+      notifyIsolated(this, this.state === 1 ? this.chain[i].success : this.chain[i].failure, this.chain[i]);
+    }
+
+    this.chain.length = 0;
+  } // NOTE: This is a separate function to isolate
+  // the `try..catch` so that other code can be
+  // optimized better
+
+
+  function notifyIsolated(self, cb, chain) {
+    var ret, _then;
+
+    try {
+      if (cb === false) {
+        chain.reject(self.msg);
+      } else {
+        if (cb === true) {
+          ret = self.msg;
+        } else {
+          ret = cb.call(void 0, self.msg);
+        }
+
+        if (ret === chain.promise) {
+          chain.reject(TypeError("Promise-chain cycle"));
+        } else if (_then = isThenable(ret)) {
+          _then.call(ret, chain.resolve, chain.reject);
+        } else {
+          chain.resolve(ret);
+        }
+      }
+    } catch (err) {
+      chain.reject(err);
+    }
+  }
+
+  function resolve(msg) {
+    var _then,
+        self = this; // already triggered?
+
+
+    if (self.triggered) {
+      return;
+    }
+
+    self.triggered = true; // unwrap
+
+    if (self.def) {
+      self = self.def;
+    }
+
+    try {
+      if (_then = isThenable(msg)) {
+        schedule(function () {
+          var def_wrapper = new MakeDefWrapper(self);
+
+          try {
+            _then.call(msg, function $resolve$() {
+              resolve.apply(def_wrapper, arguments);
+            }, function $reject$() {
+              reject.apply(def_wrapper, arguments);
+            });
+          } catch (err) {
+            reject.call(def_wrapper, err);
+          }
+        });
+      } else {
+        self.msg = msg;
+        self.state = 1;
+
+        if (self.chain.length > 0) {
+          schedule(notify, self);
+        }
+      }
+    } catch (err) {
+      reject.call(new MakeDefWrapper(self), err);
+    }
+  }
+
+  function reject(msg) {
+    var self = this; // already triggered?
+
+    if (self.triggered) {
+      return;
+    }
+
+    self.triggered = true; // unwrap
+
+    if (self.def) {
+      self = self.def;
+    }
+
+    self.msg = msg;
+    self.state = 2;
+
+    if (self.chain.length > 0) {
+      schedule(notify, self);
+    }
+  }
+
+  function iteratePromises(Constructor, arr, resolver, rejecter) {
+    for (var idx = 0; idx < arr.length; idx++) {
+      (function IIFE(idx) {
+        Constructor.resolve(arr[idx]).then(function $resolver$(msg) {
+          resolver(idx, msg);
+        }, rejecter);
+      })(idx);
+    }
+  }
+
+  function MakeDefWrapper(self) {
+    this.def = self;
+    this.triggered = false;
+  }
+
+  function MakeDef(self) {
+    this.promise = self;
+    this.state = 0;
+    this.triggered = false;
+    this.chain = [];
+    this.msg = void 0;
+  }
+
+  function Promise(executor) {
+    if (typeof executor != "function") {
+      throw TypeError("Not a function");
+    }
+
+    if (this.__NPO__ !== 0) {
+      throw TypeError("Not a promise");
+    } // instance shadowing the inherited "brand"
+    // to signal an already "initialized" promise
+
+
+    this.__NPO__ = 1;
+    var def = new MakeDef(this);
+
+    this["then"] = function then(success, failure) {
+      var o = {
+        success: typeof success == "function" ? success : true,
+        failure: typeof failure == "function" ? failure : false
+      }; // Note: `then(..)` itself can be borrowed to be used against
+      // a different promise constructor for making the chained promise,
+      // by substituting a different `this` binding.
+
+      o.promise = new this.constructor(function extractChain(resolve, reject) {
+        if (typeof resolve != "function" || typeof reject != "function") {
+          throw TypeError("Not a function");
+        }
+
+        o.resolve = resolve;
+        o.reject = reject;
+      });
+      def.chain.push(o);
+
+      if (def.state !== 0) {
+        schedule(notify, def);
+      }
+
+      return o.promise;
+    };
+
+    this["catch"] = function $catch$(failure) {
+      return this.then(void 0, failure);
+    };
+
+    try {
+      executor.call(void 0, function publicResolve(msg) {
+        resolve.call(def, msg);
+      }, function publicReject(msg) {
+        reject.call(def, msg);
+      });
+    } catch (err) {
+      reject.call(def, err);
+    }
+  }
+
+  var PromisePrototype = builtInProp({}, "constructor", Promise,
+  /*configurable=*/
+  false); // Note: Android 4 cannot use `Object.defineProperty(..)` here
+
+  Promise.prototype = PromisePrototype; // built-in "brand" to signal an "uninitialized" promise
+
+  builtInProp(PromisePrototype, "__NPO__", 0,
+  /*configurable=*/
+  false);
+  builtInProp(Promise, "resolve", function Promise$resolve(msg) {
+    var Constructor = this; // spec mandated checks
+    // note: best "isPromise" check that's practical for now
+
+    if (msg && typeof msg == "object" && msg.__NPO__ === 1) {
+      return msg;
+    }
+
+    return new Constructor(function executor(resolve, reject) {
+      if (typeof resolve != "function" || typeof reject != "function") {
+        throw TypeError("Not a function");
+      }
+
+      resolve(msg);
+    });
+  });
+  builtInProp(Promise, "reject", function Promise$reject(msg) {
+    return new this(function executor(resolve, reject) {
+      if (typeof resolve != "function" || typeof reject != "function") {
+        throw TypeError("Not a function");
+      }
+
+      reject(msg);
+    });
+  });
+  builtInProp(Promise, "all", function Promise$all(arr) {
+    var Constructor = this; // spec mandated checks
+
+    if (ToString.call(arr) != "[object Array]") {
+      return Constructor.reject(TypeError("Not an array"));
+    }
+
+    if (arr.length === 0) {
+      return Constructor.resolve([]);
+    }
+
+    return new Constructor(function executor(resolve, reject) {
+      if (typeof resolve != "function" || typeof reject != "function") {
+        throw TypeError("Not a function");
+      }
+
+      var len = arr.length,
+          msgs = Array(len),
+          count = 0;
+      iteratePromises(Constructor, arr, function resolver(idx, msg) {
+        msgs[idx] = msg;
+
+        if (++count === len) {
+          resolve(msgs);
+        }
+      }, reject);
+    });
+  });
+  builtInProp(Promise, "race", function Promise$race(arr) {
+    var Constructor = this; // spec mandated checks
+
+    if (ToString.call(arr) != "[object Array]") {
+      return Constructor.reject(TypeError("Not an array"));
+    }
+
+    return new Constructor(function executor(resolve, reject) {
+      if (typeof resolve != "function" || typeof reject != "function") {
+        throw TypeError("Not a function");
+      }
+
+      iteratePromises(Constructor, arr, function resolver(idx, msg) {
+        resolve(msg);
+      }, reject);
+    });
+  });
+  return Promise;
+});
+});
+
+/**
+ * @module lib/callbacks
+ */
+var callbackMap = new WeakMap();
+/**
+ * Store a callback for a method or event for a player.
+ *
+ * @param {Player} player The player object.
+ * @param {string} name The method or event name.
+ * @param {(function(this:Player, *): void|{resolve: function, reject: function})} callback
+ *        The callback to call or an object with resolve and reject functions for a promise.
+ * @return {void}
+ */
+
+function storeCallback(player, name, callback) {
+  var playerCallbacks = callbackMap.get(player.element) || {};
+
+  if (!(name in playerCallbacks)) {
+    playerCallbacks[name] = [];
+  }
+
+  playerCallbacks[name].push(callback);
+  callbackMap.set(player.element, playerCallbacks);
+}
+/**
+ * Get the callbacks for a player and event or method.
+ *
+ * @param {Player} player The player object.
+ * @param {string} name The method or event name
+ * @return {function[]}
+ */
+
+function getCallbacks(player, name) {
+  var playerCallbacks = callbackMap.get(player.element) || {};
+  return playerCallbacks[name] || [];
+}
+/**
+ * Remove a stored callback for a method or event for a player.
+ *
+ * @param {Player} player The player object.
+ * @param {string} name The method or event name
+ * @param {function} [callback] The specific callback to remove.
+ * @return {boolean} Was this the last callback?
+ */
+
+function removeCallback(player, name, callback) {
+  var playerCallbacks = callbackMap.get(player.element) || {};
+
+  if (!playerCallbacks[name]) {
+    return true;
+  } // If no callback is passed, remove all callbacks for the event
+
+
+  if (!callback) {
+    playerCallbacks[name] = [];
+    callbackMap.set(player.element, playerCallbacks);
+    return true;
+  }
+
+  var index = playerCallbacks[name].indexOf(callback);
+
+  if (index !== -1) {
+    playerCallbacks[name].splice(index, 1);
+  }
+
+  callbackMap.set(player.element, playerCallbacks);
+  return playerCallbacks[name] && playerCallbacks[name].length === 0;
+}
+/**
+ * Return the first stored callback for a player and event or method.
+ *
+ * @param {Player} player The player object.
+ * @param {string} name The method or event name.
+ * @return {function} The callback, or false if there were none
+ */
+
+function shiftCallbacks(player, name) {
+  var playerCallbacks = getCallbacks(player, name);
+
+  if (playerCallbacks.length < 1) {
+    return false;
+  }
+
+  var callback = playerCallbacks.shift();
+  removeCallback(player, name, callback);
+  return callback;
+}
+/**
+ * Move callbacks associated with an element to another element.
+ *
+ * @param {HTMLElement} oldElement The old element.
+ * @param {HTMLElement} newElement The new element.
+ * @return {void}
+ */
+
+function swapCallbacks(oldElement, newElement) {
+  var playerCallbacks = callbackMap.get(oldElement);
+  callbackMap.set(newElement, playerCallbacks);
+  callbackMap.delete(oldElement);
+}
+
+/**
+ * @module lib/embed
+ */
+var oEmbedParameters = ['autopause', 'autoplay', 'background', 'byline', 'color', 'controls', 'dnt', 'height', 'id', 'loop', 'maxheight', 'maxwidth', 'muted', 'playsinline', 'portrait', 'responsive', 'speed', 'texttrack', 'title', 'transparent', 'url', 'width'];
+/**
+ * Get the 'data-vimeo'-prefixed attributes from an element as an object.
+ *
+ * @param {HTMLElement} element The element.
+ * @param {Object} [defaults={}] The default values to use.
+ * @return {Object<string, string>}
+ */
+
+function getOEmbedParameters(element) {
+  var defaults = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  return oEmbedParameters.reduce(function (params, param) {
+    var value = element.getAttribute("data-vimeo-".concat(param));
+
+    if (value || value === '') {
+      params[param] = value === '' ? 1 : value;
+    }
+
+    return params;
+  }, defaults);
+}
+/**
+ * Create an embed from oEmbed data inside an element.
+ *
+ * @param {object} data The oEmbed data.
+ * @param {HTMLElement} element The element to put the iframe in.
+ * @return {HTMLIFrameElement} The iframe embed.
+ */
+
+function createEmbed(_ref, element) {
+  var html = _ref.html;
+
+  if (!element) {
+    throw new TypeError('An element must be provided');
+  }
+
+  if (element.getAttribute('data-vimeo-initialized') !== null) {
+    return element.querySelector('iframe');
+  }
+
+  var div = document.createElement('div');
+  div.innerHTML = html;
+  element.appendChild(div.firstChild);
+  element.setAttribute('data-vimeo-initialized', 'true');
+  return element.querySelector('iframe');
+}
+/**
+ * Make an oEmbed call for the specified URL.
+ *
+ * @param {string} videoUrl The vimeo.com url for the video.
+ * @param {Object} [params] Parameters to pass to oEmbed.
+ * @param {HTMLElement} element The element.
+ * @return {Promise}
+ */
+
+function getOEmbedData(videoUrl) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var element = arguments.length > 2 ? arguments[2] : undefined;
+  return new Promise(function (resolve, reject) {
+    if (!isVimeoUrl(videoUrl)) {
+      throw new TypeError("\u201C".concat(videoUrl, "\u201D is not a vimeo.com url."));
+    }
+
+    var url = "https://vimeo.com/api/oembed.json?url=".concat(encodeURIComponent(videoUrl));
+
+    for (var param in params) {
+      if (params.hasOwnProperty(param)) {
+        url += "&".concat(param, "=").concat(encodeURIComponent(params[param]));
+      }
+    }
+
+    var xhr = 'XDomainRequest' in window ? new XDomainRequest() : new XMLHttpRequest();
+    xhr.open('GET', url, true);
+
+    xhr.onload = function () {
+      if (xhr.status === 404) {
+        reject(new Error("\u201C".concat(videoUrl, "\u201D was not found.")));
+        return;
+      }
+
+      if (xhr.status === 403) {
+        reject(new Error("\u201C".concat(videoUrl, "\u201D is not embeddable.")));
+        return;
+      }
+
+      try {
+        var json = JSON.parse(xhr.responseText); // Check api response for 403 on oembed
+
+        if (json.domain_status_code === 403) {
+          // We still want to create the embed to give users visual feedback
+          createEmbed(json, element);
+          reject(new Error("\u201C".concat(videoUrl, "\u201D is not embeddable.")));
+          return;
+        }
+
+        resolve(json);
+      } catch (error) {
+        reject(error);
+      }
+    };
+
+    xhr.onerror = function () {
+      var status = xhr.status ? " (".concat(xhr.status, ")") : '';
+      reject(new Error("There was an error fetching the embed code from Vimeo".concat(status, ".")));
+    };
+
+    xhr.send();
+  });
+}
+/**
+ * Initialize all embeds within a specific element
+ *
+ * @param {HTMLElement} [parent=document] The parent element.
+ * @return {void}
+ */
+
+function initializeEmbeds() {
+  var parent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document;
+  var elements = [].slice.call(parent.querySelectorAll('[data-vimeo-id], [data-vimeo-url]'));
+
+  var handleError = function handleError(error) {
+    if ('console' in window && console.error) {
+      console.error("There was an error creating an embed: ".concat(error));
+    }
+  };
+
+  elements.forEach(function (element) {
+    try {
+      // Skip any that have data-vimeo-defer
+      if (element.getAttribute('data-vimeo-defer') !== null) {
+        return;
+      }
+
+      var params = getOEmbedParameters(element);
+      var url = getVimeoUrl(params);
+      getOEmbedData(url, params, element).then(function (data) {
+        return createEmbed(data, element);
+      }).catch(handleError);
+    } catch (error) {
+      handleError(error);
+    }
+  });
+}
+/**
+ * Resize embeds when messaged by the player.
+ *
+ * @param {HTMLElement} [parent=document] The parent element.
+ * @return {void}
+ */
+
+function resizeEmbeds() {
+  var parent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document;
+
+  // Prevent execution if users include the player.js script multiple times.
+  if (window.VimeoPlayerResizeEmbeds_) {
+    return;
+  }
+
+  window.VimeoPlayerResizeEmbeds_ = true;
+
+  var onMessage = function onMessage(event) {
+    if (!isVimeoUrl(event.origin)) {
+      return;
+    } // 'spacechange' is fired only on embeds with cards
+
+
+    if (!event.data || event.data.event !== 'spacechange') {
+      return;
+    }
+
+    var iframes = parent.querySelectorAll('iframe');
+
+    for (var i = 0; i < iframes.length; i++) {
+      if (iframes[i].contentWindow !== event.source) {
+        continue;
+      } // Change padding-bottom of the enclosing div to accommodate
+      // card carousel without distorting aspect ratio
+
+
+      var space = iframes[i].parentElement;
+      space.style.paddingBottom = "".concat(event.data.data[0].bottom, "px");
+      break;
+    }
+  };
+
+  window.addEventListener('message', onMessage);
+}
+
+/**
+ * @module lib/postmessage
+ */
+/**
+ * Parse a message received from postMessage.
+ *
+ * @param {*} data The data received from postMessage.
+ * @return {object}
+ */
+
+function parseMessageData(data) {
+  if (typeof data === 'string') {
+    try {
+      data = JSON.parse(data);
+    } catch (error) {
+      // If the message cannot be parsed, throw the error as a warning
+      console.warn(error);
+      return {};
+    }
+  }
+
+  return data;
+}
+/**
+ * Post a message to the specified target.
+ *
+ * @param {Player} player The player object to use.
+ * @param {string} method The API method to call.
+ * @param {object} params The parameters to send to the player.
+ * @return {void}
+ */
+
+function postMessage(player, method, params) {
+  if (!player.element.contentWindow || !player.element.contentWindow.postMessage) {
+    return;
+  }
+
+  var message = {
+    method: method
+  };
+
+  if (params !== undefined) {
+    message.value = params;
+  } // IE 8 and 9 do not support passing messages, so stringify them
+
+
+  var ieVersion = parseFloat(navigator.userAgent.toLowerCase().replace(/^.*msie (\d+).*$/, '$1'));
+
+  if (ieVersion >= 8 && ieVersion < 10) {
+    message = JSON.stringify(message);
+  }
+
+  player.element.contentWindow.postMessage(message, player.origin);
+}
+/**
+ * Parse the data received from a message event.
+ *
+ * @param {Player} player The player that received the message.
+ * @param {(Object|string)} data The message data. Strings will be parsed into JSON.
+ * @return {void}
+ */
+
+function processData(player, data) {
+  data = parseMessageData(data);
+  var callbacks = [];
+  var param;
+
+  if (data.event) {
+    if (data.event === 'error') {
+      var promises = getCallbacks(player, data.data.method);
+      promises.forEach(function (promise) {
+        var error = new Error(data.data.message);
+        error.name = data.data.name;
+        promise.reject(error);
+        removeCallback(player, data.data.method, promise);
+      });
+    }
+
+    callbacks = getCallbacks(player, "event:".concat(data.event));
+    param = data.data;
+  } else if (data.method) {
+    var callback = shiftCallbacks(player, data.method);
+
+    if (callback) {
+      callbacks.push(callback);
+      param = data.value;
+    }
+  }
+
+  callbacks.forEach(function (callback) {
+    try {
+      if (typeof callback === 'function') {
+        callback.call(player, param);
+        return;
+      }
+
+      callback.resolve(param);
+    } catch (e) {// empty
+    }
+  });
+}
+
+/* MIT License
+
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Terms */
+function initializeScreenfull() {
+  var fn = function () {
+    var val;
+    var fnMap = [['requestFullscreen', 'exitFullscreen', 'fullscreenElement', 'fullscreenEnabled', 'fullscreenchange', 'fullscreenerror'], // New WebKit
+    ['webkitRequestFullscreen', 'webkitExitFullscreen', 'webkitFullscreenElement', 'webkitFullscreenEnabled', 'webkitfullscreenchange', 'webkitfullscreenerror'], // Old WebKit
+    ['webkitRequestFullScreen', 'webkitCancelFullScreen', 'webkitCurrentFullScreenElement', 'webkitCancelFullScreen', 'webkitfullscreenchange', 'webkitfullscreenerror'], ['mozRequestFullScreen', 'mozCancelFullScreen', 'mozFullScreenElement', 'mozFullScreenEnabled', 'mozfullscreenchange', 'mozfullscreenerror'], ['msRequestFullscreen', 'msExitFullscreen', 'msFullscreenElement', 'msFullscreenEnabled', 'MSFullscreenChange', 'MSFullscreenError']];
+    var i = 0;
+    var l = fnMap.length;
+    var ret = {};
+
+    for (; i < l; i++) {
+      val = fnMap[i];
+
+      if (val && val[1] in document) {
+        for (i = 0; i < val.length; i++) {
+          ret[fnMap[0][i]] = val[i];
+        }
+
+        return ret;
+      }
+    }
+
+    return false;
+  }();
+
+  var eventNameMap = {
+    fullscreenchange: fn.fullscreenchange,
+    fullscreenerror: fn.fullscreenerror
+  };
+  var screenfull = {
+    request: function request(element) {
+      return new Promise(function (resolve, reject) {
+        var onFullScreenEntered = function onFullScreenEntered() {
+          screenfull.off('fullscreenchange', onFullScreenEntered);
+          resolve();
+        };
+
+        screenfull.on('fullscreenchange', onFullScreenEntered);
+        element = element || document.documentElement;
+        var returnPromise = element[fn.requestFullscreen]();
+
+        if (returnPromise instanceof Promise) {
+          returnPromise.then(onFullScreenEntered).catch(reject);
+        }
+      });
+    },
+    exit: function exit() {
+      return new Promise(function (resolve, reject) {
+        if (!screenfull.isFullscreen) {
+          resolve();
+          return;
+        }
+
+        var onFullScreenExit = function onFullScreenExit() {
+          screenfull.off('fullscreenchange', onFullScreenExit);
+          resolve();
+        };
+
+        screenfull.on('fullscreenchange', onFullScreenExit);
+        var returnPromise = document[fn.exitFullscreen]();
+
+        if (returnPromise instanceof Promise) {
+          returnPromise.then(onFullScreenExit).catch(reject);
+        }
+      });
+    },
+    on: function on(event, callback) {
+      var eventName = eventNameMap[event];
+
+      if (eventName) {
+        document.addEventListener(eventName, callback);
+      }
+    },
+    off: function off(event, callback) {
+      var eventName = eventNameMap[event];
+
+      if (eventName) {
+        document.removeEventListener(eventName, callback);
+      }
+    }
+  };
+  Object.defineProperties(screenfull, {
+    isFullscreen: {
+      get: function get() {
+        return Boolean(document[fn.fullscreenElement]);
+      }
+    },
+    element: {
+      enumerable: true,
+      get: function get() {
+        return document[fn.fullscreenElement];
+      }
+    },
+    isEnabled: {
+      enumerable: true,
+      get: function get() {
+        // Coerce to boolean in case of old WebKit
+        return Boolean(document[fn.fullscreenEnabled]);
+      }
+    }
+  });
+  return screenfull;
+}
+
+var playerMap = new WeakMap();
+var readyMap = new WeakMap();
+var screenfull = {};
+
+var Player = /*#__PURE__*/function () {
+  /**
+   * Create a Player.
+   *
+   * @param {(HTMLIFrameElement|HTMLElement|string|jQuery)} element A reference to the Vimeo
+   *        player iframe, and id, or a jQuery object.
+   * @param {object} [options] oEmbed parameters to use when creating an embed in the element.
+   * @return {Player}
+   */
+  function Player(element) {
+    var _this = this;
+
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    _classCallCheck(this, Player);
+
+    /* global jQuery */
+    if (window.jQuery && element instanceof jQuery) {
+      if (element.length > 1 && window.console && console.warn) {
+        console.warn('A jQuery object with multiple elements was passed, using the first element.');
+      }
+
+      element = element[0];
+    } // Find an element by ID
+
+
+    if (typeof document !== 'undefined' && typeof element === 'string') {
+      element = document.getElementById(element);
+    } // Not an element!
+
+
+    if (!isDomElement(element)) {
+      throw new TypeError('You must pass either a valid element or a valid id.');
+    } // Already initialized an embed in this div, so grab the iframe
+
+
+    if (element.nodeName !== 'IFRAME') {
+      var iframe = element.querySelector('iframe');
+
+      if (iframe) {
+        element = iframe;
+      }
+    } // iframe url is not a Vimeo url
+
+
+    if (element.nodeName === 'IFRAME' && !isVimeoUrl(element.getAttribute('src') || '')) {
+      throw new Error('The player element passed isn’t a Vimeo embed.');
+    } // If there is already a player object in the map, return that
+
+
+    if (playerMap.has(element)) {
+      return playerMap.get(element);
+    }
+
+    this._window = element.ownerDocument.defaultView;
+    this.element = element;
+    this.origin = '*';
+    var readyPromise = new npo_src(function (resolve, reject) {
+      _this._onMessage = function (event) {
+        if (!isVimeoUrl(event.origin) || _this.element.contentWindow !== event.source) {
+          return;
+        }
+
+        if (_this.origin === '*') {
+          _this.origin = event.origin;
+        }
+
+        var data = parseMessageData(event.data);
+        var isError = data && data.event === 'error';
+        var isReadyError = isError && data.data && data.data.method === 'ready';
+
+        if (isReadyError) {
+          var error = new Error(data.data.message);
+          error.name = data.data.name;
+          reject(error);
+          return;
+        }
+
+        var isReadyEvent = data && data.event === 'ready';
+        var isPingResponse = data && data.method === 'ping';
+
+        if (isReadyEvent || isPingResponse) {
+          _this.element.setAttribute('data-ready', 'true');
+
+          resolve();
+          return;
+        }
+
+        processData(_this, data);
+      };
+
+      _this._window.addEventListener('message', _this._onMessage);
+
+      if (_this.element.nodeName !== 'IFRAME') {
+        var params = getOEmbedParameters(element, options);
+        var url = getVimeoUrl(params);
+        getOEmbedData(url, params, element).then(function (data) {
+          var iframe = createEmbed(data, element); // Overwrite element with the new iframe,
+          // but store reference to the original element
+
+          _this.element = iframe;
+          _this._originalElement = element;
+          swapCallbacks(element, iframe);
+          playerMap.set(_this.element, _this);
+          return data;
+        }).catch(reject);
+      }
+    }); // Store a copy of this Player in the map
+
+    readyMap.set(this, readyPromise);
+    playerMap.set(this.element, this); // Send a ping to the iframe so the ready promise will be resolved if
+    // the player is already ready.
+
+    if (this.element.nodeName === 'IFRAME') {
+      postMessage(this, 'ping');
+    }
+
+    if (screenfull.isEnabled) {
+      var exitFullscreen = function exitFullscreen() {
+        return screenfull.exit();
+      };
+
+      screenfull.on('fullscreenchange', function () {
+        if (screenfull.isFullscreen) {
+          storeCallback(_this, 'event:exitFullscreen', exitFullscreen);
+        } else {
+          removeCallback(_this, 'event:exitFullscreen', exitFullscreen);
+        } // eslint-disable-next-line
+
+
+        _this.ready().then(function () {
+          postMessage(_this, 'fullscreenchange', screenfull.isFullscreen);
+        });
+      });
+    }
+
+    return this;
+  }
+  /**
+   * Get a promise for a method.
+   *
+   * @param {string} name The API method to call.
+   * @param {Object} [args={}] Arguments to send via postMessage.
+   * @return {Promise}
+   */
+
+
+  _createClass(Player, [{
+    key: "callMethod",
+    value: function callMethod(name) {
+      var _this2 = this;
+
+      var args = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      return new npo_src(function (resolve, reject) {
+        // We are storing the resolve/reject handlers to call later, so we
+        // can’t return here.
+        // eslint-disable-next-line promise/always-return
+        return _this2.ready().then(function () {
+          storeCallback(_this2, name, {
+            resolve: resolve,
+            reject: reject
+          });
+          postMessage(_this2, name, args);
+        }).catch(reject);
+      });
+    }
+    /**
+     * Get a promise for the value of a player property.
+     *
+     * @param {string} name The property name
+     * @return {Promise}
+     */
+
+  }, {
+    key: "get",
+    value: function get(name) {
+      var _this3 = this;
+
+      return new npo_src(function (resolve, reject) {
+        name = getMethodName(name, 'get'); // We are storing the resolve/reject handlers to call later, so we
+        // can’t return here.
+        // eslint-disable-next-line promise/always-return
+
+        return _this3.ready().then(function () {
+          storeCallback(_this3, name, {
+            resolve: resolve,
+            reject: reject
+          });
+          postMessage(_this3, name);
+        }).catch(reject);
+      });
+    }
+    /**
+     * Get a promise for setting the value of a player property.
+     *
+     * @param {string} name The API method to call.
+     * @param {mixed} value The value to set.
+     * @return {Promise}
+     */
+
+  }, {
+    key: "set",
+    value: function set(name, value) {
+      var _this4 = this;
+
+      return new npo_src(function (resolve, reject) {
+        name = getMethodName(name, 'set');
+
+        if (value === undefined || value === null) {
+          throw new TypeError('There must be a value to set.');
+        } // We are storing the resolve/reject handlers to call later, so we
+        // can’t return here.
+        // eslint-disable-next-line promise/always-return
+
+
+        return _this4.ready().then(function () {
+          storeCallback(_this4, name, {
+            resolve: resolve,
+            reject: reject
+          });
+          postMessage(_this4, name, value);
+        }).catch(reject);
+      });
+    }
+    /**
+     * Add an event listener for the specified event. Will call the
+     * callback with a single parameter, `data`, that contains the data for
+     * that event.
+     *
+     * @param {string} eventName The name of the event.
+     * @param {function(*)} callback The function to call when the event fires.
+     * @return {void}
+     */
+
+  }, {
+    key: "on",
+    value: function on(eventName, callback) {
+      if (!eventName) {
+        throw new TypeError('You must pass an event name.');
+      }
+
+      if (!callback) {
+        throw new TypeError('You must pass a callback function.');
+      }
+
+      if (typeof callback !== 'function') {
+        throw new TypeError('The callback must be a function.');
+      }
+
+      var callbacks = getCallbacks(this, "event:".concat(eventName));
+
+      if (callbacks.length === 0) {
+        this.callMethod('addEventListener', eventName).catch(function () {// Ignore the error. There will be an error event fired that
+          // will trigger the error callback if they are listening.
+        });
+      }
+
+      storeCallback(this, "event:".concat(eventName), callback);
+    }
+    /**
+     * Remove an event listener for the specified event. Will remove all
+     * listeners for that event if a `callback` isn’t passed, or only that
+     * specific callback if it is passed.
+     *
+     * @param {string} eventName The name of the event.
+     * @param {function} [callback] The specific callback to remove.
+     * @return {void}
+     */
+
+  }, {
+    key: "off",
+    value: function off(eventName, callback) {
+      if (!eventName) {
+        throw new TypeError('You must pass an event name.');
+      }
+
+      if (callback && typeof callback !== 'function') {
+        throw new TypeError('The callback must be a function.');
+      }
+
+      var lastCallback = removeCallback(this, "event:".concat(eventName), callback); // If there are no callbacks left, remove the listener
+
+      if (lastCallback) {
+        this.callMethod('removeEventListener', eventName).catch(function (e) {// Ignore the error. There will be an error event fired that
+          // will trigger the error callback if they are listening.
+        });
+      }
+    }
+    /**
+     * A promise to load a new video.
+     *
+     * @promise LoadVideoPromise
+     * @fulfill {number} The video with this id successfully loaded.
+     * @reject {TypeError} The id was not a number.
+     */
+
+    /**
+     * Load a new video into this embed. The promise will be resolved if
+     * the video is successfully loaded, or it will be rejected if it could
+     * not be loaded.
+     *
+     * @param {number|object} options The id of the video or an object with embed options.
+     * @return {LoadVideoPromise}
+     */
+
+  }, {
+    key: "loadVideo",
+    value: function loadVideo(options) {
+      return this.callMethod('loadVideo', options);
+    }
+    /**
+     * A promise to perform an action when the Player is ready.
+     *
+     * @todo document errors
+     * @promise LoadVideoPromise
+     * @fulfill {void}
+     */
+
+    /**
+     * Trigger a function when the player iframe has initialized. You do not
+     * need to wait for `ready` to trigger to begin adding event listeners
+     * or calling other methods.
+     *
+     * @return {ReadyPromise}
+     */
+
+  }, {
+    key: "ready",
+    value: function ready() {
+      var readyPromise = readyMap.get(this) || new npo_src(function (resolve, reject) {
+        reject(new Error('Unknown player. Probably unloaded.'));
+      });
+      return npo_src.resolve(readyPromise);
+    }
+    /**
+     * A promise to add a cue point to the player.
+     *
+     * @promise AddCuePointPromise
+     * @fulfill {string} The id of the cue point to use for removeCuePoint.
+     * @reject {RangeError} the time was less than 0 or greater than the
+     *         video’s duration.
+     * @reject {UnsupportedError} Cue points are not supported with the current
+     *         player or browser.
+     */
+
+    /**
+     * Add a cue point to the player.
+     *
+     * @param {number} time The time for the cue point.
+     * @param {object} [data] Arbitrary data to be returned with the cue point.
+     * @return {AddCuePointPromise}
+     */
+
+  }, {
+    key: "addCuePoint",
+    value: function addCuePoint(time) {
+      var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      return this.callMethod('addCuePoint', {
+        time: time,
+        data: data
+      });
+    }
+    /**
+     * A promise to remove a cue point from the player.
+     *
+     * @promise AddCuePointPromise
+     * @fulfill {string} The id of the cue point that was removed.
+     * @reject {InvalidCuePoint} The cue point with the specified id was not
+     *         found.
+     * @reject {UnsupportedError} Cue points are not supported with the current
+     *         player or browser.
+     */
+
+    /**
+     * Remove a cue point from the video.
+     *
+     * @param {string} id The id of the cue point to remove.
+     * @return {RemoveCuePointPromise}
+     */
+
+  }, {
+    key: "removeCuePoint",
+    value: function removeCuePoint(id) {
+      return this.callMethod('removeCuePoint', id);
+    }
+    /**
+     * A representation of a text track on a video.
+     *
+     * @typedef {Object} VimeoTextTrack
+     * @property {string} language The ISO language code.
+     * @property {string} kind The kind of track it is (captions or subtitles).
+     * @property {string} label The human‐readable label for the track.
+     */
+
+    /**
+     * A promise to enable a text track.
+     *
+     * @promise EnableTextTrackPromise
+     * @fulfill {VimeoTextTrack} The text track that was enabled.
+     * @reject {InvalidTrackLanguageError} No track was available with the
+     *         specified language.
+     * @reject {InvalidTrackError} No track was available with the specified
+     *         language and kind.
+     */
+
+    /**
+     * Enable the text track with the specified language, and optionally the
+     * specified kind (captions or subtitles).
+     *
+     * When set via the API, the track language will not change the viewer’s
+     * stored preference.
+     *
+     * @param {string} language The two‐letter language code.
+     * @param {string} [kind] The kind of track to enable (captions or subtitles).
+     * @return {EnableTextTrackPromise}
+     */
+
+  }, {
+    key: "enableTextTrack",
+    value: function enableTextTrack(language, kind) {
+      if (!language) {
+        throw new TypeError('You must pass a language.');
+      }
+
+      return this.callMethod('enableTextTrack', {
+        language: language,
+        kind: kind
+      });
+    }
+    /**
+     * A promise to disable the active text track.
+     *
+     * @promise DisableTextTrackPromise
+     * @fulfill {void} The track was disabled.
+     */
+
+    /**
+     * Disable the currently-active text track.
+     *
+     * @return {DisableTextTrackPromise}
+     */
+
+  }, {
+    key: "disableTextTrack",
+    value: function disableTextTrack() {
+      return this.callMethod('disableTextTrack');
+    }
+    /**
+     * A promise to pause the video.
+     *
+     * @promise PausePromise
+     * @fulfill {void} The video was paused.
+     */
+
+    /**
+     * Pause the video if it’s playing.
+     *
+     * @return {PausePromise}
+     */
+
+  }, {
+    key: "pause",
+    value: function pause() {
+      return this.callMethod('pause');
+    }
+    /**
+     * A promise to play the video.
+     *
+     * @promise PlayPromise
+     * @fulfill {void} The video was played.
+     */
+
+    /**
+     * Play the video if it’s paused. **Note:** on iOS and some other
+     * mobile devices, you cannot programmatically trigger play. Once the
+     * viewer has tapped on the play button in the player, however, you
+     * will be able to use this function.
+     *
+     * @return {PlayPromise}
+     */
+
+  }, {
+    key: "play",
+    value: function play() {
+      return this.callMethod('play');
+    }
+    /**
+     * Request that the player enters fullscreen.
+     * @return {Promise}
+     */
+
+  }, {
+    key: "requestFullscreen",
+    value: function requestFullscreen() {
+      if (screenfull.isEnabled) {
+        return screenfull.request(this.element);
+      }
+
+      return this.callMethod('requestFullscreen');
+    }
+    /**
+     * Request that the player exits fullscreen.
+     * @return {Promise}
+     */
+
+  }, {
+    key: "exitFullscreen",
+    value: function exitFullscreen() {
+      if (screenfull.isEnabled) {
+        return screenfull.exit();
+      }
+
+      return this.callMethod('exitFullscreen');
+    }
+    /**
+     * Returns true if the player is currently fullscreen.
+     * @return {Promise}
+     */
+
+  }, {
+    key: "getFullscreen",
+    value: function getFullscreen() {
+      if (screenfull.isEnabled) {
+        return npo_src.resolve(screenfull.isFullscreen);
+      }
+
+      return this.get('fullscreen');
+    }
+    /**
+     * Request that the player enters picture-in-picture.
+     * @return {Promise}
+     */
+
+  }, {
+    key: "requestPictureInPicture",
+    value: function requestPictureInPicture() {
+      return this.callMethod('requestPictureInPicture');
+    }
+    /**
+     * Request that the player exits picture-in-picture.
+     * @return {Promise}
+     */
+
+  }, {
+    key: "exitPictureInPicture",
+    value: function exitPictureInPicture() {
+      return this.callMethod('exitPictureInPicture');
+    }
+    /**
+     * Returns true if the player is currently picture-in-picture.
+     * @return {Promise}
+     */
+
+  }, {
+    key: "getPictureInPicture",
+    value: function getPictureInPicture() {
+      return this.get('pictureInPicture');
+    }
+    /**
+     * A promise to unload the video.
+     *
+     * @promise UnloadPromise
+     * @fulfill {void} The video was unloaded.
+     */
+
+    /**
+     * Return the player to its initial state.
+     *
+     * @return {UnloadPromise}
+     */
+
+  }, {
+    key: "unload",
+    value: function unload() {
+      return this.callMethod('unload');
+    }
+    /**
+     * Cleanup the player and remove it from the DOM
+     *
+     * It won't be usable and a new one should be constructed
+     *  in order to do any operations.
+     *
+     * @return {Promise}
+     */
+
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      var _this5 = this;
+
+      return new npo_src(function (resolve) {
+        readyMap.delete(_this5);
+        playerMap.delete(_this5.element);
+
+        if (_this5._originalElement) {
+          playerMap.delete(_this5._originalElement);
+
+          _this5._originalElement.removeAttribute('data-vimeo-initialized');
+        }
+
+        if (_this5.element && _this5.element.nodeName === 'IFRAME' && _this5.element.parentNode) {
+          _this5.element.parentNode.removeChild(_this5.element);
+        } // If the clip is private there is a case where the element stays the
+        // div element. Destroy should reset the div and remove the iframe child.
+
+
+        if (_this5.element && _this5.element.nodeName === 'DIV' && _this5.element.parentNode) {
+          _this5.element.removeAttribute('data-vimeo-initialized');
+
+          var iframe = _this5.element.querySelector('iframe');
+
+          if (iframe && iframe.parentNode) {
+            iframe.parentNode.removeChild(iframe);
+          }
+        }
+
+        _this5._window.removeEventListener('message', _this5._onMessage);
+
+        resolve();
+      });
+    }
+    /**
+     * A promise to get the autopause behavior of the video.
+     *
+     * @promise GetAutopausePromise
+     * @fulfill {boolean} Whether autopause is turned on or off.
+     * @reject {UnsupportedError} Autopause is not supported with the current
+     *         player or browser.
+     */
+
+    /**
+     * Get the autopause behavior for this player.
+     *
+     * @return {GetAutopausePromise}
+     */
+
+  }, {
+    key: "getAutopause",
+    value: function getAutopause() {
+      return this.get('autopause');
+    }
+    /**
+     * A promise to set the autopause behavior of the video.
+     *
+     * @promise SetAutopausePromise
+     * @fulfill {boolean} Whether autopause is turned on or off.
+     * @reject {UnsupportedError} Autopause is not supported with the current
+     *         player or browser.
+     */
+
+    /**
+     * Enable or disable the autopause behavior of this player.
+     *
+     * By default, when another video is played in the same browser, this
+     * player will automatically pause. Unless you have a specific reason
+     * for doing so, we recommend that you leave autopause set to the
+     * default (`true`).
+     *
+     * @param {boolean} autopause
+     * @return {SetAutopausePromise}
+     */
+
+  }, {
+    key: "setAutopause",
+    value: function setAutopause(autopause) {
+      return this.set('autopause', autopause);
+    }
+    /**
+     * A promise to get the buffered property of the video.
+     *
+     * @promise GetBufferedPromise
+     * @fulfill {Array} Buffered Timeranges converted to an Array.
+     */
+
+    /**
+     * Get the buffered property of the video.
+     *
+     * @return {GetBufferedPromise}
+     */
+
+  }, {
+    key: "getBuffered",
+    value: function getBuffered() {
+      return this.get('buffered');
+    }
+    /**
+     * @typedef {Object} CameraProperties
+     * @prop {number} props.yaw - Number between 0 and 360.
+     * @prop {number} props.pitch - Number between -90 and 90.
+     * @prop {number} props.roll - Number between -180 and 180.
+     * @prop {number} props.fov - The field of view in degrees.
+     */
+
+    /**
+     * A promise to get the camera properties of the player.
+     *
+     * @promise GetCameraPromise
+     * @fulfill {CameraProperties} The camera properties.
+     */
+
+    /**
+     * For 360° videos get the camera properties for this player.
+     *
+     * @return {GetCameraPromise}
+     */
+
+  }, {
+    key: "getCameraProps",
+    value: function getCameraProps() {
+      return this.get('cameraProps');
+    }
+    /**
+     * A promise to set the camera properties of the player.
+     *
+     * @promise SetCameraPromise
+     * @fulfill {Object} The camera was successfully set.
+     * @reject {RangeError} The range was out of bounds.
+     */
+
+    /**
+     * For 360° videos set the camera properties for this player.
+     *
+     * @param {CameraProperties} camera The camera properties
+     * @return {SetCameraPromise}
+     */
+
+  }, {
+    key: "setCameraProps",
+    value: function setCameraProps(camera) {
+      return this.set('cameraProps', camera);
+    }
+    /**
+     * A representation of a chapter.
+     *
+     * @typedef {Object} VimeoChapter
+     * @property {number} startTime The start time of the chapter.
+     * @property {object} title The title of the chapter.
+     * @property {number} index The place in the order of Chapters. Starts at 1.
+     */
+
+    /**
+     * A promise to get chapters for the video.
+     *
+     * @promise GetChaptersPromise
+     * @fulfill {VimeoChapter[]} The chapters for the video.
+     */
+
+    /**
+     * Get an array of all the chapters for the video.
+     *
+     * @return {GetChaptersPromise}
+     */
+
+  }, {
+    key: "getChapters",
+    value: function getChapters() {
+      return this.get('chapters');
+    }
+    /**
+     * A promise to get the currently active chapter.
+     *
+     * @promise GetCurrentChaptersPromise
+     * @fulfill {VimeoChapter|undefined} The current chapter for the video.
+     */
+
+    /**
+     * Get the currently active chapter for the video.
+     *
+     * @return {GetCurrentChaptersPromise}
+     */
+
+  }, {
+    key: "getCurrentChapter",
+    value: function getCurrentChapter() {
+      return this.get('currentChapter');
+    }
+    /**
+     * A promise to get the color of the player.
+     *
+     * @promise GetColorPromise
+     * @fulfill {string} The hex color of the player.
+     */
+
+    /**
+     * Get the color for this player.
+     *
+     * @return {GetColorPromise}
+     */
+
+  }, {
+    key: "getColor",
+    value: function getColor() {
+      return this.get('color');
+    }
+    /**
+     * A promise to set the color of the player.
+     *
+     * @promise SetColorPromise
+     * @fulfill {string} The color was successfully set.
+     * @reject {TypeError} The string was not a valid hex or rgb color.
+     * @reject {ContrastError} The color was set, but the contrast is
+     *         outside of the acceptable range.
+     * @reject {EmbedSettingsError} The owner of the player has chosen to
+     *         use a specific color.
+     */
+
+    /**
+     * Set the color of this player to a hex or rgb string. Setting the
+     * color may fail if the owner of the video has set their embed
+     * preferences to force a specific color.
+     *
+     * @param {string} color The hex or rgb color string to set.
+     * @return {SetColorPromise}
+     */
+
+  }, {
+    key: "setColor",
+    value: function setColor(color) {
+      return this.set('color', color);
+    }
+    /**
+     * A representation of a cue point.
+     *
+     * @typedef {Object} VimeoCuePoint
+     * @property {number} time The time of the cue point.
+     * @property {object} data The data passed when adding the cue point.
+     * @property {string} id The unique id for use with removeCuePoint.
+     */
+
+    /**
+     * A promise to get the cue points of a video.
+     *
+     * @promise GetCuePointsPromise
+     * @fulfill {VimeoCuePoint[]} The cue points added to the video.
+     * @reject {UnsupportedError} Cue points are not supported with the current
+     *         player or browser.
+     */
+
+    /**
+     * Get an array of the cue points added to the video.
+     *
+     * @return {GetCuePointsPromise}
+     */
+
+  }, {
+    key: "getCuePoints",
+    value: function getCuePoints() {
+      return this.get('cuePoints');
+    }
+    /**
+     * A promise to get the current time of the video.
+     *
+     * @promise GetCurrentTimePromise
+     * @fulfill {number} The current time in seconds.
+     */
+
+    /**
+     * Get the current playback position in seconds.
+     *
+     * @return {GetCurrentTimePromise}
+     */
+
+  }, {
+    key: "getCurrentTime",
+    value: function getCurrentTime() {
+      return this.get('currentTime');
+    }
+    /**
+     * A promise to set the current time of the video.
+     *
+     * @promise SetCurrentTimePromise
+     * @fulfill {number} The actual current time that was set.
+     * @reject {RangeError} the time was less than 0 or greater than the
+     *         video’s duration.
+     */
+
+    /**
+     * Set the current playback position in seconds. If the player was
+     * paused, it will remain paused. Likewise, if the player was playing,
+     * it will resume playing once the video has buffered.
+     *
+     * You can provide an accurate time and the player will attempt to seek
+     * to as close to that time as possible. The exact time will be the
+     * fulfilled value of the promise.
+     *
+     * @param {number} currentTime
+     * @return {SetCurrentTimePromise}
+     */
+
+  }, {
+    key: "setCurrentTime",
+    value: function setCurrentTime(currentTime) {
+      return this.set('currentTime', currentTime);
+    }
+    /**
+     * A promise to get the duration of the video.
+     *
+     * @promise GetDurationPromise
+     * @fulfill {number} The duration in seconds.
+     */
+
+    /**
+     * Get the duration of the video in seconds. It will be rounded to the
+     * nearest second before playback begins, and to the nearest thousandth
+     * of a second after playback begins.
+     *
+     * @return {GetDurationPromise}
+     */
+
+  }, {
+    key: "getDuration",
+    value: function getDuration() {
+      return this.get('duration');
+    }
+    /**
+     * A promise to get the ended state of the video.
+     *
+     * @promise GetEndedPromise
+     * @fulfill {boolean} Whether or not the video has ended.
+     */
+
+    /**
+     * Get the ended state of the video. The video has ended if
+     * `currentTime === duration`.
+     *
+     * @return {GetEndedPromise}
+     */
+
+  }, {
+    key: "getEnded",
+    value: function getEnded() {
+      return this.get('ended');
+    }
+    /**
+     * A promise to get the loop state of the player.
+     *
+     * @promise GetLoopPromise
+     * @fulfill {boolean} Whether or not the player is set to loop.
+     */
+
+    /**
+     * Get the loop state of the player.
+     *
+     * @return {GetLoopPromise}
+     */
+
+  }, {
+    key: "getLoop",
+    value: function getLoop() {
+      return this.get('loop');
+    }
+    /**
+     * A promise to set the loop state of the player.
+     *
+     * @promise SetLoopPromise
+     * @fulfill {boolean} The loop state that was set.
+     */
+
+    /**
+     * Set the loop state of the player. When set to `true`, the player
+     * will start over immediately once playback ends.
+     *
+     * @param {boolean} loop
+     * @return {SetLoopPromise}
+     */
+
+  }, {
+    key: "setLoop",
+    value: function setLoop(loop) {
+      return this.set('loop', loop);
+    }
+    /**
+     * A promise to set the muted state of the player.
+     *
+     * @promise SetMutedPromise
+     * @fulfill {boolean} The muted state that was set.
+     */
+
+    /**
+     * Set the muted state of the player. When set to `true`, the player
+     * volume will be muted.
+     *
+     * @param {boolean} muted
+     * @return {SetMutedPromise}
+     */
+
+  }, {
+    key: "setMuted",
+    value: function setMuted(muted) {
+      return this.set('muted', muted);
+    }
+    /**
+     * A promise to get the muted state of the player.
+     *
+     * @promise GetMutedPromise
+     * @fulfill {boolean} Whether or not the player is muted.
+     */
+
+    /**
+     * Get the muted state of the player.
+     *
+     * @return {GetMutedPromise}
+     */
+
+  }, {
+    key: "getMuted",
+    value: function getMuted() {
+      return this.get('muted');
+    }
+    /**
+     * A promise to get the paused state of the player.
+     *
+     * @promise GetLoopPromise
+     * @fulfill {boolean} Whether or not the video is paused.
+     */
+
+    /**
+     * Get the paused state of the player.
+     *
+     * @return {GetLoopPromise}
+     */
+
+  }, {
+    key: "getPaused",
+    value: function getPaused() {
+      return this.get('paused');
+    }
+    /**
+     * A promise to get the playback rate of the player.
+     *
+     * @promise GetPlaybackRatePromise
+     * @fulfill {number} The playback rate of the player on a scale from 0.5 to 2.
+     */
+
+    /**
+     * Get the playback rate of the player on a scale from `0.5` to `2`.
+     *
+     * @return {GetPlaybackRatePromise}
+     */
+
+  }, {
+    key: "getPlaybackRate",
+    value: function getPlaybackRate() {
+      return this.get('playbackRate');
+    }
+    /**
+     * A promise to set the playbackrate of the player.
+     *
+     * @promise SetPlaybackRatePromise
+     * @fulfill {number} The playback rate was set.
+     * @reject {RangeError} The playback rate was less than 0.5 or greater than 2.
+     */
+
+    /**
+     * Set the playback rate of the player on a scale from `0.5` to `2`. When set
+     * via the API, the playback rate will not be synchronized to other
+     * players or stored as the viewer's preference.
+     *
+     * @param {number} playbackRate
+     * @return {SetPlaybackRatePromise}
+     */
+
+  }, {
+    key: "setPlaybackRate",
+    value: function setPlaybackRate(playbackRate) {
+      return this.set('playbackRate', playbackRate);
+    }
+    /**
+     * A promise to get the played property of the video.
+     *
+     * @promise GetPlayedPromise
+     * @fulfill {Array} Played Timeranges converted to an Array.
+     */
+
+    /**
+     * Get the played property of the video.
+     *
+     * @return {GetPlayedPromise}
+     */
+
+  }, {
+    key: "getPlayed",
+    value: function getPlayed() {
+      return this.get('played');
+    }
+    /**
+     * A promise to get the qualities available of the current video.
+     *
+     * @promise GetQualitiesPromise
+     * @fulfill {Array} The qualities of the video.
+     */
+
+    /**
+     * Get the qualities of the current video.
+     *
+     * @return {GetQualitiesPromise}
+     */
+
+  }, {
+    key: "getQualities",
+    value: function getQualities() {
+      return this.get('qualities');
+    }
+    /**
+     * A promise to get the current set quality of the video.
+     *
+     * @promise GetQualityPromise
+     * @fulfill {string} The current set quality.
+     */
+
+    /**
+     * Get the current set quality of the video.
+     *
+     * @return {GetQualityPromise}
+     */
+
+  }, {
+    key: "getQuality",
+    value: function getQuality() {
+      return this.get('quality');
+    }
+    /**
+     * A promise to set the video quality.
+     *
+     * @promise SetQualityPromise
+     * @fulfill {number} The quality was set.
+     * @reject {RangeError} The quality is not available.
+     */
+
+    /**
+     * Set a video quality.
+     *
+     * @param {string} quality
+     * @return {SetQualityPromise}
+     */
+
+  }, {
+    key: "setQuality",
+    value: function setQuality(quality) {
+      return this.set('quality', quality);
+    }
+    /**
+     * A promise to get the seekable property of the video.
+     *
+     * @promise GetSeekablePromise
+     * @fulfill {Array} Seekable Timeranges converted to an Array.
+     */
+
+    /**
+     * Get the seekable property of the video.
+     *
+     * @return {GetSeekablePromise}
+     */
+
+  }, {
+    key: "getSeekable",
+    value: function getSeekable() {
+      return this.get('seekable');
+    }
+    /**
+     * A promise to get the seeking property of the player.
+     *
+     * @promise GetSeekingPromise
+     * @fulfill {boolean} Whether or not the player is currently seeking.
+     */
+
+    /**
+     * Get if the player is currently seeking.
+     *
+     * @return {GetSeekingPromise}
+     */
+
+  }, {
+    key: "getSeeking",
+    value: function getSeeking() {
+      return this.get('seeking');
+    }
+    /**
+     * A promise to get the text tracks of a video.
+     *
+     * @promise GetTextTracksPromise
+     * @fulfill {VimeoTextTrack[]} The text tracks associated with the video.
+     */
+
+    /**
+     * Get an array of the text tracks that exist for the video.
+     *
+     * @return {GetTextTracksPromise}
+     */
+
+  }, {
+    key: "getTextTracks",
+    value: function getTextTracks() {
+      return this.get('textTracks');
+    }
+    /**
+     * A promise to get the embed code for the video.
+     *
+     * @promise GetVideoEmbedCodePromise
+     * @fulfill {string} The `<iframe>` embed code for the video.
+     */
+
+    /**
+     * Get the `<iframe>` embed code for the video.
+     *
+     * @return {GetVideoEmbedCodePromise}
+     */
+
+  }, {
+    key: "getVideoEmbedCode",
+    value: function getVideoEmbedCode() {
+      return this.get('videoEmbedCode');
+    }
+    /**
+     * A promise to get the id of the video.
+     *
+     * @promise GetVideoIdPromise
+     * @fulfill {number} The id of the video.
+     */
+
+    /**
+     * Get the id of the video.
+     *
+     * @return {GetVideoIdPromise}
+     */
+
+  }, {
+    key: "getVideoId",
+    value: function getVideoId() {
+      return this.get('videoId');
+    }
+    /**
+     * A promise to get the title of the video.
+     *
+     * @promise GetVideoTitlePromise
+     * @fulfill {number} The title of the video.
+     */
+
+    /**
+     * Get the title of the video.
+     *
+     * @return {GetVideoTitlePromise}
+     */
+
+  }, {
+    key: "getVideoTitle",
+    value: function getVideoTitle() {
+      return this.get('videoTitle');
+    }
+    /**
+     * A promise to get the native width of the video.
+     *
+     * @promise GetVideoWidthPromise
+     * @fulfill {number} The native width of the video.
+     */
+
+    /**
+     * Get the native width of the currently‐playing video. The width of
+     * the highest‐resolution available will be used before playback begins.
+     *
+     * @return {GetVideoWidthPromise}
+     */
+
+  }, {
+    key: "getVideoWidth",
+    value: function getVideoWidth() {
+      return this.get('videoWidth');
+    }
+    /**
+     * A promise to get the native height of the video.
+     *
+     * @promise GetVideoHeightPromise
+     * @fulfill {number} The native height of the video.
+     */
+
+    /**
+     * Get the native height of the currently‐playing video. The height of
+     * the highest‐resolution available will be used before playback begins.
+     *
+     * @return {GetVideoHeightPromise}
+     */
+
+  }, {
+    key: "getVideoHeight",
+    value: function getVideoHeight() {
+      return this.get('videoHeight');
+    }
+    /**
+     * A promise to get the vimeo.com url for the video.
+     *
+     * @promise GetVideoUrlPromise
+     * @fulfill {number} The vimeo.com url for the video.
+     * @reject {PrivacyError} The url isn’t available because of the video’s privacy setting.
+     */
+
+    /**
+     * Get the vimeo.com url for the video.
+     *
+     * @return {GetVideoUrlPromise}
+     */
+
+  }, {
+    key: "getVideoUrl",
+    value: function getVideoUrl() {
+      return this.get('videoUrl');
+    }
+    /**
+     * A promise to get the volume level of the player.
+     *
+     * @promise GetVolumePromise
+     * @fulfill {number} The volume level of the player on a scale from 0 to 1.
+     */
+
+    /**
+     * Get the current volume level of the player on a scale from `0` to `1`.
+     *
+     * Most mobile devices do not support an independent volume from the
+     * system volume. In those cases, this method will always return `1`.
+     *
+     * @return {GetVolumePromise}
+     */
+
+  }, {
+    key: "getVolume",
+    value: function getVolume() {
+      return this.get('volume');
+    }
+    /**
+     * A promise to set the volume level of the player.
+     *
+     * @promise SetVolumePromise
+     * @fulfill {number} The volume was set.
+     * @reject {RangeError} The volume was less than 0 or greater than 1.
+     */
+
+    /**
+     * Set the volume of the player on a scale from `0` to `1`. When set
+     * via the API, the volume level will not be synchronized to other
+     * players or stored as the viewer’s preference.
+     *
+     * Most mobile devices do not support setting the volume. An error will
+     * *not* be triggered in that situation.
+     *
+     * @param {number} volume
+     * @return {SetVolumePromise}
+     */
+
+  }, {
+    key: "setVolume",
+    value: function setVolume(volume) {
+      return this.set('volume', volume);
+    }
+  }]);
+
+  return Player;
+}(); // Setup embed only if this is not a node environment
+
+
+if (!isNode) {
+  screenfull = initializeScreenfull();
+  initializeEmbeds();
+  resizeEmbeds();
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Player);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../../timers-browserify/main.js */ "./node_modules/timers-browserify/main.js").setImmediate))
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -2532,13 +5038,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ClassroomsPage",
@@ -2669,7 +5168,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Courses_ClassroomCoursesList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Courses/ClassroomCoursesList */ "./resources/js/components/Courses/ClassroomCoursesList.vue");
-//
 //
 //
 //
@@ -2914,23 +5412,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ClassroomCoursesList",
   props: {
@@ -2951,6 +5432,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_video_wrapper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-video-wrapper */ "./node_modules/vue-video-wrapper/dist/bundle.esm.js");
 //
 //
 //
@@ -3026,25 +5508,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CourseComponent",
   data: function data() {
-    return {};
+    return {
+      videoId: "#"
+    };
   },
   props: {
     course: {
@@ -3054,6 +5524,9 @@ __webpack_require__.r(__webpack_exports__);
       type: Object,
       required: true
     }
+  },
+  components: {
+    VueVideoWrapper: vue_video_wrapper__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
@@ -3688,6 +6161,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NavBar",
@@ -3708,6 +6186,75 @@ __webpack_require__.r(__webpack_exports__);
   },
   directives: {
     onClickaway: vue_clickaway__WEBPACK_IMPORTED_MODULE_0__["directive"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservationsComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ReservationsComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ReservationsComponent",
+  props: {
+    previous: Array,
+    current: Array,
+    next: Array
   }
 });
 
@@ -3793,8 +6340,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
-  * Bootstrap v4.5.3 (https://getbootstrap.com/)
-  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap v4.6.0 (https://getbootstrap.com/)
+  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -3849,7 +6396,7 @@ __webpack_require__.r(__webpack_exports__);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.5.3): util.js
+   * Bootstrap (v4.6.0): util.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -4028,7 +6575,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME = 'alert';
-  var VERSION = '4.5.3';
+  var VERSION = '4.6.0';
   var DATA_KEY = 'bs.alert';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -4184,7 +6731,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$1 = 'button';
-  var VERSION$1 = '4.5.3';
+  var VERSION$1 = '4.6.0';
   var DATA_KEY$1 = 'bs.button';
   var EVENT_KEY$1 = "." + DATA_KEY$1;
   var DATA_API_KEY$1 = '.data-api';
@@ -4383,7 +6930,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$2 = 'carousel';
-  var VERSION$2 = '4.5.3';
+  var VERSION$2 = '4.6.0';
   var DATA_KEY$2 = 'bs.carousel';
   var EVENT_KEY$2 = "." + DATA_KEY$2;
   var DATA_API_KEY$2 = '.data-api';
@@ -4523,6 +7070,8 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (this._config.interval && !this._isPaused) {
+        this._updateInterval();
+
         this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval);
       }
     };
@@ -4764,6 +7313,23 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
 
+    _proto._updateInterval = function _updateInterval() {
+      var element = this._activeElement || this._element.querySelector(SELECTOR_ACTIVE_ITEM);
+
+      if (!element) {
+        return;
+      }
+
+      var elementInterval = parseInt(element.getAttribute('data-interval'), 10);
+
+      if (elementInterval) {
+        this._config.defaultInterval = this._config.defaultInterval || this._config.interval;
+        this._config.interval = elementInterval;
+      } else {
+        this._config.interval = this._config.defaultInterval || this._config.interval;
+      }
+    };
+
     _proto._slide = function _slide(direction, element) {
       var _this4 = this;
 
@@ -4814,6 +7380,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this._setActiveIndicatorElement(nextElement);
 
+      this._activeElement = nextElement;
       var slidEvent = $__default['default'].Event(EVENT_SLID, {
         relatedTarget: nextElement,
         direction: eventDirectionName,
@@ -4826,15 +7393,6 @@ __webpack_require__.r(__webpack_exports__);
         Util.reflow(nextElement);
         $__default['default'](activeElement).addClass(directionalClassName);
         $__default['default'](nextElement).addClass(directionalClassName);
-        var nextElementInterval = parseInt(nextElement.getAttribute('data-interval'), 10);
-
-        if (nextElementInterval) {
-          this._config.defaultInterval = this._config.defaultInterval || this._config.interval;
-          this._config.interval = nextElementInterval;
-        } else {
-          this._config.interval = this._config.defaultInterval || this._config.interval;
-        }
-
         var transitionDuration = Util.getTransitionDurationFromElement(activeElement);
         $__default['default'](activeElement).one(Util.TRANSITION_END, function () {
           $__default['default'](nextElement).removeClass(directionalClassName + " " + orderClassName).addClass(CLASS_NAME_ACTIVE$1);
@@ -4971,7 +7529,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$3 = 'collapse';
-  var VERSION$3 = '4.5.3';
+  var VERSION$3 = '4.6.0';
   var DATA_KEY$3 = 'bs.collapse';
   var EVENT_KEY$3 = "." + DATA_KEY$3;
   var DATA_API_KEY$3 = '.data-api';
@@ -5320,7 +7878,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$4 = 'dropdown';
-  var VERSION$4 = '4.5.3';
+  var VERSION$4 = '4.6.0';
   var DATA_KEY$4 = 'bs.dropdown';
   var EVENT_KEY$4 = "." + DATA_KEY$4;
   var DATA_API_KEY$4 = '.data-api';
@@ -5437,7 +7995,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (showEvent.isDefaultPrevented()) {
         return;
-      } // Disable totally Popper.js for Dropdown in Navbar
+      } // Totally disable Popper for Dropdowns in Navbar
 
 
       if (!this._inNavbar && usePopper) {
@@ -5446,7 +8004,7 @@ __webpack_require__.r(__webpack_exports__);
          * Popper - https://popper.js.org
          */
         if (typeof Popper__default['default'] === 'undefined') {
-          throw new TypeError('Bootstrap\'s dropdowns require Popper.js (https://popper.js.org/)');
+          throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)');
         }
 
         var referenceElement = this._element;
@@ -5614,7 +8172,7 @@ __webpack_require__.r(__webpack_exports__);
             boundariesElement: this._config.boundary
           }
         }
-      }; // Disable Popper.js if we have a static display
+      }; // Disable Popper if we have a static display
 
       if (this._config.display === 'static') {
         popperConfig.modifiers.applyStyle = {
@@ -5834,7 +8392,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$5 = 'modal';
-  var VERSION$5 = '4.5.3';
+  var VERSION$5 = '4.6.0';
   var DATA_KEY$5 = 'bs.modal';
   var EVENT_KEY$5 = "." + DATA_KEY$5;
   var DATA_API_KEY$5 = '.data-api';
@@ -6034,38 +8592,34 @@ __webpack_require__.r(__webpack_exports__);
     _proto._triggerBackdropTransition = function _triggerBackdropTransition() {
       var _this3 = this;
 
-      if (this._config.backdrop === 'static') {
-        var hideEventPrevented = $__default['default'].Event(EVENT_HIDE_PREVENTED);
-        $__default['default'](this._element).trigger(hideEventPrevented);
+      var hideEventPrevented = $__default['default'].Event(EVENT_HIDE_PREVENTED);
+      $__default['default'](this._element).trigger(hideEventPrevented);
 
-        if (hideEventPrevented.isDefaultPrevented()) {
-          return;
-        }
+      if (hideEventPrevented.isDefaultPrevented()) {
+        return;
+      }
 
-        var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+      var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+
+      if (!isModalOverflowing) {
+        this._element.style.overflowY = 'hidden';
+      }
+
+      this._element.classList.add(CLASS_NAME_STATIC);
+
+      var modalTransitionDuration = Util.getTransitionDurationFromElement(this._dialog);
+      $__default['default'](this._element).off(Util.TRANSITION_END);
+      $__default['default'](this._element).one(Util.TRANSITION_END, function () {
+        _this3._element.classList.remove(CLASS_NAME_STATIC);
 
         if (!isModalOverflowing) {
-          this._element.style.overflowY = 'hidden';
+          $__default['default'](_this3._element).one(Util.TRANSITION_END, function () {
+            _this3._element.style.overflowY = '';
+          }).emulateTransitionEnd(_this3._element, modalTransitionDuration);
         }
+      }).emulateTransitionEnd(modalTransitionDuration);
 
-        this._element.classList.add(CLASS_NAME_STATIC);
-
-        var modalTransitionDuration = Util.getTransitionDurationFromElement(this._dialog);
-        $__default['default'](this._element).off(Util.TRANSITION_END);
-        $__default['default'](this._element).one(Util.TRANSITION_END, function () {
-          _this3._element.classList.remove(CLASS_NAME_STATIC);
-
-          if (!isModalOverflowing) {
-            $__default['default'](_this3._element).one(Util.TRANSITION_END, function () {
-              _this3._element.style.overflowY = '';
-            }).emulateTransitionEnd(_this3._element, modalTransitionDuration);
-          }
-        }).emulateTransitionEnd(modalTransitionDuration);
-
-        this._element.focus();
-      } else {
-        this.hide();
-      }
+      this._element.focus();
     };
 
     _proto._showElement = function _showElement(relatedTarget) {
@@ -6220,7 +8774,11 @@ __webpack_require__.r(__webpack_exports__);
             return;
           }
 
-          _this9._triggerBackdropTransition();
+          if (_this9._config.backdrop === 'static') {
+            _this9._triggerBackdropTransition();
+          } else {
+            _this9.hide();
+          }
         });
 
         if (animate) {
@@ -6444,7 +9002,7 @@ __webpack_require__.r(__webpack_exports__);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.5.3): tools/sanitizer.js
+   * Bootstrap (v4.6.0): tools/sanitizer.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -6570,7 +9128,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$6 = 'tooltip';
-  var VERSION$6 = '4.5.3';
+  var VERSION$6 = '4.6.0';
   var DATA_KEY$6 = 'bs.tooltip';
   var EVENT_KEY$6 = "." + DATA_KEY$6;
   var JQUERY_NO_CONFLICT$6 = $__default['default'].fn[NAME$6];
@@ -6590,6 +9148,7 @@ __webpack_require__.r(__webpack_exports__);
     container: '(string|element|boolean)',
     fallbackPlacement: '(string|array)',
     boundary: '(string|element)',
+    customClass: '(string|function)',
     sanitize: 'boolean',
     sanitizeFn: '(null|function)',
     whiteList: 'object',
@@ -6615,6 +9174,7 @@ __webpack_require__.r(__webpack_exports__);
     container: false,
     fallbackPlacement: 'flip',
     boundary: 'scrollParent',
+    customClass: '',
     sanitize: true,
     sanitizeFn: null,
     whiteList: DefaultWhitelist,
@@ -6651,7 +9211,7 @@ __webpack_require__.r(__webpack_exports__);
   var Tooltip = /*#__PURE__*/function () {
     function Tooltip(element, config) {
       if (typeof Popper__default['default'] === 'undefined') {
-        throw new TypeError('Bootstrap\'s tooltips require Popper.js (https://popper.js.org/)');
+        throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)');
       } // private
 
 
@@ -6785,7 +9345,8 @@ __webpack_require__.r(__webpack_exports__);
 
         $__default['default'](this.element).trigger(this.constructor.Event.INSERTED);
         this._popper = new Popper__default['default'](this.element, tip, this._getPopperConfig(attachment));
-        $__default['default'](tip).addClass(CLASS_NAME_SHOW$4); // If this is a touch-enabled device we add extra
+        $__default['default'](tip).addClass(CLASS_NAME_SHOW$4);
+        $__default['default'](tip).addClass(this.config.customClass); // If this is a touch-enabled device we add extra
         // empty mouseover listeners to the body's immediate children;
         // only needed because of broken event delegation on iOS
         // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
@@ -7283,7 +9844,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$7 = 'popover';
-  var VERSION$7 = '4.5.3';
+  var VERSION$7 = '4.6.0';
   var DATA_KEY$7 = 'bs.popover';
   var EVENT_KEY$7 = "." + DATA_KEY$7;
   var JQUERY_NO_CONFLICT$7 = $__default['default'].fn[NAME$7];
@@ -7463,7 +10024,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$8 = 'scrollspy';
-  var VERSION$8 = '4.5.3';
+  var VERSION$8 = '4.6.0';
   var DATA_KEY$8 = 'bs.scrollspy';
   var EVENT_KEY$8 = "." + DATA_KEY$8;
   var DATA_API_KEY$6 = '.data-api';
@@ -7755,7 +10316,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$9 = 'tab';
-  var VERSION$9 = '4.5.3';
+  var VERSION$9 = '4.6.0';
   var DATA_KEY$9 = 'bs.tab';
   var EVENT_KEY$9 = "." + DATA_KEY$9;
   var DATA_API_KEY$7 = '.data-api';
@@ -7981,7 +10542,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$a = 'toast';
-  var VERSION$a = '4.5.3';
+  var VERSION$a = '4.6.0';
   var DATA_KEY$a = 'bs.toast';
   var EVENT_KEY$a = "." + DATA_KEY$a;
   var JQUERY_NO_CONFLICT$a = $__default['default'].fn[NAME$a];
@@ -8327,17 +10888,17 @@ function toComment(sourceMap) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery JavaScript Library v3.5.1
+ * jQuery JavaScript Library v3.6.0
  * https://jquery.com/
  *
  * Includes Sizzle.js
  * https://sizzlejs.com/
  *
- * Copyright JS Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2020-05-04T22:49Z
+ * Date: 2021-03-02T17:08Z
  */
 ( function( global, factory ) {
 
@@ -8404,12 +10965,16 @@ var support = {};
 
 var isFunction = function isFunction( obj ) {
 
-      // Support: Chrome <=57, Firefox <=52
-      // In some browsers, typeof returns "function" for HTML <object> elements
-      // (i.e., `typeof document.createElement( "object" ) === "function"`).
-      // We don't want to classify *any* DOM node as a function.
-      return typeof obj === "function" && typeof obj.nodeType !== "number";
-  };
+		// Support: Chrome <=57, Firefox <=52
+		// In some browsers, typeof returns "function" for HTML <object> elements
+		// (i.e., `typeof document.createElement( "object" ) === "function"`).
+		// We don't want to classify *any* DOM node as a function.
+		// Support: QtWeb <=3.8.5, WebKit <=534.34, wkhtmltopdf tool <=0.12.5
+		// Plus for old WebKit, typeof returns "function" for HTML collections
+		// (e.g., `typeof document.getElementsByTagName("div") === "function"`). (gh-4756)
+		return typeof obj === "function" && typeof obj.nodeType !== "number" &&
+			typeof obj.item !== "function";
+	};
 
 
 var isWindow = function isWindow( obj ) {
@@ -8475,7 +11040,7 @@ function toType( obj ) {
 
 
 var
-	version = "3.5.1",
+	version = "3.6.0",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -8729,7 +11294,7 @@ jQuery.extend( {
 			if ( isArrayLike( Object( arr ) ) ) {
 				jQuery.merge( ret,
 					typeof arr === "string" ?
-					[ arr ] : arr
+						[ arr ] : arr
 				);
 			} else {
 				push.call( ret, arr );
@@ -8824,9 +11389,9 @@ if ( typeof Symbol === "function" ) {
 
 // Populate the class2type map
 jQuery.each( "Boolean Number String Function Array Date RegExp Object Error Symbol".split( " " ),
-function( _i, name ) {
-	class2type[ "[object " + name + "]" ] = name.toLowerCase();
-} );
+	function( _i, name ) {
+		class2type[ "[object " + name + "]" ] = name.toLowerCase();
+	} );
 
 function isArrayLike( obj ) {
 
@@ -8846,14 +11411,14 @@ function isArrayLike( obj ) {
 }
 var Sizzle =
 /*!
- * Sizzle CSS Selector Engine v2.3.5
+ * Sizzle CSS Selector Engine v2.3.6
  * https://sizzlejs.com/
  *
  * Copyright JS Foundation and other contributors
  * Released under the MIT license
  * https://js.foundation/
  *
- * Date: 2020-03-14
+ * Date: 2021-02-16
  */
 ( function( window ) {
 var i,
@@ -9436,8 +12001,8 @@ support = Sizzle.support = {};
  * @returns {Boolean} True iff elem is a non-HTML XML node
  */
 isXML = Sizzle.isXML = function( elem ) {
-	var namespace = elem.namespaceURI,
-		docElem = ( elem.ownerDocument || elem ).documentElement;
+	var namespace = elem && elem.namespaceURI,
+		docElem = elem && ( elem.ownerDocument || elem ).documentElement;
 
 	// Support: IE <=8
 	// Assume HTML when documentElement doesn't yet exist, such as inside loading iframes
@@ -11352,9 +13917,9 @@ var rneedsContext = jQuery.expr.match.needsContext;
 
 function nodeName( elem, name ) {
 
-  return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
+	return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
 
-};
+}
 var rsingleTag = ( /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i );
 
 
@@ -12325,8 +14890,8 @@ jQuery.extend( {
 			resolveContexts = Array( i ),
 			resolveValues = slice.call( arguments ),
 
-			// the master Deferred
-			master = jQuery.Deferred(),
+			// the primary Deferred
+			primary = jQuery.Deferred(),
 
 			// subordinate callback factory
 			updateFunc = function( i ) {
@@ -12334,30 +14899,30 @@ jQuery.extend( {
 					resolveContexts[ i ] = this;
 					resolveValues[ i ] = arguments.length > 1 ? slice.call( arguments ) : value;
 					if ( !( --remaining ) ) {
-						master.resolveWith( resolveContexts, resolveValues );
+						primary.resolveWith( resolveContexts, resolveValues );
 					}
 				};
 			};
 
 		// Single- and empty arguments are adopted like Promise.resolve
 		if ( remaining <= 1 ) {
-			adoptValue( singleValue, master.done( updateFunc( i ) ).resolve, master.reject,
+			adoptValue( singleValue, primary.done( updateFunc( i ) ).resolve, primary.reject,
 				!remaining );
 
 			// Use .then() to unwrap secondary thenables (cf. gh-3000)
-			if ( master.state() === "pending" ||
+			if ( primary.state() === "pending" ||
 				isFunction( resolveValues[ i ] && resolveValues[ i ].then ) ) {
 
-				return master.then();
+				return primary.then();
 			}
 		}
 
 		// Multiple arguments are aggregated like Promise.all array elements
 		while ( i-- ) {
-			adoptValue( resolveValues[ i ], updateFunc( i ), master.reject );
+			adoptValue( resolveValues[ i ], updateFunc( i ), primary.reject );
 		}
 
-		return master.promise();
+		return primary.promise();
 	}
 } );
 
@@ -12508,8 +15073,8 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 			for ( ; i < len; i++ ) {
 				fn(
 					elems[ i ], key, raw ?
-					value :
-					value.call( elems[ i ], i, fn( elems[ i ], key ) )
+						value :
+						value.call( elems[ i ], i, fn( elems[ i ], key ) )
 				);
 			}
 		}
@@ -13417,10 +15982,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 }
 
 
-var
-	rkeyEvent = /^key/,
-	rmouseEvent = /^(?:mouse|pointer|contextmenu|drag|drop)|click/,
-	rtypenamespace = /^([^.]*)(?:\.(.+)|)/;
+var rtypenamespace = /^([^.]*)(?:\.(.+)|)/;
 
 function returnTrue() {
 	return true;
@@ -13715,8 +16277,8 @@ jQuery.event = {
 			event = jQuery.event.fix( nativeEvent ),
 
 			handlers = (
-					dataPriv.get( this, "events" ) || Object.create( null )
-				)[ event.type ] || [],
+				dataPriv.get( this, "events" ) || Object.create( null )
+			)[ event.type ] || [],
 			special = jQuery.event.special[ event.type ] || {};
 
 		// Use the fix-ed jQuery.Event rather than the (read-only) native event
@@ -13840,12 +16402,12 @@ jQuery.event = {
 			get: isFunction( hook ) ?
 				function() {
 					if ( this.originalEvent ) {
-							return hook( this.originalEvent );
+						return hook( this.originalEvent );
 					}
 				} :
 				function() {
 					if ( this.originalEvent ) {
-							return this.originalEvent[ name ];
+						return this.originalEvent[ name ];
 					}
 				},
 
@@ -13984,7 +16546,13 @@ function leverageNative( el, type, expectSync ) {
 						// Cancel the outer synthetic event
 						event.stopImmediatePropagation();
 						event.preventDefault();
-						return result.value;
+
+						// Support: Chrome 86+
+						// In Chrome, if an element having a focusout handler is blurred by
+						// clicking outside of it, it invokes the handler synchronously. If
+						// that handler calls `.remove()` on the element, the data is cleared,
+						// leaving `result` undefined. We need to guard against this.
+						return result && result.value;
 					}
 
 				// If this is an inner synthetic event for an event with a bubbling surrogate
@@ -14149,34 +16717,7 @@ jQuery.each( {
 	targetTouches: true,
 	toElement: true,
 	touches: true,
-
-	which: function( event ) {
-		var button = event.button;
-
-		// Add which for key events
-		if ( event.which == null && rkeyEvent.test( event.type ) ) {
-			return event.charCode != null ? event.charCode : event.keyCode;
-		}
-
-		// Add which for click: 1 === left; 2 === middle; 3 === right
-		if ( !event.which && button !== undefined && rmouseEvent.test( event.type ) ) {
-			if ( button & 1 ) {
-				return 1;
-			}
-
-			if ( button & 2 ) {
-				return 3;
-			}
-
-			if ( button & 4 ) {
-				return 2;
-			}
-
-			return 0;
-		}
-
-		return event.which;
-	}
+	which: true
 }, jQuery.event.addProp );
 
 jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateType ) {
@@ -14199,6 +16740,12 @@ jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateTyp
 			leverageNative( this, type );
 
 			// Return non-false to allow normal event-path propagation
+			return true;
+		},
+
+		// Suppress native focus or blur as it's already being fired
+		// in leverageNative.
+		_default: function() {
 			return true;
 		},
 
@@ -14869,6 +17416,10 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 		// set in CSS while `offset*` properties report correct values.
 		// Behavior in IE 9 is more subtle than in newer versions & it passes
 		// some versions of this test; make sure not to make it pass there!
+		//
+		// Support: Firefox 70+
+		// Only Firefox includes border widths
+		// in computed dimensions. (gh-4529)
 		reliableTrDimensions: function() {
 			var table, tr, trChild, trStyle;
 			if ( reliableTrDimensionsVal == null ) {
@@ -14876,9 +17427,22 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 				tr = document.createElement( "tr" );
 				trChild = document.createElement( "div" );
 
-				table.style.cssText = "position:absolute;left:-11111px";
+				table.style.cssText = "position:absolute;left:-11111px;border-collapse:separate";
+				tr.style.cssText = "border:1px solid";
+
+				// Support: Chrome 86+
+				// Height set through cssText does not get applied.
+				// Computed height then comes back as 0.
 				tr.style.height = "1px";
 				trChild.style.height = "9px";
+
+				// Support: Android 8 Chrome 86+
+				// In our bodyBackground.html iframe,
+				// display for all div elements is set to "inline",
+				// which causes a problem only in Android 8 Chrome 86.
+				// Ensuring the div is display: block
+				// gets around this issue.
+				trChild.style.display = "block";
 
 				documentElement
 					.appendChild( table )
@@ -14886,7 +17450,9 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 					.appendChild( trChild );
 
 				trStyle = window.getComputedStyle( tr );
-				reliableTrDimensionsVal = parseInt( trStyle.height ) > 3;
+				reliableTrDimensionsVal = ( parseInt( trStyle.height, 10 ) +
+					parseInt( trStyle.borderTopWidth, 10 ) +
+					parseInt( trStyle.borderBottomWidth, 10 ) ) === tr.offsetHeight;
 
 				documentElement.removeChild( table );
 			}
@@ -15350,10 +17916,10 @@ jQuery.each( [ "height", "width" ], function( _i, dimension ) {
 					// Running getBoundingClientRect on a disconnected node
 					// in IE throws an error.
 					( !elem.getClientRects().length || !elem.getBoundingClientRect().width ) ?
-						swap( elem, cssShow, function() {
-							return getWidthOrHeight( elem, dimension, extra );
-						} ) :
-						getWidthOrHeight( elem, dimension, extra );
+					swap( elem, cssShow, function() {
+						return getWidthOrHeight( elem, dimension, extra );
+					} ) :
+					getWidthOrHeight( elem, dimension, extra );
 			}
 		},
 
@@ -15412,7 +17978,7 @@ jQuery.cssHooks.marginLeft = addGetHookIf( support.reliableMarginLeft,
 					swap( elem, { marginLeft: 0 }, function() {
 						return elem.getBoundingClientRect().left;
 					} )
-				) + "px";
+			) + "px";
 		}
 	}
 );
@@ -15551,7 +18117,7 @@ Tween.propHooks = {
 			if ( jQuery.fx.step[ tween.prop ] ) {
 				jQuery.fx.step[ tween.prop ]( tween );
 			} else if ( tween.elem.nodeType === 1 && (
-					jQuery.cssHooks[ tween.prop ] ||
+				jQuery.cssHooks[ tween.prop ] ||
 					tween.elem.style[ finalPropName( tween.prop ) ] != null ) ) {
 				jQuery.style( tween.elem, tween.prop, tween.now + tween.unit );
 			} else {
@@ -15796,7 +18362,7 @@ function defaultPrefilter( elem, props, opts ) {
 
 			anim.done( function() {
 
-			/* eslint-enable no-loop-func */
+				/* eslint-enable no-loop-func */
 
 				// The final step of a "hide" animation is actually hiding the element
 				if ( !hidden ) {
@@ -15916,7 +18482,7 @@ function Animation( elem, properties, options ) {
 			tweens: [],
 			createTween: function( prop, end ) {
 				var tween = jQuery.Tween( elem, animation.opts, prop, end,
-						animation.opts.specialEasing[ prop ] || animation.opts.easing );
+					animation.opts.specialEasing[ prop ] || animation.opts.easing );
 				animation.tweens.push( tween );
 				return tween;
 			},
@@ -16089,7 +18655,8 @@ jQuery.fn.extend( {
 					anim.stop( true );
 				}
 			};
-			doAnimation.finish = doAnimation;
+
+		doAnimation.finish = doAnimation;
 
 		return empty || optall.queue === false ?
 			this.each( doAnimation ) :
@@ -16729,8 +19296,8 @@ jQuery.fn.extend( {
 				if ( this.setAttribute ) {
 					this.setAttribute( "class",
 						className || value === false ?
-						"" :
-						dataPriv.get( this, "__className__" ) || ""
+							"" :
+							dataPriv.get( this, "__className__" ) || ""
 					);
 				}
 			}
@@ -16745,7 +19312,7 @@ jQuery.fn.extend( {
 		while ( ( elem = this[ i++ ] ) ) {
 			if ( elem.nodeType === 1 &&
 				( " " + stripAndCollapse( getClass( elem ) ) + " " ).indexOf( className ) > -1 ) {
-					return true;
+				return true;
 			}
 		}
 
@@ -17035,9 +19602,7 @@ jQuery.extend( jQuery.event, {
 				special.bindType || type;
 
 			// jQuery handler
-			handle = (
-					dataPriv.get( cur, "events" ) || Object.create( null )
-				)[ event.type ] &&
+			handle = ( dataPriv.get( cur, "events" ) || Object.create( null ) )[ event.type ] &&
 				dataPriv.get( cur, "handle" );
 			if ( handle ) {
 				handle.apply( cur, data );
@@ -17184,7 +19749,7 @@ var rquery = ( /\?/ );
 
 // Cross-browser xml parsing
 jQuery.parseXML = function( data ) {
-	var xml;
+	var xml, parserErrorElem;
 	if ( !data || typeof data !== "string" ) {
 		return null;
 	}
@@ -17193,12 +19758,17 @@ jQuery.parseXML = function( data ) {
 	// IE throws on parseFromString with invalid input.
 	try {
 		xml = ( new window.DOMParser() ).parseFromString( data, "text/xml" );
-	} catch ( e ) {
-		xml = undefined;
-	}
+	} catch ( e ) {}
 
-	if ( !xml || xml.getElementsByTagName( "parsererror" ).length ) {
-		jQuery.error( "Invalid XML: " + data );
+	parserErrorElem = xml && xml.getElementsByTagName( "parsererror" )[ 0 ];
+	if ( !xml || parserErrorElem ) {
+		jQuery.error( "Invalid XML: " + (
+			parserErrorElem ?
+				jQuery.map( parserErrorElem.childNodes, function( el ) {
+					return el.textContent;
+				} ).join( "\n" ) :
+				data
+		) );
 	}
 	return xml;
 };
@@ -17299,16 +19869,14 @@ jQuery.fn.extend( {
 			// Can add propHook for "elements" to filter or add form elements
 			var elements = jQuery.prop( this, "elements" );
 			return elements ? jQuery.makeArray( elements ) : this;
-		} )
-		.filter( function() {
+		} ).filter( function() {
 			var type = this.type;
 
 			// Use .is( ":disabled" ) so that fieldset[disabled] works
 			return this.name && !jQuery( this ).is( ":disabled" ) &&
 				rsubmittable.test( this.nodeName ) && !rsubmitterTypes.test( type ) &&
 				( this.checked || !rcheckableType.test( type ) );
-		} )
-		.map( function( _i, elem ) {
+		} ).map( function( _i, elem ) {
 			var val = jQuery( this ).val();
 
 			if ( val == null ) {
@@ -17361,7 +19929,8 @@ var
 
 	// Anchor tag for parsing the document origin
 	originAnchor = document.createElement( "a" );
-	originAnchor.href = location.href;
+
+originAnchor.href = location.href;
 
 // Base "constructor" for jQuery.ajaxPrefilter and jQuery.ajaxTransport
 function addToPrefiltersOrTransports( structure ) {
@@ -17742,8 +20311,8 @@ jQuery.extend( {
 			// Context for global events is callbackContext if it is a DOM node or jQuery collection
 			globalEventContext = s.context &&
 				( callbackContext.nodeType || callbackContext.jquery ) ?
-					jQuery( callbackContext ) :
-					jQuery.event,
+				jQuery( callbackContext ) :
+				jQuery.event,
 
 			// Deferreds
 			deferred = jQuery.Deferred(),
@@ -18055,8 +20624,10 @@ jQuery.extend( {
 				response = ajaxHandleResponses( s, jqXHR, responses );
 			}
 
-			// Use a noop converter for missing script
-			if ( !isSuccess && jQuery.inArray( "script", s.dataTypes ) > -1 ) {
+			// Use a noop converter for missing script but not if jsonp
+			if ( !isSuccess &&
+				jQuery.inArray( "script", s.dataTypes ) > -1 &&
+				jQuery.inArray( "json", s.dataTypes ) < 0 ) {
 				s.converters[ "text script" ] = function() {};
 			}
 
@@ -18794,12 +21365,6 @@ jQuery.offset = {
 			options.using.call( elem, props );
 
 		} else {
-			if ( typeof props.top === "number" ) {
-				props.top += "px";
-			}
-			if ( typeof props.left === "number" ) {
-				props.left += "px";
-			}
 			curElem.css( props );
 		}
 	}
@@ -18968,8 +21533,11 @@ jQuery.each( [ "top", "left" ], function( _i, prop ) {
 
 // Create innerHeight, innerWidth, height, width, outerHeight and outerWidth methods
 jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
-	jQuery.each( { padding: "inner" + name, content: type, "": "outer" + name },
-		function( defaultExtra, funcName ) {
+	jQuery.each( {
+		padding: "inner" + name,
+		content: type,
+		"": "outer" + name
+	}, function( defaultExtra, funcName ) {
 
 		// Margin is only for outerHeight, outerWidth
 		jQuery.fn[ funcName ] = function( margin, value ) {
@@ -19054,7 +21622,8 @@ jQuery.fn.extend( {
 	}
 } );
 
-jQuery.each( ( "blur focus focusin focusout resize scroll click dblclick " +
+jQuery.each(
+	( "blur focus focusin focusout resize scroll click dblclick " +
 	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
 	"change select submit keydown keypress keyup contextmenu" ).split( " " ),
 	function( _i, name ) {
@@ -19065,7 +21634,8 @@ jQuery.each( ( "blur focus focusin focusout resize scroll click dblclick " +
 				this.on( name, null, data, fn ) :
 				this.trigger( name );
 		};
-	} );
+	}
+);
 
 
 
@@ -19203,6 +21773,82 @@ return jQuery;
 
 /***/ }),
 
+/***/ "./node_modules/load-script/index.js":
+/*!*******************************************!*\
+  !*** ./node_modules/load-script/index.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+module.exports = function load (src, opts, cb) {
+  var head = document.head || document.getElementsByTagName('head')[0]
+  var script = document.createElement('script')
+
+  if (typeof opts === 'function') {
+    cb = opts
+    opts = {}
+  }
+
+  opts = opts || {}
+  cb = cb || function() {}
+
+  script.type = opts.type || 'text/javascript'
+  script.charset = opts.charset || 'utf8';
+  script.async = 'async' in opts ? !!opts.async : true
+  script.src = src
+
+  if (opts.attrs) {
+    setAttributes(script, opts.attrs)
+  }
+
+  if (opts.text) {
+    script.text = '' + opts.text
+  }
+
+  var onend = 'onload' in script ? stdOnEnd : ieOnEnd
+  onend(script, cb)
+
+  // some good legacy browsers (firefox) fail the 'in' detection above
+  // so as a fallback we always set onload
+  // old IE will ignore this and new IE will set onload
+  if (!script.onload) {
+    stdOnEnd(script, cb);
+  }
+
+  head.appendChild(script)
+}
+
+function setAttributes(script, attrs) {
+  for (var attr in attrs) {
+    script.setAttribute(attr, attrs[attr]);
+  }
+}
+
+function stdOnEnd (script, cb) {
+  script.onload = function () {
+    this.onerror = this.onload = null
+    cb(null, script)
+  }
+  script.onerror = function () {
+    // this.onload = null here is necessary
+    // because even IE9 works not like others
+    this.onerror = this.onload = null
+    cb(new Error('Failed to load ' + this.src), script)
+  }
+}
+
+function ieOnEnd (script, cb) {
+  script.onreadystatechange = function () {
+    if (this.readyState != 'complete' && this.readyState != 'loaded') return
+    this.onreadystatechange = null
+    cb(null, script) // there is no way to catch loading errors in IE8
+  }
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/lodash/lodash.js":
 /*!***************************************!*\
   !*** ./node_modules/lodash/lodash.js ***!
@@ -19224,14 +21870,15 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.20';
+  var VERSION = '4.17.21';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
 
   /** Error message constants. */
   var CORE_ERROR_TEXT = 'Unsupported core-js use. Try https://npms.io/search?q=ponyfill.',
-      FUNC_ERROR_TEXT = 'Expected a function';
+      FUNC_ERROR_TEXT = 'Expected a function',
+      INVALID_TEMPL_VAR_ERROR_TEXT = 'Invalid `variable` option passed into `_.template`';
 
   /** Used to stand-in for `undefined` hash values. */
   var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -19364,10 +22011,11 @@ return jQuery;
   var reRegExpChar = /[\\^$.*+?()[\]{}|]/g,
       reHasRegExpChar = RegExp(reRegExpChar.source);
 
-  /** Used to match leading and trailing whitespace. */
-  var reTrim = /^\s+|\s+$/g,
-      reTrimStart = /^\s+/,
-      reTrimEnd = /\s+$/;
+  /** Used to match leading whitespace. */
+  var reTrimStart = /^\s+/;
+
+  /** Used to match a single whitespace character. */
+  var reWhitespace = /\s/;
 
   /** Used to match wrap detail comments. */
   var reWrapComment = /\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/,
@@ -19376,6 +22024,18 @@ return jQuery;
 
   /** Used to match words composed of alphanumeric characters. */
   var reAsciiWord = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;
+
+  /**
+   * Used to validate the `validate` option in `_.template` variable.
+   *
+   * Forbids characters which could potentially change the meaning of the function argument definition:
+   * - "()," (modification of function parameters)
+   * - "=" (default value)
+   * - "[]{}" (destructuring of function parameters)
+   * - "/" (beginning of a comment)
+   * - whitespace
+   */
+  var reForbiddenIdentifierChars = /[()=,{}\[\]\/\s]/;
 
   /** Used to match backslashes in property paths. */
   var reEscapeChar = /\\(\\)?/g;
@@ -20206,6 +22866,19 @@ return jQuery;
   }
 
   /**
+   * The base implementation of `_.trim`.
+   *
+   * @private
+   * @param {string} string The string to trim.
+   * @returns {string} Returns the trimmed string.
+   */
+  function baseTrim(string) {
+    return string
+      ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, '')
+      : string;
+  }
+
+  /**
    * The base implementation of `_.unary` without support for storing metadata.
    *
    * @private
@@ -20536,6 +23209,21 @@ return jQuery;
     return hasUnicode(string)
       ? unicodeToArray(string)
       : asciiToArray(string);
+  }
+
+  /**
+   * Used by `_.trim` and `_.trimEnd` to get the index of the last non-whitespace
+   * character of `string`.
+   *
+   * @private
+   * @param {string} string The string to inspect.
+   * @returns {number} Returns the index of the last non-whitespace character.
+   */
+  function trimmedEndIndex(string) {
+    var index = string.length;
+
+    while (index-- && reWhitespace.test(string.charAt(index))) {}
+    return index;
   }
 
   /**
@@ -31706,7 +34394,7 @@ return jQuery;
       if (typeof value != 'string') {
         return value === 0 ? value : +value;
       }
-      value = value.replace(reTrim, '');
+      value = baseTrim(value);
       var isBinary = reIsBinary.test(value);
       return (isBinary || reIsOctal.test(value))
         ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
@@ -34078,6 +36766,12 @@ return jQuery;
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
+      // Throw an error if a forbidden character was found in `variable`, to prevent
+      // potential command injection attacks.
+      else if (reForbiddenIdentifierChars.test(variable)) {
+        throw new Error(INVALID_TEMPL_VAR_ERROR_TEXT);
+      }
+
       // Cleanup code by stripping empty strings.
       source = (isEvaluating ? source.replace(reEmptyStringLeading, '') : source)
         .replace(reEmptyStringMiddle, '$1')
@@ -34191,7 +36885,7 @@ return jQuery;
     function trim(string, chars, guard) {
       string = toString(string);
       if (string && (guard || chars === undefined)) {
-        return string.replace(reTrim, '');
+        return baseTrim(string);
       }
       if (!string || !(chars = baseToString(chars))) {
         return string;
@@ -34226,7 +36920,7 @@ return jQuery;
     function trimEnd(string, chars, guard) {
       string = toString(string);
       if (string && (guard || chars === undefined)) {
-        return string.replace(reTrimEnd, '');
+        return string.slice(0, trimmedEndIndex(string) + 1);
       }
       if (!string || !(chars = baseToString(chars))) {
         return string;
@@ -57939,6 +60633,271 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
+/***/ "./node_modules/ms/index.js":
+/*!**********************************!*\
+  !*** ./node_modules/ms/index.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * Helpers.
+ */
+
+var s = 1000;
+var m = s * 60;
+var h = m * 60;
+var d = h * 24;
+var y = d * 365.25;
+
+/**
+ * Parse or format the given `val`.
+ *
+ * Options:
+ *
+ *  - `long` verbose formatting [false]
+ *
+ * @param {String|Number} val
+ * @param {Object} [options]
+ * @throws {Error} throw an error if val is not a non-empty string or a number
+ * @return {String|Number}
+ * @api public
+ */
+
+module.exports = function(val, options) {
+  options = options || {};
+  var type = typeof val;
+  if (type === 'string' && val.length > 0) {
+    return parse(val);
+  } else if (type === 'number' && isNaN(val) === false) {
+    return options.long ? fmtLong(val) : fmtShort(val);
+  }
+  throw new Error(
+    'val is not a non-empty string or a valid number. val=' +
+      JSON.stringify(val)
+  );
+};
+
+/**
+ * Parse the given `str` and return milliseconds.
+ *
+ * @param {String} str
+ * @return {Number}
+ * @api private
+ */
+
+function parse(str) {
+  str = String(str);
+  if (str.length > 100) {
+    return;
+  }
+  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(
+    str
+  );
+  if (!match) {
+    return;
+  }
+  var n = parseFloat(match[1]);
+  var type = (match[2] || 'ms').toLowerCase();
+  switch (type) {
+    case 'years':
+    case 'year':
+    case 'yrs':
+    case 'yr':
+    case 'y':
+      return n * y;
+    case 'days':
+    case 'day':
+    case 'd':
+      return n * d;
+    case 'hours':
+    case 'hour':
+    case 'hrs':
+    case 'hr':
+    case 'h':
+      return n * h;
+    case 'minutes':
+    case 'minute':
+    case 'mins':
+    case 'min':
+    case 'm':
+      return n * m;
+    case 'seconds':
+    case 'second':
+    case 'secs':
+    case 'sec':
+    case 's':
+      return n * s;
+    case 'milliseconds':
+    case 'millisecond':
+    case 'msecs':
+    case 'msec':
+    case 'ms':
+      return n;
+    default:
+      return undefined;
+  }
+}
+
+/**
+ * Short format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function fmtShort(ms) {
+  if (ms >= d) {
+    return Math.round(ms / d) + 'd';
+  }
+  if (ms >= h) {
+    return Math.round(ms / h) + 'h';
+  }
+  if (ms >= m) {
+    return Math.round(ms / m) + 'm';
+  }
+  if (ms >= s) {
+    return Math.round(ms / s) + 's';
+  }
+  return ms + 'ms';
+}
+
+/**
+ * Long format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function fmtLong(ms) {
+  return plural(ms, d, 'day') ||
+    plural(ms, h, 'hour') ||
+    plural(ms, m, 'minute') ||
+    plural(ms, s, 'second') ||
+    ms + ' ms';
+}
+
+/**
+ * Pluralization helper.
+ */
+
+function plural(ms, n, name) {
+  if (ms < n) {
+    return;
+  }
+  if (ms < n * 1.5) {
+    return Math.floor(ms / n) + ' ' + name;
+  }
+  return Math.ceil(ms / n) + ' ' + name + 's';
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/object-assign/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/object-assign/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/popper.js/dist/esm/popper.js":
 /*!***************************************************!*\
   !*** ./node_modules/popper.js/dist/esm/popper.js ***!
@@ -60962,6 +63921,79 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/sister/src/sister.js":
+/*!*******************************************!*\
+  !*** ./node_modules/sister/src/sister.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var Sister;
+
+/**
+* @link https://github.com/gajus/sister for the canonical source repository
+* @license https://github.com/gajus/sister/blob/master/LICENSE BSD 3-Clause
+*/
+Sister = function () {
+    var sister = {},
+        events = {};
+
+    /**
+     * @name handler
+     * @function
+     * @param {Object} data Event data.
+     */
+
+    /**
+     * @param {String} name Event name.
+     * @param {handler} handler
+     * @return {listener}
+     */
+    sister.on = function (name, handler) {
+        var listener = {name: name, handler: handler};
+        events[name] = events[name] || [];
+        events[name].unshift(listener);
+        return listener;
+    };
+
+    /**
+     * @param {listener}
+     */
+    sister.off = function (listener) {
+        var index = events[listener.name].indexOf(listener);
+
+        if (index !== -1) {
+            events[listener.name].splice(index, 1);
+        }
+    };
+
+    /**
+     * @param {String} name Event name.
+     * @param {Object} data Event data.
+     */
+    sister.trigger = function (name, data) {
+        var listeners = events[name],
+            i;
+
+        if (listeners) {
+            i = listeners.length;
+            while (i--) {
+                listeners[i].handler(data);
+            }
+        }
+    };
+
+    return sister;
+};
+
+module.exports = Sister;
+
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -61857,7 +64889,7 @@ var IE8_DOM_DEFINE = __webpack_require__("0cfb");
 var nativeGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 
 // `Object.getOwnPropertyDescriptor` method
-// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptor
+// https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
 exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
   O = toIndexedObject(O);
   P = toPrimitive(P, true);
@@ -61874,6 +64906,53 @@ exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnProper
 /***/ (function(module) {
 
 module.exports = JSON.parse("{\"weekDays\":[\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\",\"Sunday\"],\"months\":[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\",\"August\",\"September\",\"October\",\"November\",\"December\"],\"years\":\"Years\",\"year\":\"Year\",\"month\":\"Month\",\"week\":\"Week\",\"day\":\"Day\",\"today\":\"Today\",\"noEvent\":\"No Event\",\"allDay\":\"All day\",\"deleteEvent\":\"Delete\",\"createEvent\":\"Create an event\",\"dateFormat\":\"dddd MMMM D{S}, YYYY\"}");
+
+/***/ }),
+
+/***/ "0cb2":
+/***/ (function(module, exports, __webpack_require__) {
+
+var toObject = __webpack_require__("7b0b");
+
+var floor = Math.floor;
+var replace = ''.replace;
+var SUBSTITUTION_SYMBOLS = /\$([$&'`]|\d{1,2}|<[^>]*>)/g;
+var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&'`]|\d{1,2})/g;
+
+// https://tc39.es/ecma262/#sec-getsubstitution
+module.exports = function (matched, str, position, captures, namedCaptures, replacement) {
+  var tailPos = position + matched.length;
+  var m = captures.length;
+  var symbols = SUBSTITUTION_SYMBOLS_NO_NAMED;
+  if (namedCaptures !== undefined) {
+    namedCaptures = toObject(namedCaptures);
+    symbols = SUBSTITUTION_SYMBOLS;
+  }
+  return replace.call(replacement, symbols, function (match, ch) {
+    var capture;
+    switch (ch.charAt(0)) {
+      case '$': return '$';
+      case '&': return matched;
+      case '`': return str.slice(0, position);
+      case "'": return str.slice(tailPos);
+      case '<':
+        capture = namedCaptures[ch.slice(1, -1)];
+        break;
+      default: // \d\d?
+        var n = +ch;
+        if (n === 0) return match;
+        if (n > m) {
+          var f = floor(n / 10);
+          if (f === 0) return match;
+          if (f <= m) return captures[f - 1] === undefined ? ch.charAt(1) : captures[f - 1] + ch.charAt(1);
+          return match;
+        }
+        capture = captures[n - 1];
+    }
+    return capture === undefined ? '' : capture;
+  });
+};
+
 
 /***/ }),
 
@@ -61903,7 +64982,7 @@ var toInteger = __webpack_require__("a691");
 var requireObjectCoercible = __webpack_require__("1d80");
 
 // `String.prototype.repeat` method implementation
-// https://tc39.github.io/ecma262/#sec-string.prototype.repeat
+// https://tc39.es/ecma262/#sec-string.prototype.repeat
 module.exports = ''.repeat || function repeat(count) {
   var str = String(requireObjectCoercible(this));
   var result = '';
@@ -61944,9 +65023,11 @@ fixRegExpWellKnownSymbolLogic('split', 2, function (SPLIT, nativeSplit, maybeCal
   var internalSplit;
   if (
     'abbc'.split(/(b)*/)[1] == 'c' ||
+    // eslint-disable-next-line regexp/no-empty-group -- required for testing
     'test'.split(/(?:)/, -1).length != 4 ||
     'ab'.split(/(?:ab)*/).length != 2 ||
     '.'.split(/(.?)(.?)/).length != 4 ||
+    // eslint-disable-next-line regexp/no-assertion-capturing-group, regexp/no-empty-group -- required for testing
     '.'.split(/()()/).length > 1 ||
     ''.split(/.?/).length
   ) {
@@ -61994,7 +65075,7 @@ fixRegExpWellKnownSymbolLogic('split', 2, function (SPLIT, nativeSplit, maybeCal
 
   return [
     // `String.prototype.split` method
-    // https://tc39.github.io/ecma262/#sec-string.prototype.split
+    // https://tc39.es/ecma262/#sec-string.prototype.split
     function split(separator, limit) {
       var O = requireObjectCoercible(this);
       var splitter = separator == undefined ? undefined : separator[SPLIT];
@@ -62003,7 +65084,7 @@ fixRegExpWellKnownSymbolLogic('split', 2, function (SPLIT, nativeSplit, maybeCal
         : internalSplit.call(String(O), separator, limit);
     },
     // `RegExp.prototype[@@split]` method
-    // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@split
+    // https://tc39.es/ecma262/#sec-regexp.prototype-@@split
     //
     // NOTE: This cannot be properly polyfilled in engines that don't support
     // the 'y' flag.
@@ -62080,19 +65161,17 @@ fixRegExpWellKnownSymbolLogic('split', 2, function (SPLIT, nativeSplit, maybeCal
 var $ = __webpack_require__("23e7");
 var $reduce = __webpack_require__("d58f").left;
 var arrayMethodIsStrict = __webpack_require__("a640");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
 var CHROME_VERSION = __webpack_require__("2d00");
 var IS_NODE = __webpack_require__("605d");
 
 var STRICT_METHOD = arrayMethodIsStrict('reduce');
-var USES_TO_LENGTH = arrayMethodUsesToLength('reduce', { 1: 0 });
 // Chrome 80-82 has a critical bug
 // https://bugs.chromium.org/p/chromium/issues/detail?id=1049982
 var CHROME_BUG = !IS_NODE && CHROME_VERSION > 79 && CHROME_VERSION < 83;
 
 // `Array.prototype.reduce` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.reduce
-$({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH || CHROME_BUG }, {
+// https://tc39.es/ecma262/#sec-array.prototype.reduce
+$({ target: 'Array', proto: true, forced: !STRICT_METHOD || CHROME_BUG }, {
   reduce: function reduce(callbackfn /* , initialValue */) {
     return $reduce(this, callbackfn, arguments.length, arguments.length > 1 ? arguments[1] : undefined);
   }
@@ -62108,7 +65187,7 @@ var classof = __webpack_require__("c6b6");
 var regexpExec = __webpack_require__("9263");
 
 // `RegExpExec` abstract operation
-// https://tc39.github.io/ecma262/#sec-regexpexec
+// https://tc39.es/ecma262/#sec-regexpexec
 module.exports = function (R, S) {
   var exec = R.exec;
   if (typeof exec === 'function') {
@@ -62159,14 +65238,12 @@ for (var COLLECTION_NAME in DOMIterables) {
 
 var $forEach = __webpack_require__("b727").forEach;
 var arrayMethodIsStrict = __webpack_require__("a640");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
 
 var STRICT_METHOD = arrayMethodIsStrict('forEach');
-var USES_TO_LENGTH = arrayMethodUsesToLength('forEach');
 
 // `Array.prototype.forEach` method implementation
-// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
-module.exports = (!STRICT_METHOD || !USES_TO_LENGTH) ? function forEach(callbackfn /* , thisArg */) {
+// https://tc39.es/ecma262/#sec-array.prototype.foreach
+module.exports = !STRICT_METHOD ? function forEach(callbackfn /* , thisArg */) {
   return $forEach(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
 } : [].forEach;
 
@@ -62228,7 +65305,7 @@ try {
   iteratorWithReturn[ITERATOR] = function () {
     return this;
   };
-  // eslint-disable-next-line no-throw-literal
+  // eslint-disable-next-line no-throw-literal -- required for testing
   Array.from(iteratorWithReturn, function () { throw 2; });
 } catch (error) { /* empty */ }
 
@@ -62256,7 +65333,7 @@ module.exports = function (exec, SKIP_CLOSING) {
 /***/ (function(module, exports) {
 
 // `RequireObjectCoercible` abstract operation
-// https://tc39.github.io/ecma262/#sec-requireobjectcoercible
+// https://tc39.es/ecma262/#sec-requireobjectcoercible
 module.exports = function (it) {
   if (it == undefined) throw TypeError("Can't call method on " + it);
   return it;
@@ -62452,7 +65529,7 @@ var enumBugKeys = __webpack_require__("7839");
 var hiddenKeys = enumBugKeys.concat('length', 'prototype');
 
 // `Object.getOwnPropertyNames` method
-// https://tc39.github.io/ecma262/#sec-object.getownpropertynames
+// https://tc39.es/ecma262/#sec-object.getownpropertynames
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return internalObjectKeys(O, hiddenKeys);
 };
@@ -62471,7 +65548,7 @@ var requireObjectCoercible = __webpack_require__("1d80");
 var correctIsRegExpLogic = __webpack_require__("ab13");
 
 // `String.prototype.includes` method
-// https://tc39.github.io/ecma262/#sec-string.prototype.includes
+// https://tc39.es/ecma262/#sec-string.prototype.includes
 $({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, {
   includes: function includes(searchString /* , position = 0 */) {
     return !!~String(requireObjectCoercible(this))
@@ -62501,7 +65578,7 @@ var NOT_GENERIC = fails(function () { return nativeToString.call({ source: 'a', 
 var INCORRECT_NAME = nativeToString.name != TO_STRING;
 
 // `RegExp.prototype.toString` method
-// https://tc39.github.io/ecma262/#sec-regexp.prototype.tostring
+// https://tc39.es/ecma262/#sec-regexp.prototype.tostring
 if (NOT_GENERIC || INCORRECT_NAME) {
   redefine(RegExp.prototype, TO_STRING, function toString() {
     var R = anObject(this);
@@ -62621,7 +65698,7 @@ var anObject = __webpack_require__("825a");
 var objectKeys = __webpack_require__("df75");
 
 // `Object.defineProperties` method
-// https://tc39.github.io/ecma262/#sec-object.defineproperties
+// https://tc39.es/ecma262/#sec-object.defineproperties
 module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var keys = objectKeys(Properties);
@@ -62642,7 +65719,7 @@ var $ = __webpack_require__("23e7");
 var repeat = __webpack_require__("1148");
 
 // `String.prototype.repeat` method
-// https://tc39.github.io/ecma262/#sec-string.prototype.repeat
+// https://tc39.es/ecma262/#sec-string.prototype.repeat
 $({ target: 'String', proto: true }, {
   repeat: repeat
 });
@@ -62678,7 +65755,7 @@ var setInternalState = InternalStateModule.set;
 var getInternalState = InternalStateModule.getterFor(STRING_ITERATOR);
 
 // `String.prototype[@@iterator]` method
-// https://tc39.github.io/ecma262/#sec-string.prototype-@@iterator
+// https://tc39.es/ecma262/#sec-string.prototype-@@iterator
 defineIterator(String, 'String', function (iterated) {
   setInternalState(this, {
     type: STRING_ITERATOR,
@@ -62686,7 +65763,7 @@ defineIterator(String, 'String', function (iterated) {
     index: 0
   });
 // `%StringIteratorPrototype%.next` method
-// https://tc39.github.io/ecma262/#sec-%stringiteratorprototype%.next
+// https://tc39.es/ecma262/#sec-%stringiteratorprototype%.next
 }, function next() {
   var state = getInternalState(this);
   var string = state.string;
@@ -62705,23 +65782,6 @@ defineIterator(String, 'String', function (iterated) {
 /***/ (function(module, exports) {
 
 module.exports = {};
-
-
-/***/ }),
-
-/***/ "4160":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("23e7");
-var forEach = __webpack_require__("17c2");
-
-// `Array.prototype.forEach` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
-$({ target: 'Array', proto: true, forced: [].forEach != forEach }, {
-  forEach: forEach
-});
 
 
 /***/ }),
@@ -62747,7 +65807,7 @@ var split = ''.split;
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
 module.exports = fails(function () {
   // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
-  // eslint-disable-next-line no-prototype-builtins
+  // eslint-disable-next-line no-prototype-builtins -- safe
   return !Object('z').propertyIsEnumerable(0);
 }) ? function (it) {
   return classof(it) == 'String' ? split.call(it, '') : Object(it);
@@ -62767,7 +65827,7 @@ var UNSCOPABLES = wellKnownSymbol('unscopables');
 var ArrayPrototype = Array.prototype;
 
 // Array.prototype[@@unscopables]
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 if (ArrayPrototype[UNSCOPABLES] == undefined) {
   definePropertyModule.f(ArrayPrototype, UNSCOPABLES, {
     configurable: true,
@@ -62793,35 +65853,11 @@ var wellKnownSymbol = __webpack_require__("b622");
 var MATCH = wellKnownSymbol('match');
 
 // `IsRegExp` abstract operation
-// https://tc39.github.io/ecma262/#sec-isregexp
+// https://tc39.es/ecma262/#sec-isregexp
 module.exports = function (it) {
   var isRegExp;
   return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : classof(it) == 'RegExp');
 };
-
-
-/***/ }),
-
-/***/ "45fc":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("23e7");
-var $some = __webpack_require__("b727").some;
-var arrayMethodIsStrict = __webpack_require__("a640");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
-
-var STRICT_METHOD = arrayMethodIsStrict('some');
-var USES_TO_LENGTH = arrayMethodUsesToLength('some');
-
-// `Array.prototype.some` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.some
-$({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
-  some: function some(callbackfn /* , thisArg */) {
-    return $some(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
 
 
 /***/ }),
@@ -62836,7 +65872,7 @@ var wellKnownSymbol = __webpack_require__("b622");
 var SPECIES = wellKnownSymbol('species');
 
 // `SpeciesConstructor` abstract operation
-// https://tc39.github.io/ecma262/#sec-speciesconstructor
+// https://tc39.es/ecma262/#sec-speciesconstructor
 module.exports = function (O, defaultConstructor) {
   var C = anObject(O).constructor;
   var S;
@@ -62849,12 +65885,16 @@ module.exports = function (O, defaultConstructor) {
 /***/ "4930":
 /***/ (function(module, exports, __webpack_require__) {
 
+var IS_NODE = __webpack_require__("605d");
+var V8_VERSION = __webpack_require__("2d00");
 var fails = __webpack_require__("d039");
 
 module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
-  // Chrome 38 Symbol has incorrect toString conversion
-  // eslint-disable-next-line no-undef
-  return !String(Symbol());
+  /* global Symbol -- required for testing */
+  return !Symbol.sham &&
+    // Chrome 38 Symbol has incorrect toString conversion
+    // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
+    (IS_NODE ? V8_VERSION === 38 : V8_VERSION > 37 && V8_VERSION < 41);
 });
 
 
@@ -63220,10 +66260,10 @@ var createMethod = function (IS_INCLUDES) {
     var index = toAbsoluteIndex(fromIndex, length);
     var value;
     // Array#includes uses SameValueZero equality algorithm
-    // eslint-disable-next-line no-self-compare
+    // eslint-disable-next-line no-self-compare -- NaN check
     if (IS_INCLUDES && el != el) while (length > index) {
       value = O[index++];
-      // eslint-disable-next-line no-self-compare
+      // eslint-disable-next-line no-self-compare -- NaN check
       if (value != value) return true;
     // Array#indexOf ignores holes, Array#includes - not
     } else for (;length > index; index++) {
@@ -63234,10 +66274,10 @@ var createMethod = function (IS_INCLUDES) {
 
 module.exports = {
   // `Array.prototype.includes` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.includes
+  // https://tc39.es/ecma262/#sec-array.prototype.includes
   includes: createMethod(true),
   // `Array.prototype.indexOf` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.indexof
+  // https://tc39.es/ecma262/#sec-array.prototype.indexof
   indexOf: createMethod(false)
 };
 
@@ -63252,16 +66292,13 @@ module.exports = {
 var $ = __webpack_require__("23e7");
 var $filter = __webpack_require__("b727").filter;
 var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
 
 var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('filter');
-// Edge 14- issue
-var USES_TO_LENGTH = arrayMethodUsesToLength('filter');
 
 // `Array.prototype.filter` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.filter
+// https://tc39.es/ecma262/#sec-array.prototype.filter
 // with adding support of @@species
-$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
   filter: function filter(callbackfn /* , thisArg */) {
     return $filter(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
@@ -63284,7 +66321,7 @@ var createProperty = __webpack_require__("8418");
 var getIteratorMethod = __webpack_require__("35a1");
 
 // `Array.from` method implementation
-// https://tc39.github.io/ecma262/#sec-array.from
+// https://tc39.es/ecma262/#sec-array.from
 module.exports = function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
   var O = toObject(arrayLike);
   var C = typeof this == 'function' ? this : Array;
@@ -63327,7 +66364,7 @@ var toInteger = __webpack_require__("a691");
 var min = Math.min;
 
 // `ToLength` abstract operation
-// https://tc39.github.io/ecma262/#sec-tolength
+// https://tc39.es/ecma262/#sec-tolength
 module.exports = function (argument) {
   return argument > 0 ? min(toInteger(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
 };
@@ -63354,18 +66391,15 @@ module.exports = function (it, key) {
 
 var fixRegExpWellKnownSymbolLogic = __webpack_require__("d784");
 var anObject = __webpack_require__("825a");
-var toObject = __webpack_require__("7b0b");
 var toLength = __webpack_require__("50c4");
 var toInteger = __webpack_require__("a691");
 var requireObjectCoercible = __webpack_require__("1d80");
 var advanceStringIndex = __webpack_require__("8aa5");
+var getSubstitution = __webpack_require__("0cb2");
 var regExpExec = __webpack_require__("14c3");
 
 var max = Math.max;
 var min = Math.min;
-var floor = Math.floor;
-var SUBSTITUTION_SYMBOLS = /\$([$&'`]|\d\d?|<[^>]*>)/g;
-var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&'`]|\d\d?)/g;
 
 var maybeToString = function (it) {
   return it === undefined ? it : String(it);
@@ -63379,7 +66413,7 @@ fixRegExpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, ma
 
   return [
     // `String.prototype.replace` method
-    // https://tc39.github.io/ecma262/#sec-string.prototype.replace
+    // https://tc39.es/ecma262/#sec-string.prototype.replace
     function replace(searchValue, replaceValue) {
       var O = requireObjectCoercible(this);
       var replacer = searchValue == undefined ? undefined : searchValue[REPLACE];
@@ -63388,7 +66422,7 @@ fixRegExpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, ma
         : nativeReplace.call(String(O), searchValue, replaceValue);
     },
     // `RegExp.prototype[@@replace]` method
-    // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@replace
+    // https://tc39.es/ecma262/#sec-regexp.prototype-@@replace
     function (regexp, replaceValue) {
       if (
         (!REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE && REPLACE_KEEPS_$0) ||
@@ -63451,40 +66485,6 @@ fixRegExpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, ma
       return accumulatedResult + S.slice(nextSourcePosition);
     }
   ];
-
-  // https://tc39.github.io/ecma262/#sec-getsubstitution
-  function getSubstitution(matched, str, position, captures, namedCaptures, replacement) {
-    var tailPos = position + matched.length;
-    var m = captures.length;
-    var symbols = SUBSTITUTION_SYMBOLS_NO_NAMED;
-    if (namedCaptures !== undefined) {
-      namedCaptures = toObject(namedCaptures);
-      symbols = SUBSTITUTION_SYMBOLS;
-    }
-    return nativeReplace.call(replacement, symbols, function (match, ch) {
-      var capture;
-      switch (ch.charAt(0)) {
-        case '$': return '$';
-        case '&': return matched;
-        case '`': return str.slice(0, position);
-        case "'": return str.slice(tailPos);
-        case '<':
-          capture = namedCaptures[ch.slice(1, -1)];
-          break;
-        default: // \d\d?
-          var n = +ch;
-          if (n === 0) return match;
-          if (n > m) {
-            var f = floor(n / 10);
-            if (f === 0) return match;
-            if (f <= m) return captures[f - 1] === undefined ? ch.charAt(1) : captures[f - 1] + ch.charAt(1);
-            return match;
-          }
-          capture = captures[n - 1];
-      }
-      return capture === undefined ? '' : capture;
-    });
-  }
 });
 
 
@@ -63495,22 +66495,19 @@ fixRegExpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, ma
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectSpread2; });
-/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("a4d3");
-/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("4de4");
-/* harmony import */ var core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("4160");
-/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_object_keys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("b64b");
+/* harmony import */ var core_js_modules_es_object_keys_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_keys_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("a4d3");
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("4de4");
+/* harmony import */ var core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var core_js_modules_es_object_get_own_property_descriptor_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("e439");
 /* harmony import */ var core_js_modules_es_object_get_own_property_descriptor_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_get_own_property_descriptor_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es_object_get_own_property_descriptors_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("dbb4");
-/* harmony import */ var core_js_modules_es_object_get_own_property_descriptors_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_get_own_property_descriptors_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es_object_keys_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("b64b");
-/* harmony import */ var core_js_modules_es_object_keys_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_keys_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("159b");
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("ade3");
-
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("159b");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var core_js_modules_es_object_get_own_property_descriptors_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("dbb4");
+/* harmony import */ var core_js_modules_es_object_get_own_property_descriptors_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_get_own_property_descriptors_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _defineProperty_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("ade3");
 
 
 
@@ -63539,7 +66536,7 @@ function _objectSpread2(target) {
 
     if (i % 2) {
       ownKeys(Object(source), true).forEach(function (key) {
-        Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(target, key, source[key]);
+        Object(_defineProperty_js__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(target, key, source[key]);
       });
     } else if (Object.getOwnPropertyDescriptors) {
       Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
@@ -63564,9 +66561,9 @@ var store = __webpack_require__("c6cd");
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.8.1',
+  version: '3.9.1',
   mode: IS_PURE ? 'pure' : 'global',
-  copyright: '© 2020 Denis Pushkarev (zloirock.ru)'
+  copyright: '© 2021 Denis Pushkarev (zloirock.ru)'
 });
 
 
@@ -63594,8 +66591,8 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 /***/ (function(module, exports) {
 
 // a string of all valid unicode whitespaces
-// eslint-disable-next-line max-len
-module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
+module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002' +
+  '\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
 
 
 /***/ }),
@@ -63622,13 +66619,13 @@ var createMethod = function (TYPE) {
 
 module.exports = {
   // `String.prototype.{ trimLeft, trimStart }` methods
-  // https://tc39.github.io/ecma262/#sec-string.prototype.trimstart
+  // https://tc39.es/ecma262/#sec-string.prototype.trimstart
   start: createMethod(1),
   // `String.prototype.{ trimRight, trimEnd }` methods
-  // https://tc39.github.io/ecma262/#sec-string.prototype.trimend
+  // https://tc39.es/ecma262/#sec-string.prototype.trimend
   end: createMethod(2),
   // `String.prototype.trim` method
-  // https://tc39.github.io/ecma262/#sec-string.prototype.trim
+  // https://tc39.es/ecma262/#sec-string.prototype.trim
   trim: createMethod(3)
 };
 
@@ -63684,7 +66681,7 @@ var collection = __webpack_require__("6d61");
 var collectionStrong = __webpack_require__("6566");
 
 // `Set` constructor
-// https://tc39.github.io/ecma262/#sec-set-objects
+// https://tc39.es/ecma262/#sec-set-objects
 module.exports = collection('Set', function (init) {
   return function Set() { return init(this, arguments.length ? arguments[0] : undefined); };
 }, collectionStrong);
@@ -63727,7 +66724,7 @@ var createMethod = function (CONVERT_TO_STRING) {
 
 module.exports = {
   // `String.prototype.codePointAt` method
-  // https://tc39.github.io/ecma262/#sec-string.prototype.codepointat
+  // https://tc39.es/ecma262/#sec-string.prototype.codepointat
   codeAt: createMethod(false),
   // `String.prototype.at` method
   // https://github.com/mathiasbynens/String.prototype.at
@@ -63941,7 +66938,7 @@ var wellKnownSymbol = __webpack_require__("b622");
 var SPECIES = wellKnownSymbol('species');
 
 // `ArraySpeciesCreate` abstract operation
-// https://tc39.github.io/ecma262/#sec-arrayspeciescreate
+// https://tc39.es/ecma262/#sec-arrayspeciescreate
 module.exports = function (originalArray, length) {
   var C;
   if (isArray(originalArray)) {
@@ -64075,10 +67072,14 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
     );
   };
 
-  // eslint-disable-next-line max-len
-  if (isForced(CONSTRUCTOR_NAME, typeof NativeConstructor != 'function' || !(IS_WEAK || NativePrototype.forEach && !fails(function () {
-    new NativeConstructor().entries().next();
-  })))) {
+  var REPLACE = isForced(
+    CONSTRUCTOR_NAME,
+    typeof NativeConstructor != 'function' || !(IS_WEAK || NativePrototype.forEach && !fails(function () {
+      new NativeConstructor().entries().next();
+    }))
+  );
+
+  if (REPLACE) {
     // create collection constructor
     Constructor = common.getConstructor(wrapper, CONSTRUCTOR_NAME, IS_MAP, ADDER);
     InternalMetadataModule.REQUIRED = true;
@@ -64089,7 +67090,7 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
     // V8 ~ Chromium 40- weak-collections throws on primitives, but should return false
     var THROWS_ON_PRIMITIVES = fails(function () { instance.has(1); });
     // most early implementations doesn't supports iterables, most modern - not close it correctly
-    // eslint-disable-next-line no-new
+    // eslint-disable-next-line no-new -- required for testing
     var ACCEPT_ITERABLES = checkCorrectnessOfIteration(function (iterable) { new NativeConstructor(iterable); });
     // for early implementations -0 and +0 not the same
     var BUGGY_ZERO = !IS_WEAK && fails(function () {
@@ -64263,7 +67264,7 @@ module.exports = [
 var requireObjectCoercible = __webpack_require__("1d80");
 
 // `ToObject` abstract operation
-// https://tc39.github.io/ecma262/#sec-toobject
+// https://tc39.es/ecma262/#sec-toobject
 module.exports = function (argument) {
   return Object(requireObjectCoercible(argument));
 };
@@ -64328,7 +67329,7 @@ var NullProtoObjectViaIFrame = function () {
 var activeXDocument;
 var NullProtoObject = function () {
   try {
-    /* global ActiveXObject */
+    /* global ActiveXObject -- old IE */
     activeXDocument = document.domain && new ActiveXObject('htmlfile');
   } catch (error) { /* ignore */ }
   NullProtoObject = activeXDocument ? NullProtoObjectViaActiveX(activeXDocument) : NullProtoObjectViaIFrame();
@@ -64340,7 +67341,7 @@ var NullProtoObject = function () {
 hiddenKeys[IE_PROTO] = true;
 
 // `Object.create` method
-// https://tc39.github.io/ecma262/#sec-object.create
+// https://tc39.es/ecma262/#sec-object.create
 module.exports = Object.create || function create(O, Properties) {
   var result;
   if (O !== null) {
@@ -64364,25 +67365,22 @@ module.exports = Object.create || function create(O, Properties) {
 var $ = __webpack_require__("23e7");
 var $find = __webpack_require__("b727").find;
 var addToUnscopables = __webpack_require__("44d2");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
 
 var FIND = 'find';
 var SKIPS_HOLES = true;
-
-var USES_TO_LENGTH = arrayMethodUsesToLength(FIND);
 
 // Shouldn't skip holes
 if (FIND in []) Array(1)[FIND](function () { SKIPS_HOLES = false; });
 
 // `Array.prototype.find` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.find
-$({ target: 'Array', proto: true, forced: SKIPS_HOLES || !USES_TO_LENGTH }, {
+// https://tc39.es/ecma262/#sec-array.prototype.find
+$({ target: 'Array', proto: true, forced: SKIPS_HOLES }, {
   find: function find(callbackfn /* , that = undefined */) {
     return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
 
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 addToUnscopables(FIND);
 
 
@@ -64509,7 +67507,7 @@ var toAbsoluteIndex = __webpack_require__("23cb");
 var toLength = __webpack_require__("50c4");
 
 // `Array.prototype.fill` method implementation
-// https://tc39.github.io/ecma262/#sec-array.prototype.fill
+// https://tc39.es/ecma262/#sec-array.prototype.fill
 module.exports = function fill(value /* , start = 0, end = @length */) {
   var O = toObject(this);
   var length = toLength(O.length);
@@ -64543,7 +67541,7 @@ module.exports = function (it) {
 
 var fails = __webpack_require__("d039");
 
-// Thank's IE8 for his funny defineProperty
+// Detect IE8's incomplete defineProperty implementation
 module.exports = !fails(function () {
   return Object.defineProperty({}, 1, { get: function () { return 7; } })[1] != 7;
 });
@@ -64577,7 +67575,7 @@ var requireObjectCoercible = __webpack_require__("1d80");
 var quot = /"/g;
 
 // B.2.3.2.1 CreateHTML(string, tag, attribute, value)
-// https://tc39.github.io/ecma262/#sec-createhtml
+// https://tc39.es/ecma262/#sec-createhtml
 module.exports = function (string, tag, attribute, value) {
   var S = String(requireObjectCoercible(string));
   var p1 = '<' + tag;
@@ -64710,7 +67708,7 @@ module.exports = store.inspectSource;
 var charAt = __webpack_require__("6547").charAt;
 
 // `AdvanceStringIndex` abstract operation
-// https://tc39.github.io/ecma262/#sec-advancestringindex
+// https://tc39.es/ecma262/#sec-advancestringindex
 module.exports = function (S, index, unicode) {
   return index + (unicode ? charAt(S, index).length : 1);
 };
@@ -64782,6 +67780,7 @@ var UPDATES_LAST_INDEX_WRONG = (function () {
 var UNSUPPORTED_Y = stickyHelpers.UNSUPPORTED_Y || stickyHelpers.BROKEN_CARET;
 
 // nonparticipating capturing group, copied from es5-shim's String#split patch.
+// eslint-disable-next-line regexp/no-assertion-capturing-group, regexp/no-empty-group -- required for testing
 var NPCG_INCLUDED = /()??/.exec('')[1] !== undefined;
 
 var PATCH = UPDATES_LAST_INDEX_WRONG || NPCG_INCLUDED || UNSUPPORTED_Y;
@@ -64941,10 +67940,11 @@ var isConcatSpreadable = function (O) {
 var FORCED = !IS_CONCAT_SPREADABLE_SUPPORT || !SPECIES_SUPPORT;
 
 // `Array.prototype.concat` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.concat
+// https://tc39.es/ecma262/#sec-array.prototype.concat
 // with adding support of @@isConcatSpreadable and @@species
 $({ target: 'Array', proto: true, forced: FORCED }, {
-  concat: function concat(arg) { // eslint-disable-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars -- required for `.length`
+  concat: function concat(arg) {
     var O = toObject(this);
     var A = arraySpeciesCreate(O, 0);
     var n = 0;
@@ -64999,7 +67999,7 @@ var toPrimitive = __webpack_require__("c04e");
 var nativeDefineProperty = Object.defineProperty;
 
 // `Object.defineProperty` method
-// https://tc39.github.io/ecma262/#sec-object.defineproperty
+// https://tc39.es/ecma262/#sec-object.defineproperty
 exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
   P = toPrimitive(P, true);
@@ -65086,7 +68086,7 @@ var ES3_STRINGS = IndexedObject != Object;
 var STRICT_METHOD = arrayMethodIsStrict('join', ',');
 
 // `Array.prototype.join` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.join
+// https://tc39.es/ecma262/#sec-array.prototype.join
 $({ target: 'Array', proto: true, forced: ES3_STRINGS || !STRICT_METHOD }, {
   join: function join(separator) {
     return nativeJoin.call(toIndexedObject(this), separator === undefined ? ',' : separator);
@@ -65109,10 +68109,8 @@ var toObject = __webpack_require__("7b0b");
 var arraySpeciesCreate = __webpack_require__("65f0");
 var createProperty = __webpack_require__("8418");
 var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
 
 var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('splice');
-var USES_TO_LENGTH = arrayMethodUsesToLength('splice', { ACCESSORS: true, 0: 0, 1: 2 });
 
 var max = Math.max;
 var min = Math.min;
@@ -65120,9 +68118,9 @@ var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
 var MAXIMUM_ALLOWED_LENGTH_EXCEEDED = 'Maximum allowed length exceeded';
 
 // `Array.prototype.splice` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.splice
+// https://tc39.es/ecma262/#sec-array.prototype.splice
 // with adding support of @@species
-$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
   splice: function splice(start, deleteCount /* , ...items */) {
     var O = toObject(this);
     var len = toLength(O.length);
@@ -65339,7 +68337,7 @@ var $getOwnPropertySymbols = function getOwnPropertySymbols(O) {
 };
 
 // `Symbol` constructor
-// https://tc39.github.io/ecma262/#sec-symbol-constructor
+// https://tc39.es/ecma262/#sec-symbol-constructor
 if (!NATIVE_SYMBOL) {
   $Symbol = function Symbol() {
     if (this instanceof $Symbol) throw TypeError('Symbol is not a constructor');
@@ -65396,7 +68394,7 @@ $forEach(objectKeys(WellKnownSymbolsStore), function (name) {
 
 $({ target: SYMBOL, stat: true, forced: !NATIVE_SYMBOL }, {
   // `Symbol.for` method
-  // https://tc39.github.io/ecma262/#sec-symbol.for
+  // https://tc39.es/ecma262/#sec-symbol.for
   'for': function (key) {
     var string = String(key);
     if (has(StringToSymbolRegistry, string)) return StringToSymbolRegistry[string];
@@ -65406,7 +68404,7 @@ $({ target: SYMBOL, stat: true, forced: !NATIVE_SYMBOL }, {
     return symbol;
   },
   // `Symbol.keyFor` method
-  // https://tc39.github.io/ecma262/#sec-symbol.keyfor
+  // https://tc39.es/ecma262/#sec-symbol.keyfor
   keyFor: function keyFor(sym) {
     if (!isSymbol(sym)) throw TypeError(sym + ' is not a symbol');
     if (has(SymbolToStringRegistry, sym)) return SymbolToStringRegistry[sym];
@@ -65417,25 +68415,25 @@ $({ target: SYMBOL, stat: true, forced: !NATIVE_SYMBOL }, {
 
 $({ target: 'Object', stat: true, forced: !NATIVE_SYMBOL, sham: !DESCRIPTORS }, {
   // `Object.create` method
-  // https://tc39.github.io/ecma262/#sec-object.create
+  // https://tc39.es/ecma262/#sec-object.create
   create: $create,
   // `Object.defineProperty` method
-  // https://tc39.github.io/ecma262/#sec-object.defineproperty
+  // https://tc39.es/ecma262/#sec-object.defineproperty
   defineProperty: $defineProperty,
   // `Object.defineProperties` method
-  // https://tc39.github.io/ecma262/#sec-object.defineproperties
+  // https://tc39.es/ecma262/#sec-object.defineproperties
   defineProperties: $defineProperties,
   // `Object.getOwnPropertyDescriptor` method
-  // https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptors
+  // https://tc39.es/ecma262/#sec-object.getownpropertydescriptors
   getOwnPropertyDescriptor: $getOwnPropertyDescriptor
 });
 
 $({ target: 'Object', stat: true, forced: !NATIVE_SYMBOL }, {
   // `Object.getOwnPropertyNames` method
-  // https://tc39.github.io/ecma262/#sec-object.getownpropertynames
+  // https://tc39.es/ecma262/#sec-object.getownpropertynames
   getOwnPropertyNames: $getOwnPropertyNames,
   // `Object.getOwnPropertySymbols` method
-  // https://tc39.github.io/ecma262/#sec-object.getownpropertysymbols
+  // https://tc39.es/ecma262/#sec-object.getownpropertysymbols
   getOwnPropertySymbols: $getOwnPropertySymbols
 });
 
@@ -65448,7 +68446,7 @@ $({ target: 'Object', stat: true, forced: fails(function () { getOwnPropertySymb
 });
 
 // `JSON.stringify` method behavior with symbols
-// https://tc39.github.io/ecma262/#sec-json.stringify
+// https://tc39.es/ecma262/#sec-json.stringify
 if ($stringify) {
   var FORCED_JSON_STRINGIFY = !NATIVE_SYMBOL || fails(function () {
     var symbol = $Symbol();
@@ -65461,7 +68459,7 @@ if ($stringify) {
   });
 
   $({ target: 'JSON', stat: true, forced: FORCED_JSON_STRINGIFY }, {
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line no-unused-vars -- required for `.length`
     stringify: function stringify(it, replacer, space) {
       var args = [it];
       var index = 1;
@@ -65480,12 +68478,12 @@ if ($stringify) {
 }
 
 // `Symbol.prototype[@@toPrimitive]` method
-// https://tc39.github.io/ecma262/#sec-symbol.prototype-@@toprimitive
+// https://tc39.es/ecma262/#sec-symbol.prototype-@@toprimitive
 if (!$Symbol[PROTOTYPE][TO_PRIMITIVE]) {
   createNonEnumerableProperty($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 }
 // `Symbol.prototype[@@toStringTag]` property
-// https://tc39.github.io/ecma262/#sec-symbol.prototype-@@tostringtag
+// https://tc39.es/ecma262/#sec-symbol.prototype-@@tostringtag
 setToStringTag($Symbol, SYMBOL);
 
 hiddenKeys[HIDDEN] = true;
@@ -65505,7 +68503,7 @@ var INCORRECT_ITERATION = !checkCorrectnessOfIteration(function (iterable) {
 });
 
 // `Array.from` method
-// https://tc39.github.io/ecma262/#sec-array.from
+// https://tc39.es/ecma262/#sec-array.from
 $({ target: 'Array', stat: true, forced: INCORRECT_ITERATION }, {
   from: from
 });
@@ -65523,7 +68521,7 @@ var fails = __webpack_require__("d039");
 module.exports = function (METHOD_NAME, argument) {
   var method = [][METHOD_NAME];
   return !!method && fails(function () {
-    // eslint-disable-next-line no-useless-call,no-throw-literal
+    // eslint-disable-next-line no-useless-call,no-throw-literal -- required for testing
     method.call(null, argument || function () { throw 1; }, 1);
   });
 };
@@ -65538,7 +68536,7 @@ var ceil = Math.ceil;
 var floor = Math.floor;
 
 // `ToInteger` abstract operation
-// https://tc39.github.io/ecma262/#sec-tointeger
+// https://tc39.es/ecma262/#sec-tointeger
 module.exports = function (argument) {
   return isNaN(argument = +argument) ? 0 : (argument > 0 ? floor : ceil)(argument);
 };
@@ -65574,7 +68572,7 @@ var NumberPrototype = NativeNumber.prototype;
 var BROKEN_CLASSOF = classof(create(NumberPrototype)) == NUMBER;
 
 // `ToNumber` abstract operation
-// https://tc39.github.io/ecma262/#sec-tonumber
+// https://tc39.es/ecma262/#sec-tonumber
 var toNumber = function (argument) {
   var it = toPrimitive(argument, false);
   var first, third, radix, maxCode, digits, length, index, code;
@@ -65603,7 +68601,7 @@ var toNumber = function (argument) {
 };
 
 // `Number` constructor
-// https://tc39.github.io/ecma262/#sec-number-constructor
+// https://tc39.es/ecma262/#sec-number-constructor
 if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumber('+0x1'))) {
   var NumberWrapper = function Number(value) {
     var it = arguments.length < 1 ? 0 : value;
@@ -65664,6 +68662,8 @@ module.exports = function (METHOD_NAME) {
 var $ = __webpack_require__("23e7");
 var exec = __webpack_require__("9263");
 
+// `RegExp.prototype.exec` method
+// https://tc39.es/ecma262/#sec-regexp.prototype.exec
 $({ target: 'RegExp', proto: true, forced: /./.exec !== exec }, {
   exec: exec
 });
@@ -65679,7 +68679,7 @@ $({ target: 'RegExp', proto: true, forced: /./.exec !== exec }, {
 var anObject = __webpack_require__("825a");
 
 // `RegExp.prototype.flags` getter implementation
-// https://tc39.github.io/ecma262/#sec-get-regexp.prototype.flags
+// https://tc39.es/ecma262/#sec-get-regexp.prototype.flags
 module.exports = function () {
   var that = anObject(this);
   var result = '';
@@ -65717,45 +68717,12 @@ function _defineProperty(obj, key, value) {
 
 /***/ }),
 
-/***/ "ae40":
-/***/ (function(module, exports, __webpack_require__) {
-
-var DESCRIPTORS = __webpack_require__("83ab");
-var fails = __webpack_require__("d039");
-var has = __webpack_require__("5135");
-
-var defineProperty = Object.defineProperty;
-var cache = {};
-
-var thrower = function (it) { throw it; };
-
-module.exports = function (METHOD_NAME, options) {
-  if (has(cache, METHOD_NAME)) return cache[METHOD_NAME];
-  if (!options) options = {};
-  var method = [][METHOD_NAME];
-  var ACCESSORS = has(options, 'ACCESSORS') ? options.ACCESSORS : false;
-  var argument0 = has(options, 0) ? options[0] : thrower;
-  var argument1 = has(options, 1) ? options[1] : undefined;
-
-  return cache[METHOD_NAME] = !!method && !fails(function () {
-    if (ACCESSORS && !DESCRIPTORS) return true;
-    var O = { length: -1 };
-
-    if (ACCESSORS) defineProperty(O, 1, { enumerable: true, get: thrower });
-    else O[1] = 1;
-
-    method.call(O, argument0, argument1);
-  });
-};
-
-
-/***/ }),
-
 /***/ "ae93":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+var fails = __webpack_require__("d039");
 var getPrototypeOf = __webpack_require__("e163");
 var createNonEnumerableProperty = __webpack_require__("9112");
 var has = __webpack_require__("5135");
@@ -65768,7 +68735,7 @@ var BUGGY_SAFARI_ITERATORS = false;
 var returnThis = function () { return this; };
 
 // `%IteratorPrototype%` object
-// https://tc39.github.io/ecma262/#sec-%iteratorprototype%-object
+// https://tc39.es/ecma262/#sec-%iteratorprototype%-object
 var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
 
 if ([].keys) {
@@ -65781,10 +68748,16 @@ if ([].keys) {
   }
 }
 
-if (IteratorPrototype == undefined) IteratorPrototype = {};
+var NEW_ITERATOR_PROTOTYPE = IteratorPrototype == undefined || fails(function () {
+  var test = {};
+  // FF44- legacy iterators case
+  return IteratorPrototype[ITERATOR].call(test) !== test;
+});
+
+if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-if (!IS_PURE && !has(IteratorPrototype, ITERATOR)) {
+if ((!IS_PURE || NEW_ITERATOR_PROTOTYPE) && !has(IteratorPrototype, ITERATOR)) {
   createNonEnumerableProperty(IteratorPrototype, ITERATOR, returnThis);
 }
 
@@ -65822,7 +68795,7 @@ var TO_STRING_TAG_SUPPORT = __webpack_require__("00ee");
 var classof = __webpack_require__("f5df");
 
 // `Object.prototype.toString` method implementation
-// https://tc39.github.io/ecma262/#sec-object.prototype.tostring
+// https://tc39.es/ecma262/#sec-object.prototype.tostring
 module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
   return '[object ' + classof(this) + ']';
 };
@@ -65842,7 +68815,7 @@ var nameRE = /^\s*function ([^ (]*)/;
 var NAME = 'name';
 
 // Function instances `.name` property
-// https://tc39.github.io/ecma262/#sec-function-instances-name
+// https://tc39.es/ecma262/#sec-function-instances-name
 if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
   defineProperty(FunctionPrototype, NAME, {
     configurable: true,
@@ -65881,9 +68854,12 @@ var Symbol = global.Symbol;
 var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol : Symbol && Symbol.withoutSetter || uid;
 
 module.exports = function (name) {
-  if (!has(WellKnownSymbolsStore, name)) {
-    if (NATIVE_SYMBOL && has(Symbol, name)) WellKnownSymbolsStore[name] = Symbol[name];
-    else WellKnownSymbolsStore[name] = createWellKnownSymbol('Symbol.' + name);
+  if (!has(WellKnownSymbolsStore, name) || !(NATIVE_SYMBOL || typeof WellKnownSymbolsStore[name] == 'string')) {
+    if (NATIVE_SYMBOL && has(Symbol, name)) {
+      WellKnownSymbolsStore[name] = Symbol[name];
+    } else {
+      WellKnownSymbolsStore[name] = createWellKnownSymbol('Symbol.' + name);
+    }
   } return WellKnownSymbolsStore[name];
 };
 
@@ -65901,7 +68877,7 @@ var fails = __webpack_require__("d039");
 var FAILS_ON_PRIMITIVES = fails(function () { nativeKeys(1); });
 
 // `Object.keys` method
-// https://tc39.github.io/ecma262/#sec-object.keys
+// https://tc39.es/ecma262/#sec-object.keys
 $({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES }, {
   keys: function keys(it) {
     return nativeKeys(toObject(it));
@@ -65962,25 +68938,25 @@ var createMethod = function (TYPE) {
 
 module.exports = {
   // `Array.prototype.forEach` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+  // https://tc39.es/ecma262/#sec-array.prototype.foreach
   forEach: createMethod(0),
   // `Array.prototype.map` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.map
+  // https://tc39.es/ecma262/#sec-array.prototype.map
   map: createMethod(1),
   // `Array.prototype.filter` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.filter
+  // https://tc39.es/ecma262/#sec-array.prototype.filter
   filter: createMethod(2),
   // `Array.prototype.some` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.some
+  // https://tc39.es/ecma262/#sec-array.prototype.some
   some: createMethod(3),
   // `Array.prototype.every` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.every
+  // https://tc39.es/ecma262/#sec-array.prototype.every
   every: createMethod(4),
   // `Array.prototype.find` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.find
+  // https://tc39.es/ecma262/#sec-array.prototype.find
   find: createMethod(5),
   // `Array.prototype.findIndex` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
+  // https://tc39.es/ecma262/#sec-array.prototype.findIndex
   findIndex: createMethod(6),
   // `Array.prototype.filterOut` method
   // https://github.com/tc39/proposal-array-filtering
@@ -66031,7 +69007,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 var isObject = __webpack_require__("861d");
 
 // `ToPrimitive` abstract operation
-// https://tc39.github.io/ecma262/#sec-toprimitive
+// https://tc39.es/ecma262/#sec-toprimitive
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (input, PREFERRED_STRING) {
@@ -66088,25 +69064,22 @@ module.exports = store;
 var $ = __webpack_require__("23e7");
 var $findIndex = __webpack_require__("b727").findIndex;
 var addToUnscopables = __webpack_require__("44d2");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
 
 var FIND_INDEX = 'findIndex';
 var SKIPS_HOLES = true;
-
-var USES_TO_LENGTH = arrayMethodUsesToLength(FIND_INDEX);
 
 // Shouldn't skip holes
 if (FIND_INDEX in []) Array(1)[FIND_INDEX](function () { SKIPS_HOLES = false; });
 
 // `Array.prototype.findIndex` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.findindex
-$({ target: 'Array', proto: true, forced: SKIPS_HOLES || !USES_TO_LENGTH }, {
+// https://tc39.es/ecma262/#sec-array.prototype.findindex
+$({ target: 'Array', proto: true, forced: SKIPS_HOLES }, {
   findIndex: function findIndex(callbackfn /* , that = undefined */) {
     return $findIndex(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
 
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 addToUnscopables(FIND_INDEX);
 
 
@@ -66149,40 +69122,10 @@ var createHTML = __webpack_require__("857a");
 var forcedStringHTMLMethod = __webpack_require__("af03");
 
 // `String.prototype.small` method
-// https://tc39.github.io/ecma262/#sec-string.prototype.small
+// https://tc39.es/ecma262/#sec-string.prototype.small
 $({ target: 'String', proto: true, forced: forcedStringHTMLMethod('small') }, {
   small: function small() {
     return createHTML(this, 'small', '', '');
-  }
-});
-
-
-/***/ }),
-
-/***/ "c975":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("23e7");
-var $indexOf = __webpack_require__("4d64").indexOf;
-var arrayMethodIsStrict = __webpack_require__("a640");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
-
-var nativeIndexOf = [].indexOf;
-
-var NEGATIVE_ZERO = !!nativeIndexOf && 1 / [1].indexOf(1, -0) < 0;
-var STRICT_METHOD = arrayMethodIsStrict('indexOf');
-var USES_TO_LENGTH = arrayMethodUsesToLength('indexOf', { ACCESSORS: true, 1: 0 });
-
-// `Array.prototype.indexOf` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.indexof
-$({ target: 'Array', proto: true, forced: NEGATIVE_ZERO || !STRICT_METHOD || !USES_TO_LENGTH }, {
-  indexOf: function indexOf(searchElement /* , fromIndex = 0 */) {
-    return NEGATIVE_ZERO
-      // convert -0 to +0
-      ? nativeIndexOf.apply(this, arguments) || 0
-      : $indexOf(this, searchElement, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
 
@@ -66221,19 +69164,16 @@ module.exports = function (object, names) {
 var $ = __webpack_require__("23e7");
 var $includes = __webpack_require__("4d64").includes;
 var addToUnscopables = __webpack_require__("44d2");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
-
-var USES_TO_LENGTH = arrayMethodUsesToLength('indexOf', { ACCESSORS: true, 1: 0 });
 
 // `Array.prototype.includes` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.includes
-$({ target: 'Array', proto: true, forced: !USES_TO_LENGTH }, {
+// https://tc39.es/ecma262/#sec-array.prototype.includes
+$({ target: 'Array', proto: true }, {
   includes: function includes(el /* , fromIndex = 0 */) {
     return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
 
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 addToUnscopables('includes');
 
 
@@ -66247,12 +69187,12 @@ var fill = __webpack_require__("81d5");
 var addToUnscopables = __webpack_require__("44d2");
 
 // `Array.prototype.fill` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.fill
+// https://tc39.es/ecma262/#sec-array.prototype.fill
 $({ target: 'Array', proto: true }, {
   fill: fill
 });
 
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 addToUnscopables('fill');
 
 
@@ -66344,7 +69284,7 @@ var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 var NASHORN_BUG = getOwnPropertyDescriptor && !nativePropertyIsEnumerable.call({ 1: 2 }, 1);
 
 // `Object.prototype.propertyIsEnumerable` method implementation
-// https://tc39.github.io/ecma262/#sec-object.prototype.propertyisenumerable
+// https://tc39.es/ecma262/#sec-object.prototype.propertyisenumerable
 exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
   var descriptor = getOwnPropertyDescriptor(this, V);
   return !!descriptor && descriptor.enumerable;
@@ -66359,7 +69299,7 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 var defineWellKnownSymbol = __webpack_require__("746f");
 
 // `Symbol.iterator` well-known symbol
-// https://tc39.github.io/ecma262/#sec-symbol.iterator
+// https://tc39.es/ecma262/#sec-symbol.iterator
 defineWellKnownSymbol('iterator');
 
 
@@ -66368,13 +69308,13 @@ defineWellKnownSymbol('iterator');
 /***/ "d2bb":
 /***/ (function(module, exports, __webpack_require__) {
 
+/* eslint-disable no-proto -- safe */
 var anObject = __webpack_require__("825a");
 var aPossiblePrototype = __webpack_require__("3bbe");
 
 // `Object.setPrototypeOf` method
-// https://tc39.github.io/ecma262/#sec-object.setprototypeof
+// https://tc39.es/ecma262/#sec-object.setprototypeof
 // Works with __proto__ only. Old v8 can't work with null proto objects.
-/* eslint-disable no-proto */
 module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
   var CORRECT_SETTER = false;
   var test = {};
@@ -66404,7 +69344,7 @@ var redefine = __webpack_require__("6eeb");
 var toString = __webpack_require__("b041");
 
 // `Object.prototype.toString` method
-// https://tc39.github.io/ecma262/#sec-object.prototype.tostring
+// https://tc39.es/ecma262/#sec-object.prototype.tostring
 if (!TO_STRING_TAG_SUPPORT) {
   redefine(Object.prototype, 'toString', toString, { unsafe: true });
 }
@@ -66480,10 +69420,10 @@ var createMethod = function (IS_RIGHT) {
 
 module.exports = {
   // `Array.prototype.reduce` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.reduce
+  // https://tc39.es/ecma262/#sec-array.prototype.reduce
   left: createMethod(false),
   // `Array.prototype.reduceRight` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.reduceright
+  // https://tc39.es/ecma262/#sec-array.prototype.reduceright
   right: createMethod(true)
 };
 
@@ -66536,6 +69476,7 @@ var REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE = (function () {
 // Chrome 51 has a buggy "split" implementation when RegExp#exec !== nativeExec
 // Weex JS has frozen built-in prototypes, so use try / catch wrapper
 var SPLIT_WORKS_WITH_OVERWRITTEN_EXEC = !fails(function () {
+  // eslint-disable-next-line regexp/no-empty-group -- required for testing
   var re = /(?:)/;
   var originalExec = re.exec;
   re.exec = function () { return originalExec.apply(this, arguments); };
@@ -66631,16 +69572,13 @@ module.exports = function (KEY, length, exec, sham) {
 var $ = __webpack_require__("23e7");
 var $map = __webpack_require__("b727").map;
 var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
 
 var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('map');
-// FF49- issue
-var USES_TO_LENGTH = arrayMethodUsesToLength('map');
 
 // `Array.prototype.map` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.map
+// https://tc39.es/ecma262/#sec-array.prototype.map
 // with adding support of @@species
-$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
   map: function map(callbackfn /* , thisArg */) {
     return $map(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
@@ -66658,12 +69596,12 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGT
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 module.exports =
-  // eslint-disable-next-line no-undef
+  /* global globalThis -- safe */
   check(typeof globalThis == 'object' && globalThis) ||
   check(typeof window == 'object' && window) ||
   check(typeof self == 'object' && self) ||
   check(typeof global == 'object' && global) ||
-  // eslint-disable-next-line no-new-func
+  // eslint-disable-next-line no-new-func -- fallback
   (function () { return this; })() || Function('return this')();
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("c8ba")))
@@ -66681,7 +69619,7 @@ var getOwnPropertyDescriptorModule = __webpack_require__("06cf");
 var createProperty = __webpack_require__("8418");
 
 // `Object.getOwnPropertyDescriptors` method
-// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptors
+// https://tc39.es/ecma262/#sec-object.getownpropertydescriptors
 $({ target: 'Object', stat: true, sham: !DESCRIPTORS }, {
   getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object) {
     var O = toIndexedObject(object);
@@ -66759,7 +69697,7 @@ var internalObjectKeys = __webpack_require__("ca84");
 var enumBugKeys = __webpack_require__("7839");
 
 // `Object.keys` method
-// https://tc39.github.io/ecma262/#sec-object.keys
+// https://tc39.es/ecma262/#sec-object.keys
 module.exports = Object.keys || function keys(O) {
   return internalObjectKeys(O, enumBugKeys);
 };
@@ -66772,7 +69710,7 @@ module.exports = Object.keys || function keys(O) {
 
 "use strict";
 // `Symbol.prototype.description` getter
-// https://tc39.github.io/ecma262/#sec-symbol.prototype.description
+// https://tc39.es/ecma262/#sec-symbol.prototype.description
 
 var $ = __webpack_require__("23e7");
 var DESCRIPTORS = __webpack_require__("83ab");
@@ -66837,7 +69775,7 @@ var IE_PROTO = sharedKey('IE_PROTO');
 var ObjectPrototype = Object.prototype;
 
 // `Object.getPrototypeOf` method
-// https://tc39.github.io/ecma262/#sec-object.getprototypeof
+// https://tc39.es/ecma262/#sec-object.getprototypeof
 module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O) {
   O = toObject(O);
   if (has(O, IE_PROTO)) return O[IE_PROTO];
@@ -66879,15 +69817,15 @@ var setInternalState = InternalStateModule.set;
 var getInternalState = InternalStateModule.getterFor(ARRAY_ITERATOR);
 
 // `Array.prototype.entries` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.entries
+// https://tc39.es/ecma262/#sec-array.prototype.entries
 // `Array.prototype.keys` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.keys
+// https://tc39.es/ecma262/#sec-array.prototype.keys
 // `Array.prototype.values` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.values
+// https://tc39.es/ecma262/#sec-array.prototype.values
 // `Array.prototype[@@iterator]` method
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@iterator
+// https://tc39.es/ecma262/#sec-array.prototype-@@iterator
 // `CreateArrayIterator` internal method
-// https://tc39.github.io/ecma262/#sec-createarrayiterator
+// https://tc39.es/ecma262/#sec-createarrayiterator
 module.exports = defineIterator(Array, 'Array', function (iterated, kind) {
   setInternalState(this, {
     type: ARRAY_ITERATOR,
@@ -66896,7 +69834,7 @@ module.exports = defineIterator(Array, 'Array', function (iterated, kind) {
     kind: kind                         // kind
   });
 // `%ArrayIteratorPrototype%.next` method
-// https://tc39.github.io/ecma262/#sec-%arrayiteratorprototype%.next
+// https://tc39.es/ecma262/#sec-%arrayiteratorprototype%.next
 }, function () {
   var state = getInternalState(this);
   var target = state.target;
@@ -66912,11 +69850,11 @@ module.exports = defineIterator(Array, 'Array', function (iterated, kind) {
 }, 'values');
 
 // argumentsList[@@iterator] is %ArrayProto_values%
-// https://tc39.github.io/ecma262/#sec-createunmappedargumentsobject
-// https://tc39.github.io/ecma262/#sec-createmappedargumentsobject
+// https://tc39.es/ecma262/#sec-createunmappedargumentsobject
+// https://tc39.es/ecma262/#sec-createmappedargumentsobject
 Iterators.Arguments = Iterators.Array;
 
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
@@ -66950,7 +69888,7 @@ var FAILS_ON_PRIMITIVES = fails(function () { nativeGetOwnPropertyDescriptor(1);
 var FORCED = !DESCRIPTORS || FAILS_ON_PRIMITIVES;
 
 // `Object.getOwnPropertyDescriptor` method
-// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptor
+// https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
 $({ target: 'Object', stat: true, forced: FORCED, sham: !DESCRIPTORS }, {
   getOwnPropertyDescriptor: function getOwnPropertyDescriptor(it, key) {
     return nativeGetOwnPropertyDescriptor(toIndexedObject(it), key);
@@ -66997,7 +69935,7 @@ module.exports = function (target, source) {
 var classof = __webpack_require__("c6b6");
 
 // `IsArray` abstract operation
-// https://tc39.github.io/ecma262/#sec-isarray
+// https://tc39.es/ecma262/#sec-isarray
 module.exports = Array.isArray || function isArray(arg) {
   return classof(arg) == 'Array';
 };
@@ -67169,7 +70107,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ab4be50-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/index.vue?vue&type=template&id=418b1a10&lang=pug&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4fe70e1b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/index.vue?vue&type=template&id=418b1a10&lang=pug&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"vuecal",staticClass:"vuecal__flex vuecal",class:_vm.cssClasses,attrs:{"column":"","lang":_vm.locale}},[_c('vuecal-header',{attrs:{"options":_vm.$props,"edit-events":_vm.editEvents,"view-props":{ views: _vm.views, weekDaysInHeader: _vm.weekDaysInHeader },"week-days":_vm.weekDays,"has-splits":_vm.hasSplits,"day-splits":_vm.daySplits,"switch-to-narrower-view":_vm.switchToNarrowerView},scopedSlots:_vm._u([{key:"arrow-prev",fn:function(){return [_vm._t("arrow-prev",[_vm._v(" "),_c('i',{staticClass:"angle"}),_vm._v(" ")])]},proxy:true},{key:"arrow-next",fn:function(){return [_vm._t("arrow-next",[_vm._v(" "),_c('i',{staticClass:"angle"}),_vm._v(" ")])]},proxy:true},{key:"today-button",fn:function(){return [_vm._t("today-button",[_c('span',{staticClass:"default"},[_vm._v(_vm._s(_vm.texts.today))])])]},proxy:true},{key:"title",fn:function(){return [_vm._t("title",[_vm._v(_vm._s(_vm.viewTitle))],{"title":_vm.viewTitle,"view":_vm.view})]},proxy:true},{key:"weekday-heading",fn:function(ref){
 var heading = ref.heading;
 var view = ref.view;
@@ -67199,72 +70137,6 @@ var staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/vue-cal/index.vue?vue&type=template&id=418b1a10&lang=pug&
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
-var es_array_concat = __webpack_require__("99af");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.fill.js
-var es_array_fill = __webpack_require__("cb29");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
-var es_array_filter = __webpack_require__("4de4");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find.js
-var es_array_find = __webpack_require__("7db0");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.for-each.js
-var es_array_for_each = __webpack_require__("4160");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
-var es_array_includes = __webpack_require__("caad");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.index-of.js
-var es_array_index_of = __webpack_require__("c975");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.join.js
-var es_array_join = __webpack_require__("a15b");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
-var es_array_map = __webpack_require__("d81d");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.reduce.js
-var es_array_reduce = __webpack_require__("13d5");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
-var es_array_slice = __webpack_require__("fb6a");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.some.js
-var es_array_some = __webpack_require__("45fc");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
-var es_number_constructor = __webpack_require__("a9e3");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
-var es_object_keys = __webpack_require__("b64b");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
-var es_object_to_string = __webpack_require__("d3b7");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
-var es_regexp_exec = __webpack_require__("ac1f");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
-var es_string_includes = __webpack_require__("2532");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.repeat.js
-var es_string_repeat = __webpack_require__("38cf");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
-var es_string_replace = __webpack_require__("5319");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
-var es_string_split = __webpack_require__("1276");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.small.js
-var es_string_small = __webpack_require__("c96a");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
-var web_dom_collections_for_each = __webpack_require__("159b");
-
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
 var defineProperty = __webpack_require__("ade3");
 
@@ -67289,17 +70161,20 @@ var es_symbol = __webpack_require__("a4d3");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
 var es_symbol_description = __webpack_require__("e01a");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
+var es_object_to_string = __webpack_require__("d3b7");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.iterator.js
 var es_symbol_iterator = __webpack_require__("d28b");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.from.js
-var es_array_from = __webpack_require__("a630");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
 var es_string_iterator = __webpack_require__("3ca3");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
 var web_dom_collections_iterator = __webpack_require__("ddb0");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.from.js
+var es_array_from = __webpack_require__("a630");
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
 
@@ -67312,14 +70187,13 @@ var web_dom_collections_iterator = __webpack_require__("ddb0");
 function _iterableToArray(iter) {
   if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
 }
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
+var es_array_slice = __webpack_require__("fb6a");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
-var es_regexp_to_string = __webpack_require__("25f0");
-
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
-
 
 
 
@@ -67371,11 +70245,65 @@ function _typeof(obj) {
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectSpread2.js
 var objectSpread2 = __webpack_require__("5530");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.fill.js
+var es_array_fill = __webpack_require__("cb29");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
+var es_number_constructor = __webpack_require__("a9e3");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
+var es_array_includes = __webpack_require__("caad");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
+var es_array_concat = __webpack_require__("99af");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.join.js
+var es_array_join = __webpack_require__("a15b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
+var es_string_includes = __webpack_require__("2532");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
+var es_array_map = __webpack_require__("d81d");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
+var es_array_filter = __webpack_require__("4de4");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
+var web_dom_collections_for_each = __webpack_require__("159b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find.js
+var es_array_find = __webpack_require__("7db0");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
+var es_string_split = __webpack_require__("1276");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
+var es_regexp_exec = __webpack_require__("ac1f");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
+var es_string_replace = __webpack_require__("5319");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.repeat.js
+var es_string_repeat = __webpack_require__("38cf");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
+var es_object_keys = __webpack_require__("b64b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.small.js
+var es_string_small = __webpack_require__("c96a");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.reduce.js
+var es_array_reduce = __webpack_require__("13d5");
+
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
 var classCallCheck = __webpack_require__("d4ec");
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
 var createClass = __webpack_require__("bee2");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
+var es_regexp_to_string = __webpack_require__("25f0");
 
 // CONCATENATED MODULE: ./src/vue-cal/utils/date.js
 
@@ -67605,7 +70533,7 @@ var date_DateUtils = /*#__PURE__*/function () {
 
   }, {
     key: "countDays",
-
+    value:
     /**
      * Count the number of days this date range spans onto.
      * E.g. countDays(2019-11-02 18:00, 2019-11-03 02:00) = 2
@@ -67614,7 +70542,7 @@ var date_DateUtils = /*#__PURE__*/function () {
      * @param {String | Date} end the end date
      * @return {Integer} The number of days this date range involves
      */
-    value: function countDays(start, end) {
+    function countDays(start, end) {
       // replace '-' with '/' for Safari.
       if (typeof start === 'string') start = start.replace(/-/g, '/');
       if (typeof end === 'string') end = end.replace(/-/g, '/'); // Set start & end at midnight then compare the delta. Don't modify the original dates.
@@ -68043,22 +70971,20 @@ var cell_CellUtils = function CellUtils(vuecal) {
 ;
 
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find-index.js
-var es_array_find_index = __webpack_require__("c740");
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.set.js
+var es_set = __webpack_require__("6062");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.splice.js
 var es_array_splice = __webpack_require__("a434");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.set.js
-var es_set = __webpack_require__("6062");
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find-index.js
+var es_array_find_index = __webpack_require__("c740");
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
 // CONCATENATED MODULE: ./src/vue-cal/utils/event.js
-
-
 
 
 
@@ -68557,7 +71483,7 @@ var event_EventUtils = /*#__PURE__*/function () {
 }();
 
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ab4be50-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/header.vue?vue&type=template&id=760d6e75&lang=pug&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4fe70e1b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/header.vue?vue&type=template&id=760d6e75&lang=pug&
 var headervue_type_template_id_760d6e75_lang_pug_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vuecal__header"},[(!_vm.options.hideViewSelector)?_c('div',{staticClass:"vuecal__flex vuecal__menu",attrs:{"role":"tablist","aria-label":"Calendar views navigation"}},_vm._l((_vm.viewProps.views),function(v,id){return (v.enabled)?_c('button',{staticClass:"vuecal__view-btn",class:{ 'vuecal__view-btn--active': _vm.view.id === id, 'vuecal__view-btn--highlighted': _vm.highlightedControl === id },attrs:{"type":"button","aria-label":((v.label) + " view")},on:{"dragenter":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragEnter($event, id, _vm.$data)},"dragleave":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragLeave($event, id, _vm.$data)},"click":function($event){return _vm.switchView(id, null, true)}}},[_vm._v(_vm._s(v.label))]):_vm._e()}),0):_vm._e(),(!_vm.options.hideTitleBar)?_c('div',{staticClass:"vuecal__title-bar"},[_c('button',{staticClass:"vuecal__arrow vuecal__arrow--prev",class:{ 'vuecal__arrow--highlighted': _vm.highlightedControl === 'previous' },attrs:{"type":"button","aria-label":("Previous " + (_vm.view.id))},on:{"click":_vm.previous,"dragenter":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragEnter($event, 'previous', _vm.$data)},"dragleave":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragLeave($event, 'previous', _vm.$data)}}},[_vm._t("arrow-prev")],2),_c('div',{staticClass:"vuecal__flex vuecal__title",attrs:{"grow":""}},[_c(_vm.options.transitions ? 'transition' : 'div',{tag:"component",attrs:{"name":("slide-fade--" + _vm.transitionDirection)}},[_c(_vm.broaderView ? 'button' : 'span',{key:("" + (_vm.view.id) + (_vm.view.startDate.toString())),tag:"component",attrs:{"type":!!_vm.broaderView && 'button',"aria-label":!!_vm.broaderView && ("Go to " + _vm.broaderView + " view")},on:{"click":function($event){!!_vm.broaderView && _vm.switchToBroaderView()}}},[_vm._t("title")],2)],1)],1),(_vm.options.todayButton)?_c('button',{staticClass:"vuecal__today-btn",class:{ 'vuecal__today-btn--highlighted': _vm.highlightedControl === 'today' },attrs:{"type":"button","aria-label":"Today"},on:{"click":_vm.goToToday,"dragenter":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragEnter($event, 'today', _vm.$data)},"dragleave":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragLeave($event, 'today', _vm.$data)}}},[_vm._t("today-button")],2):_vm._e(),_c('button',{staticClass:"vuecal__arrow vuecal__arrow--next",class:{ 'vuecal__arrow--highlighted': _vm.highlightedControl === 'next' },attrs:{"type":"button","aria-label":("Next " + (_vm.view.id))},on:{"click":_vm.next,"dragenter":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragEnter($event, 'next', _vm.$data)},"dragleave":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragLeave($event, 'next', _vm.$data)}}},[_vm._t("arrow-next")],2)]):_vm._e(),(_vm.viewProps.weekDaysInHeader)?_c('weekdays-headings',{attrs:{"week-days":_vm.weekDays,"transition-direction":_vm.transitionDirection,"switch-to-narrower-view":_vm.switchToNarrowerView},scopedSlots:_vm._u([{key:"weekday-heading",fn:function(ref){
 var heading = ref.heading;
 var view = ref.view;
@@ -68569,7 +71495,7 @@ var headervue_type_template_id_760d6e75_lang_pug_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/vue-cal/header.vue?vue&type=template&id=760d6e75&lang=pug&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ab4be50-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/weekdays-headings.vue?vue&type=template&id=6662afd4&lang=pug&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4fe70e1b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/weekdays-headings.vue?vue&type=template&id=6662afd4&lang=pug&
 var weekdays_headingsvue_type_template_id_6662afd4_lang_pug_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vuecal__flex vuecal__weekdays-headings"},_vm._l((_vm.headings),function(heading,i){return (!heading.hide)?_c('div',{key:i,staticClass:"vuecal__flex vuecal__heading",class:{ today: heading.today, clickable: _vm.cellHeadingsClickable },style:(_vm.weekdayCellStyles),on:{"click":function($event){_vm.view.id === 'week' && _vm.selectCell(heading.date, $event)},"dblclick":function($event){_vm.view.id === 'week' && _vm.vuecal.dblclickToNavigate && _vm.switchToNarrowerView()}}},[_c('transition',{attrs:{"name":("slide-fade--" + _vm.transitionDirection),"appear":_vm.vuecal.transitions}},[_c('div',{key:_vm.vuecal.transitions ? (i + "-" + (heading.dayOfMonth)) : false,staticClass:"vuecal__flex",attrs:{"column":""}},[_c('div',{staticClass:"vuecal__flex weekday-label",attrs:{"grow":""}},[_vm._t("weekday-heading",[_c('span',{staticClass:"full"},[_vm._v(_vm._s(heading.full))]),_c('span',{staticClass:"small"},[_vm._v(_vm._s(heading.small))]),_c('span',{staticClass:"xsmall"},[_vm._v(_vm._s(heading.xsmall))]),(heading.dayOfMonth)?_c('span',[_vm._v(" "+_vm._s(heading.dayOfMonth))]):_vm._e()],{"heading":_vm.cleanupHeading(heading),"view":_vm.view})],2),(_vm.vuecal.hasSplits && _vm.vuecal.stickySplitLabels)?_c('div',{staticClass:"vuecal__flex vuecal__split-days-headers",attrs:{"grow":""}},_vm._l((_vm.vuecal.daySplits),function(split,i){return _c('div',{key:i,staticClass:"day-split-header",class:split.class || false},[_vm._t("split-label",[_vm._v(_vm._s(split.label))],{"split":split,"view":_vm.view})],2)}),0):_vm._e()])])],1):_vm._e()}),0)}
 var weekdays_headingsvue_type_template_id_6662afd4_lang_pug_staticRenderFns = []
 
@@ -68810,7 +71736,6 @@ var component = normalizeComponent(
 /* harmony default export */ var weekdays_headings = (component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/header.vue?vue&type=script&lang=js&
 
-
 //
 //
 //
@@ -68987,7 +71912,7 @@ var header_component = normalizeComponent(
 )
 
 /* harmony default export */ var header = (header_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ab4be50-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/all-day-bar.vue?vue&type=template&id=20856694&lang=pug&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4fe70e1b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/all-day-bar.vue?vue&type=template&id=20856694&lang=pug&
 var all_day_barvue_type_template_id_20856694_lang_pug_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vuecal__flex vuecal__all-day",style:(_vm.cellOrSplitMinWidth && { height: _vm.height })},[(!_vm.cellOrSplitMinWidth)?_c('div',{staticClass:"vuecal__all-day-text",staticStyle:{"width":"3em"}},[_c('span',[_vm._v(_vm._s(_vm.label))])]):_vm._e(),_c('div',{staticClass:"vuecal__flex vuecal__cells",class:((_vm.view.id) + "-view"),style:(_vm.cellOrSplitMinWidth ? ("min-width: " + _vm.cellOrSplitMinWidth + "px") : ''),attrs:{"grow":""}},_vm._l((_vm.cells),function(cell,i){return _c('vuecal-cell',{key:i,attrs:{"options":_vm.options,"edit-events":_vm.editEvents,"data":cell,"all-day":true,"cell-width":_vm.options.hideWeekdays.length && (_vm.vuecal.isWeekView || _vm.vuecal.isMonthView) && _vm.vuecal.cellWidth,"min-timestamp":_vm.options.minTimestamp,"max-timestamp":_vm.options.maxTimestamp,"cell-splits":_vm.daySplits},scopedSlots:_vm._u([{key:"event",fn:function(ref){
 var event = ref.event;
 var view = ref.view;
@@ -68997,15 +71922,15 @@ var all_day_barvue_type_template_id_20856694_lang_pug_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/vue-cal/all-day-bar.vue?vue&type=template&id=20856694&lang=pug&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ab4be50-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/cell.vue?vue&type=template&id=2316410e&lang=pug&
-var cellvue_type_template_id_2316410e_lang_pug_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition-group',{staticClass:"vuecal__cell",class:_vm.cellClasses,style:(_vm.cellStyles),attrs:{"name":("slide-fade--" + _vm.transitionDirection),"tag":"div","appear":_vm.options.transitions}},[_vm._l(((_vm.splitsCount ? _vm.splits : 1)),function(split,i){return _c('div',{key:_vm.options.transitions ? ((_vm.view.id) + "-" + (_vm.data.content) + "-" + i) : i,staticClass:"vuecal__flex vuecal__cell-content",class:_vm.splitsCount && _vm.splitClasses(split),attrs:{"data-split":_vm.splitsCount ? split.id : false,"column":"","tabindex":"0","aria-label":_vm.data.content},on:{"focus":function($event){return _vm.onCellFocus($event)},"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.onCellkeyPressEnter($event)},"touchstart":function($event){!_vm.isDisabled && _vm.onCellTouchStart($event, _vm.splitsCount ? split.id : null)},"mousedown":function($event){!_vm.isDisabled && _vm.onCellMouseDown($event, _vm.splitsCount ? split.id : null)},"click":function($event){!_vm.isDisabled && _vm.onCellClick($event)},"dblclick":function($event){!_vm.isDisabled && _vm.onCellDblClick($event)},"contextmenu":function($event){!_vm.isDisabled && _vm.options.cellContextmenu && _vm.onCellContextMenu($event)},"dragenter":function($event){!_vm.isDisabled && _vm.editEvents.drag && _vm.dnd && _vm.dnd.cellDragEnter($event, _vm.$data, _vm.data.startDate)},"dragover":function($event){!_vm.isDisabled && _vm.editEvents.drag && _vm.dnd && _vm.dnd.cellDragOver($event, _vm.$data, _vm.data.startDate, _vm.splitsCount ? split.id : null)},"dragleave":function($event){!_vm.isDisabled && _vm.editEvents.drag && _vm.dnd && _vm.dnd.cellDragLeave($event, _vm.$data, _vm.data.startDate)},"drop":function($event){!_vm.isDisabled && _vm.editEvents.drag && _vm.dnd && _vm.dnd.cellDragDrop($event, _vm.$data, _vm.data.startDate, _vm.splitsCount ? split.id : null)}}},[(_vm.isWeekOrDayView && !_vm.allDay && _vm.specialHours.length)?_vm._l((_vm.specialHours),function(block,i){return _c('div',{staticClass:"vuecal__special-hours",class:("vuecal__special-hours--day" + (block.day) + " " + (block.class)),style:(("height: " + (block.height) + "px;top: " + (block.top) + "px"))})}):_vm._e(),_vm._t("cell-content",null,{"events":_vm.events,"selectCell":function ($event) { return _vm.selectCell($event, true); },"split":_vm.splitsCount ? split : false}),(_vm.eventsCount && (_vm.isWeekOrDayView || (_vm.view.id === 'month' && _vm.options.eventsOnMonthView)))?_c('div',{staticClass:"vuecal__cell-events"},_vm._l(((_vm.splitsCount ? split.events : _vm.events)),function(event,j){return _c('event',{key:j,attrs:{"cell-formatted-date":_vm.data.formattedDate,"event":event,"all-day":_vm.allDay,"cell-events":_vm.splitsCount ? split.events : _vm.events,"overlaps":((_vm.splitsCount ? split.overlaps[event._eid] : _vm.cellOverlaps[event._eid]) || []).overlaps,"event-position":((_vm.splitsCount ? split.overlaps[event._eid] : _vm.cellOverlaps[event._eid]) || []).position,"overlaps-streak":_vm.splitsCount ? split.overlapsStreak : _vm.cellOverlapsStreak},scopedSlots:_vm._u([{key:"event",fn:function(ref){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4fe70e1b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/cell.vue?vue&type=template&id=12d3ecf8&lang=pug&
+var cellvue_type_template_id_12d3ecf8_lang_pug_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition-group',{staticClass:"vuecal__cell",class:_vm.cellClasses,style:(_vm.cellStyles),attrs:{"name":("slide-fade--" + _vm.transitionDirection),"tag":"div","appear":_vm.options.transitions}},[_vm._l(((_vm.splitsCount ? _vm.splits : 1)),function(split,i){return _c('div',{key:_vm.options.transitions ? ((_vm.view.id) + "-" + (_vm.data.content) + "-" + i) : i,staticClass:"vuecal__flex vuecal__cell-content",class:_vm.splitsCount && _vm.splitClasses(split),attrs:{"data-split":_vm.splitsCount ? split.id : false,"column":"","tabindex":"0","aria-label":_vm.data.content},on:{"focus":function($event){return _vm.onCellFocus($event)},"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.onCellkeyPressEnter($event)},"touchstart":function($event){!_vm.isDisabled && _vm.onCellTouchStart($event, _vm.splitsCount ? split.id : null)},"mousedown":function($event){!_vm.isDisabled && _vm.onCellMouseDown($event, _vm.splitsCount ? split.id : null)},"click":function($event){!_vm.isDisabled && _vm.onCellClick($event)},"dblclick":function($event){!_vm.isDisabled && _vm.onCellDblClick($event)},"contextmenu":function($event){!_vm.isDisabled && _vm.options.cellContextmenu && _vm.onCellContextMenu($event)},"dragenter":function($event){!_vm.isDisabled && _vm.editEvents.drag && _vm.dnd && _vm.dnd.cellDragEnter($event, _vm.$data, _vm.data.startDate)},"dragover":function($event){!_vm.isDisabled && _vm.editEvents.drag && _vm.dnd && _vm.dnd.cellDragOver($event, _vm.$data, _vm.data.startDate, _vm.splitsCount ? split.id : null)},"dragleave":function($event){!_vm.isDisabled && _vm.editEvents.drag && _vm.dnd && _vm.dnd.cellDragLeave($event, _vm.$data, _vm.data.startDate)},"drop":function($event){!_vm.isDisabled && _vm.editEvents.drag && _vm.dnd && _vm.dnd.cellDragDrop($event, _vm.$data, _vm.data.startDate, _vm.splitsCount ? split.id : null)}}},[(_vm.isWeekOrDayView && !_vm.allDay && _vm.specialHours.length)?_vm._l((_vm.specialHours),function(block,i){return _c('div',{staticClass:"vuecal__special-hours",class:("vuecal__special-hours--day" + (block.day) + " " + (block.class)),style:(("height: " + (block.height) + "px;top: " + (block.top) + "px"))})}):_vm._e(),_vm._t("cell-content",null,{"events":_vm.events,"selectCell":function ($event) { return _vm.selectCell($event, true); },"split":_vm.splitsCount ? split : false}),(_vm.eventsCount && (_vm.isWeekOrDayView || (_vm.view.id === 'month' && _vm.options.eventsOnMonthView)))?_c('div',{staticClass:"vuecal__cell-events"},_vm._l(((_vm.splitsCount ? split.events : _vm.events)),function(event,j){return _c('event',{key:j,attrs:{"cell-formatted-date":_vm.data.formattedDate,"event":event,"all-day":_vm.allDay,"cell-events":_vm.splitsCount ? split.events : _vm.events,"overlaps":((_vm.splitsCount ? split.overlaps[event._eid] : _vm.cellOverlaps[event._eid]) || []).overlaps,"event-position":((_vm.splitsCount ? split.overlaps[event._eid] : _vm.cellOverlaps[event._eid]) || []).position,"overlaps-streak":_vm.splitsCount ? split.overlapsStreak : _vm.cellOverlapsStreak},scopedSlots:_vm._u([{key:"event",fn:function(ref){
 var event = ref.event;
 var view = ref.view;
 return [_vm._t("event",null,{"view":view,"event":event})]}}],null,true)})}),1):_vm._e()],2)}),(_vm.timelineVisible)?_c('div',{key:_vm.options.transitions ? ((_vm.view.id) + "-now-line") : 'now-line',staticClass:"vuecal__now-line",style:(("top: " + _vm.todaysTimePosition + "px")),attrs:{"title":_vm.utils.date.formatTime(_vm.vuecal.now)}}):_vm._e()],2)}
-var cellvue_type_template_id_2316410e_lang_pug_staticRenderFns = []
+var cellvue_type_template_id_12d3ecf8_lang_pug_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/vue-cal/cell.vue?vue&type=template&id=2316410e&lang=pug&
+// CONCATENATED MODULE: ./src/vue-cal/cell.vue?vue&type=template&id=12d3ecf8&lang=pug&
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
 function _arrayWithHoles(arr) {
@@ -69056,7 +71981,7 @@ function _nonIterableRest() {
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ab4be50-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/event.vue?vue&type=template&id=cdf79fc4&lang=pug&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4fe70e1b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/event.vue?vue&type=template&id=cdf79fc4&lang=pug&
 var eventvue_type_template_id_cdf79fc4_lang_pug_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vuecal__event",class:_vm.eventClasses,style:(_vm.eventStyles),attrs:{"tabindex":"0","draggable":_vm.draggable},on:{"focus":_vm.focusEvent,"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }$event.stopPropagation();return _vm.onEnterKeypress($event)},"mouseenter":_vm.onMouseEnter,"mouseleave":_vm.onMouseLeave,"touchstart":function($event){$event.stopPropagation();return _vm.onTouchStart($event)},"mousedown":function($event){_vm.onMouseDown($event) /* Don't stop mousedown propagation. See in onMouseDown(). */},"mouseup":_vm.onMouseUp,"touchend":_vm.onMouseUp,"touchmove":_vm.onTouchMove,"dblclick":_vm.onDblClick,"dragstart":function($event){_vm.draggable && _vm.onDragStart($event)},"dragend":function($event){_vm.draggable && _vm.onDragEnd()}}},[(_vm.vuecal.editEvents.delete && _vm.event.deletable)?_c('div',{staticClass:"vuecal__event-delete",on:{"click":function($event){$event.stopPropagation();return _vm.deleteEvent($event)},"touchstart":function($event){$event.stopPropagation();return _vm.touchDeleteEvent($event)}}},[_vm._v(_vm._s(_vm.vuecal.texts.deleteEvent))]):_vm._e(),_vm._t("event",null,{"event":_vm.event,"view":_vm.view.id}),(_vm.resizable)?_c('div',{staticClass:"vuecal__event-resize-handle",attrs:{"contenteditable":"false"},on:{"mousedown":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onResizeHandleMouseDown($event)},"touchstart":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onResizeHandleMouseDown($event)}}}):_vm._e()],2)}
 var eventvue_type_template_id_cdf79fc4_lang_pug_staticRenderFns = []
 
@@ -69585,7 +72510,7 @@ var event_component = normalizeComponent(
      * the date & time at cursor if click/touch.
      */
     onCellFocus: function onCellFocus(DOMEvent) {
-      if (!this.isSelected) {
+      if (!this.isSelected && !this.isDisabled) {
         this.isSelected = this.data.startDate; // Highlight the cell.
         // If splitting days, also return the clicked split on cell focus when emitting event.
 
@@ -69900,8 +72825,8 @@ var cellvue_type_style_index_0_lang_scss_ = __webpack_require__("95dd");
 
 var cell_component = normalizeComponent(
   vue_cal_cellvue_type_script_lang_js_,
-  cellvue_type_template_id_2316410e_lang_pug_render,
-  cellvue_type_template_id_2316410e_lang_pug_staticRenderFns,
+  cellvue_type_template_id_12d3ecf8_lang_pug_render,
+  cellvue_type_template_id_12d3ecf8_lang_pug_staticRenderFns,
   false,
   null,
   null,
@@ -70006,7 +72931,6 @@ var all_day_bar_component = normalizeComponent(
 var styles = __webpack_require__("1332");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/index.vue?vue&type=script&lang=js&
-
 
 
 
@@ -72040,19 +74964,17 @@ var toIndexedObject = __webpack_require__("fc6a");
 var createProperty = __webpack_require__("8418");
 var wellKnownSymbol = __webpack_require__("b622");
 var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
 
 var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('slice');
-var USES_TO_LENGTH = arrayMethodUsesToLength('slice', { ACCESSORS: true, 0: 0, 1: 2 });
 
 var SPECIES = wellKnownSymbol('species');
 var nativeSlice = [].slice;
 var max = Math.max;
 
 // `Array.prototype.slice` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.slice
+// https://tc39.es/ecma262/#sec-array.prototype.slice
 // fallback for not array-like ES3 strings and DOM objects
-$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
   slice: function slice(start, end) {
     var O = toIndexedObject(this);
     var length = toLength(O.length);
@@ -72145,9 +75067,8 @@ module.exports = {
 var NATIVE_SYMBOL = __webpack_require__("4930");
 
 module.exports = NATIVE_SYMBOL
-  // eslint-disable-next-line no-undef
+  /* global Symbol -- safe */
   && !Symbol.sham
-  // eslint-disable-next-line no-undef
   && typeof Symbol.iterator == 'symbol';
 
 
@@ -73104,6 +76025,45 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                              attrs: { href: _vm.route("reservations.index") }
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                                  attrs: {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    fill: "none",
+                                    viewBox: "0 0 24 24",
+                                    stroke: "currentColor",
+                                    "aria-hidden": "true"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round",
+                                      "stroke-width": "2",
+                                      d:
+                                        "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(
+                                "\n                                    Κρατήσεις\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
                           _vm.user.role_id === 1 || _vm.user.role_id === 2
                             ? _c("div", [
                                 _c(
@@ -73588,6 +76548,45 @@ var render = function() {
                           ),
                           _vm._v(
                             "\n                                    Μαθήματα\n                                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md",
+                          attrs: { href: _vm.route("reservations.index") }
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6",
+                              attrs: {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                fill: "none",
+                                viewBox: "0 0 24 24",
+                                stroke: "currentColor",
+                                "aria-hidden": "true"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  "stroke-linecap": "round",
+                                  "stroke-linejoin": "round",
+                                  "stroke-width": "2",
+                                  d:
+                                    "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(
+                            "\n                                    Κρατήσεις\n                                "
                           )
                         ]
                       ),
@@ -74139,7 +77138,7 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("main", [
-        _c("div", {}, [
+        _c("div", [
           _c("div", { staticClass: "py-8 sm:px-0" }, [
             _c(
               "div",
@@ -74343,63 +77342,139 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "grid grid-cols-1 gap-4 sm:grid-cols-2 px-8 mb-20 mt-4" },
-    _vm._l(_vm.classroom.courses, function(course, index) {
-      return _c("div", { key: index }, [
-        _c(
+  return _c("div", [
+    _vm.classroom.classroom_type_id === 1
+      ? _c(
           "div",
           {
-            staticClass:
-              "relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-gray-500"
+            staticClass: "grid grid-cols-1 gap-4 sm:grid-cols-2 px-8 mb-20 mt-4"
           },
-          [
-            _vm._m(0, true),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex-1 min-w-0" }, [
+          _vm._l(_vm.classroom.courses, function(course, index) {
+            return _c("div", { key: index }, [
               _c(
-                "a",
+                "div",
                 {
-                  staticClass: "focus:outline-none",
-                  attrs: { href: course.path }
+                  staticClass:
+                    "relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-gray-500"
                 },
                 [
-                  _c("span", {
-                    staticClass: "absolute inset-0",
-                    attrs: { "aria-hidden": "true" }
-                  }),
+                  _vm._m(0, true),
                   _vm._v(" "),
-                  _c(
-                    "p",
-                    { staticClass: "text-sm font-medium text-gray-900" },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(course.name) +
-                          "\n                    "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-sm text-gray-500 truncate" }, [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(course.description) +
-                        "\n                    "
+                  _c("div", { staticClass: "flex-1 min-w-0" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "focus:outline-none",
+                        attrs: { href: course.path }
+                      },
+                      [
+                        _c("span", {
+                          staticClass: "absolute inset-0",
+                          attrs: { "aria-hidden": "true" }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          { staticClass: "text-sm font-medium text-gray-900" },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(course.name) +
+                                "\n                            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          { staticClass: "text-sm text-gray-500 truncate" },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(course.description) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ]
                     )
                   ])
                 ]
               )
             ])
-          ]
+          }),
+          0
         )
-      ])
-    }),
-    0
-  )
+      : _c(
+          "div",
+          { staticClass: "px-8 mb-20 mt-4" },
+          _vm._l(_vm.classroom.courses, function(course, index) {
+            return _c("div", { key: index, staticClass: "my-3" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-gray-500"
+                },
+                [
+                  _vm._m(1, true),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "flex-1 min-w-0" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "focus:outline-none",
+                        attrs: { href: course.path }
+                      },
+                      [
+                        _c("span", {
+                          staticClass: "absolute inset-0",
+                          attrs: { "aria-hidden": "true" }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          { staticClass: "text-sm font-medium text-gray-900" },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(course.name) +
+                                "\n                            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          { staticClass: "text-sm text-gray-500 truncate" },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(course.description) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
+            ])
+          }),
+          0
+        )
+  ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex-shrink-0" }, [
+      _c("div", { staticClass: "h-10 w-10 rounded-full bg-primary-500" })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -74415,10 +77490,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Courses/CourseComponent.vue?vue&type=template&id=7f7f1490&scoped=true&":
-/*!**************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Courses/CourseComponent.vue?vue&type=template&id=7f7f1490&scoped=true& ***!
-  \**************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Courses/CourseComponent.vue?vue&type=template&id=7f7f1490&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Courses/CourseComponent.vue?vue&type=template&id=7f7f1490& ***!
+  \**************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -74448,9 +77523,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                            " +
+                          "\n                                " +
                             _vm._s(_vm.course.name) +
-                            "\n                        "
+                            "\n                            "
                         )
                       ]
                     )
@@ -74472,7 +77547,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                        Επεξεργασία Μαθήματος\n                    "
+                            "\n                            Επεξεργασία Μαθήματος\n                        "
                           )
                         ]
                       )
@@ -74516,7 +77591,7 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                                Θεωρία\n\n                                "
+                                    "\n                                    Θεωρία\n\n                                    "
                                   ),
                                   _vm._l(_vm.course.theories, function(
                                     theory,
@@ -74537,7 +77612,23 @@ var render = function() {
                                         [_vm._v(_vm._s(theory.name))]
                                       )
                                     ])
-                                  })
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "w-auto mt-3" },
+                                    [
+                                      _c("video-wrapper", {
+                                        attrs: {
+                                          player: "youtube",
+                                          video: _vm.videoId,
+                                          width: "340",
+                                          height: "160"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
                                 ],
                                 2
                               )
@@ -74581,7 +77672,7 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                                Ασκήσεις\n\n                                "
+                                    "\n                                    Ασκήσεις\n\n                                    "
                                   ),
                                   _vm._l(_vm.course.assignments, function(
                                     assignment,
@@ -74624,7 +77715,7 @@ var render = function() {
             { staticClass: "text-xl font-bold leading-tight text-gray-900" },
             [
               _vm._v(
-                "\n            Πρέπει να είσαι εγγεγραμμένος χρήστης για να δεις τα μαθήματα!\n        "
+                "\n                Πρέπει να είσαι εγγεγραμμένος χρήστης για να δεις τα μαθήματα!\n            "
               )
             ]
           ),
@@ -74636,7 +77727,7 @@ var render = function() {
                 "w-64 mt-8 lg:mt-0 text-center inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500",
               attrs: { href: _vm.route("register") }
             },
-            [_vm._v("\n            Εγγραφή\n        ")]
+            [_vm._v("\n                Εγγραφή\n            ")]
           )
         ])
   ])
@@ -74832,7 +77923,7 @@ var render = function() {
           "time-from": 9 * 60,
           "time-to": 18 * 60,
           locale: "el",
-          "disable-views": ["years", "year"],
+          "disable-views": ["years", "year", "week"],
           "today-button": "",
           events: _vm.events,
           "on-event-click": _vm.openBookingModal
@@ -75489,7 +78580,7 @@ var render = function() {
           "nav",
           {
             staticClass:
-              "relative flex items-center justify-between sm:h-10 md:justify-center",
+              "relative flex items-center justify-between sm:h-10 lg:pl-32 xl:justify-center",
             attrs: { "aria-label": "Global" }
           },
           [
@@ -75497,14 +78588,14 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "flex items-center flex-1 md:absolute md:inset-y-0 md:left-0"
+                  "flex items-center flex-1 lg:absolute lg:inset-y-0 lg:left-0"
               },
               [
                 _c(
                   "div",
                   {
                     staticClass:
-                      "flex items-center justify-between w-full md:w-auto"
+                      "flex items-center justify-between w-full lg:w-auto"
                   },
                   [
                     _c("a", { attrs: { href: _vm.route("welcome.index") } }, [
@@ -75521,7 +78612,7 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "-mr-2 flex items-center md:hidden" },
+                      { staticClass: "-mr-2 flex items-center lg:hidden" },
                       [
                         _c(
                           "button",
@@ -75576,7 +78667,7 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _c("div", { staticClass: "hidden md:flex md:space-x-10" }, [
+            _c("div", { staticClass: "hidden lg:flex lg:space-x-10" }, [
               _c(
                 "a",
                 {
@@ -75608,6 +78699,15 @@ var render = function() {
                 "a",
                 {
                   staticClass: "font-medium text-gray-500 hover:text-gray-900",
+                  attrs: { href: _vm.route("reservations.index") }
+                },
+                [_vm._v("Κρατήσεις")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "font-medium text-gray-500 hover:text-gray-900",
                   attrs: { href: _vm.route("contacts.create") }
                 },
                 [_vm._v("Επικοινωνία")]
@@ -75618,7 +78718,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0"
+                  "hidden lg:absolute lg:flex lg:items-center lg:justify-end lg:inset-y-0 lg:right-0"
               },
               [
                 !_vm.user
@@ -75750,6 +78850,19 @@ var render = function() {
                                     _vm._v(" "),
                                     _c(
                                       "a",
+                                      {
+                                        staticClass:
+                                          "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900",
+                                        attrs: {
+                                          href: _vm.route("reservations.index"),
+                                          role: "menuitem"
+                                        }
+                                      },
+                                      [_vm._v("Κρατήσεις")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
                                       { attrs: { href: _vm.route("logout") } },
                                       [
                                         _c(
@@ -75797,7 +78910,7 @@ var render = function() {
                 }
               ],
               staticClass:
-                "absolute top-0 z-30 inset-x-0 p-2 transition transform origin-top-right md:hidden",
+                "absolute top-0 z-30 inset-x-0 p-2 transition transform origin-top-right lg:hidden",
               attrs: { tabindex: "-1" }
             },
             [
@@ -75926,6 +79039,19 @@ var render = function() {
                               staticClass:
                                 "block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
                               attrs: {
+                                href: _vm.route("reservations.index"),
+                                role: "menuitem"
+                              }
+                            },
+                            [_vm._v("Κρατήσεις")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50",
+                              attrs: {
                                 href: _vm.route("contacts.create"),
                                 role: "menuitem"
                               }
@@ -76029,6 +79155,238 @@ var render = function() {
             ]
           )
         : _vm._e()
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservationsComponent.vue?vue&type=template&id=3c5e863b&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ReservationsComponent.vue?vue&type=template&id=3c5e863b& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" },
+    [
+      _c("div", { staticClass: "mb-12" }, [
+        _c(
+          "h2",
+          {
+            staticClass:
+              "text-gray-500 text-xs font-medium uppercase tracking-wide"
+          },
+          [_vm._v("ΠΡΟΗΓΟΥΜΕΝΕΣ ΚΡΑΤΗΣΕΙΣ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "ul",
+          {
+            staticClass:
+              "mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          },
+          _vm._l(_vm.previous, function(prev, index) {
+            return _c(
+              "li",
+              {
+                key: index,
+                staticClass: "col-span-1 flex shadow-sm rounded-md"
+              },
+              [
+                _c("div", {
+                  staticClass:
+                    "flex-shrink-0 flex items-center justify-center w-16 bg-pink-600 text-white text-sm font-medium rounded-l-md"
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate"
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "flex-1 px-4 py-2 text-sm truncate" },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass:
+                              "text-gray-900 font-medium hover:text-gray-600",
+                            attrs: {
+                              href: _vm.route("reservations.show", {
+                                course: prev.course.slug
+                              })
+                            }
+                          },
+                          [_vm._v(_vm._s(prev.course.name))]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "text-gray-500" }, [
+                          _vm._v(_vm._s(prev.period.name))
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mb-12" }, [
+        _c(
+          "h2",
+          {
+            staticClass:
+              "text-gray-500 text-xs font-medium uppercase tracking-wide"
+          },
+          [_vm._v("ΤΡΕΧΟΥΣΕΣ ΚΡΑΤΗΣΕΙΣ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "ul",
+          {
+            staticClass:
+              "mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          },
+          _vm._l(_vm.current, function(curr, index) {
+            return _c(
+              "li",
+              {
+                key: index,
+                staticClass: "col-span-1 flex shadow-sm rounded-md"
+              },
+              [
+                _c("div", {
+                  staticClass:
+                    "flex-shrink-0 flex items-center justify-center w-16 bg-purple-600 text-white text-sm font-medium rounded-l-md"
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate"
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "flex-1 px-4 py-2 text-sm truncate" },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass:
+                              "text-gray-900 font-medium hover:text-gray-600",
+                            attrs: {
+                              href: _vm.route("reservations.show", {
+                                course: curr.course.slug
+                              })
+                            }
+                          },
+                          [_vm._v(_vm._s(curr.course.name))]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "text-gray-500" }, [
+                          _vm._v(_vm._s(curr.period.name))
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mb-12" }, [
+        _c(
+          "h2",
+          {
+            staticClass:
+              "text-gray-500 text-xs font-medium uppercase tracking-wide"
+          },
+          [_vm._v("ΕΠΕΡΧΟΜΕΝΕΣ ΚΡΑΤΗΣΕΙΣ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "ul",
+          {
+            staticClass:
+              "mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          },
+          _vm._l(_vm.next, function(nex, index) {
+            return _c(
+              "li",
+              {
+                key: index,
+                staticClass: "col-span-1 flex shadow-sm rounded-md"
+              },
+              [
+                _c("div", {
+                  staticClass:
+                    "flex-shrink-0 flex items-center justify-center w-16 bg-yellow-500 text-white text-sm font-medium rounded-l-md"
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate"
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "flex-1 px-4 py-2 text-sm truncate" },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass:
+                              "text-gray-900 font-medium hover:text-gray-600",
+                            attrs: {
+                              href: _vm.route("reservations.show", {
+                                course: nex.course.slug
+                              })
+                            }
+                          },
+                          [_vm._v(_vm._s(nex.course.name))]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "text-gray-500" }, [
+                          _vm._v(_vm._s(nex.period.name))
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ])
     ]
   )
 }
@@ -76575,6 +79933,26 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/vue-video-wrapper/dist/bundle.esm.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vue-video-wrapper/dist/bundle.esm.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _vimeo_player__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vimeo/player */ "./node_modules/@vimeo/player/dist/player.es.js");
+/* harmony import */ var object_assign__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
+/* harmony import */ var object_assign__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(object_assign__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var youtube_player__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! youtube-player */ "./node_modules/youtube-player/dist/index.js");
+/* harmony import */ var youtube_player__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(youtube_player__WEBPACK_IMPORTED_MODULE_2__);
+var r=["play","pause","ended","timeupdate","progress","seeked","texttrackchange","cuechange","cuepoint","volumechange","error","loaded"],o={videoId:{type:[String,Number],required:!0},playerHeight:{type:[String,Number],default:320},playerWidth:{type:[String,Number],default:640},options:{type:Object,default:function(){return{}}},videoUrl:{type:String,default:void 0},loop:{type:Boolean,default:!1},autoplay:{type:Boolean,default:!1},controls:{type:Boolean,default:!0}},n=0,a={videoId:{type:[String,Number],required:!0},playerVars:{type:Object,default:function(){return{}}},height:{type:[Number,String],default:360},width:{type:[Number,String],default:640},resize:{type:Boolean,default:!1},resizeDelay:{type:Number,default:100},nocookie:{type:Boolean,default:!1},fitParent:{type:Boolean,default:!1}},s=0,l=[{name:"YOUTUBE",component:{name:"YoutubePlayer",props:a,data:function(){var e;return s+=1,{player:{},events:(e={},e[-1]="unstarted",e[1]="play",e[2]="pause",e[0]="ended",e[3]="buffering",e[5]="cued",e),resizeTimeout:null,htmlId:"embed-youtube-video-"+s}},computed:{aspectRatio:function(){return this.width/this.height}},methods:{playerReady:function(e){this.$emit("ready",e.target)},playerStateChange:function(e){null!==e.data&&-1!==e.data&&this.$emit(this.events[e.data],e.target)},playerError:function(e){this.$emit("error",e.target)},updatePlayer:function(e){e?1!==this.playerVars.autoplay?this.player.cueVideoById({videoId:e}):this.player.loadVideoById({videoId:e}):this.player.stopVideo()},resizeProportionally:function(){var e=this;this.player.getIframe().then((function(t){var i=e.fitParent?t.parentElement.offsetWidth:t.offsetWidth,r=i/e.aspectRatio;e.player.setSize(i,r)}))},onResize:function(){clearTimeout(this.resizeTimeout),this.resizeTimeout=setTimeout(this.resizeProportionally,this.resizeDelay)}},watch:{videoId:"updatePlayer",resize:function(e){e?(window.addEventListener("resize",this.onResize),this.resizeProportionally()):(window.removeEventListener("resize",this.onResize),this.player.setSize(this.width,this.height))},width:function(e){this.player.setSize(e,this.height)},height:function(e){this.player.setSize(this.width,e)}},beforeDestroy:function(){null!==this.player&&this.player.destroy&&(this.player.destroy(),delete this.player),this.resize&&window.removeEventListener("resize",this.onResize)},mounted:function(){window.YTConfig={host:"https://www.youtube.com/iframe_api"};var e=this.nocookie?"https://www.youtube-nocookie.com":"https://www.youtube.com";this.player=new youtube_player__WEBPACK_IMPORTED_MODULE_2___default.a(this.$el,{host:e,width:this.width,height:this.height,videoId:this.videoId,playerVars:this.playerVars}),this.player.on("ready",this.playerReady),this.player.on("stateChange",this.playerStateChange),this.player.on("error",this.playerError),this.resize&&window.addEventListener("resize",this.onResize),this.fitParent&&this.resizeProportionally()},render:function(e){return e("div",{attrs:{id:this.htmlId}})}}},{name:"VIMEO",component:{name:"VimeoPlayer",props:o,methods:{update:function(e){return this.player.loadVideo(e)},play:function(){return this.player.play()},pause:function(){return this.player.pause()},mute:function(){return this.player.setVolume(0)},unmute:function(e){return void 0===e&&(e=.5),this.player.setVolume(e)},emitVueEvent:function(e){var t=this;this.player.on(e,(function(i){t.$emit(e,i,t.player)}))},setEvents:function(){var e=this;this.player.ready().then((function(){this.$emit("ready",this.player)})).catch((function(t){e.$emit("error",t,e.player)})),r.forEach((function(t){return e.emitVueEvent.call(e,t)}))}},data:function(){return{htmlId:"embed-vimeo-video-"+(n+=1),player:null}},render:function(e){return e("div",{attrs:{id:this.htmlId}})},mounted:function(){var i={id:this.videoId,width:this.playerWidth,height:this.playerHeight,loop:this.loop,autoplay:this.autoplay,controls:this.controls};this.videoUrl&&(i.url=this.videoUrl),this.player=new _vimeo_player__WEBPACK_IMPORTED_MODULE_0__["default"](this.htmlId,object_assign__WEBPACK_IMPORTED_MODULE_1___default()(i,this.options)),this.setEvents()},watch:{videoId:"update"},beforeDestroy:function(){this.player.unload()}}}],u={functional:!0,props:Object.assign({},{player:{type:String,required:!0,validator:function(e){return-1!==l.map((function(e){return e.name})).indexOf(e.toUpperCase())}},videoId:{type:[String,Number],required:!0}},o,a),render:function(e,t){var i=t.data,r=t.props,o=t.listeners,n=l.find((function(e){return e.name==r.player.toUpperCase()}));if(n)return e(n.component,{props:r,ref:i.ref,on:o})}};function d(e,t){if(void 0===t&&(t={}),!d.installed){d.installed=!0;var i=t.componentId;void 0===i&&(i="video-wrapper"),e.component(i,u)}}var p={install:d},h=null;"undefined"!=typeof window?h=window.Vue:"undefined"!=typeof global&&(h=global.vue),h&&h.use(p),u.install=d;/* harmony default export */ __webpack_exports__["default"] = (u);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
@@ -88628,6 +92006,904 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./node_modules/youtube-player/dist/FunctionStateMap.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/youtube-player/dist/FunctionStateMap.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _PlayerStates = __webpack_require__(/*! ./constants/PlayerStates */ "./node_modules/youtube-player/dist/constants/PlayerStates.js");
+
+var _PlayerStates2 = _interopRequireDefault(_PlayerStates);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  pauseVideo: {
+    acceptableStates: [_PlayerStates2.default.ENDED, _PlayerStates2.default.PAUSED],
+    stateChangeRequired: false
+  },
+  playVideo: {
+    acceptableStates: [_PlayerStates2.default.ENDED, _PlayerStates2.default.PLAYING],
+    stateChangeRequired: false
+  },
+  seekTo: {
+    acceptableStates: [_PlayerStates2.default.ENDED, _PlayerStates2.default.PLAYING, _PlayerStates2.default.PAUSED],
+    stateChangeRequired: true,
+
+    // TRICKY: `seekTo` may not cause a state change if no buffering is
+    // required.
+    timeout: 3000
+  }
+};
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/youtube-player/dist/YouTubePlayer.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/youtube-player/dist/YouTubePlayer.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _debug = __webpack_require__(/*! debug */ "./node_modules/youtube-player/node_modules/debug/src/browser.js");
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _functionNames = __webpack_require__(/*! ./functionNames */ "./node_modules/youtube-player/dist/functionNames.js");
+
+var _functionNames2 = _interopRequireDefault(_functionNames);
+
+var _eventNames = __webpack_require__(/*! ./eventNames */ "./node_modules/youtube-player/dist/eventNames.js");
+
+var _eventNames2 = _interopRequireDefault(_eventNames);
+
+var _FunctionStateMap = __webpack_require__(/*! ./FunctionStateMap */ "./node_modules/youtube-player/dist/FunctionStateMap.js");
+
+var _FunctionStateMap2 = _interopRequireDefault(_FunctionStateMap);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint-disable promise/prefer-await-to-then */
+
+var debug = (0, _debug2.default)('youtube-player');
+
+var YouTubePlayer = {};
+
+/**
+ * Construct an object that defines an event handler for all of the YouTube
+ * player events. Proxy captured events through an event emitter.
+ *
+ * @todo Capture event parameters.
+ * @see https://developers.google.com/youtube/iframe_api_reference#Events
+ */
+YouTubePlayer.proxyEvents = function (emitter) {
+  var events = {};
+
+  var _loop = function _loop(eventName) {
+    var onEventName = 'on' + eventName.slice(0, 1).toUpperCase() + eventName.slice(1);
+
+    events[onEventName] = function (event) {
+      debug('event "%s"', onEventName, event);
+
+      emitter.trigger(eventName, event);
+    };
+  };
+
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = _eventNames2.default[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var eventName = _step.value;
+
+      _loop(eventName);
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  return events;
+};
+
+/**
+ * Delays player API method execution until player state is ready.
+ *
+ * @todo Proxy all of the methods using Object.keys.
+ * @todo See TRICKY below.
+ * @param playerAPIReady Promise that resolves when player is ready.
+ * @param strictState A flag designating whether or not to wait for
+ * an acceptable state when calling supported functions.
+ * @returns {Object}
+ */
+YouTubePlayer.promisifyPlayer = function (playerAPIReady) {
+  var strictState = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  var functions = {};
+
+  var _loop2 = function _loop2(functionName) {
+    if (strictState && _FunctionStateMap2.default[functionName]) {
+      functions[functionName] = function () {
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+
+        return playerAPIReady.then(function (player) {
+          var stateInfo = _FunctionStateMap2.default[functionName];
+          var playerState = player.getPlayerState();
+
+          // eslint-disable-next-line no-warning-comments
+          // TODO: Just spread the args into the function once Babel is fixed:
+          // https://github.com/babel/babel/issues/4270
+          //
+          // eslint-disable-next-line prefer-spread
+          var value = player[functionName].apply(player, args);
+
+          // TRICKY: For functions like `seekTo`, a change in state must be
+          // triggered given that the resulting state could match the initial
+          // state.
+          if (stateInfo.stateChangeRequired ||
+
+          // eslint-disable-next-line no-extra-parens
+          Array.isArray(stateInfo.acceptableStates) && stateInfo.acceptableStates.indexOf(playerState) === -1) {
+            return new Promise(function (resolve) {
+              var onPlayerStateChange = function onPlayerStateChange() {
+                var playerStateAfterChange = player.getPlayerState();
+
+                var timeout = void 0;
+
+                if (typeof stateInfo.timeout === 'number') {
+                  timeout = setTimeout(function () {
+                    player.removeEventListener('onStateChange', onPlayerStateChange);
+
+                    resolve();
+                  }, stateInfo.timeout);
+                }
+
+                if (Array.isArray(stateInfo.acceptableStates) && stateInfo.acceptableStates.indexOf(playerStateAfterChange) !== -1) {
+                  player.removeEventListener('onStateChange', onPlayerStateChange);
+
+                  clearTimeout(timeout);
+
+                  resolve();
+                }
+              };
+
+              player.addEventListener('onStateChange', onPlayerStateChange);
+            }).then(function () {
+              return value;
+            });
+          }
+
+          return value;
+        });
+      };
+    } else {
+      functions[functionName] = function () {
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+          args[_key2] = arguments[_key2];
+        }
+
+        return playerAPIReady.then(function (player) {
+          // eslint-disable-next-line no-warning-comments
+          // TODO: Just spread the args into the function once Babel is fixed:
+          // https://github.com/babel/babel/issues/4270
+          //
+          // eslint-disable-next-line prefer-spread
+          return player[functionName].apply(player, args);
+        });
+      };
+    }
+  };
+
+  var _iteratorNormalCompletion2 = true;
+  var _didIteratorError2 = false;
+  var _iteratorError2 = undefined;
+
+  try {
+    for (var _iterator2 = _functionNames2.default[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+      var functionName = _step2.value;
+
+      _loop2(functionName);
+    }
+  } catch (err) {
+    _didIteratorError2 = true;
+    _iteratorError2 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion2 && _iterator2.return) {
+        _iterator2.return();
+      }
+    } finally {
+      if (_didIteratorError2) {
+        throw _iteratorError2;
+      }
+    }
+  }
+
+  return functions;
+};
+
+exports.default = YouTubePlayer;
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/youtube-player/dist/constants/PlayerStates.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/youtube-player/dist/constants/PlayerStates.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  BUFFERING: 3,
+  ENDED: 0,
+  PAUSED: 2,
+  PLAYING: 1,
+  UNSTARTED: -1,
+  VIDEO_CUED: 5
+};
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/youtube-player/dist/eventNames.js":
+/*!********************************************************!*\
+  !*** ./node_modules/youtube-player/dist/eventNames.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+
+/**
+ * @see https://developers.google.com/youtube/iframe_api_reference#Events
+ * `volumeChange` is not officially supported but seems to work
+ * it emits an object: `{volume: 82.6923076923077, muted: false}`
+ */
+exports.default = ['ready', 'stateChange', 'playbackQualityChange', 'playbackRateChange', 'error', 'apiChange', 'volumeChange'];
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/youtube-player/dist/functionNames.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/youtube-player/dist/functionNames.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+
+/**
+ * @see https://developers.google.com/youtube/iframe_api_reference#Functions
+ */
+exports.default = ['cueVideoById', 'loadVideoById', 'cueVideoByUrl', 'loadVideoByUrl', 'playVideo', 'pauseVideo', 'stopVideo', 'getVideoLoadedFraction', 'cuePlaylist', 'loadPlaylist', 'nextVideo', 'previousVideo', 'playVideoAt', 'setShuffle', 'setLoop', 'getPlaylist', 'getPlaylistIndex', 'setOption', 'mute', 'unMute', 'isMuted', 'setVolume', 'getVolume', 'seekTo', 'getPlayerState', 'getPlaybackRate', 'setPlaybackRate', 'getAvailablePlaybackRates', 'getPlaybackQuality', 'setPlaybackQuality', 'getAvailableQualityLevels', 'getCurrentTime', 'getDuration', 'removeEventListener', 'getVideoUrl', 'getVideoEmbedCode', 'getOptions', 'getOption', 'addEventListener', 'destroy', 'setSize', 'getIframe'];
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/youtube-player/dist/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/youtube-player/dist/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _sister = __webpack_require__(/*! sister */ "./node_modules/sister/src/sister.js");
+
+var _sister2 = _interopRequireDefault(_sister);
+
+var _loadYouTubeIframeApi = __webpack_require__(/*! ./loadYouTubeIframeApi */ "./node_modules/youtube-player/dist/loadYouTubeIframeApi.js");
+
+var _loadYouTubeIframeApi2 = _interopRequireDefault(_loadYouTubeIframeApi);
+
+var _YouTubePlayer = __webpack_require__(/*! ./YouTubePlayer */ "./node_modules/youtube-player/dist/YouTubePlayer.js");
+
+var _YouTubePlayer2 = _interopRequireDefault(_YouTubePlayer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * @typedef YT.Player
+ * @see https://developers.google.com/youtube/iframe_api_reference
+ * */
+
+/**
+ * @see https://developers.google.com/youtube/iframe_api_reference#Loading_a_Video_Player
+ */
+var youtubeIframeAPI = void 0;
+
+/**
+ * A factory function used to produce an instance of YT.Player and queue function calls and proxy events of the resulting object.
+ *
+ * @param maybeElementId Either An existing YT.Player instance,
+ * the DOM element or the id of the HTML element where the API will insert an <iframe>.
+ * @param options See `options` (Ignored when using an existing YT.Player instance).
+ * @param strictState A flag designating whether or not to wait for
+ * an acceptable state when calling supported functions. Default: `false`.
+ * See `FunctionStateMap.js` for supported functions and acceptable states.
+ */
+
+exports.default = function (maybeElementId) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var strictState = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+  var emitter = (0, _sister2.default)();
+
+  if (!youtubeIframeAPI) {
+    youtubeIframeAPI = (0, _loadYouTubeIframeApi2.default)(emitter);
+  }
+
+  if (options.events) {
+    throw new Error('Event handlers cannot be overwritten.');
+  }
+
+  if (typeof maybeElementId === 'string' && !document.getElementById(maybeElementId)) {
+    throw new Error('Element "' + maybeElementId + '" does not exist.');
+  }
+
+  options.events = _YouTubePlayer2.default.proxyEvents(emitter);
+
+  var playerAPIReady = new Promise(function (resolve) {
+    if ((typeof maybeElementId === 'undefined' ? 'undefined' : _typeof(maybeElementId)) === 'object' && maybeElementId.playVideo instanceof Function) {
+      var player = maybeElementId;
+
+      resolve(player);
+    } else {
+      // asume maybeElementId can be rendered inside
+      // eslint-disable-next-line promise/catch-or-return
+      youtubeIframeAPI.then(function (YT) {
+        // eslint-disable-line promise/prefer-await-to-then
+        var player = new YT.Player(maybeElementId, options);
+
+        emitter.on('ready', function () {
+          resolve(player);
+        });
+
+        return null;
+      });
+    }
+  });
+
+  var playerApi = _YouTubePlayer2.default.promisifyPlayer(playerAPIReady, strictState);
+
+  playerApi.on = emitter.on;
+  playerApi.off = emitter.off;
+
+  return playerApi;
+};
+
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/youtube-player/dist/loadYouTubeIframeApi.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/youtube-player/dist/loadYouTubeIframeApi.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _loadScript = __webpack_require__(/*! load-script */ "./node_modules/load-script/index.js");
+
+var _loadScript2 = _interopRequireDefault(_loadScript);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (emitter) {
+  /**
+   * A promise that is resolved when window.onYouTubeIframeAPIReady is called.
+   * The promise is resolved with a reference to window.YT object.
+   */
+  var iframeAPIReady = new Promise(function (resolve) {
+    if (window.YT && window.YT.Player && window.YT.Player instanceof Function) {
+      resolve(window.YT);
+
+      return;
+    } else {
+      var protocol = window.location.protocol === 'http:' ? 'http:' : 'https:';
+
+      (0, _loadScript2.default)(protocol + '//www.youtube.com/iframe_api', function (error) {
+        if (error) {
+          emitter.trigger('error', error);
+        }
+      });
+    }
+
+    var previous = window.onYouTubeIframeAPIReady;
+
+    // The API will call this function when page has finished downloading
+    // the JavaScript for the player API.
+    window.onYouTubeIframeAPIReady = function () {
+      if (previous) {
+        previous();
+      }
+
+      resolve(window.YT);
+    };
+  });
+
+  return iframeAPIReady;
+};
+
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/youtube-player/node_modules/debug/src/browser.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/youtube-player/node_modules/debug/src/browser.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * This is the web browser implementation of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = __webpack_require__(/*! ./debug */ "./node_modules/youtube-player/node_modules/debug/src/debug.js");
+exports.log = log;
+exports.formatArgs = formatArgs;
+exports.save = save;
+exports.load = load;
+exports.useColors = useColors;
+exports.storage = 'undefined' != typeof chrome
+               && 'undefined' != typeof chrome.storage
+                  ? chrome.storage.local
+                  : localstorage();
+
+/**
+ * Colors.
+ */
+
+exports.colors = [
+  'lightseagreen',
+  'forestgreen',
+  'goldenrod',
+  'dodgerblue',
+  'darkorchid',
+  'crimson'
+];
+
+/**
+ * Currently only WebKit-based Web Inspectors, Firefox >= v31,
+ * and the Firebug extension (any Firefox version) are known
+ * to support "%c" CSS customizations.
+ *
+ * TODO: add a `localStorage` variable to explicitly enable/disable colors
+ */
+
+function useColors() {
+  // NB: In an Electron preload script, document will be defined but not fully
+  // initialized. Since we know we're in Chrome, we'll just detect this case
+  // explicitly
+  if (typeof window !== 'undefined' && window.process && window.process.type === 'renderer') {
+    return true;
+  }
+
+  // is webkit? http://stackoverflow.com/a/16459606/376773
+  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
+  return (typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
+    // is firebug? http://stackoverflow.com/a/398120/376773
+    (typeof window !== 'undefined' && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
+    // is firefox >= v31?
+    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
+    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
+    // double check webkit in userAgent just in case we are in a worker
+    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
+}
+
+/**
+ * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
+ */
+
+exports.formatters.j = function(v) {
+  try {
+    return JSON.stringify(v);
+  } catch (err) {
+    return '[UnexpectedJSONParseError]: ' + err.message;
+  }
+};
+
+
+/**
+ * Colorize log arguments if enabled.
+ *
+ * @api public
+ */
+
+function formatArgs(args) {
+  var useColors = this.useColors;
+
+  args[0] = (useColors ? '%c' : '')
+    + this.namespace
+    + (useColors ? ' %c' : ' ')
+    + args[0]
+    + (useColors ? '%c ' : ' ')
+    + '+' + exports.humanize(this.diff);
+
+  if (!useColors) return;
+
+  var c = 'color: ' + this.color;
+  args.splice(1, 0, c, 'color: inherit')
+
+  // the final "%c" is somewhat tricky, because there could be other
+  // arguments passed either before or after the %c, so we need to
+  // figure out the correct index to insert the CSS into
+  var index = 0;
+  var lastC = 0;
+  args[0].replace(/%[a-zA-Z%]/g, function(match) {
+    if ('%%' === match) return;
+    index++;
+    if ('%c' === match) {
+      // we only are interested in the *last* %c
+      // (the user may have provided their own)
+      lastC = index;
+    }
+  });
+
+  args.splice(lastC, 0, c);
+}
+
+/**
+ * Invokes `console.log()` when available.
+ * No-op when `console.log` is not a "function".
+ *
+ * @api public
+ */
+
+function log() {
+  // this hackery is required for IE8/9, where
+  // the `console.log` function doesn't have 'apply'
+  return 'object' === typeof console
+    && console.log
+    && Function.prototype.apply.call(console.log, console, arguments);
+}
+
+/**
+ * Save `namespaces`.
+ *
+ * @param {String} namespaces
+ * @api private
+ */
+
+function save(namespaces) {
+  try {
+    if (null == namespaces) {
+      exports.storage.removeItem('debug');
+    } else {
+      exports.storage.debug = namespaces;
+    }
+  } catch(e) {}
+}
+
+/**
+ * Load `namespaces`.
+ *
+ * @return {String} returns the previously persisted debug modes
+ * @api private
+ */
+
+function load() {
+  var r;
+  try {
+    r = exports.storage.debug;
+  } catch(e) {}
+
+  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
+  if (!r && typeof process !== 'undefined' && 'env' in process) {
+    r = process.env.DEBUG;
+  }
+
+  return r;
+}
+
+/**
+ * Enable namespaces listed in `localStorage.debug` initially.
+ */
+
+exports.enable(load());
+
+/**
+ * Localstorage attempts to return the localstorage.
+ *
+ * This is necessary because safari throws
+ * when a user disables cookies/localstorage
+ * and you attempt to access it.
+ *
+ * @return {LocalStorage}
+ * @api private
+ */
+
+function localstorage() {
+  try {
+    return window.localStorage;
+  } catch (e) {}
+}
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/youtube-player/node_modules/debug/src/debug.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/youtube-player/node_modules/debug/src/debug.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/**
+ * This is the common logic for both the Node.js and web browser
+ * implementations of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
+exports.coerce = coerce;
+exports.disable = disable;
+exports.enable = enable;
+exports.enabled = enabled;
+exports.humanize = __webpack_require__(/*! ms */ "./node_modules/ms/index.js");
+
+/**
+ * The currently active debug mode names, and names to skip.
+ */
+
+exports.names = [];
+exports.skips = [];
+
+/**
+ * Map of special "%n" handling functions, for the debug "format" argument.
+ *
+ * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
+ */
+
+exports.formatters = {};
+
+/**
+ * Previous log timestamp.
+ */
+
+var prevTime;
+
+/**
+ * Select a color.
+ * @param {String} namespace
+ * @return {Number}
+ * @api private
+ */
+
+function selectColor(namespace) {
+  var hash = 0, i;
+
+  for (i in namespace) {
+    hash  = ((hash << 5) - hash) + namespace.charCodeAt(i);
+    hash |= 0; // Convert to 32bit integer
+  }
+
+  return exports.colors[Math.abs(hash) % exports.colors.length];
+}
+
+/**
+ * Create a debugger with the given `namespace`.
+ *
+ * @param {String} namespace
+ * @return {Function}
+ * @api public
+ */
+
+function createDebug(namespace) {
+
+  function debug() {
+    // disabled?
+    if (!debug.enabled) return;
+
+    var self = debug;
+
+    // set `diff` timestamp
+    var curr = +new Date();
+    var ms = curr - (prevTime || curr);
+    self.diff = ms;
+    self.prev = prevTime;
+    self.curr = curr;
+    prevTime = curr;
+
+    // turn the `arguments` into a proper Array
+    var args = new Array(arguments.length);
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i];
+    }
+
+    args[0] = exports.coerce(args[0]);
+
+    if ('string' !== typeof args[0]) {
+      // anything else let's inspect with %O
+      args.unshift('%O');
+    }
+
+    // apply any `formatters` transformations
+    var index = 0;
+    args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
+      // if we encounter an escaped % then don't increase the array index
+      if (match === '%%') return match;
+      index++;
+      var formatter = exports.formatters[format];
+      if ('function' === typeof formatter) {
+        var val = args[index];
+        match = formatter.call(self, val);
+
+        // now we need to remove `args[index]` since it's inlined in the `format`
+        args.splice(index, 1);
+        index--;
+      }
+      return match;
+    });
+
+    // apply env-specific formatting (colors, etc.)
+    exports.formatArgs.call(self, args);
+
+    var logFn = debug.log || exports.log || console.log.bind(console);
+    logFn.apply(self, args);
+  }
+
+  debug.namespace = namespace;
+  debug.enabled = exports.enabled(namespace);
+  debug.useColors = exports.useColors();
+  debug.color = selectColor(namespace);
+
+  // env-specific initialization logic for debug instances
+  if ('function' === typeof exports.init) {
+    exports.init(debug);
+  }
+
+  return debug;
+}
+
+/**
+ * Enables a debug mode by namespaces. This can include modes
+ * separated by a colon and wildcards.
+ *
+ * @param {String} namespaces
+ * @api public
+ */
+
+function enable(namespaces) {
+  exports.save(namespaces);
+
+  exports.names = [];
+  exports.skips = [];
+
+  var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
+  var len = split.length;
+
+  for (var i = 0; i < len; i++) {
+    if (!split[i]) continue; // ignore empty strings
+    namespaces = split[i].replace(/\*/g, '.*?');
+    if (namespaces[0] === '-') {
+      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
+    } else {
+      exports.names.push(new RegExp('^' + namespaces + '$'));
+    }
+  }
+}
+
+/**
+ * Disable debug output.
+ *
+ * @api public
+ */
+
+function disable() {
+  exports.enable('');
+}
+
+/**
+ * Returns true if the given mode name is enabled, false otherwise.
+ *
+ * @param {String} name
+ * @return {Boolean}
+ * @api public
+ */
+
+function enabled(name) {
+  var i, len;
+  for (i = 0, len = exports.skips.length; i < len; i++) {
+    if (exports.skips[i].test(name)) {
+      return false;
+    }
+  }
+  for (i = 0, len = exports.names.length; i < len; i++) {
+    if (exports.names[i].test(name)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Coerce `val`.
+ *
+ * @param {Mixed} val
+ * @return {Mixed}
+ * @api private
+ */
+
+function coerce(val) {
+  if (val instanceof Error) return val.stack || val.message;
+  return val;
+}
+
+
+/***/ }),
+
 /***/ "./resources/css/app.css":
 /*!*******************************!*\
   !*** ./resources/css/app.css ***!
@@ -88679,6 +92955,7 @@ Vue.component('visible-toggle-component', __webpack_require__(/*! ./components/C
 Vue.component('courses-list', __webpack_require__(/*! ./components/Courses/CoursesList.vue */ "./resources/js/components/Courses/CoursesList.vue")["default"]);
 Vue.component('courses-attach-component', __webpack_require__(/*! ./components/Classrooms/CoursesAttachComponent.vue */ "./resources/js/components/Classrooms/CoursesAttachComponent.vue")["default"]);
 Vue.component('booking-form-component', __webpack_require__(/*! ./components/BookingFormComponent.vue */ "./resources/js/components/BookingFormComponent.vue")["default"]);
+Vue.component('reservations-component', __webpack_require__(/*! ./components/ReservationsComponent.vue */ "./resources/js/components/ReservationsComponent.vue")["default"]);
 Vue.mixin({
   methods: {
     /*__(key, replacements = []) {
@@ -89374,7 +93651,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CourseComponent_vue_vue_type_template_id_7f7f1490_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CourseComponent.vue?vue&type=template&id=7f7f1490&scoped=true& */ "./resources/js/components/Courses/CourseComponent.vue?vue&type=template&id=7f7f1490&scoped=true&");
+/* harmony import */ var _CourseComponent_vue_vue_type_template_id_7f7f1490___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CourseComponent.vue?vue&type=template&id=7f7f1490& */ "./resources/js/components/Courses/CourseComponent.vue?vue&type=template&id=7f7f1490&");
 /* harmony import */ var _CourseComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CourseComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Courses/CourseComponent.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
@@ -89386,11 +93663,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _CourseComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _CourseComponent_vue_vue_type_template_id_7f7f1490_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _CourseComponent_vue_vue_type_template_id_7f7f1490_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _CourseComponent_vue_vue_type_template_id_7f7f1490___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CourseComponent_vue_vue_type_template_id_7f7f1490___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "7f7f1490",
+  null,
   null
   
 )
@@ -89416,19 +93693,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Courses/CourseComponent.vue?vue&type=template&id=7f7f1490&scoped=true&":
-/*!********************************************************************************************************!*\
-  !*** ./resources/js/components/Courses/CourseComponent.vue?vue&type=template&id=7f7f1490&scoped=true& ***!
-  \********************************************************************************************************/
+/***/ "./resources/js/components/Courses/CourseComponent.vue?vue&type=template&id=7f7f1490&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/Courses/CourseComponent.vue?vue&type=template&id=7f7f1490& ***!
+  \********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseComponent_vue_vue_type_template_id_7f7f1490_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CourseComponent.vue?vue&type=template&id=7f7f1490&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Courses/CourseComponent.vue?vue&type=template&id=7f7f1490&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseComponent_vue_vue_type_template_id_7f7f1490_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseComponent_vue_vue_type_template_id_7f7f1490___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CourseComponent.vue?vue&type=template&id=7f7f1490& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Courses/CourseComponent.vue?vue&type=template&id=7f7f1490&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseComponent_vue_vue_type_template_id_7f7f1490___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseComponent_vue_vue_type_template_id_7f7f1490_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseComponent_vue_vue_type_template_id_7f7f1490___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -89981,6 +94258,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavBar_vue_vue_type_template_id_5dd24bca___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavBar_vue_vue_type_template_id_5dd24bca___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ReservationsComponent.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/ReservationsComponent.vue ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReservationsComponent_vue_vue_type_template_id_3c5e863b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReservationsComponent.vue?vue&type=template&id=3c5e863b& */ "./resources/js/components/ReservationsComponent.vue?vue&type=template&id=3c5e863b&");
+/* harmony import */ var _ReservationsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReservationsComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ReservationsComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReservationsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReservationsComponent_vue_vue_type_template_id_3c5e863b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReservationsComponent_vue_vue_type_template_id_3c5e863b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ReservationsComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ReservationsComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/ReservationsComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ReservationsComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservationsComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ReservationsComponent.vue?vue&type=template&id=3c5e863b&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/ReservationsComponent.vue?vue&type=template&id=3c5e863b& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationsComponent_vue_vue_type_template_id_3c5e863b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ReservationsComponent.vue?vue&type=template&id=3c5e863b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReservationsComponent.vue?vue&type=template&id=3c5e863b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationsComponent_vue_vue_type_template_id_3c5e863b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationsComponent_vue_vue_type_template_id_3c5e863b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

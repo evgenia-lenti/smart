@@ -9,6 +9,4 @@ class ClassroomType extends Model
 {
     use HasFactory;
 
-    const TEACHING = 1;
-    const LECTURE = 2;
 }

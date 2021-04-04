@@ -3,34 +3,13 @@
         <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
         <div class="lg:hidden">
             <div v-if="isOpen" class="fixed inset-0 flex z-40">
-                <!--
-                  Off-canvas menu overlay, show/hide based on off-canvas menu state.
-
-                  Entering: "transition-opacity ease-linear duration-300"
-                    From: "opacity-0"
-                    To: "opacity-100"
-                  Leaving: "transition-opacity ease-linear duration-300"
-                    From: "opacity-100"
-                    To: "opacity-0"
-                -->
                 <div class="fixed inset-0">
                     <div class="absolute inset-0 bg-gray-600 opacity-75"></div>
                 </div>
-                <!--
-                  Off-canvas menu, show/hide based on off-canvas menu state.
-
-                  Entering: "transition ease-in-out duration-300 transform"
-                    From: "-translate-x-full"
-                    To: "translate-x-0"
-                  Leaving: "transition ease-in-out duration-300 transform"
-                    From: "translate-x-0"
-                    To: "-translate-x-full"
-                -->
                 <div tabindex="0" class="relative flex-1 flex flex-col max-w-xs w-full bg-white focus:outline-none">
                     <div class="absolute top-0 right-0 -mr-12 pt-2">
                         <button @click="isOpen = false" type="button" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                             <span class="sr-only">Close sidebar</span>
-                            <!-- Heroicon name: x -->
                             <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
@@ -81,6 +60,13 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
                                     Μαθήματα
+                                </a>
+
+                                <a :href="route('reservations.index')" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
+                                    <svg class="text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    Κρατήσεις
                                 </a>
 
                                 <div v-if="(user.role_id === 1 || user.role_id === 2)">
@@ -214,6 +200,13 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
                                     Μαθήματα
+                                </a>
+
+                                <a :href="route('reservations.index')" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
+                                    <svg class="text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    Κρατήσεις
                                 </a>
 
                                 <div v-if="(user.role_id === 1 || user.role_id === 2)">

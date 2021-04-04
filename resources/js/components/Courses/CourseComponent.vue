@@ -16,7 +16,6 @@
                             Επεξεργασία Μαθήματος
                         </a>
                     </div>
-
                 </div>
             </div>
 
@@ -32,17 +31,16 @@
                                         <a :href="route('download.theory', {theory})" class="underline text-blue-500">{{ theory.name }}</a>
                                     </div>
 
+                                    <div class="w-auto mt-3">
+                                        <video-wrapper :player="'youtube'" :video="videoId"  width="340" height="160" />
+<!--                                        <iframe width="560" height="315" :src="course.path" title="YouTube video player" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                                        </iframe>-->
+                                    </div>
+
                                 </div>
                             </div>
                         </main>
-                        <!--                    &lt;!&ndash;                second dashboard column&ndash;&gt;
-                                            <aside class="hidden relative md:flex md:flex-col flex-shrink-0 w-96 border-l border-gray-200">
-                                                <div class="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                                                    <div class="h-full border-4 border-gray-200 border-dashed rounded-lg">
-                                                        Ασκήσεις
-                                                    </div>
-                                                </div>
-                                            </aside>-->
                     </div>
                 </div>
 
@@ -56,45 +54,34 @@
                                     <div v-for="(assignment, index) in course.assignments" :key="index">
                                         <a :href="route('download.assignment', {assignment})" class="underline text-blue-500">{{ assignment.name }}</a>
                                     </div>
-
                                 </div>
                             </div>
                         </main>
-                        <!--                    &lt;!&ndash;                second dashboard column&ndash;&gt;
-                                            <aside class="hidden relative md:flex md:flex-col flex-shrink-0 w-96 border-l border-gray-200">
-                                                <div class="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                                                    <div class="h-full border-4 border-gray-200 border-dashed rounded-lg">
-                                                        Ασκήσεις
-                                                    </div>
-                                                </div>
-                                            </aside>-->
                     </div>
                 </div>
-
             </div>
         </div>
         <div v-else class="h-screen mb-10 mt-32 px-8">
             <div class="text-xl font-bold leading-tight text-gray-900">
                 Πρέπει να είσαι εγγεγραμμένος χρήστης για να δεις τα μαθήματα!
             </div>
-
             <a :href="route('register')"
                class="w-64 mt-8 lg:mt-0 text-center inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                 Εγγραφή
             </a>
         </div>
-
     </div>
-
 </template>
 
 <script>
+import VueVideoWrapper from 'vue-video-wrapper';
+
 export default {
 name: "CourseComponent",
 
     data() {
         return {
-
+            videoId: "#"
         }
     },
 
@@ -107,10 +94,9 @@ name: "CourseComponent",
             type: Object,
             required: true
         }
-    }
+    },
+
+    components: { VueVideoWrapper }
 }
 </script>
 
-<style scoped>
-
-</style>
