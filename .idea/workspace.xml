@@ -20,10 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a79a2abc-c78a-475f-bf1d-14ed0e08cfe8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Nova/Role.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Nova/Ticket.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mail/CourseBooking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/CourseBooking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ReservationsComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ReservationsComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/emails/course/booking.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/course/booking.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DatePickerComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DatePickerComponent.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,7 +269,7 @@
       <workItem from="1616694041879" duration="1788000" />
       <workItem from="1616854155207" duration="11574000" />
       <workItem from="1617453829755" duration="425000" />
-      <workItem from="1617482162551" duration="17013000" />
+      <workItem from="1617482162551" duration="18590000" />
     </task>
     <servers />
   </component>

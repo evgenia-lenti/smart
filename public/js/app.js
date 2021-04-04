@@ -77923,7 +77923,7 @@ var render = function() {
           "time-from": 9 * 60,
           "time-to": 18 * 60,
           locale: "el",
-          "disable-views": ["years", "year"],
+          "disable-views": ["years", "year", "week"],
           "today-button": "",
           events: _vm.events,
           "on-event-click": _vm.openBookingModal
