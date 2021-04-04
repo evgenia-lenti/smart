@@ -31,11 +31,8 @@
                                         <a :href="route('download.theory', {theory})" class="underline text-blue-500">{{ theory.name }}</a>
                                     </div>
 
-                                    <div>
-                                        <div>
-                                            <div v-html="course.path" >
-                                            </div>
-                                        </div>
+                                    <div class="w-auto mt-3">
+                                        <video-wrapper :player="'youtube'" :video="course.path"  width="340" height="160" />
 <!--                                        <iframe width="560" height="315" :src="course.path" title="YouTube video player" frameborder="0"
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                                         </iframe>-->
@@ -77,6 +74,8 @@
 </template>
 
 <script>
+import VueVideoWrapper from 'vue-video-wrapper';
+
 export default {
 name: "CourseComponent",
 
@@ -91,9 +90,7 @@ name: "CourseComponent",
         }
     },
 
-    mounted() {
-        console.log(this.course.path)
-    }
+    components: { VueVideoWrapper }
 }
 </script>
 

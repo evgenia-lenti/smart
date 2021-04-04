@@ -21,18 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="a79a2abc-c78a-475f-bf1d-14ed0e08cfe8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/BookingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Ticket.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Ticket.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_21_172124_create_courses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_21_172124_create_courses_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/ClassroomCourseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/ClassroomCourseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/CourseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CourseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Classrooms/ClassroomsPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Classrooms/ClassroomsPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Courses/ClassroomCoursesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Courses/ClassroomCoursesList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Courses/CourseComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Courses/CourseComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/NavBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/NavBar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ReservationsComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ReservationsComponent.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +272,7 @@
       <workItem from="1616694041879" duration="1788000" />
       <workItem from="1616854155207" duration="11574000" />
       <workItem from="1617453829755" duration="425000" />
-      <workItem from="1617482162551" duration="13370000" />
+      <workItem from="1617482162551" duration="16021000" />
     </task>
     <servers />
   </component>
