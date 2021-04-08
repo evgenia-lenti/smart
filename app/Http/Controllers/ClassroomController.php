@@ -78,7 +78,7 @@ class ClassroomController extends Controller
             'name' => 'required',
             'description' => 'required',
             'slug' => 'required',
-            'classroom_type' => 'required'
+            'classroom_type_id' => 'required'
             /*'visible' => 'required',
             'active' => 'required',*/
         ]);
@@ -90,7 +90,7 @@ class ClassroomController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'slug' => $request->slug,
-            'classroom_type' => $request->classroom_type,
+            'classroom_type_id' => $request->classroom_type_id,
             'visible' => !! $request->visible,
             'active' => !! $request->active,
         ]);
@@ -181,7 +181,7 @@ class ClassroomController extends Controller
             'name' => 'required',
             'description' => 'required',
             'slug' => 'required',
-            'classroom_type' => 'required'
+            'classroom_type_id' => 'required'
             /*'visible' => 'required',
             'active' => 'required',*/
         ]);
@@ -189,7 +189,7 @@ class ClassroomController extends Controller
         $classroom->name = $request->name;
         $classroom->description = $request->description;
         $classroom->slug = $request->slug;
-        $classroom->classroom_type = $request->classroom_type;
+        $classroom->classroom_type_id = $request->classroom_type_id;
         $classroom->user_id = Auth::id();
         $classroom->visible = !! $request->visible;
         $classroom->active = !! $request->active;

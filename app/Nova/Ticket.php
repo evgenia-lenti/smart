@@ -3,8 +3,13 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Avatar;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Ticket extends Resource
@@ -29,7 +34,7 @@ class Ticket extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'period', 'last name', 'email', 'telephone', 'paid'
     ];
 
     /**
@@ -42,6 +47,26 @@ class Ticket extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+
+            BelongsTo::make('period'),
+
+            Text::make('First Name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Last Name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Email')
+                ->sortable()
+                ->rules('required', 'email', 'max:254'),
+
+            Number::make('Telephone'),
+
+            //Avatar::make('Avatar')->nullable(),
+
+            Boolean::make('Paid'),
 
         ];
     }
