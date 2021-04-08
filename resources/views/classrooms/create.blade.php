@@ -79,12 +79,12 @@
 
                     <div class="col-span-6 sm:col-span-3">
                         <label for="classroom_type" class="block text-sm font-medium text-gray-700">Τύπος Τάξης (1 = Διδασκαλίας, 2 = Online)</label>
-                        <input type="text" name="classroom_type" id="classroom_type" autocomplete="classroom_type" value="{{old('classroom_type')}}"
+                        <input type="text" name="classroom_type_id" id="classroom_type" autocomplete="classroom_type" value="{{old('classroom_type')}}"
                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md
                                         @error('classroom_type') is-invalid @enderror">
 
-                        @error('classroom_type')
-                        @if($errors->has('classroom_type'))
+                        @error('classroom_type_id')
+                        @if($errors->has('classroom_type_id'))
                             <small class="text-red-500 text-sm">
                                 {{ $message }}
                             </small>
