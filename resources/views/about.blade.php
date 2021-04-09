@@ -35,7 +35,7 @@
                     </div>
                     <div class="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none">
                         <div class="rounded-md shadow">
-                            <a href="/contact/create"
+                            <a href="/contacts/create"
                                class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-500 hover:bg-gray-500">
                                 Επικοινωνία
                             </a>
